@@ -2,6 +2,7 @@
 
 import { FaShopify } from 'react-icons/fa'
 import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { heroData } from '../data/content'
 
 export function AnimatedCounter({ target, prefix = '', suffix = '', duration = 2000 }) {
@@ -81,12 +82,14 @@ function RotatingText() {
   )
 }
 
+// Static data moved outside component to prevent re-creation on every render
+const storeImages = [
+  'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509485/shopify-app/photsWork/Drapes.webp',
+  'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509488/shopify-app/photsWork/Nada.webp',
+  'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509487/shopify-app/photsWork/Luxury.webp'
+]
+
 export default function Hero() {
-  const storeImages = [
-    'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509485/shopify-app/photsWork/Drapes.webp',
-    'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509488/shopify-app/photsWork/Nada.webp',
-    'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509487/shopify-app/photsWork/Luxury.webp'
-  ]
   const [activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
@@ -94,33 +97,13 @@ export default function Hero() {
       setActiveIndex((prev) => (prev + 1) % storeImages.length)
     }, 3000)
     return () => clearInterval(interval)
-  }, [storeImages.length])
+  }, [])
 
   return (
     <section 
       id="hero" 
       className="min-h-[75vh] md:min-h-screen flex flex-col justify-between pt-20 md:pt-28 pb-4 md:pb-10 px-4 sm:px-6 md:px-12 lg:px-20 bg-white relative overflow-hidden"
     >
-      {/* CSS Animations */}
-      <style>{`
-        @keyframes float1 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-12px) rotate(2deg); } }
-        @keyframes float2 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-10px) rotate(-1.5deg); } }
-        @keyframes float3 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-15px) rotate(1.5deg); } }
-        @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
-        @keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 20px rgba(253, 88, 0, 0.15); } 50% { box-shadow: 0 0 40px rgba(253, 88, 0, 0.3); } }
-        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
-        @keyframes slideInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
-        @keyframes slideInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes scaleIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-        .hero-animate-1 { animation: slideInLeft 0.8s ease-out both; }
-        .hero-animate-2 { animation: slideInLeft 0.8s ease-out 0.15s both; }
-        .hero-animate-3 { animation: slideInUp 0.8s ease-out 0.3s both; }
-        .hero-animate-4 { animation: slideInUp 0.8s ease-out 0.45s both; }
-        .hero-animate-5 { animation: slideInUp 0.8s ease-out 0.6s both; }
-        .hero-cards-animate { animation: slideInRight 1s ease-out 0.5s both; }
-      `}</style>
-
       {/* Animated gradient orbs background — hidden on mobile via CSS */}
       <div className="hidden md:block absolute top-20 -left-32 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-[#FD5800]/[0.04] to-[#FF9066]/[0.02] blur-3xl pointer-events-none [transform:translateZ(0)] will-change-transform" />
       <div className="hidden md:block absolute bottom-20 -right-32 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-[#95BF47]/[0.04] to-[#5a8a00]/[0.02] blur-3xl pointer-events-none [transform:translateZ(0)] will-change-transform" />
@@ -169,8 +152,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center md:justify-start gap-3 mb-7 hero-animate-4">
               <a 
                 href="#contact" 
-                className="group relative flex w-full sm:w-auto items-center justify-center gap-2 px-5 py-2.5 sm:py-2 rounded-full font-bold text-[12px] sm:text-[13px] bg-[#FD5800] text-white border-2 border-transparent hover:shadow-[0_0_30px_rgba(253,88,0,0.3)] hover:scale-105 transition-all duration-300 tracking-wide overflow-hidden"
-                style={{ animation: 'pulseGlow 3s ease infinite' }}
+                className="group relative flex w-full sm:w-auto items-center justify-center gap-2 px-5 py-2.5 sm:py-2 rounded-full font-bold text-[12px] sm:text-[13px] bg-[#FD5800] text-white border-2 border-transparent hover:shadow-[0_0_30px_rgba(253,88,0,0.3)] hover:scale-105 transition-all duration-300 tracking-wide overflow-hidden hero-pulse-glow"
               >
                 <span className="relative z-10 flex items-center gap-2.5">
                   <FaShopify className="w-5 h-5" />
@@ -209,9 +191,6 @@ export default function Hero() {
           <div className="flex-1 w-full lg:max-w-[45%] xl:max-w-[48%] relative hidden lg:flex items-center justify-center hero-cards-animate overflow-visible p-2" style={{ minHeight: '440px' }}>
             
             {storeImages.map((src, idx) => {
-              // Calculate position based on activeIndex
-              // activeIndex is front (0), (activeIndex + 1)%3 is right (1), (activeIndex + 2)%3 is left (2)
-              // We want to move right to left, so if active changes 0->1, 1 moves from right to center.
               const position = (idx - activeIndex + 3) % 3;
               
               let translateX = '0%';
@@ -221,21 +200,18 @@ export default function Hero() {
               let rotate = '0deg';
 
               if (position === 0) {
-                // Center
                 translateX = '0%';
                 scale = 1;
                 zIndex = 30;
                 opacity = 1;
                 rotate = '0deg';
               } else if (position === 1) {
-                // Right
                 translateX = '45%';
                 scale = 0.85;
                 zIndex = 10;
                 opacity = 0.7;
                 rotate = '4deg';
               } else if (position === 2) {
-                // Left
                 translateX = '-45%';
                 scale = 0.85;
                 zIndex = 10;
@@ -254,7 +230,16 @@ export default function Hero() {
                   }}
                 >
                   <div className="relative">
-                    <img src={src} alt="Shopify Store Preview" className="w-full h-[380px] xl:h-[460px] object-cover object-top" />
+                    <div className="relative w-full h-[380px] xl:h-[460px]">
+                      <Image 
+                        src={src} 
+                        alt="Shopify Store Preview" 
+                        fill
+                        className="object-cover object-top"
+                        sizes="(max-width: 1280px) 280px, 340px"
+                        priority={idx === 0}
+                      />
+                    </div>
                     <div className="absolute top-3 left-3">
                       <div className="flex items-center gap-1.5 bg-white/90 backdrop-blur-sm text-[#95BF47] text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm">
                         <FaShopify className="w-3 h-3" />

@@ -1,13 +1,18 @@
 "use client";
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function CustomCursor() {
   const dotRef = useRef(null);
   const outerRef = useRef(null);
+  const [isTouch, setIsTouch] = useState(true); // Default to hidden, show only on non-touch
 
   useEffect(() => {
-    // Skip on touch devices
-    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
+    // Detect touch device on mount — controls visibility via state to avoid hydration mismatch
+    setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0);
+  }, []);
+
+  useEffect(() => {
+    if (isTouch) return;
 
     const dot = dotRef.current;
     const outer = outerRef.current;
@@ -48,10 +53,10 @@ export default function CustomCursor() {
       window.removeEventListener('mouseover', handleMouseOver);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [isTouch]);
 
-  // Check touch device on first render
-  if (typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0)) {
+  // Always render the same structure during SSR and client mount, control visibility via state
+  if (isTouch) {
     return null;
   }
 

@@ -1,12 +1,14 @@
 "use client";
-
+import Image from 'next/image';
 import { AnimatedCounter } from './Hero'
 
 const HappyClients = () => {
   const testimonials = [
     {
       logo: (
-        <img src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png" alt="Nutraphyll" className="h-12 object-contain" />
+        <div className="relative h-12 w-32">
+          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png" alt="Nutraphyll" fill className="object-contain" sizes="128px" />
+        </div>
       ),
       text: "One of the pages we have made with TLPC team has resulted into 44% increase in conversion rate",
       author: "Agarwal",
@@ -16,7 +18,9 @@ const HappyClients = () => {
     },
     {
       logo: (
-        <img src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png" alt="Judex" className="h-12 object-contain" />
+        <div className="relative h-12 w-32">
+          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png" alt="Judex" fill className="object-contain" sizes="128px" />
+        </div>
       ),
       text: "The strategic approach they brought to the project resulted in a revenue jump by 35%",
       author: "Ujjwal",
@@ -26,7 +30,9 @@ const HappyClients = () => {
     },
     {
       logo: (
-        <img src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509471/shopify-app/logo/Nada.png" alt="Nada" className="h-12 object-contain" />
+        <div className="relative h-12 w-32">
+          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509471/shopify-app/logo/Nada.png" alt="Nada" fill className="object-contain" sizes="128px" />
+        </div>
       ),
       text: "The improved user experience has led to higher engagement and a more satisfied customer base.",
       author: "Ahsan",
@@ -36,7 +42,9 @@ const HappyClients = () => {
     },
     {
       logo: (
-        <img src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509474/shopify-app/logo/Wayora.png" alt="Wayora" className="h-12 object-contain" />
+        <div className="relative h-12 w-32">
+          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509474/shopify-app/logo/Wayora.png" alt="Wayora" fill className="object-contain" sizes="128px" />
+        </div>
       ),
       text: "Our customers are more engaged, and our sales have never been better.",
       author: "Ashrit",
@@ -46,7 +54,9 @@ const HappyClients = () => {
     },
     {
       logo: (
-        <img src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509475/shopify-app/logo/WayoraN.png" alt="Wayora Natural" className="h-12 object-contain" />
+        <div className="relative h-12 w-32">
+          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509475/shopify-app/logo/WayoraN.png" alt="Wayora Natural" fill className="object-contain" sizes="128px" />
+        </div>
       ),
       text: "Working with them was a game-changer. The new design directly improved our conversion rates.",
       author: "Ashrit",
@@ -56,7 +66,9 @@ const HappyClients = () => {
     },
     {
       logo: (
-        <img src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png" alt="Drapes" className="h-12 object-contain" />
+        <div className="relative h-12 w-32">
+          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png" alt="Drapes" fill className="object-contain" sizes="128px" />
+        </div>
       ),
       text: "The changes they made to our landing pages have led to an immediate spike in our daily orders.",
       author: "Caroline",
@@ -78,28 +90,6 @@ const HappyClients = () => {
 
   return (
     <section className="w-full py-8 md:py-12 lg:py-14 font-sans bg-white relative z-10">
-      
-      <style>
-        {`
-          @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
-          }
-          .animate-marquee {
-            animation: marquee 30s linear infinite;
-            display: flex;
-            width: max-content;
-          }
-          /* Hide scrollbar for clean look */
-          .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-          }
-          .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-          }
-        `}
-      </style>
 
       <div className="max-w-[1024px] mx-auto flex flex-col items-center px-4 sm:px-5 md:px-16 xl:px-0 mb-6 w-full">
         
@@ -109,8 +99,8 @@ const HappyClients = () => {
           {/* Avatars */}
           <div className="flex -space-x-3 mb-2 justify-center">
             {['https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509471/shopify-app/logo/Nada.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509474/shopify-app/logo/Wayora.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png'].map((src, i) => (
-              <div key={i} className="w-12 h-12 rounded-full border-[3px] border-white bg-gray-300 overflow-hidden shadow-sm">
-                <img src={src} alt="Client" className="w-full h-full object-cover" />
+              <div key={i} className="relative w-12 h-12 rounded-full border-[3px] border-white bg-gray-300 overflow-hidden shadow-sm">
+                <Image src={src} alt="Client" fill className="object-cover" sizes="48px" />
               </div>
             ))}
           </div>
@@ -130,7 +120,7 @@ const HappyClients = () => {
       {/* Testimonials Slider/Grid */}
       <div className="w-full border-t-[0.5px] border-b-[0.5px] md:border-t md:border-b border-black bg-white overflow-hidden group">
         <div className="flex animate-marquee group-hover:[animation-play-state:paused]" style={{ animationDuration: '50s' }}>
-          {[...testimonials, ...testimonials, ...testimonials].map((client, idx) => (
+          {[...testimonials, ...testimonials].map((client, idx) => (
             <div key={idx} className="min-w-[250px] sm:min-w-[340px] max-w-[250px] sm:max-w-[340px] flex flex-col border-r-[0.5px] md:border-r border-black shrink-0 bg-white">
               
               {/* Logo Section */}
@@ -169,7 +159,7 @@ const HappyClients = () => {
 
       {/* Orange Straight Ticker Banner */}
       <div className="relative z-50 w-full bg-[#FD5800] overflow-hidden whitespace-nowrap py-3 mt-10 shadow-md">
-        <div className="animate-marquee flex gap-8 items-center" style={{ animationDirection: 'reverse', animationDuration: '80s' }}>
+        <div className="animate-marquee-reverse flex gap-8 items-center" style={{ animationDuration: '80s' }}>
           {/* Double the items to create seamless loop effect */}
           {[...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems].map((item, idx) => (
             <div key={idx} className="flex items-center gap-8">
@@ -189,4 +179,3 @@ const HappyClients = () => {
 };
 
 export default HappyClients;
-

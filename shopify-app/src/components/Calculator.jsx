@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useState } from 'react';
 
 const Calculator = () => {
@@ -29,48 +29,6 @@ const Calculator = () => {
 
   return (
     <section id="math" className="w-full py-8 md:py-12 lg:py-14 font-sans bg-white">
-      <style>
-        {`
-          .custom-slider {
-            -webkit-appearance: none;
-            width: 100%;
-            background: transparent;
-          }
-          .custom-slider:focus {
-            outline: none;
-          }
-          .custom-slider::-webkit-slider-runnable-track {
-            width: 100%;
-            height: 2px;
-            cursor: pointer;
-            background: black;
-          }
-          .custom-slider::-webkit-slider-thumb {
-            height: 32px;
-            width: 32px;
-            background: #FD5800;
-            border: 2px solid black;
-            cursor: pointer;
-            -webkit-appearance: none;
-            margin-top: -15px;
-          }
-          .custom-slider::-moz-range-track {
-            width: 100%;
-            height: 2px;
-            cursor: pointer;
-            background: black;
-          }
-          .custom-slider::-moz-range-thumb {
-            height: 32px;
-            width: 32px;
-            background: #FD5800;
-            border: 2px solid black;
-            cursor: pointer;
-            border-radius: 0;
-          }
-        `}
-      </style>
-
       <div className="max-w-[1360px] mx-auto flex flex-col items-center px-4 sm:px-6 md:px-12 xl:px-16 w-full">
         
         {/* Header Section */}
@@ -217,4 +175,3 @@ const Calculator = () => {
 };
 
 export default Calculator;
-

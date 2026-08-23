@@ -1,4 +1,5 @@
-"use client";import Image from 'next/image';
+"use client";
+import Image from 'next/image';
 import { AnimatedCounter } from './Hero'
 
 export default function HeroVCards() {
@@ -63,19 +64,6 @@ export default function HeroVCards() {
 
   return (
     <section className="w-full pt-4 md:pt-8 pb-8 md:pb-16 bg-white text-black font-sans overflow-hidden relative z-10">
-      <style>{`
-        @keyframes marqueeLeft {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-marquee-left {
-          animation: marqueeLeft 40s linear infinite;
-          display: flex;
-          width: max-content;
-          will-change: transform;
-          transform: translateZ(0);
-        }
-      `}</style>
 
       {/* Header Container */}
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 w-full mb-3">
@@ -100,8 +88,8 @@ export default function HeroVCards() {
           <div className="flex items-center gap-4 bg-gray-50/80 p-3.5 px-5 rounded-2xl border border-[#FD5800] shadow-sm">
             <div className="flex -space-x-3">
               {['https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509471/shopify-app/logo/Nada.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509474/shopify-app/logo/Wayora.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png'].map((src, i) => (
-                <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-gray-200 overflow-hidden shadow-sm">
-                  <img src={src} alt="Client" className="w-full h-full object-cover" />
+                <div key={i} className="relative w-10 h-10 rounded-full border-2 border-white bg-gray-200 overflow-hidden shadow-sm">
+                  <Image src={src} alt="Client" fill className="object-cover" sizes="40px" />
                 </div>
               ))}
             </div>
@@ -140,7 +128,7 @@ export default function HeroVCards() {
                   rel="noopener noreferrer"
                   className="relative flex-1 w-full overflow-hidden bg-gray-50 group/link block"
                 >
-                  <img src={card.img} alt={card.title} className="w-full h-full object-cover object-top" />
+                  <Image src={card.img} alt={card.title} fill className="object-cover object-top" sizes="(max-width: 768px) 325px, 390px" priority={idx < 2} />
 
                   {/* View Project Button on Hover */}
                   <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-end justify-end p-5 bg-black/5">

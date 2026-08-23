@@ -29,8 +29,11 @@ export default function Navbar() {
     }
   }, [mobileMenu])
 
-  // Detect if navbar is over a dark section
+  // Detect if navbar is over a dark section — throttled with setTimeout
   useEffect(() => {
+    let timeoutId = null
+    let ticking = false
+
     const checkBackground = () => {
       if (!navRef.current) return
       const navRect = navRef.current.getBoundingClientRect()
@@ -75,14 +78,23 @@ export default function Navbar() {
         }
       }
       setIsDark(dark)
+      ticking = false
+    }
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true
+        timeoutId = setTimeout(checkBackground, 100)
+      }
     }
 
     checkBackground()
-    window.addEventListener('scroll', checkBackground, { passive: true })
-    window.addEventListener('resize', checkBackground, { passive: true })
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll, { passive: true })
     return () => {
-      window.removeEventListener('scroll', checkBackground)
-      window.removeEventListener('resize', checkBackground)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+      if (timeoutId) clearTimeout(timeoutId)
     }
   }, [])
 
@@ -111,7 +123,7 @@ export default function Navbar() {
         <div className="w-full flex items-center justify-between py-2 px-6 md:px-8">
         {/* Logo */}
         <motion.a 
-          href={import.meta.env.VITE_MAIN_SITE_URL || "https://www.scalomatrix.com/"}
+          href={process.env.NEXT_PUBLIC_MAIN_SITE_URL || "https://www.scalomatrix.com/"}
           target="_blank"
           rel="noopener noreferrer" 
           onMouseMove={handleMouseMove}
