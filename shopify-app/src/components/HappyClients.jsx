@@ -46,13 +46,13 @@ const HappyClients = () => {
     },
     {
       logo: (
-        <img src="/logo/Wayora.png" alt="Wayora" className="h-12 object-contain" />
+        <img src="/logo/WayoraN.png" alt="Wayora Natural" className="h-12 object-contain" />
       ),
       text: "Working with them was a game-changer. The new design directly improved our conversion rates.",
       author: "Ashrit",
       title: "Founder, Wayora Natural",
       avatarColor: "bg-green-200",
-      avatar: "/logo/Wayora.png"
+      avatar: "/logo/WayoraN.png"
     },
     {
       logo: (
