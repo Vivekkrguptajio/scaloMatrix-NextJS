@@ -9,7 +9,7 @@ import 'lenis/dist/lenis.css'
 
 import FeaturedCaseStudy from '../components/FeaturedCaseStudy'
 import HappyClients from '../components/HappyClients'
-
+import HeroVCards from '../components/HeroVCards'
 import CaseStudiesGrid from '../components/CaseStudiesGrid'
 import Calculator from '../components/Calculator'
 import AiManifesto from '../components/AiManifesto'
@@ -70,7 +70,7 @@ function App() {
       
       <main className="relative z-20 bg-white rounded-b-[40px] md:rounded-b-[60px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
         <Hero />
-
+        <HeroVCards />
         
         <ScrollReveal><FeaturedCaseStudy /></ScrollReveal>
         <ScrollReveal variant="scaleUp"><HappyClients /></ScrollReveal>
