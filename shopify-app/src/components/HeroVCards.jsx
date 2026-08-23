@@ -1,4 +1,4 @@
-"use client";
+"use client";import Image from 'next/image';
 import { AnimatedCounter } from './Hero'
 
 export default function HeroVCards() {
@@ -72,6 +72,8 @@ export default function HeroVCards() {
           animation: marqueeLeft 40s linear infinite;
           display: flex;
           width: max-content;
+          will-change: transform;
+          transform: translateZ(0);
         }
       `}</style>
 
@@ -138,12 +140,7 @@ export default function HeroVCards() {
                   rel="noopener noreferrer"
                   className="relative flex-1 w-full overflow-hidden bg-gray-50 group/link block"
                 >
-                  <img 
-                    src={card.img} 
-                    alt={card.title} 
-                    loading="lazy"
-                    className="w-full h-full object-cover object-top"
-                  />
+                  <Image src={card.img} alt={card.title} fill sizes="(max-width: 768px) 390px, 390px" className="object-cover object-top" />
 
                   {/* View Project Button on Hover */}
                   <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-end justify-end p-5 bg-black/5">

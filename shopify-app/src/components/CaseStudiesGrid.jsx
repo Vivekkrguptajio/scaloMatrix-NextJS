@@ -1,4 +1,4 @@
-"use client";
+"use client";import Image from 'next/image';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { AnimatedCounter } from './Hero';
@@ -22,14 +22,14 @@ const DesktopMobileMockup = ({ src, mobileSrc, alt }) => (
     {/* Desktop View */}
     <div className="flex-[2.5] bg-white rounded-t-lg md:rounded-t-2xl shadow-[0_-4px_25px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col border-t border-l border-r border-gray-200 relative h-[95%] md:h-[98%]">
       <div className="w-full h-full relative overflow-hidden bg-gray-50">
-        <img src={src} alt={alt} className="absolute inset-0 w-full h-full object-cover object-top" />
+        <Image src={src} alt={alt} fill className="object-cover object-top" sizes="(max-width: 768px) 100vw, 50vw" />
       </div>
     </div>
 
     {/* Mobile View */}
     <div className="flex-[1] max-w-[120px] sm:max-w-[160px] bg-white rounded-t-lg md:rounded-t-2xl shadow-[0_-4px_25px_rgba(0,0,0,0.15)] overflow-hidden flex flex-col border-t border-l border-r border-gray-200 shrink-0 relative h-[80%] md:h-[88%]">
        <div className="w-full h-full relative overflow-hidden bg-gray-50">
-         <img src={mobileSrc || src} alt={`${alt} Mobile`} className="absolute inset-0 w-full h-full object-cover object-top" />
+         <Image src={mobileSrc || src} alt={`${alt} Mobile`} fill className="object-cover object-top" sizes="(max-width: 768px) 50vw, 25vw" />
        </div>
     </div>
   </div>

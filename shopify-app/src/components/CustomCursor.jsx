@@ -52,13 +52,13 @@ export default function CustomCursor() {
   return (
     <div 
       ref={outerRef}
-      className="fixed top-0 left-0 pointer-events-none z-[10000] mix-blend-difference"
+      className="fixed top-0 left-0 pointer-events-none z-[10000] "
       style={{ willChange: 'transform' }}
     >
       <div className="flex items-center justify-center w-8 h-8">
         <div 
           ref={dotRef}
-          className="w-2 h-2 rounded-full bg-white"
+          className="w-2 h-2 rounded-full bg-[#FD5800] border border-white shadow-sm"
           style={{ 
             transition: 'transform 0.15s ease',
             willChange: 'transform',
