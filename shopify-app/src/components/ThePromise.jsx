@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 export default function ThePromise() {
   return (
@@ -23,7 +23,7 @@ export default function ThePromise() {
           href="#contact" 
           className="group inline-flex items-center justify-center gap-2 bg-[#FD5800] text-white font-bold py-4 px-8 rounded-full border border-transparent hover:scale-105 hover:bg-transparent hover:text-black hover:border-black transition-all duration-300 shadow-lg hover:shadow-xl"
         >
-          Request your audit
+          Request your free audit
           <span className="group-hover:translate-x-1 transition-transform">→</span>
         </a>
         
