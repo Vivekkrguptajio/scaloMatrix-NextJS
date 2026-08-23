@@ -13,11 +13,16 @@ export default function CustomCursor() {
     const outer = outerRef.current;
     if (!dot || !outer) return;
 
-    // Use raw DOM manipulation instead of React state to avoid re-renders
+    let animationFrameId = null;
     const handleMouseMove = (e) => {
       const x = e.clientX;
       const y = e.clientY;
-      outer.style.transform = `translate3d(${x - 16}px, ${y - 16}px, 0)`;
+      if (!animationFrameId) {
+        animationFrameId = requestAnimationFrame(() => {
+          outer.style.transform = `translate3d(${x - 16}px, ${y - 16}px, 0)`;
+          animationFrameId = null;
+        });
+      }
     };
 
     let lastTarget = null;
@@ -41,6 +46,7 @@ export default function CustomCursor() {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseover', handleMouseOver);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
   }, []);
 

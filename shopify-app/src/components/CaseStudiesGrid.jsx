@@ -41,7 +41,7 @@ const CaseStudiesGrid = () => {
   const allStudies = [
     {
       id: 'wayorastyleverse',
-      mockup: <DesktopMobileMockup src="/lap_view/LuxuryWayora.webp" mobileSrc="/phoneView/Luxury_phone_view.webp" alt="Wayora Styleverse" />,
+      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509465/shopify-app/lap_view/LuxuryWayora.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509481/shopify-app/phoneView/Luxury_phone_view.webp" alt="Wayora Styleverse" />,
       badge: (
         <div className="bg-[#ff2020] text-white font-black italic text-xl px-2 py-0.5 tracking-tighter">
           WAYORA<span className="text-white/90">STYLEVERSE</span>
@@ -53,10 +53,10 @@ const CaseStudiesGrid = () => {
     },
     {
       id: 'wayoranatural',
-      mockup: <DesktopMobileMockup src="/lap_view/wayoranatural.webp" mobileSrc="/phoneView/wayoranatural_phone_view.webp" alt="Wayora Natural" />,
+      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509468/shopify-app/lap_view/wayoranatural.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509484/shopify-app/phoneView/wayoranatural_phone_view.webp" alt="Wayora Natural" />,
       badge: (
         <div className="flex items-center gap-1.5 text-black">
-          <img src="/logo/WayoraN.png" alt="Wayora Natural" className="h-6 object-contain" />
+          <img src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509475/shopify-app/logo/WayoraN.png" alt="Wayora Natural" className="h-6 object-contain" />
         </div>
       ),
       aov: '+22%',
@@ -65,7 +65,7 @@ const CaseStudiesGrid = () => {
     },
     {
       id: 'nutraphyll',
-      mockup: <DesktopMobileMockup src="/lap_view/Nutraphyll.webp" mobileSrc="/phoneView/Nutraphyll_phone_view.webp" alt="Nutraphyll" />,
+      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509467/shopify-app/lap_view/Nutraphyll.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509483/shopify-app/phoneView/Nutraphyll_phone_view.webp" alt="Nutraphyll" />,
       badge: (
         <div className="flex flex-col text-[#ff9900]">
           <span className="font-bold text-2xl tracking-tight leading-none">Nutraphyll</span>
@@ -78,7 +78,7 @@ const CaseStudiesGrid = () => {
     },
     {
       id: 'houseofnada',
-      mockup: <DesktopMobileMockup src="/lap_view/Nada.webp" mobileSrc="/phoneView/Nada _phone_view.webp" alt="House of Nada" />,
+      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509466/shopify-app/lap_view/Nada.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509482/shopify-app/phoneView/Nada%20_phone_view.webp" alt="House of Nada" />,
       badge: (
         <div className="font-serif italic font-bold text-xl text-black tracking-tight">
           House of Nada
@@ -90,7 +90,7 @@ const CaseStudiesGrid = () => {
     },
     {
       id: 'drapescorner',
-      mockup: <DesktopMobileMockup src="/lap_view/Drapes.webp" mobileSrc="/phoneView/Drapes_phone_view.webp" alt="Drapes Corner" />,
+      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509463/shopify-app/lap_view/Drapes.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509479/shopify-app/phoneView/Drapes_phone_view.webp" alt="Drapes Corner" />,
       badge: (
         <div className="flex flex-col text-black">
           <span className="font-bold text-lg leading-none">Drapes Corner</span>
@@ -103,7 +103,7 @@ const CaseStudiesGrid = () => {
     },
     {
       id: 'judex',
-      mockup: <DesktopMobileMockup src="/lap_view/Judex.webp" mobileSrc="/phoneView/judex_phone_view.webp" alt="Judex" />,
+      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509464/shopify-app/lap_view/Judex.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509480/shopify-app/phoneView/judex_phone_view.webp" alt="Judex" />,
       badge: (
         <div className="flex items-center gap-1.5">
           <div className="w-6 h-6 rounded-full border border-black flex items-center justify-center font-bold text-xs">J</div>

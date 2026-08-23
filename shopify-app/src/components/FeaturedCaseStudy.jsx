@@ -60,21 +60,21 @@ const FeaturedCaseStudy = () => {
             <div className="flex-1 w-full grid grid-cols-1 sm:grid-cols-3 gap-6 h-[540px] md:h-[600px]">
               <div className="rounded-3xl border border-gray-200 shadow-sm bg-white overflow-hidden h-full">
                 <img 
-                  src="/image.png" 
+                  src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509462/shopify-app/image.png" 
                   alt="Super You Case Study 1" 
                   className="w-full h-full object-cover object-top block" 
                 />
               </div>
               <div className="rounded-3xl border border-gray-200 shadow-sm bg-white overflow-hidden h-full">
                 <img 
-                  src="/image copy.png" 
+                  src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509461/shopify-app/image%20copy.png" 
                   alt="Super You Case Study 2" 
                   className="w-full h-full object-cover object-top block" 
                 />
               </div>
               <div className="rounded-3xl border border-gray-200 shadow-sm bg-white overflow-hidden h-full">
                 <img 
-                  src="/image copy 2.png" 
+                  src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509460/shopify-app/image%20copy%202.png" 
                   alt="Super You Case Study 3" 
                   className="w-full h-full object-cover object-top block" 
                 />

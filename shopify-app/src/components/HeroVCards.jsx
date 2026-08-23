@@ -5,7 +5,7 @@ export default function HeroVCards() {
   const row1Cards = [
     { 
       id: 1, 
-      img: '/photsWork/Nada.webp', 
+      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509488/shopify-app/photsWork/Nada.webp', 
       title: 'Nada', 
       url: 'https://www.houseofnada.com',
       stat: '+44% CVR',
@@ -13,7 +13,7 @@ export default function HeroVCards() {
     },
     { 
       id: 2, 
-      img: '/photsWork/Nutraphyll.webp', 
+      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509489/shopify-app/photsWork/Nutraphyll.webp', 
       title: 'Nutraphyll', 
       url: 'https://www.nutraphyll.com',
       stat: '+35% Orders',
@@ -21,7 +21,7 @@ export default function HeroVCards() {
     },
     { 
       id: 3, 
-      img: '/photsWork/Velmukha.webp', 
+      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509490/shopify-app/photsWork/Velmukha.webp', 
       title: 'Velmukha', 
       url: 'https://www.velmukha.com/',
       stat: '+50% Sales',
@@ -29,7 +29,7 @@ export default function HeroVCards() {
     },
     { 
       id: 4, 
-      img: '/photsWork/wayoranatural.webp', 
+      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509491/shopify-app/photsWork/wayoranatural.webp', 
       title: 'Wayora Natural', 
       url: 'https://www.wayoranatural.com',
       stat: '+28% AOV',
@@ -37,7 +37,7 @@ export default function HeroVCards() {
     },
     { 
       id: 5, 
-      img: '/photsWork/Drapes.webp', 
+      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509485/shopify-app/photsWork/Drapes.webp', 
       title: 'Drapes Corner', 
       url: 'https://www.drapescorner.com',
       stat: '+60% CVR',
@@ -45,7 +45,7 @@ export default function HeroVCards() {
     },
     { 
       id: 6, 
-      img: '/photsWork/Judex.webp', 
+      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509486/shopify-app/photsWork/Judex.webp', 
       title: 'Judex Fragrance', 
       url: 'https://www.judex.in',
       stat: '+45% Sales',
@@ -53,7 +53,7 @@ export default function HeroVCards() {
     },
     { 
       id: 7, 
-      img: '/photsWork/Luxury.webp', 
+      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509487/shopify-app/photsWork/Luxury.webp', 
       title: 'Wayora Luxury', 
       url: 'https://www.wayorastyleverse.com',
       stat: '+80% Orders',
@@ -99,7 +99,7 @@ export default function HeroVCards() {
           {/* Right Social Proof Stack */}
           <div className="flex items-center gap-4 bg-gray-50/80 p-3.5 px-5 rounded-2xl border border-[#FD5800] shadow-sm">
             <div className="flex -space-x-3">
-              {['/logo/Judex.png', '/logo/Nada.png', '/logo/Nutraphyll.png', '/logo/Wayora.png', '/logo/drapes.png'].map((src, i) => (
+              {['https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509471/shopify-app/logo/Nada.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509474/shopify-app/logo/Wayora.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png'].map((src, i) => (
                 <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-gray-200 overflow-hidden shadow-sm">
                   <img src={src} alt="Client" className="w-full h-full object-cover" />
                 </div>
@@ -140,7 +140,7 @@ export default function HeroVCards() {
                   rel="noopener noreferrer"
                   className="relative flex-1 w-full overflow-hidden bg-gray-50 group/link block"
                 >
-                  <Image src={card.img} alt={card.title} fill sizes="(max-width: 768px) 390px, 390px" className="object-cover object-top" />
+                  <img src={card.img} alt={card.title} className="w-full h-full object-cover object-top" />
 
                   {/* View Project Button on Hover */}
                   <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-end justify-end p-5 bg-black/5">

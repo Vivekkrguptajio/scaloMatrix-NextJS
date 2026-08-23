@@ -83,9 +83,9 @@ function RotatingText() {
 
 export default function Hero() {
   const storeImages = [
-    '/photsWork/Drapes.webp',
-    '/photsWork/Nada.webp',
-    '/photsWork/Luxury.webp'
+    'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509485/shopify-app/photsWork/Drapes.webp',
+    'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509488/shopify-app/photsWork/Nada.webp',
+    'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509487/shopify-app/photsWork/Luxury.webp'
   ]
   const [activeIndex, setActiveIndex] = useState(0)
 

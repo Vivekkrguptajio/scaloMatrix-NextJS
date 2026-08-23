@@ -6,63 +6,63 @@ const HappyClients = () => {
   const testimonials = [
     {
       logo: (
-        <img src="/logo/Nutraphyll.png" alt="Nutraphyll" className="h-12 object-contain" />
+        <img src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png" alt="Nutraphyll" className="h-12 object-contain" />
       ),
       text: "One of the pages we have made with TLPC team has resulted into 44% increase in conversion rate",
       author: "Agarwal",
       title: "Founder, Nutraphyll",
       avatarColor: "bg-orange-200",
-      avatar: "/logo/Nutraphyll.png"
+      avatar: "https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png"
     },
     {
       logo: (
-        <img src="/logo/Judex.png" alt="Judex" className="h-12 object-contain" />
+        <img src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png" alt="Judex" className="h-12 object-contain" />
       ),
       text: "The strategic approach they brought to the project resulted in a revenue jump by 35%",
       author: "Ujjwal",
       title: "Founder, Judex",
       avatarColor: "bg-gray-300",
-      avatar: "/logo/Judex.png"
+      avatar: "https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png"
     },
     {
       logo: (
-        <img src="/logo/Nada.png" alt="Nada" className="h-12 object-contain" />
+        <img src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509471/shopify-app/logo/Nada.png" alt="Nada" className="h-12 object-contain" />
       ),
       text: "The improved user experience has led to higher engagement and a more satisfied customer base.",
       author: "Ahsan",
       title: "Founder, House of Nada",
       avatarColor: "bg-orange-200",
-      avatar: "/logo/Nada.png"
+      avatar: "https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509471/shopify-app/logo/Nada.png"
     },
     {
       logo: (
-        <img src="/logo/Wayora.png" alt="Wayora" className="h-12 object-contain" />
+        <img src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509474/shopify-app/logo/Wayora.png" alt="Wayora" className="h-12 object-contain" />
       ),
       text: "Our customers are more engaged, and our sales have never been better.",
       author: "Ashrit",
       title: "Founder, Wayora Styleverse",
       avatarColor: "bg-pink-200",
-      avatar: "/logo/Wayora.png"
+      avatar: "https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509474/shopify-app/logo/Wayora.png"
     },
     {
       logo: (
-        <img src="/logo/WayoraN.png" alt="Wayora Natural" className="h-12 object-contain" />
+        <img src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509475/shopify-app/logo/WayoraN.png" alt="Wayora Natural" className="h-12 object-contain" />
       ),
       text: "Working with them was a game-changer. The new design directly improved our conversion rates.",
       author: "Ashrit",
       title: "Founder, Wayora Natural",
       avatarColor: "bg-green-200",
-      avatar: "/logo/WayoraN.png"
+      avatar: "https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509475/shopify-app/logo/WayoraN.png"
     },
     {
       logo: (
-        <img src="/logo/drapes.png" alt="Drapes" className="h-12 object-contain" />
+        <img src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png" alt="Drapes" className="h-12 object-contain" />
       ),
       text: "The changes they made to our landing pages have led to an immediate spike in our daily orders.",
       author: "Caroline",
       title: "Founder, Drapes Corner",
       avatarColor: "bg-yellow-200",
-      avatar: "/logo/drapes.png"
+      avatar: "https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png"
     }
   ];
 
@@ -108,7 +108,7 @@ const HappyClients = () => {
           
           {/* Avatars */}
           <div className="flex -space-x-3 mb-2 justify-center">
-            {['/logo/Judex.png', '/logo/Nada.png', '/logo/Nutraphyll.png', '/logo/Wayora.png', '/logo/drapes.png'].map((src, i) => (
+            {['https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509471/shopify-app/logo/Nada.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509474/shopify-app/logo/Wayora.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png'].map((src, i) => (
               <div key={i} className="w-12 h-12 rounded-full border-[3px] border-white bg-gray-300 overflow-hidden shadow-sm">
                 <img src={src} alt="Client" className="w-full h-full object-cover" />
               </div>

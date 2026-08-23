@@ -45,13 +45,13 @@ const GuestCard = ({ brand, index, additionalClass = "" }) => {
 
 const GuestList = () => {
   const brandLogos = [
-    { name: "Nutraphyll", img: "/logo/Nutraphyll.png" },
-    { name: "Judex", img: "/logo/Judex.png" },
-    { name: "Nada", img: "/logo/Nada.png" },
-    { name: "Wayora", img: "/logo/Wayora.png" },
-    { name: "Drapes", img: "/logo/drapes.png" },
-    { name: "Velmukha", img: "/logo/velmukha.png" },
-    { name: "WayoraN", img: "/logo/WayoraN.png" },
+    { name: "Nutraphyll", img: "https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png" },
+    { name: "Judex", img: "https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png" },
+    { name: "Nada", img: "https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509471/shopify-app/logo/Nada.png" },
+    { name: "Wayora", img: "https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509474/shopify-app/logo/Wayora.png" },
+    { name: "Drapes", img: "https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png" },
+    { name: "Velmukha", img: "https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509473/shopify-app/logo/velmukha.png" },
+    { name: "WayoraN", img: "https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509475/shopify-app/logo/WayoraN.png" },
   ];
 
   return (
