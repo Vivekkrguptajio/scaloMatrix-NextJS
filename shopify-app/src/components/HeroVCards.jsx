@@ -128,7 +128,7 @@ export default function HeroVCards() {
             {[...row1Cards, ...row1Cards].map((card, idx) => (
               <div 
                 key={idx} 
-                className={`w-[260px] sm:w-[335px] md:w-[423px] min-w-[260px] sm:min-w-[335px] md:min-w-[423px] max-w-[260px] sm:max-w-[335px] md:max-w-[423px] h-[380px] sm:h-[520px] md:h-[607px] rounded-xl md:rounded-2xl overflow-hidden shadow-md bg-white shrink-0 group/card cursor-pointer flex-col flex`}
+                className={`w-[240px] sm:w-[300px] md:w-[360px] min-w-[240px] sm:min-w-[300px] md:min-w-[360px] max-w-[240px] sm:max-w-[300px] md:max-w-[360px] h-[340px] sm:h-[450px] md:h-[510px] rounded-xl md:rounded-2xl overflow-hidden shadow-md bg-white shrink-0 group/card cursor-pointer flex-col flex`}
               >
 
                 {/* Screenshot Image Container */}
