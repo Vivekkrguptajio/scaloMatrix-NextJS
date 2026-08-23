@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
-import HeroVCards from '../components/HeroVCards'
 import { ScrollProgressBar } from '../components/ScrollReveal'
 import SkeletonLoader from '../components/SkeletonLoader'
 import Lenis from 'lenis'
@@ -10,12 +9,12 @@ import 'lenis/dist/lenis.css'
 
 import FeaturedCaseStudy from '../components/FeaturedCaseStudy'
 import HappyClients from '../components/HappyClients'
-import GuestList from '../components/GuestList'
+
 import CaseStudiesGrid from '../components/CaseStudiesGrid'
 import Calculator from '../components/Calculator'
 import AiManifesto from '../components/AiManifesto'
 import CroBrandExercise from '../components/CroBrandExercise'
-import HowItWorks from '../components/HowItWorks'
+
 import HiringPhilosophy from '../components/HiringPhilosophy'
 import WhoWeDontWorkWith from '../components/WhoWeDontWorkWith'
 import TeamMembers from '../components/TeamMembers'
@@ -71,17 +70,17 @@ function App() {
       
       <main className="relative z-20 bg-white rounded-b-[40px] md:rounded-b-[60px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
         <Hero />
-        <HeroVCards />
+
         
         <ScrollReveal><FeaturedCaseStudy /></ScrollReveal>
         <ScrollReveal variant="scaleUp"><HappyClients /></ScrollReveal>
-        <ScrollReveal><GuestList /></ScrollReveal>
+
         <ScrollReveal variant="scaleUp"><CaseStudiesGrid /></ScrollReveal>
         <ScrollReveal><Calculator /></ScrollReveal>
         <ScrollReveal variant="scaleUp"><Offers /></ScrollReveal>
         <ScrollReveal><AiManifesto /></ScrollReveal>
         <ScrollReveal variant="blur"><CroBrandExercise /></ScrollReveal>
-        <ScrollReveal><HowItWorks /></ScrollReveal>
+
         <ScrollReveal><HiringPhilosophy /></ScrollReveal>
         <ScrollReveal><WhoWeDontWorkWith /></ScrollReveal>
         <ScrollReveal><TeamMembers /></ScrollReveal>

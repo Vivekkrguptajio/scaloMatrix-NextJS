@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { AnimatedCounter } from './Hero'
 
@@ -9,8 +9,8 @@ const HappyClients = () => {
         <img src="/logo/Nutraphyll.png" alt="Nutraphyll" className="h-12 object-contain" />
       ),
       text: "One of the pages we have made with TLPC team has resulted into 44% increase in conversion rate",
-      author: "Vatsala Singh",
-      title: "AVP, Wellbeing Nutrition",
+      author: "Agarwal",
+      title: "Founder, Nutraphyll",
       avatarColor: "bg-orange-200",
       avatar: "/logo/Nutraphyll.png"
     },
@@ -19,8 +19,8 @@ const HappyClients = () => {
         <img src="/logo/Judex.png" alt="Judex" className="h-12 object-contain" />
       ),
       text: "The strategic approach they brought to the project resulted in a revenue jump by 35%",
-      author: "Sachin Darbarwar",
-      title: "Founder Zeroharm",
+      author: "Ujjwal",
+      title: "Founder, Judex",
       avatarColor: "bg-gray-300",
       avatar: "/logo/Judex.png"
     },
@@ -29,8 +29,8 @@ const HappyClients = () => {
         <img src="/logo/Nada.png" alt="Nada" className="h-12 object-contain" />
       ),
       text: "The improved user experience has led to higher engagement and a more satisfied customer base.",
-      author: "Sourav",
-      title: "Co-founder, Healthfab",
+      author: "Ahsan",
+      title: "Founder, House of Nada",
       avatarColor: "bg-orange-200",
       avatar: "/logo/Nada.png"
     },
@@ -39,9 +39,19 @@ const HappyClients = () => {
         <img src="/logo/Wayora.png" alt="Wayora" className="h-12 object-contain" />
       ),
       text: "Our customers are more engaged, and our sales have never been better.",
-      author: "Suchita A Mukerji",
-      title: "Founder - The Basic Women",
+      author: "Ashrit",
+      title: "Founder, Wayora Styleverse",
       avatarColor: "bg-pink-200",
+      avatar: "/logo/Wayora.png"
+    },
+    {
+      logo: (
+        <img src="/logo/Wayora.png" alt="Wayora" className="h-12 object-contain" />
+      ),
+      text: "Working with them was a game-changer. The new design directly improved our conversion rates.",
+      author: "Ashrit",
+      title: "Founder, Wayora Natural",
+      avatarColor: "bg-green-200",
       avatar: "/logo/Wayora.png"
     },
     {
@@ -49,8 +59,8 @@ const HappyClients = () => {
         <img src="/logo/drapes.png" alt="Drapes" className="h-12 object-contain" />
       ),
       text: "The changes they made to our landing pages have led to an immediate spike in our daily orders.",
-      author: "Rahul Sharma",
-      title: "CMO, BrandX",
+      author: "Caroline",
+      title: "Founder, Drapes Corner",
       avatarColor: "bg-yellow-200",
       avatar: "/logo/drapes.png"
     }
@@ -107,7 +117,7 @@ const HappyClients = () => {
 
           {/* Heading */}
           <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-sans leading-[1.1] text-black tracking-tight">
-            <AnimatedCounter target={1000} suffix="+" /> <span className="text-[#FD5800]">Happy Clients</span>
+            <AnimatedCounter target={100} suffix="+" /> <span className="text-[#FD5800]">Happy Clients</span>
           </h2>
           
           {/* Subtext */}

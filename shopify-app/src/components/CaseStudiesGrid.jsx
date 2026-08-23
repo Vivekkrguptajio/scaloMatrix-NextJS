@@ -331,13 +331,31 @@ const WellbeingMockup = () => (
   </div>
 );
 
+const DesktopMobileMockup = ({ src, mobileSrc, alt }) => (
+  <div className="flex gap-2 md:gap-4 h-full w-full items-end justify-center pt-2 md:pt-4 px-2 md:px-4 group-hover/link:scale-[1.03] transition-transform duration-500 overflow-hidden">
+    {/* Desktop View */}
+    <div className="flex-[2.5] bg-white rounded-t-lg md:rounded-t-2xl shadow-[0_-4px_25px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col border-t border-l border-r border-gray-200 relative h-[95%] md:h-[98%]">
+      <div className="w-full h-full relative overflow-hidden bg-gray-50">
+        <img src={src} alt={alt} className="absolute inset-0 w-full h-full object-cover object-top" />
+      </div>
+    </div>
+
+    {/* Mobile View */}
+    <div className="flex-[1] max-w-[120px] sm:max-w-[160px] bg-white rounded-t-lg md:rounded-t-2xl shadow-[0_-4px_25px_rgba(0,0,0,0.15)] overflow-hidden flex flex-col border-t border-l border-r border-gray-200 shrink-0 relative h-[80%] md:h-[88%]">
+       <div className="w-full h-full relative overflow-hidden bg-gray-50">
+         <img src={mobileSrc || src} alt={`${alt} Mobile`} className="absolute inset-0 w-full h-full object-cover object-top" />
+       </div>
+    </div>
+  </div>
+);
+
 const CaseStudiesGrid = () => {
   const [activePage, setActivePage] = useState(0);
 
   const allStudies = [
     {
       id: 'wayorastyleverse',
-      mockup: <img src="/photsWork/Luxury.webp" alt="Wayora Styleverse" className="w-full h-[180px] md:h-[220px] lg:h-[280px] object-cover object-top transition-transform duration-500 group-hover/link:scale-[1.05] rounded-sm border border-black/10 shadow-sm" />,
+      mockup: <DesktopMobileMockup src="/photsWork/Luxury.webp" mobileSrc="/phoneView/Luxury_phone_view.webp" alt="Wayora Styleverse" />,
       badge: (
         <div className="bg-[#ff2020] text-white font-black italic text-xl px-2 py-0.5 tracking-tighter">
           WAYORA<span className="text-white/90">STYLEVERSE</span>
@@ -349,7 +367,7 @@ const CaseStudiesGrid = () => {
     },
     {
       id: 'wayoranatural',
-      mockup: <img src="/photsWork/wayoranatural.webp" alt="Wayora Natural" className="w-full h-[180px] md:h-[220px] lg:h-[280px] object-cover object-top transition-transform duration-500 group-hover/link:scale-[1.05] rounded-sm border border-black/10 shadow-sm" />,
+      mockup: <DesktopMobileMockup src="/photsWork/wayoranatural.webp" mobileSrc="/phoneView/wayoranatural_phone_view.webp" alt="Wayora Natural" />,
       badge: (
         <div className="flex items-center gap-1.5 text-black">
           <svg width="20" height="24" viewBox="0 0 24 24" fill="none" stroke="#d97757" strokeWidth="2.5">
@@ -365,7 +383,7 @@ const CaseStudiesGrid = () => {
     },
     {
       id: 'nutraphyll',
-      mockup: <img src="/photsWork/Nutraphyll.webp" alt="Nutraphyll" className="w-full h-[180px] md:h-[220px] lg:h-[280px] object-cover object-top transition-transform duration-500 group-hover/link:scale-[1.05] rounded-sm border border-black/10 shadow-sm" />,
+      mockup: <DesktopMobileMockup src="/photsWork/Nutraphyll.webp" mobileSrc="/phoneView/Nutraphyll_phone_view.webp" alt="Nutraphyll" />,
       badge: (
         <div className="flex flex-col text-[#ff9900]">
           <span className="font-bold text-2xl tracking-tight leading-none">Nutraphyll</span>
@@ -378,7 +396,7 @@ const CaseStudiesGrid = () => {
     },
     {
       id: 'houseofnada',
-      mockup: <img src="/photsWork/Nada.webp" alt="House of Nada" className="w-full h-[180px] md:h-[220px] lg:h-[280px] object-cover object-top transition-transform duration-500 group-hover/link:scale-[1.05] rounded-sm border border-black/10 shadow-sm" />,
+      mockup: <DesktopMobileMockup src="/photsWork/Nada.webp" mobileSrc="/phoneView/Nada_phone_view.webp" alt="House of Nada" />,
       badge: (
         <div className="font-serif italic font-bold text-xl text-black tracking-tight">
           House of Nada
@@ -390,7 +408,7 @@ const CaseStudiesGrid = () => {
     },
     {
       id: 'drapescorner',
-      mockup: <img src="/photsWork/Drapes.webp" alt="Drapes Corner" className="w-full h-[180px] md:h-[220px] lg:h-[280px] object-cover object-top transition-transform duration-500 group-hover/link:scale-[1.05] rounded-sm border border-black/10 shadow-sm" />,
+      mockup: <DesktopMobileMockup src="/photsWork/Drapes.webp" mobileSrc="/phoneView/Drapes_phone_view.webp" alt="Drapes Corner" />,
       badge: (
         <div className="flex flex-col text-black">
           <span className="font-bold text-lg leading-none">Drapes Corner</span>
@@ -403,7 +421,7 @@ const CaseStudiesGrid = () => {
     },
     {
       id: 'judex',
-      mockup: <img src="/photsWork/Judex.webp" alt="Judex" className="w-full h-[180px] md:h-[220px] lg:h-[280px] object-cover object-top transition-transform duration-500 group-hover/link:scale-[1.05] rounded-sm border border-black/10 shadow-sm" />,
+      mockup: <DesktopMobileMockup src="/photsWork/Judex.webp" mobileSrc="/phoneView/judex_phone_view.webp" alt="Judex" />,
       badge: (
         <div className="flex items-center gap-1.5">
           <div className="w-6 h-6 rounded-full border border-black flex items-center justify-center font-bold text-xs">J</div>

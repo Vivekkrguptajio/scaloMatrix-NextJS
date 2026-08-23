@@ -111,7 +111,7 @@ export default function HeroVCards() {
                 <span className="text-xs font-bold text-black ml-1">4.9/5</span>
               </div>
               <span className="font-bold text-gray-900 text-sm tracking-tight">
-                <AnimatedCounter target={1000} suffix="+ Happy Clients" />
+                <AnimatedCounter target={100} suffix="+ Happy Clients" />
               </span>
             </div>
           </div>
@@ -123,9 +123,9 @@ export default function HeroVCards() {
       <div className="relative w-full overflow-hidden flex flex-col gap-6 py-2 px-6 md:px-12">
 
         {/* Row 1: Left Moving Marquee */}
-        <div className="w-full overflow-hidden group">
-          <div className="flex animate-marquee-left gap-2 md:gap-4 group-hover:[animation-play-state:paused]">
-            {[...row1Cards, ...row1Cards].map((card, idx) => (
+        <div className="w-full overflow-x-auto hide-scrollbar group py-4">
+          <div className="flex gap-4 md:gap-6">
+            {row1Cards.map((card, idx) => (
               <div 
                 key={idx} 
                 className={`w-[260px] sm:w-[335px] md:w-[423px] min-w-[260px] sm:min-w-[335px] md:min-w-[423px] max-w-[260px] sm:max-w-[335px] md:max-w-[423px] h-[380px] sm:h-[520px] md:h-[607px] rounded-xl md:rounded-2xl overflow-hidden shadow-md bg-white shrink-0 group/card cursor-pointer flex-col flex`}

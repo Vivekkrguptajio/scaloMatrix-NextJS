@@ -1,5 +1,5 @@
-﻿"use client";
-import Marquee from './Marquee'
+"use client";
+
 import { FaShopify } from 'react-icons/fa'
 import { useState, useEffect, useRef } from 'react'
 import { heroData } from '../data/content'
@@ -278,11 +278,6 @@ export default function Hero() {
         </div>
 
 
-      </div>
-
-      {/* Marquee at the bottom */}
-      <div className="w-screen relative left-1/2 -translate-x-1/2 z-30 mt-4 md:mt-12">
-        <Marquee />
       </div>
     </section>
   )
