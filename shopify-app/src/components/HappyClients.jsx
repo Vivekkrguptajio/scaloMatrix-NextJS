@@ -157,9 +157,6 @@ const HappyClients = () => {
 
                 {/* Author Info */}
                 <div className="mt-auto flex flex-col items-center">
-                  <div className={`w-12 h-12 rounded-full mb-3 border border-black overflow-hidden ${client.avatarColor}`}>
-                    <img src={client.avatar} alt={client.author} loading="lazy" className="w-full h-full object-cover" />
-                  </div>
                   <h4 className="font-bold text-black text-[15px]">{client.author}</h4>
                   <p className="text-[13px] text-gray-500 mt-0.5">{client.title}</p>
                 </div>
