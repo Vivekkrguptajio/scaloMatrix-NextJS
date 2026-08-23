@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { AnimatedCounter } from './Hero'
 
 export default function HeroVCards() {
@@ -7,7 +7,7 @@ export default function HeroVCards() {
       id: 1, 
       img: '/photsWork/Nada.webp', 
       title: 'Nada', 
-      url: 'nada.store',
+      url: 'https://www.houseofnada.com',
       stat: '+44% CVR',
       category: 'Apparel & Fashion' 
     },
@@ -15,7 +15,7 @@ export default function HeroVCards() {
       id: 2, 
       img: '/photsWork/Nutraphyll.webp', 
       title: 'Nutraphyll', 
-      url: 'nutraphyll.com',
+      url: 'https://www.nutraphyll.com',
       stat: '+35% Orders',
       category: 'Health & Wellness' 
     },
@@ -23,7 +23,7 @@ export default function HeroVCards() {
       id: 3, 
       img: '/photsWork/Velmukha.webp', 
       title: 'Velmukha', 
-      url: 'velmukha.in',
+      url: 'https://www.velmukha.com/',
       stat: '+50% Sales',
       category: 'CRO' 
     },
@@ -31,7 +31,7 @@ export default function HeroVCards() {
       id: 4, 
       img: '/photsWork/wayoranatural.webp', 
       title: 'Wayora Natural', 
-      url: 'wayoranatural.shop',
+      url: 'https://www.wayoranatural.com',
       stat: '+28% AOV',
       category: 'Beauty & Skincare' 
     },
@@ -39,7 +39,7 @@ export default function HeroVCards() {
       id: 5, 
       img: '/photsWork/Drapes.webp', 
       title: 'Drapes Corner', 
-      url: 'drapescorner.com',
+      url: 'https://www.drapescorner.com',
       stat: '+60% CVR',
       category: 'Home & Decor' 
     },
@@ -47,7 +47,7 @@ export default function HeroVCards() {
       id: 6, 
       img: '/photsWork/Judex.webp', 
       title: 'Judex Fragrance', 
-      url: 'judex.com',
+      url: 'https://www.judex.in',
       stat: '+45% Sales',
       category: 'Beauty & Fragrance' 
     },
@@ -55,7 +55,7 @@ export default function HeroVCards() {
       id: 7, 
       img: '/photsWork/Luxury.webp', 
       title: 'Wayora Luxury', 
-      url: 'wayoraluxury.com',
+      url: 'https://www.wayorastyleverse.com',
       stat: '+80% Orders',
       category: 'Apparel & Fashion' 
     }
@@ -132,7 +132,12 @@ export default function HeroVCards() {
               >
 
                 {/* Screenshot Image Container */}
-                <div className="relative flex-1 w-full overflow-hidden bg-gray-50">
+                <a 
+                  href={card.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative flex-1 w-full overflow-hidden bg-gray-50 group/link block"
+                >
                   <img 
                     src={card.img} 
                     alt={card.title} 
@@ -141,12 +146,12 @@ export default function HeroVCards() {
                   />
 
                   {/* View Project Button on Hover */}
-                  <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-end justify-end p-5">
-                    <span className="bg-white text-black font-bold text-xs px-3 py-1.5 rounded-full shadow-md">
-                      View Project →
+                  <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-end justify-end p-5 bg-black/5">
+                    <span className="bg-black text-white font-bold text-xs px-4 py-2 rounded-full shadow-lg transform scale-95 group-hover/link:scale-100 transition-all">
+                      Visit Website ↗
                     </span>
                   </div>
-                </div>
+                </a>
               </div>
             ))}
           </div>

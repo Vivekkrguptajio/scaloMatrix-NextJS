@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { AnimatedCounter } from './Hero';
@@ -336,80 +336,86 @@ const CaseStudiesGrid = () => {
 
   const allStudies = [
     {
-      id: 'superyou',
-      mockup: <SuperYouMockup />,
+      id: 'wayorastyleverse',
+      mockup: <img src="/photsWork/Luxury.webp" alt="Wayora Styleverse" className="w-full h-[180px] md:h-[220px] lg:h-[280px] object-cover object-top transition-transform duration-500 group-hover/link:scale-[1.05] rounded-sm border border-black/10 shadow-sm" />,
       badge: (
         <div className="bg-[#ff2020] text-white font-black italic text-xl px-2 py-0.5 tracking-tighter">
-          SUPER<span className="text-white/90">YOU</span>
+          WAYORA<span className="text-white/90">STYLEVERSE</span>
         </div>
       ),
       aov: '+14%',
-      rev: '+33%'
+      rev: '+33%',
+      link: 'https://www.wayorastyleverse.com'
     },
     {
-      id: 'boldcare',
-      mockup: <BoldCareMockup />,
+      id: 'wayoranatural',
+      mockup: <img src="/photsWork/wayoranatural.webp" alt="Wayora Natural" className="w-full h-[180px] md:h-[220px] lg:h-[280px] object-cover object-top transition-transform duration-500 group-hover/link:scale-[1.05] rounded-sm border border-black/10 shadow-sm" />,
       badge: (
         <div className="flex items-center gap-1.5 text-black">
           <svg width="20" height="24" viewBox="0 0 24 24" fill="none" stroke="#d97757" strokeWidth="2.5">
             <path d="M6 4h8a4 4 0 010 8H6V4z" />
             <path d="M6 12h9a4 4 0 010 8H6v-8z" />
           </svg>
-          <span className="font-semibold text-lg tracking-tight">Bold Care</span>
+          <span className="font-semibold text-lg tracking-tight">Wayora Natural</span>
         </div>
       ),
       aov: '+22%',
-      rev: '+50%'
+      rev: '+50%',
+      link: 'https://www.wayoranatural.com'
     },
     {
-      id: 'emma',
-      mockup: <EmmaMockup />,
+      id: 'nutraphyll',
+      mockup: <img src="/photsWork/Nutraphyll.webp" alt="Nutraphyll" className="w-full h-[180px] md:h-[220px] lg:h-[280px] object-cover object-top transition-transform duration-500 group-hover/link:scale-[1.05] rounded-sm border border-black/10 shadow-sm" />,
       badge: (
         <div className="flex flex-col text-[#ff9900]">
-          <span className="font-bold text-2xl tracking-tight leading-none">Emma</span>
-          <span className="text-[8px] font-mono tracking-widest uppercase mt-0.5">GERMANY</span>
+          <span className="font-bold text-2xl tracking-tight leading-none">Nutraphyll</span>
+          <span className="text-[8px] font-mono tracking-widest uppercase mt-0.5">HEALTHCARE</span>
         </div>
       ),
       aov: '+18%',
-      rev: '+20%'
+      rev: '+20%',
+      link: 'https://www.nutraphyll.com'
     },
     {
-      id: 'beautywise',
-      mockup: <BeautywiseMockup />,
+      id: 'houseofnada',
+      mockup: <img src="/photsWork/Nada.webp" alt="House of Nada" className="w-full h-[180px] md:h-[220px] lg:h-[280px] object-cover object-top transition-transform duration-500 group-hover/link:scale-[1.05] rounded-sm border border-black/10 shadow-sm" />,
       badge: (
         <div className="font-serif italic font-bold text-xl text-black tracking-tight">
-          Beautywise
+          House of Nada
         </div>
       ),
       aov: '+27%',
-      rev: '+44%'
+      rev: '+44%',
+      link: 'https://www.houseofnada.com'
     },
     {
-      id: 'goodbug',
-      mockup: <TheGoodBugMockup />,
+      id: 'drapescorner',
+      mockup: <img src="/photsWork/Drapes.webp" alt="Drapes Corner" className="w-full h-[180px] md:h-[220px] lg:h-[280px] object-cover object-top transition-transform duration-500 group-hover/link:scale-[1.05] rounded-sm border border-black/10 shadow-sm" />,
       badge: (
         <div className="flex flex-col text-black">
-          <span className="font-bold text-lg leading-none">GoodBug</span>
-          <span className="text-[7px] font-mono tracking-widest uppercase text-gray-500 mt-0.5">DAILY PROBIOTICS</span>
+          <span className="font-bold text-lg leading-none">Drapes Corner</span>
+          <span className="text-[7px] font-mono tracking-widest uppercase text-gray-500 mt-0.5">INTERIOR DECOR</span>
         </div>
       ),
       aov: '+16%',
-      rev: '+50%'
+      rev: '+50%',
+      link: 'https://www.drapescorner.com'
     },
     {
-      id: 'wellbeing',
-      mockup: <WellbeingMockup />,
+      id: 'judex',
+      mockup: <img src="/photsWork/Judex.webp" alt="Judex" className="w-full h-[180px] md:h-[220px] lg:h-[280px] object-cover object-top transition-transform duration-500 group-hover/link:scale-[1.05] rounded-sm border border-black/10 shadow-sm" />,
       badge: (
         <div className="flex items-center gap-1.5">
-          <div className="w-6 h-6 rounded-full border border-black flex items-center justify-center font-bold text-xs">W</div>
+          <div className="w-6 h-6 rounded-full border border-black flex items-center justify-center font-bold text-xs">J</div>
           <div className="flex flex-col leading-none">
-            <span className="text-[7px] font-mono uppercase text-gray-500">WELLBEING</span>
-            <span className="text-[9px] font-bold uppercase text-black">NUTRITION</span>
+            <span className="text-[7px] font-mono uppercase text-gray-500">LEGAL</span>
+            <span className="text-[9px] font-bold uppercase text-black">TECH</span>
           </div>
         </div>
       ),
       aov: '+16%',
-      rev: '+43%'
+      rev: '+43%',
+      link: 'https://www.judex.in'
     }
   ];
 
@@ -438,8 +444,7 @@ const CaseStudiesGrid = () => {
           </div>
         </motion.div>
 
-        {/* MOBILE VIEW: SHOW ONLY 2 CARDS AT A TIME */}
-        {/* MOBILE VIEW: SHOW ONLY 2 CARDS AT A TIME */}
+        {/* MOBILE VIEW */}
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -453,9 +458,17 @@ const CaseStudiesGrid = () => {
                 key={study.id} 
                 className={`p-4 sm:p-5 flex flex-col ${idx === 0 ? 'border-b-[0.5px] border-black' : ''}`}
               >
-                <div className="bg-[#f1f1f1] border border-black p-2 sm:p-3 mb-4 flex-1 flex items-center justify-center min-h-[170px] sm:min-h-[240px]">
+                <a 
+                  href={study.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[#f1f1f1] border border-black p-2 sm:p-3 mb-4 flex-1 flex items-center justify-center min-h-[170px] sm:min-h-[240px] cursor-pointer hover:shadow-lg transition-shadow group relative block"
+                >
+                  <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-50">
+                     <span className="bg-black text-white px-4 py-2 rounded-full text-sm font-bold tracking-wide">Visit Website ↗</span>
+                  </div>
                   {study.mockup}
-                </div>
+                </a>
                 <div className="flex justify-between items-end mt-auto">
                   {study.badge}
                   <div className="flex items-center gap-4">
@@ -493,8 +506,7 @@ const CaseStudiesGrid = () => {
           </div>
         </motion.div>
 
-        {/* DESKTOP VIEW: FULL 6 CARDS GRID */}
-        {/* DESKTOP VIEW: FULL 6 CARDS GRID */}
+        {/* DESKTOP VIEW */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
@@ -509,9 +521,17 @@ const CaseStudiesGrid = () => {
                 key={study.id} 
                 className={`p-4 md:p-5 flex flex-col overflow-hidden ${idx < 2 ? 'border-r border-black' : ''}`}
               >
-                <div className="bg-[#f1f1f1] border border-black p-3 md:p-4 mb-5 flex-1 flex items-center justify-center min-h-[280px] overflow-hidden">
+                <a 
+                  href={study.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[#f1f1f1] border border-black p-3 md:p-4 mb-5 flex-1 flex items-center justify-center min-h-[280px] overflow-hidden cursor-pointer hover:shadow-lg transition-shadow group relative block"
+                >
+                  <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-50">
+                     <span className="bg-black text-white px-5 py-2.5 rounded-full text-sm font-bold tracking-wide shadow-xl transform scale-95 group-hover:scale-100 transition-all">Visit Website ↗</span>
+                  </div>
                   {study.mockup}
-                </div>
+                </a>
                 <div className="flex flex-wrap xl:flex-nowrap justify-between items-end mt-auto gap-2 xl:gap-4">
                   <div className="shrink-0">{study.badge}</div>
                   <div className="flex items-center gap-3 xl:gap-5 shrink-0">
@@ -541,9 +561,17 @@ const CaseStudiesGrid = () => {
                 key={study.id} 
                 className={`p-4 md:p-5 flex flex-col overflow-hidden ${idx < 2 ? 'border-r border-black' : ''}`}
               >
-                <div className="bg-[#f1f1f1] border border-black p-3 md:p-4 mb-5 flex-1 flex items-center justify-center min-h-[280px] overflow-hidden">
+                <a 
+                  href={study.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[#f1f1f1] border border-black p-3 md:p-4 mb-5 flex-1 flex items-center justify-center min-h-[280px] overflow-hidden cursor-pointer hover:shadow-lg transition-shadow group relative block"
+                >
+                  <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-50">
+                     <span className="bg-black text-white px-5 py-2.5 rounded-full text-sm font-bold tracking-wide shadow-xl transform scale-95 group-hover:scale-100 transition-all">Visit Website ↗</span>
+                  </div>
                   {study.mockup}
-                </div>
+                </a>
                 <div className="flex flex-wrap xl:flex-nowrap justify-between items-end mt-auto gap-2 xl:gap-4">
                   <div className="shrink-0">{study.badge}</div>
                   <div className="flex items-center gap-3 xl:gap-5 shrink-0">
@@ -573,4 +601,3 @@ const CaseStudiesGrid = () => {
 };
 
 export default CaseStudiesGrid;
-
