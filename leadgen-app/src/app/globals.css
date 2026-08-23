@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Outfit:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+
+@font-face {
+  font-family: 'Urbanist';
+  src: url('/fonts/Urbanist-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPMondwest';
+  src: url('/fonts/ppmondwest-regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPNeueBit';
+  src: url('/fonts/ppneuebit-bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+@theme {
+  --font-sans: 'Urbanist', 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  --font-handwriting: 'Caveat', cursive;
+  --font-mondwest: 'PPMondwest', serif;
+  --font-neuebit: 'PPNeueBit', sans-serif;
+  --font-caslon: 'Libre Caslon Text', serif;
+  --font-sora: 'Sora', sans-serif;
+  --font-mono: 'Sora', 'Urbanist', sans-serif;
+}
+
+/* ═══════ GLOBAL STYLES ═══════ */
+*, body, a, button, input, select, textarea {
+  cursor: none !important;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: #101828;
+  background: #fff;
+  overflow-x: hidden;
+}
+
+
+
+::selection {
+  background-color: #FD5800;
+  color: #fff;
+}
+
+/* ═══════ GLASSMORPHISM NAVBAR ═══════ */
+.glass-navbar {
+  background: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(24px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
+  border: none !important;
+  box-shadow: 
+    0 20px 60px -10px rgba(253, 88, 0, 0.22),
+    0 10px 30px -5px rgba(0, 0, 0, 0.08),
+    inset 0 1px 2px rgba(255, 255, 255, 0.9) !important;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* ═══════ HIDE SCROLLBAR ═══════ */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html, body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ═══════ ANIMATIONS ═══════ */
+@keyframes scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-scale-in {
+  animation: scale-in 0.4s ease-out forwards;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ═══════ TYPE ANIMATION CURSOR ═══════ */
+.type-animation-cursor::after {
+  content: '|';
+  animation: cursor-blink 1.1s infinite step-start;
+}
+
+@keyframes cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ═══════ MARQUEE ANIMATION ═══════ */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 55s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.animate-marquee-reverse {
+  animation: marquee 55s linear infinite reverse;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+@keyframes marquee-viewport {
+  0% {
+    transform: translateX(100vw);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee-viewport {
+  animation: marquee-viewport 25s linear infinite;
+}
+
+/* ═══════ LENIS SMOOTH SCROLL ═══════ */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* ═══════ PERFORMANCE OPTIMIZATIONS ═══════ */
+/* Use on heavy below-the-fold sections to skip rendering off-screen */
+.content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 1000px;
+}
+
+/* ═══════ GPU ACCELERATION ═══════ */
+/* Force GPU compositing for animated elements */
+img, video, iframe {
+  content-visibility: auto;
+}
+
+/* Optimize images for rendering */
+img {
+  image-rendering: auto;
+}
+
+/* ═══════ PERFORMANCE OPTIMIZATIONS ═══════ */
+img, video, iframe {
+  content-visibility: auto;
+}
+
