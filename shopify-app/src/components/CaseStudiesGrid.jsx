@@ -19,18 +19,18 @@ const itemVariants = {
 
 
 const DesktopMobileMockup = ({ src, mobileSrc, alt }) => (
-  <div className="flex gap-2 md:gap-4 h-full w-full items-end justify-center pt-2 md:pt-4 px-2 md:px-4 group-hover/link:scale-[1.03] transition-transform duration-500 overflow-hidden">
+  <div className="flex gap-2 sm:gap-4 h-full w-full items-end justify-center pt-2 sm:pt-4 px-2 sm:px-4 group-hover/link:scale-[1.03] transition-transform duration-500 overflow-hidden">
     {/* Desktop View */}
     <div className="flex-[2.5] bg-white rounded-t-lg md:rounded-t-2xl shadow-[0_-4px_25px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col border-t border-l border-r border-gray-200 relative h-[95%] md:h-[98%]">
-      <div className="w-full h-full relative overflow-hidden bg-gray-50">
-        <Image src={src} alt={alt} fill className="object-cover object-top" sizes="(max-width: 768px) 100vw, 50vw" />
+      <div className="w-full h-full relative overflow-hidden bg-gray-100 min-h-[140px] sm:min-h-[180px] md:min-h-[220px]">
+        <Image src={src} alt={alt} fill className="object-cover object-top" sizes="(max-width: 768px) 70vw, 50vw" />
       </div>
     </div>
 
     {/* Mobile View */}
-    <div className="flex-[1] max-w-[120px] sm:max-w-[160px] bg-white rounded-t-lg md:rounded-t-2xl shadow-[0_-4px_25px_rgba(0,0,0,0.15)] overflow-hidden flex flex-col border-t border-l border-r border-gray-200 shrink-0 relative h-[80%] md:h-[88%]">
-       <div className="w-full h-full relative overflow-hidden bg-gray-50">
-         <Image src={mobileSrc || src} alt={`${alt} Mobile`} fill className="object-cover object-top" sizes="(max-width: 768px) 50vw, 25vw" />
+    <div className="flex-[1] max-w-[90px] sm:max-w-[140px] bg-white rounded-t-lg md:rounded-t-2xl shadow-[0_-4px_25px_rgba(0,0,0,0.15)] overflow-hidden flex flex-col border-t border-l border-r border-gray-200 shrink-0 relative h-[82%] md:h-[88%]">
+       <div className="w-full h-full relative overflow-hidden bg-gray-100 min-h-[120px] sm:min-h-[150px] md:min-h-[180px]">
+         <Image src={mobileSrc || src} alt={`${alt} Mobile`} fill className="object-cover object-top" sizes="(max-width: 768px) 30vw, 25vw" />
        </div>
     </div>
   </div>
@@ -118,46 +118,35 @@ const CaseStudiesGrid = () => {
   const mobileVisibleStudies = allStudies.slice(activePage * 2, activePage * 2 + 2);
 
   return (
-    <section id="case-studies" className="w-full py-8 md:py-12 lg:py-14 bg-white font-sans">
+    <section id="case-studies" className="w-full py-5 md:py-8 lg:py-10 bg-white font-sans">
       <div className="max-w-[1440px] mx-auto flex flex-col items-center px-4 sm:px-6 md:px-12 xl:px-16 w-full">
         
         {/* Header Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col lg:flex-row w-full justify-between items-start lg:items-end mb-6 gap-6"
-        >
-          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-sans leading-[1.1] text-black tracking-tight lg:w-[60%]">
-            Things we are happy<br /><span className="text-[#FD5800]">about.</span>
+        <div className="flex flex-col lg:flex-row w-full justify-between items-start lg:items-end mb-4 gap-4">
+          <h2 className="text-[32px] sm:text-4xl md:text-5xl lg:text-6xl font-black font-sans leading-[1.1] text-black tracking-tight lg:w-[60%]">
+            Things we are happy<br />
+            <span className="text-[#FD5800]">about.</span>
           </h2>
           <div className="w-full lg:w-[40%] flex lg:justify-end">
             <p className="text-gray-500 text-sm md:text-base leading-relaxed lg:text-right">
               We don't do testimonials until there's a number next to them. Each tile is a real page, shipped, measured over n≥10,000 sessions.
             </p>
           </div>
-        </motion.div>
+        </div>
 
         {/* MOBILE VIEW */}
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.6 }}
-          className="lg:hidden w-full flex flex-col gap-6"
-        >
+        <div className="lg:hidden w-full flex flex-col gap-6">
           <div className="bg-white border-[0.5px] border-black rounded-2xl overflow-hidden w-full flex flex-col hover:-translate-y-1 hover:shadow-[5px_5px_0px_0px_rgba(253,88,0,0.2)] transition-all duration-300">
             {mobileVisibleStudies.map((study, idx) => (
               <div 
                 key={study.id} 
-                className={`p-4 sm:p-5 flex flex-col ${idx === 0 ? 'border-b-[0.5px] border-black' : ''}`}
+                className={`p-4 sm:p-5 pb-8 sm:pb-8 flex flex-col ${idx === 0 ? 'border-b-[0.5px] border-black' : ''}`}
               >
                 <a 
                   href={study.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#f1f1f1] border border-black rounded-xl p-2 sm:p-3 mb-4 flex-1 flex items-center justify-center min-h-[170px] sm:min-h-[240px] cursor-pointer hover:shadow-lg transition-shadow group relative block"
+                  className="bg-[#f1f1f1] border border-black rounded-xl p-2 sm:p-3 mb-4 w-full h-[200px] sm:h-[250px] flex items-end justify-center cursor-pointer hover:shadow-lg transition-shadow group relative overflow-hidden shrink-0"
                 >
                   <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-50">
                      <span className="bg-black text-white px-4 py-2 rounded-full text-sm font-bold tracking-wide">Visit Website ↗</span>
@@ -199,7 +188,7 @@ const CaseStudiesGrid = () => {
               />
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* DESKTOP VIEW */}
         <motion.div 
@@ -220,7 +209,7 @@ const CaseStudiesGrid = () => {
                   href={study.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#f1f1f1] border border-black rounded-2xl p-3 md:p-4 mb-5 flex-1 flex items-center justify-center min-h-[280px] overflow-hidden cursor-pointer hover:shadow-lg transition-shadow group relative block"
+                  className="bg-[#f1f1f1] border border-black rounded-2xl p-3 md:p-4 mb-5 w-full h-[280px] lg:h-[310px] flex items-end justify-center overflow-hidden cursor-pointer hover:shadow-lg transition-shadow group relative"
                 >
                   <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-50">
                      <span className="bg-black text-white px-5 py-2.5 rounded-full text-sm font-bold tracking-wide shadow-xl transform scale-95 group-hover:scale-100 transition-all">Visit Website ↗</span>
@@ -260,7 +249,7 @@ const CaseStudiesGrid = () => {
                   href={study.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#f1f1f1] border border-black rounded-2xl p-3 md:p-4 mb-5 flex-1 flex items-center justify-center min-h-[280px] overflow-hidden cursor-pointer hover:shadow-lg transition-shadow group relative block"
+                  className="bg-[#f1f1f1] border border-black rounded-2xl p-3 md:p-4 mb-5 w-full h-[280px] lg:h-[310px] flex items-end justify-center overflow-hidden cursor-pointer hover:shadow-lg transition-shadow group relative"
                 >
                   <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-50">
                      <span className="bg-black text-white px-5 py-2.5 rounded-full text-sm font-bold tracking-wide shadow-xl transform scale-95 group-hover:scale-100 transition-all">Visit Website ↗</span>

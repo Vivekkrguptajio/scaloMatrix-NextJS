@@ -28,11 +28,11 @@ const Calculator = () => {
   };
 
   return (
-    <section id="math" className="w-full py-8 md:py-12 lg:py-14 font-sans bg-white">
+    <section id="math" className="w-full py-5 md:py-8 lg:py-10 font-sans bg-white">
       <div className="max-w-[1360px] mx-auto flex flex-col items-center px-4 sm:px-6 md:px-12 xl:px-16 w-full">
         
         {/* Header Section */}
-        <div className="flex flex-col lg:flex-row w-full justify-between items-start lg:items-end mb-6 gap-6">
+        <div className="flex flex-col lg:flex-row w-full justify-between items-start lg:items-end mb-4 gap-4">
           <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-sans leading-[1.1] text-black lg:w-[60%]">
             Do the <span className="text-[#FD5800]">math.</span>
           </h2>

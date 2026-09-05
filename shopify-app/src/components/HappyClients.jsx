@@ -89,9 +89,9 @@ const HappyClients = () => {
   ];
 
   return (
-    <section className="w-full py-8 md:py-12 lg:py-14 font-sans bg-white relative z-10">
+    <section className="w-full py-5 md:py-8 lg:py-10 font-sans bg-white relative z-10">
 
-      <div className="max-w-[1024px] mx-auto flex flex-col items-center px-4 sm:px-5 md:px-16 xl:px-0 mb-6 w-full">
+      <div className="max-w-[1024px] mx-auto flex flex-col items-center px-4 sm:px-5 md:px-16 xl:px-0 mb-4 w-full">
         
         {/* Header Content Wrapper */}
         <div className="flex flex-col w-full items-center justify-center mb-0 gap-3 text-center">
