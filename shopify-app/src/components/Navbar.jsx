@@ -10,11 +10,8 @@ export default function Navbar() {
   const logoY = useMotionValue(0)
 
   const navLinks = [
-    { name: 'Receipts', href: '#case-studies' },
-    { name: 'Services', href: '#services' },
+    { name: 'Services & Price', href: '#services' },
     { name: 'Why CRO', href: '#cro' },
-    { name: 'Process', href: '#process' },
-    { name: 'Brand', href: '#brand' },
   ]
 
   // Prevent background body scroll when mobile menu is open

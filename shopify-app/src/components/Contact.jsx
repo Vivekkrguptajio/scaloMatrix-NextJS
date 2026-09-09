@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
@@ -99,7 +99,7 @@ export default function Contact({ reveal = false }) {
   if (reveal) {
     return (
       <>
-        <div id="contact" style={{ height: footerHeight ? footerHeight * 0.8 : '100vh' }} className="w-full relative z-0 pointer-events-none" />
+        <div id="footer-spacer" style={{ height: footerHeight ? footerHeight * 0.8 : '100vh' }} className="w-full relative z-0 pointer-events-none" />
         {footerContent}
       </>
     );

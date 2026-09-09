@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -25,7 +25,7 @@ export default function ContactUs() {
   const inputClasses = "w-full bg-black/5 border-b-2 border-transparent px-5 py-4 md:py-5 text-black placeholder:text-gray-500 focus:outline-none focus:border-[#FD5800] focus:bg-black/[0.02] transition-colors font-medium rounded-t-xl";
 
   return (
-    <section className="relative w-full py-8 md:py-12 lg:py-14 bg-white font-sans overflow-hidden">
+    <section id="contact" className="relative w-full py-8 md:py-12 lg:py-14 bg-white font-sans overflow-hidden">
       
       {/* ─── Background Ambient Waves ─── */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(253,88,0,0.1)_0%,transparent_70%)] rounded-full pointer-events-none -translate-y-1/3 translate-x-1/3"></div>
@@ -74,7 +74,7 @@ export default function ContactUs() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400 font-semibold uppercase tracking-widest mb-1">Email Us</p>
-                  <a href="mailto:hello@scalo.com" className="text-lg font-bold text-black hover:text-[#FD5800] transition-colors">hello@scalo.com</a>
+                  <a href="mailto:scalomatrix@gmail.com" className="text-lg font-bold text-black hover:text-[#FD5800] transition-colors">scalomatrix@gmail.com</a>
                 </div>
               </div>
 
@@ -87,7 +87,7 @@ export default function ContactUs() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400 font-semibold uppercase tracking-widest mb-1">Call Us</p>
-                  <a href="tel:+919876543210" className="text-lg font-bold text-black hover:text-[#FD5800] transition-colors">+91 987 654 3210</a>
+                  <a href="tel:+919217728977" className="text-lg font-bold text-black hover:text-[#FD5800] transition-colors">+91 92177 28977</a>
                 </div>
               </div>
             </motion.div>

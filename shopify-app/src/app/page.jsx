@@ -8,6 +8,7 @@ import HeroVCards from '../components/HeroVCards'
 import ScrollReveal from '../components/ScrollReveal'
 import CustomCursor from '../components/CustomCursor'
 import ScrollToTop from '../components/ScrollToTop'
+import SmoothScroll from '../components/SmoothScroll'
 
 // Dynamic imports for below-the-fold components — reduces initial JS bundle by ~60-70%
 const HappyClients = dynamic(() => import('../components/HappyClients'), { ssr: false })
@@ -22,9 +23,11 @@ const ContactUs = dynamic(() => import('../components/ContactUs'), { ssr: false 
 const ThePromise = dynamic(() => import('../components/ThePromise'), { ssr: false })
 const Offers = dynamic(() => import('../components/Offers'), { ssr: false })
 const Contact = dynamic(() => import('../components/Contact'), { ssr: false })
+const ServicesAndPricing = dynamic(() => import('../components/ServicesAndPricing'), { ssr: false })
 
 function App() {
   return (
+    <SmoothScroll>
     <div className="relative min-h-screen bg-[#0a0a0a] font-sans overflow-x-clip">
       <ScrollProgressBar />
       <CustomCursor />
@@ -45,6 +48,7 @@ function App() {
 
         <ScrollReveal><HiringPhilosophy /></ScrollReveal>
         <ScrollReveal><WhoWeDontWorkWith /></ScrollReveal>
+        <ScrollReveal variant="scaleUp"><ServicesAndPricing /></ScrollReveal>
         <ScrollReveal><TeamMembers /></ScrollReveal>
         <ContactUs />
         <ScrollReveal variant="blur"><ThePromise /></ScrollReveal>
@@ -52,6 +56,7 @@ function App() {
 
       <Contact reveal={true} />
     </div>
+    </SmoothScroll>
   )
 }
 
