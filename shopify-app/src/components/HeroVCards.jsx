@@ -113,8 +113,11 @@ export default function HeroVCards() {
       <div className="relative w-full overflow-hidden flex flex-col gap-6 py-2 px-6 md:px-12">
 
         {/* Row 1: Left Moving Marquee */}
-        <div className="w-full overflow-hidden group py-4">
-          <div className="animate-marquee-left flex gap-4 md:gap-6 hover:[animation-play-state:paused]">
+        <div className="w-full overflow-hidden group py-4"
+          onTouchStart={(e) => e.currentTarget.querySelector('.marquee-inner').style.animationPlayState = 'paused'}
+          onTouchEnd={(e) => e.currentTarget.querySelector('.marquee-inner').style.animationPlayState = 'running'}
+        >
+          <div className="marquee-inner animate-marquee-left flex gap-4 md:gap-6 hover:[animation-play-state:paused]">
             {[...row1Cards, ...row1Cards].map((card, idx) => (
               <div 
                 key={idx} 

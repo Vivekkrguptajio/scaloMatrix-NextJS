@@ -118,8 +118,11 @@ const HappyClients = () => {
       </div>
 
       {/* Testimonials Slider/Grid */}
-      <div className="w-full border-t-[0.5px] border-b-[0.5px] md:border-t md:border-b border-black bg-white overflow-hidden group">
-        <div className="flex animate-marquee group-hover:[animation-play-state:paused]" style={{ animationDuration: '50s' }}>
+      <div className="w-full border-t-[0.5px] border-b-[0.5px] md:border-t md:border-b border-black bg-white overflow-hidden group"
+        onTouchStart={(e) => e.currentTarget.querySelector('.marquee-inner').style.animationPlayState = 'paused'}
+        onTouchEnd={(e) => e.currentTarget.querySelector('.marquee-inner').style.animationPlayState = 'running'}
+      >
+        <div className="marquee-inner flex animate-marquee group-hover:[animation-play-state:paused]" style={{ animationDuration: '40s' }}>
           {[...testimonials, ...testimonials].map((client, idx) => (
             <div key={idx} className="min-w-[250px] sm:min-w-[340px] max-w-[250px] sm:max-w-[340px] flex flex-col border-r-[0.5px] md:border-r border-black shrink-0 bg-white">
               
