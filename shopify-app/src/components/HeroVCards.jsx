@@ -77,10 +77,7 @@ export default function HeroVCards() {
               href="#services" 
               className="group bg-black text-white font-bold py-3 px-7 rounded-full inline-flex items-center gap-3.5 hover:bg-[#FD5800] transition-all duration-300 shadow-lg hover:shadow-orange-500/25 text-sm md:text-base"
             >
-              <span>View Services & Case Studies</span>
-              <span className="w-7 h-7 rounded-full bg-[#FD5800] group-hover:bg-white text-black flex items-center justify-center font-black transition-colors">
-                ↗
-              </span>
+              <span>View Our Website</span>
             </a>
           </div>
 

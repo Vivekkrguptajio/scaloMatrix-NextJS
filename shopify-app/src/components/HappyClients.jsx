@@ -118,16 +118,16 @@ const HappyClients = () => {
       </div>
 
       {/* Testimonials Slider/Grid */}
-      <div className="w-full border-t-[0.5px] border-b-[0.5px] md:border-t md:border-b border-black bg-white overflow-hidden group"
+      <div className="w-full bg-white overflow-hidden group px-4 md:px-8 py-4"
         onTouchStart={(e) => e.currentTarget.querySelector('.marquee-inner').style.animationPlayState = 'paused'}
         onTouchEnd={(e) => e.currentTarget.querySelector('.marquee-inner').style.animationPlayState = 'running'}
       >
-        <div className="marquee-inner flex animate-marquee group-hover:[animation-play-state:paused]" style={{ animationDuration: '40s' }}>
+        <div className="marquee-inner flex gap-4 md:gap-6 animate-marquee group-hover:[animation-play-state:paused]" style={{ animationDuration: '40s' }}>
           {[...testimonials, ...testimonials].map((client, idx) => (
-            <div key={idx} className="min-w-[250px] sm:min-w-[340px] max-w-[250px] sm:max-w-[340px] flex flex-col border-r-[0.5px] md:border-r border-black shrink-0 bg-white">
+            <div key={idx} className="min-w-[250px] sm:min-w-[340px] max-w-[250px] sm:max-w-[340px] flex flex-col shrink-0 bg-white rounded-2xl border border-black/80 overflow-hidden">
               
               {/* Logo Section */}
-              <div className="h-[84px] flex items-center justify-center p-4 border-b border-black">
+              <div className="h-[84px] flex items-center justify-center p-4 border-b border-black/80">
                 {client.logo}
               </div>
 
