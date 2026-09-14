@@ -35,31 +35,31 @@ const ScrollReveal = ({
 
   const variants = {
     default: {
-      initial: { opacity: 0, y: isMobile ? 30 : 60, scale: 0.98 },
-      animate: { opacity: 1, y: 0, scale: 1 },
+      initial: { opacity: 0, y: isMobile ? 20 : 30 },
+      animate: { opacity: 1, y: 0 },
     },
     fadeUp: {
-      initial: { opacity: 0, y: isMobile ? 40 : 80 },
+      initial: { opacity: 0, y: isMobile ? 24 : 40 },
       animate: { opacity: 1, y: 0 },
     },
     fadeLeft: {
-      initial: { opacity: 0, x: isMobile ? -30 : -60 },
+      initial: { opacity: 0, x: isMobile ? -20 : -40 },
       animate: { opacity: 1, x: 0 },
     },
     fadeRight: {
-      initial: { opacity: 0, x: isMobile ? 30 : 60 },
+      initial: { opacity: 0, x: isMobile ? 20 : 40 },
       animate: { opacity: 1, x: 0 },
     },
     scaleUp: {
-      initial: { opacity: 0, scale: isMobile ? 0.9 : 0.85 },
-      animate: { opacity: 1, scale: 1 },
+      initial: { opacity: 0, y: isMobile ? 20 : 30, scale: 0.98 },
+      animate: { opacity: 1, y: 0, scale: 1 },
     },
     blur: {
-      initial: { opacity: 0, scale: 0.95, y: isMobile ? 15 : 30 },
-      animate: { opacity: 1, scale: 1, y: 0 },
+      initial: { opacity: 0, y: isMobile ? 15 : 25 },
+      animate: { opacity: 1, y: 0 },
     },
     slideUp: {
-      initial: { opacity: 0, y: isMobile ? 60 : 120 },
+      initial: { opacity: 0, y: isMobile ? 30 : 60 },
       animate: { opacity: 1, y: 0 },
     },
   };
@@ -75,9 +75,9 @@ const ScrollReveal = ({
     <motion.div
       initial={selected.initial}
       whileInView={selected.animate}
-      viewport={{ once: true, margin: isMobile ? "-5%" : "-8%" }}
+      viewport={{ once: true, margin: isMobile ? "-2%" : "-5%" }}
       transition={{ 
-        duration: isMobile ? 0.7 : 1.0, 
+        duration: isMobile ? 0.45 : 0.55, 
         ease: appleEaseOut,
         delay: delay / 1000,
       }}

@@ -167,11 +167,10 @@ export default function ContactUs() {
                   required
                 >
                   <option value="" disabled>What are you looking for?</option>
-                  <option value="Website Design">Website Design & Development</option>
-                  <option value="E-Commerce">E-Commerce Storefront</option>
-                  <option value="Branding">Brand Identity & Strategy</option>
-                  <option value="Marketing">Digital Marketing & SEO</option>
-                  <option value="Other">Other / General Inquiry</option>
+                  <option value="Custom Build">Custom Build</option>
+                  <option value="Website Creation">Website Creation</option>
+                  <option value="Website Redesign">Website Redesign</option>
+                  <option value="Website Audit">Website Audit (Free)</option>
                 </select>
                 {/* Custom chevron for select */}
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">

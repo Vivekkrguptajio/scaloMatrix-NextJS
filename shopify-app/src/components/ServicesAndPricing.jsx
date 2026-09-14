@@ -18,54 +18,73 @@ const cardVariants = {
 const services = [
   {
     id: 1,
+    title: 'Custom Build',
+    desc: 'Ground-up Shopify store — custom coded theme, unique design, built to scale from day one.',
+    price: 'Custom',
+    hasOptions: false,
+    options: [],
+    includes: [
+      'Fully custom Shopify theme from scratch',
+      'Bespoke UI/UX tailored to your brand',
+      'Third-party app & API integrations',
+      'Custom checkout & cart experience',
+      'Speed-optimized, under 2s load time',
+      'Dedicated project manager throughout',
+    ],
+    badge: 'Enterprise',
+    featured: false,
+    isCustom: true,
+  },
+  {
+    id: 2,
     title: 'Website Creation',
-    desc: 'End to end website design and development',
-    price: '₹20,000',
+    desc: 'A brand-new Shopify store — designed, developed, and shipped ready to take orders.',
+    price: '₹64,999',
     hasOptions: true,
     options: ['Basic design', 'Premium design'],
     includes: [
-      'Standard website design',
-      'Homepage setup',
-      'Design strategy',
-      'Backend setup',
-      'Responsive mobile optimization',
-      'SEO-ready structure',
+      'Complete store setup from zero',
+      'Homepage + 5 essential pages',
+      'Product page design & upload',
+      'Payment gateway & shipping setup',
+      'Mobile-responsive across all devices',
+      'Basic SEO & speed optimization',
     ],
     badge: null,
     featured: false,
   },
   {
-    id: 2,
+    id: 3,
     title: 'Website Redesign',
-    desc: 'Sales/Conversion focused website redesign',
-    price: '₹10,000',
+    desc: 'Your store exists but leaks money. We redesign it conversion-first to boost sales.',
+    price: '₹44,999',
     hasOptions: true,
     options: ['Same theme', 'Premium theme'],
     includes: [
-      'Standard website design',
-      'Homepage setup',
-      'Design strategy',
-      'Backend setup',
-      'Conversion optimization',
-      'Performance audit',
+      'Full conversion & UX audit of current store',
+      'Redesigned homepage & landing pages',
+      'Optimized product pages for higher AOV',
+      'Improved navigation & user flow',
+      'A/B test-ready page variants',
+      'Post-launch performance tracking',
     ],
     badge: 'Popular',
     featured: true,
   },
   {
-    id: 3,
+    id: 4,
     title: 'Website Audit',
-    desc: "A focused audit showing what's hurting your sales",
-    price: '₹5,000',
+    desc: 'A 30-minute live teardown of your store — we show exactly what\'s killing your conversions.',
+    price: 'Free',
     hasOptions: false,
     options: [],
     includes: [
-      'Standard website design',
-      'Homepage setup',
-      'Design strategy',
-      'Backend setup',
-      'Conversion analysis report',
-      'Actionable recommendations',
+      'Live conversion teardown of your store',
+      'Heatmap & analytics-based insights',
+      'Prioritized list of quick wins',
+      'Competitor benchmarking snapshot',
+      'No upsell pitch — honest feedback only',
+      'Actionable report you keep forever',
     ],
     badge: null,
     featured: false,
@@ -105,10 +124,10 @@ const ServiceCard = ({ service }) => {
         </div>
       )}
 
-      <div className="p-6 md:p-8 flex flex-col flex-1">
+      <div className="p-5 md:p-6 flex flex-col flex-1">
         {/* Title & Description */}
-        <div className="mb-6">
-          <h3 className={`text-xl md:text-2xl font-bold mb-2 leading-snug tracking-tight transition-colors duration-300 ${
+        <div className="mb-4">
+          <h3 className={`text-lg md:text-xl font-bold mb-1 leading-snug tracking-tight transition-colors duration-300 ${
             service.featured ? 'text-white' : 'text-black group-hover:text-[#FD5800]'
           }`}>
             {service.title}
@@ -121,9 +140,9 @@ const ServiceCard = ({ service }) => {
         </div>
 
         {/* Price */}
-        <div className="mb-6">
+        <div className="mb-4">
           <div className="flex items-baseline gap-2">
-            <span className={`text-3xl md:text-4xl font-black tracking-tight ${
+            <span className={`text-2xl md:text-3xl font-black tracking-tight ${
               service.featured ? 'text-[#FD5800]' : 'text-black'
             }`}>
               {service.price}
@@ -136,7 +155,7 @@ const ServiceCard = ({ service }) => {
 
         {/* Options Selector */}
         {service.hasOptions && (
-          <div className="mb-6">
+          <div className="mb-4">
             <p className={`text-[11px] font-bold tracking-[0.15em] uppercase mb-3 font-mono ${
               service.featured ? 'text-[#FD5800]' : 'text-[#FD5800]'
             }`}>
@@ -165,7 +184,7 @@ const ServiceCard = ({ service }) => {
         )}
 
         {/* Divider */}
-        <div className={`w-full h-px mb-5 ${service.featured ? 'bg-white/10' : 'bg-gray-200'}`}></div>
+        <div className={`w-full h-px mb-4 ${service.featured ? 'bg-white/10' : 'bg-gray-200'}`}></div>
 
         {/* What's Included */}
         <div className="flex-1">
@@ -178,7 +197,7 @@ const ServiceCard = ({ service }) => {
             {visibleItems.map((item, i) => (
               <li
                 key={i}
-                className={`flex items-start gap-2.5 py-3 border-b border-dashed last:border-b-0 font-medium text-[13px] md:text-sm leading-relaxed transition-colors duration-300 ${
+                className={`flex items-start gap-2.5 py-2 border-b border-dashed last:border-b-0 font-medium text-[12px] md:text-[13px] leading-relaxed transition-colors duration-300 ${
                   service.featured
                     ? 'text-white/80 border-white/10 group-hover:text-white'
                     : 'text-gray-700 border-gray-100 group-hover:text-gray-900'
@@ -208,7 +227,7 @@ const ServiceCard = ({ service }) => {
         </div>
 
         {/* CTA Button */}
-        <div className="mt-6 pt-2">
+        <div className="mt-4 pt-1">
           <a
             href="#contact"
             onClick={(e) => {
@@ -246,7 +265,7 @@ const ServiceCard = ({ service }) => {
 const ServicesAndPricing = () => {
   return (
     <section id="services" className="w-full py-8 md:py-12 lg:py-14 bg-[#fafafa] font-sans">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-12 xl:px-16">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 xl:px-16">
 
         {/* Header */}
         <motion.div
@@ -278,7 +297,7 @@ const ServicesAndPricing = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-4 items-stretch"
         >
           {services.map((service) => (
             <ServiceCard key={service.id} service={service} />

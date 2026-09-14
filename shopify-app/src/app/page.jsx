@@ -21,7 +21,6 @@ const WhoWeDontWorkWith = dynamic(() => import('../components/WhoWeDontWorkWith'
 const TeamMembers = dynamic(() => import('../components/TeamMembers'), { ssr: false })
 const ContactUs = dynamic(() => import('../components/ContactUs'), { ssr: false })
 const ThePromise = dynamic(() => import('../components/ThePromise'), { ssr: false })
-const Offers = dynamic(() => import('../components/Offers'), { ssr: false })
 const Contact = dynamic(() => import('../components/Contact'), { ssr: false })
 const ServicesAndPricing = dynamic(() => import('../components/ServicesAndPricing'), { ssr: false })
 
@@ -42,7 +41,6 @@ function App() {
 
         <ScrollReveal variant="scaleUp"><CaseStudiesGrid /></ScrollReveal>
         <ScrollReveal><Calculator /></ScrollReveal>
-        <ScrollReveal variant="scaleUp"><Offers /></ScrollReveal>
         <ScrollReveal><AiManifesto /></ScrollReveal>
         <ScrollReveal variant="blur"><CroBrandExercise /></ScrollReveal>
 

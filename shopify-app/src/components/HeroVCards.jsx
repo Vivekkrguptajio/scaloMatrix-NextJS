@@ -71,14 +71,6 @@ export default function HeroVCards() {
           
           {/* Left Controls */}
           <div className="flex flex-col items-start gap-4">
-
-
-            <a 
-              href="#services" 
-              className="group bg-black text-white font-bold py-3 px-7 rounded-full inline-flex items-center gap-3.5 hover:bg-[#FD5800] transition-all duration-300 shadow-lg hover:shadow-orange-500/25 text-sm md:text-base"
-            >
-              <span>View Our Website</span>
-            </a>
           </div>
 
           {/* Right Social Proof Stack */}
@@ -122,21 +114,9 @@ export default function HeroVCards() {
               >
 
                 {/* Screenshot Image Container */}
-                <a 
-                  href={card.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative flex-1 w-full overflow-hidden bg-gray-50 group/link block"
-                >
+                <div className="relative flex-1 w-full overflow-hidden bg-gray-50 block">
                   <Image src={card.img} alt={card.title} fill className="object-cover object-top" sizes="(max-width: 768px) 325px, 390px" priority={idx < 2} />
-
-                  {/* View Project Button on Hover */}
-                  <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-end justify-end p-5 bg-black/5">
-                    <span className="bg-black text-white font-bold text-xs px-4 py-2 rounded-full shadow-lg transform scale-95 group-hover/link:scale-100 transition-all">
-                      Visit Website ↗
-                    </span>
-                  </div>
-                </a>
+                </div>
               </div>
             ))}
           </div>

@@ -254,15 +254,10 @@ img {
   image-rendering: auto;
 }
 
-/* ═══════ APPLE-LEVEL SCROLL ENHANCEMENTS ═══════ */
-
-[style*="transform"],
 .will-change-transform {
   will-change: transform;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  -webkit-perspective: 1000px;
-  perspective: 1000px;
 }
 
 section {

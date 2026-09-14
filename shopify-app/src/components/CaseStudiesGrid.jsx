@@ -142,17 +142,9 @@ const CaseStudiesGrid = () => {
                 key={study.id} 
                 className={`p-4 sm:p-5 pb-8 sm:pb-8 flex flex-col ${idx === 0 ? 'border-b-[0.5px] border-black' : ''}`}
               >
-                <a 
-                  href={study.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[#f1f1f1] border border-black rounded-xl p-2 sm:p-3 mb-4 w-full h-[200px] sm:h-[250px] flex items-end justify-center cursor-pointer hover:shadow-lg transition-shadow group relative overflow-hidden shrink-0"
-                >
-                  <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-50">
-                     <span className="bg-black text-white px-4 py-2 rounded-full text-sm font-bold tracking-wide">Visit Website ↗</span>
-                  </div>
+                <div className="bg-[#f1f1f1] border border-black rounded-xl p-2 sm:p-3 mb-4 w-full h-[200px] sm:h-[250px] flex items-end justify-center relative overflow-hidden shrink-0">
                   {study.mockup}
-                </a>
+                </div>
                 <div className="flex justify-between items-end mt-auto">
                   {study.badge}
                   <div className="flex items-center gap-4">
@@ -205,17 +197,9 @@ const CaseStudiesGrid = () => {
                 key={study.id} 
                 className={`p-4 md:p-5 flex flex-col overflow-hidden ${idx < 2 ? 'border-r border-black' : ''}`}
               >
-                <a 
-                  href={study.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[#f1f1f1] border border-black rounded-2xl p-3 md:p-4 mb-5 w-full h-[280px] lg:h-[310px] flex items-end justify-center overflow-hidden cursor-pointer hover:shadow-lg transition-shadow group relative"
-                >
-                  <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-50">
-                     <span className="bg-black text-white px-5 py-2.5 rounded-full text-sm font-bold tracking-wide shadow-xl transform scale-95 group-hover:scale-100 transition-all">Visit Website ↗</span>
-                  </div>
+                <div className="bg-[#f1f1f1] border border-black rounded-2xl p-3 md:p-4 mb-5 w-full h-[280px] lg:h-[310px] flex items-end justify-center overflow-hidden relative">
                   {study.mockup}
-                </a>
+                </div>
                 <div className="flex flex-wrap xl:flex-nowrap justify-between items-end mt-auto gap-2 xl:gap-4">
                   <div className="shrink-0">{study.badge}</div>
                   <div className="flex items-center gap-3 xl:gap-5 shrink-0">
@@ -245,17 +229,9 @@ const CaseStudiesGrid = () => {
                 key={study.id} 
                 className={`p-4 md:p-5 flex flex-col overflow-hidden ${idx < 2 ? 'border-r border-black' : ''}`}
               >
-                <a 
-                  href={study.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[#f1f1f1] border border-black rounded-2xl p-3 md:p-4 mb-5 w-full h-[280px] lg:h-[310px] flex items-end justify-center overflow-hidden cursor-pointer hover:shadow-lg transition-shadow group relative"
-                >
-                  <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-50">
-                     <span className="bg-black text-white px-5 py-2.5 rounded-full text-sm font-bold tracking-wide shadow-xl transform scale-95 group-hover:scale-100 transition-all">Visit Website ↗</span>
-                  </div>
+                <div className="bg-[#f1f1f1] border border-black rounded-2xl p-3 md:p-4 mb-5 w-full h-[280px] lg:h-[310px] flex items-end justify-center overflow-hidden relative">
                   {study.mockup}
-                </a>
+                </div>
                 <div className="flex flex-wrap xl:flex-nowrap justify-between items-end mt-auto gap-2 xl:gap-4">
                   <div className="shrink-0">{study.badge}</div>
                   <div className="flex items-center gap-3 xl:gap-5 shrink-0">

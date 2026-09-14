@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -163,25 +163,7 @@ const Offers = () => {
     <section className="w-full py-8 md:py-12 lg:py-14 bg-[#fafafa] font-sans">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12">
 
-        {/* Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="mb-14"
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-[3px] bg-[#FD5800] rounded-full"></div>
-            <span className="text-[#FD5800] text-xs font-bold tracking-[0.25em] uppercase font-mono">Services</span>
-          </div>
-          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-sans leading-[1.1] mb-5 tracking-tight text-black">
-            Pick the offer that matches<br className="hidden md:block" /> <span className="text-[#FD5800]">your problem.</span>
-          </h2>
-          <p className="text-gray-500 text-lg max-w-2xl leading-relaxed">
-            Every tier includes research, copy, design, and development — one owner, end to end.
-          </p>
-        </motion.div>
+
 
         {/* 2x2 Grid */}
         <motion.div 

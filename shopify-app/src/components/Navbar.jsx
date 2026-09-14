@@ -26,74 +26,33 @@ export default function Navbar() {
     }
   }, [mobileMenu])
 
-  // Detect if navbar is over a dark section — throttled with setTimeout
+  // Detect if navbar is over the dark footer section — high performance, 0 layout thrashing
   useEffect(() => {
-    let timeoutId = null
-    let ticking = false
-
-    const checkBackground = () => {
-      if (!navRef.current) return
-      const navRect = navRef.current.getBoundingClientRect()
-      const sampleY = navRect.bottom + 2
-      const sampleX = navRect.left + navRect.width / 2
-
-      const elements = document.elementsFromPoint(sampleX, sampleY)
-
-      let dark = false
-      for (const el of elements) {
-        if (navRef.current.contains(el) || el.closest('header')?.contains(navRef.current)) continue
-
-        const bg = getComputedStyle(el).backgroundColor
-        
-        const rgbaMatch = bg.match(/rgba\((\d+),\s*(\d+),\s*(\d+),\s*([\d.]+)\)/)
-        if (rgbaMatch) {
-          const alpha = parseFloat(rgbaMatch[4])
-          if (alpha < 0.1) continue
-          const [, r, g, b] = rgbaMatch.map(Number)
-          if (r < 60 && g < 60 && b < 60) {
-            dark = true
-            break
-          }
-          if (alpha > 0.5 && (r > 200 || g > 200 || b > 200)) {
-            dark = false
-            break
-          }
-          continue
-        }
-
-        const rgbMatch = bg.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/)
-        if (rgbMatch) {
-          const [, r, g, b] = rgbMatch.map(Number)
-          if (r < 60 && g < 60 && b < 60) {
-            dark = true
-            break
-          }
-          if (r > 200 || g > 200 || b > 200) {
-            dark = false
-            break
-          }
-        }
-      }
-      setIsDark(dark)
-      ticking = false
-    }
+    let ticking = false;
+    const checkDark = () => {
+      const mainEl = document.querySelector('main');
+      if (!mainEl) return;
+      const mainBottom = mainEl.getBoundingClientRect().bottom;
+      // If the white main section has scrolled above the navbar height (~80px)
+      setIsDark(mainBottom <= 80);
+      ticking = false;
+    };
 
     const onScroll = () => {
       if (!ticking) {
-        ticking = true
-        timeoutId = setTimeout(checkBackground, 100)
+        ticking = true;
+        requestAnimationFrame(checkDark);
       }
-    }
+    };
 
-    checkBackground()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll, { passive: true })
+    checkDark();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
     return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
-      if (timeoutId) clearTimeout(timeoutId)
-    }
-  }, [])
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, []);
 
   const handleMouseMove = useCallback((e) => {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect()

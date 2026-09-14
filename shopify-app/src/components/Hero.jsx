@@ -6,46 +6,9 @@ import Image from 'next/image'
 import { heroData } from '../data/content'
 
 export function AnimatedCounter({ target, prefix = '', suffix = '', duration = 2000 }) {
-  const [count, setCount] = useState(0)
-  const ref = useRef(null)
-
-  useEffect(() => {
-    let animationFrameId
-    let startTime = null
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setCount(0)
-          startTime = null
-          const animate = (now) => {
-            if (!startTime) startTime = now
-            const elapsed = now - startTime
-            const progress = Math.min(elapsed / duration, 1)
-            const eased = 1 - Math.pow(1 - progress, 3)
-            const currentVal = Math.floor(eased * target)
-            setCount(currentVal)
-            if (progress < 1) {
-              animationFrameId = requestAnimationFrame(animate)
-            } else {
-              setCount(target)
-            }
-          }
-          animationFrameId = requestAnimationFrame(animate)
-        }
-      },
-      { threshold: 0.1 }
-    )
-
-    if (ref.current) observer.observe(ref.current)
-    return () => {
-      if (ref.current) observer.disconnect()
-      if (animationFrameId) cancelAnimationFrame(animationFrameId)
-    }
-  }, [target, duration])
-
-  return <span ref={ref}>{prefix}{count.toLocaleString()}{suffix}</span>
+  return <span>{prefix}{target.toLocaleString()}{suffix}</span>
 }
+
 
 const rotatingWords = heroData.rotatingWords
 

@@ -79,13 +79,12 @@ const HappyClients = () => {
   ];
 
   const tickerItems = [
-    { name: "DECODE AGE", stat: "+20% CVR" },
-    { name: "EMMA MATTRESS", stat: "+20% CVR" },
-    { name: "THE GOOD BUG", stat: "+50% CVR" },
-    { name: "SUPERYOU", stat: "+33% CVR" },
-    { name: "BOLD CARE", stat: "+50% CVR" },
-    { name: "ZEROHARM", stat: "+35% REV" },
-    { name: "WELLBEING", stat: "+44% CVR" }
+    { name: "NUTRAPHYLL", stat: "+35% Orders" },
+    { name: "WAYORA STYLEVERSE", stat: "+80% Orders" },
+    { name: "WAYORA NATURAL", stat: "+28% AOV" },
+    { name: "HOUSE OF NADA", stat: "+44% CVR" },
+    { name: "DRAPES CORNER", stat: "+60% CVR" },
+    { name: "JUDEX", stat: "+45% Sales" }
   ];
 
   return (
