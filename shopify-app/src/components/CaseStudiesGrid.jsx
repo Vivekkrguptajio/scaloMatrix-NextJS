@@ -41,30 +41,6 @@ const CaseStudiesGrid = () => {
 
   const allStudies = [
     {
-      id: 'wayorastyleverse',
-      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509465/shopify-app/lap_view/LuxuryWayora.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509481/shopify-app/phoneView/Luxury_phone_view.webp" alt="Wayora Styleverse" />,
-      badge: (
-        <div className="relative h-7 md:h-9 w-24">
-          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509474/shopify-app/logo/Wayora.png" alt="Wayora Styleverse" fill className="object-contain object-left" sizes="96px" />
-        </div>
-      ),
-      aov: '+14%',
-      rev: '+33%',
-      link: 'https://www.wayorastyleverse.com'
-    },
-    {
-      id: 'wayoranatural',
-      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509468/shopify-app/lap_view/wayoranatural.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509484/shopify-app/phoneView/wayoranatural_phone_view.webp" alt="Wayora Natural" />,
-      badge: (
-        <div className="relative h-7 md:h-9 w-24">
-          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509475/shopify-app/logo/WayoraN.png" alt="Wayora Natural" fill className="object-contain object-left" sizes="96px" />
-        </div>
-      ),
-      aov: '+22%',
-      rev: '+50%',
-      link: 'https://www.wayoranatural.com'
-    },
-    {
       id: 'nutraphyll',
       mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509467/shopify-app/lap_view/Nutraphyll.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509483/shopify-app/phoneView/Nutraphyll_phone_view.webp" alt="Nutraphyll" />,
       badge: (
@@ -169,7 +145,7 @@ const CaseStudiesGrid = () => {
 
           {/* Interactive Mobile Pagination Dots */}
           <div className="flex gap-2 justify-center items-center mt-2">
-            {[0, 1, 2].map((pageIdx) => (
+            {[0, 1].map((pageIdx) => (
               <button
                 key={pageIdx}
                 onClick={() => setActivePage(pageIdx)}
@@ -191,11 +167,11 @@ const CaseStudiesGrid = () => {
           className="hidden lg:flex flex-col w-full gap-8"
         >
           {/* Row 1 */}
-          <motion.div variants={itemVariants} className="bg-white border border-black rounded-3xl overflow-hidden w-full grid grid-cols-3 hover:-translate-y-1 hover:shadow-[10px_10px_0px_0px_rgba(253,88,0,0.2)] transition-all duration-300">
-            {allStudies.slice(0, 3).map((study, idx) => (
-              <div 
-                key={study.id} 
-                className={`p-4 md:p-5 flex flex-col overflow-hidden ${idx < 2 ? 'border-r border-black' : ''}`}
+          <motion.div variants={itemVariants} className="bg-white border border-black rounded-3xl overflow-hidden w-full grid grid-cols-2 hover:-translate-y-1 hover:shadow-[10px_10px_0px_0px_rgba(253,88,0,0.2)] transition-all duration-300">
+            {allStudies.slice(0, 2).map((study, idx) => (
+              <div
+                key={study.id}
+                className={`p-4 md:p-5 flex flex-col overflow-hidden ${idx < 1 ? 'border-r border-black' : ''}`}
               >
                 <div className="bg-[#f1f1f1] border border-black rounded-2xl p-3 md:p-4 mb-5 w-full h-[280px] lg:h-[310px] flex items-end justify-center overflow-hidden relative">
                   {study.mockup}
@@ -223,11 +199,11 @@ const CaseStudiesGrid = () => {
           </motion.div>
 
           {/* Row 2 */}
-          <motion.div variants={itemVariants} className="bg-white border border-black rounded-3xl overflow-hidden w-full grid grid-cols-3 hover:-translate-y-1 hover:shadow-[10px_10px_0px_0px_rgba(253,88,0,0.2)] transition-all duration-300">
-            {allStudies.slice(3, 6).map((study, idx) => (
-              <div 
-                key={study.id} 
-                className={`p-4 md:p-5 flex flex-col overflow-hidden ${idx < 2 ? 'border-r border-black' : ''}`}
+          <motion.div variants={itemVariants} className="bg-white border border-black rounded-3xl overflow-hidden w-full grid grid-cols-2 hover:-translate-y-1 hover:shadow-[10px_10px_0px_0px_rgba(253,88,0,0.2)] transition-all duration-300">
+            {allStudies.slice(2, 4).map((study, idx) => (
+              <div
+                key={study.id}
+                className={`p-4 md:p-5 flex flex-col overflow-hidden ${idx < 1 ? 'border-r border-black' : ''}`}
               >
                 <div className="bg-[#f1f1f1] border border-black rounded-2xl p-3 md:p-4 mb-5 w-full h-[280px] lg:h-[310px] flex items-end justify-center overflow-hidden relative">
                   {study.mockup}

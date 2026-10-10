@@ -43,30 +43,6 @@ const HappyClients = () => {
     {
       logo: (
         <div className="relative h-12 w-32">
-          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509474/shopify-app/logo/Wayora.png" alt="Wayora" fill className="object-contain" sizes="128px" />
-        </div>
-      ),
-      text: "Our customers are more engaged, and our sales have never been better.",
-      author: "Ashrit",
-      title: "Founder, Wayora Styleverse",
-      avatarColor: "bg-pink-200",
-      avatar: "https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509474/shopify-app/logo/Wayora.png"
-    },
-    {
-      logo: (
-        <div className="relative h-12 w-32">
-          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509475/shopify-app/logo/WayoraN.png" alt="Wayora Natural" fill className="object-contain" sizes="128px" />
-        </div>
-      ),
-      text: "Working with them was a game-changer. The new design directly improved our conversion rates.",
-      author: "Ashrit",
-      title: "Founder, Wayora Natural",
-      avatarColor: "bg-green-200",
-      avatar: "https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509475/shopify-app/logo/WayoraN.png"
-    },
-    {
-      logo: (
-        <div className="relative h-12 w-32">
           <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png" alt="Drapes" fill className="object-contain" sizes="128px" />
         </div>
       ),
@@ -80,8 +56,6 @@ const HappyClients = () => {
 
   const tickerItems = [
     { name: "NUTRAPHYLL", stat: "+35% Orders" },
-    { name: "WAYORA STYLEVERSE", stat: "+80% Orders" },
-    { name: "WAYORA NATURAL", stat: "+28% AOV" },
     { name: "HOUSE OF NADA", stat: "+44% CVR" },
     { name: "DRAPES CORNER", stat: "+60% CVR" },
     { name: "JUDEX", stat: "+45% Sales" }
@@ -97,7 +71,7 @@ const HappyClients = () => {
           
           {/* Avatars */}
           <div className="flex -space-x-3 mb-2 justify-center">
-            {['https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509471/shopify-app/logo/Nada.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509474/shopify-app/logo/Wayora.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png'].map((src, i) => (
+            {['https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509471/shopify-app/logo/Nada.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png'].map((src, i) => (
               <div key={i} className="relative w-12 h-12 rounded-full border-[3px] border-white bg-gray-300 overflow-hidden shadow-sm">
                 <Image src={src} alt="Client" fill className="object-cover" sizes="48px" />
               </div>

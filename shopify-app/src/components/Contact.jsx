@@ -74,18 +74,19 @@ export default function Contact({ reveal = false }) {
           </div>
 
           {/* Navigation Links */}
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-white">
-            <a href="#about" className="hover:text-gray-400 transition-colors">About</a>
-            <a href="#contact" className="hover:text-gray-400 transition-colors">Contact</a>
-            <a href="#work" className="hover:text-gray-400 transition-colors">Case Studies</a>
-            <a href="#blog" className="hover:text-gray-400 transition-colors">Blog</a>
-            <a href="#privacy" className="hover:text-gray-400 transition-colors">Privacy</a>
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-white text-xs md:text-sm">
+            <a href="/terms" className="hover:text-gray-400 transition-colors">Terms & Conditions</a>
+            <span className="text-white/40">•</span>
+            <a href="/privacy" className="hover:text-gray-400 transition-colors">Privacy Policy</a>
+            <span className="text-white/40">•</span>
+            <a href="/legal" className="hover:text-gray-400 transition-colors">Legal & Policies</a>
           </div>
 
           {/* Copyright text */}
           <div className="text-center lg:text-right text-white/80 leading-relaxed text-xs md:text-sm">
             <p>Proudly created in India.</p>
             <p>All Right Reserved, All Wrong Reversed.</p>
+            <p className="mt-2 text-white/50">Powered by <span className="text-white/70 font-semibold">Krafton Enterprises</span></p>
           </div>
 
         </div>

@@ -28,15 +28,7 @@ export default function HeroVCards() {
       stat: '+50% Sales',
       category: 'CRO' 
     },
-    { 
-      id: 4, 
-      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509491/shopify-app/photsWork/wayoranatural.webp', 
-      title: 'Wayora Natural', 
-      url: 'https://www.wayoranatural.com',
-      stat: '+28% AOV',
-      category: 'Beauty & Skincare' 
-    },
-    { 
+    {
       id: 5, 
       img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509485/shopify-app/photsWork/Drapes.webp', 
       title: 'Drapes Corner', 
@@ -52,14 +44,6 @@ export default function HeroVCards() {
       stat: '+45% Sales',
       category: 'Beauty & Fragrance' 
     },
-    { 
-      id: 7, 
-      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509487/shopify-app/photsWork/Luxury.webp', 
-      title: 'Wayora Luxury', 
-      url: 'https://www.wayorastyleverse.com',
-      stat: '+80% Orders',
-      category: 'Apparel & Fashion' 
-    }
   ];
 
   return (
@@ -76,7 +60,7 @@ export default function HeroVCards() {
           {/* Right Social Proof Stack */}
           <div className="flex items-center gap-4 bg-gray-50/80 p-3.5 px-5 rounded-2xl border border-[#FD5800] shadow-sm">
             <div className="flex -space-x-3">
-              {['https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509471/shopify-app/logo/Nada.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509474/shopify-app/logo/Wayora.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png'].map((src, i) => (
+              {['https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509471/shopify-app/logo/Nada.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png'].map((src, i) => (
                 <div key={i} className="relative w-10 h-10 rounded-full border-2 border-white bg-gray-200 overflow-hidden shadow-sm">
                   <Image src={src} alt="Client" fill className="object-cover" sizes="40px" />
                 </div>

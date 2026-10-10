@@ -13,6 +13,7 @@ import SmoothScroll from '../components/SmoothScroll'
 // Dynamic imports for below-the-fold components — reduces initial JS bundle by ~60-70%
 const HappyClients = dynamic(() => import('../components/HappyClients'), { ssr: false })
 const CaseStudiesGrid = dynamic(() => import('../components/CaseStudiesGrid'), { ssr: false })
+const D2CBanner = dynamic(() => import('../components/D2CBanner'), { ssr: false })
 const Calculator = dynamic(() => import('../components/Calculator'), { ssr: false })
 const AiManifesto = dynamic(() => import('../components/AiManifesto'), { ssr: false })
 const CroBrandExercise = dynamic(() => import('../components/CroBrandExercise'), { ssr: false })
@@ -40,6 +41,7 @@ function App() {
         <ScrollReveal variant="scaleUp"><HappyClients /></ScrollReveal>
 
         <ScrollReveal variant="scaleUp"><CaseStudiesGrid /></ScrollReveal>
+        <D2CBanner />
         <ScrollReveal><Calculator /></ScrollReveal>
         <ScrollReveal><AiManifesto /></ScrollReveal>
         <ScrollReveal variant="blur"><CroBrandExercise /></ScrollReveal>
@@ -47,7 +49,7 @@ function App() {
         <ScrollReveal><HiringPhilosophy /></ScrollReveal>
         <ScrollReveal><WhoWeDontWorkWith /></ScrollReveal>
         <ScrollReveal variant="scaleUp"><ServicesAndPricing /></ScrollReveal>
-        <ScrollReveal><TeamMembers /></ScrollReveal>
+        {/* <ScrollReveal><TeamMembers /></ScrollReveal> */}
         <ContactUs />
         <ScrollReveal variant="blur"><ThePromise /></ScrollReveal>
       </main>
