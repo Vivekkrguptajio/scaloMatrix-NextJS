@@ -14,6 +14,13 @@ export default function CustomCursor() {
   useEffect(() => {
     if (isTouch) return;
 
+    document.documentElement.classList.add('custom-cursor-active');
+    return () => document.documentElement.classList.remove('custom-cursor-active');
+  }, [isTouch]);
+
+  useEffect(() => {
+    if (isTouch) return;
+
     const dot = dotRef.current;
     const outer = outerRef.current;
     if (!dot || !outer) return;
