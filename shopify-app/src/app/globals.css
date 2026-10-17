@@ -360,11 +360,14 @@ section {
 }
 
 /* Reduce motion for users who prefer it */
+/* Reduced motion: calm the entrance/pulse effects, but keep the slow ambient
+   marquees running — a blanket 0.01ms rule froze them on many phones
+   (Android "remove animations" / battery saver). */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  html { scroll-behavior: auto; }
+  .hero-animate-1, .hero-animate-2, .hero-animate-3, .hero-animate-4, .hero-animate-5,
+  .hero-cards-animate, .hero-pulse-glow, .animate-float {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }

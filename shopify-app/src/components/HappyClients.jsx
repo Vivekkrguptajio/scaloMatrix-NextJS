@@ -1,6 +1,7 @@
 "use client";
 import Image from 'next/image';
 import { AnimatedCounter } from './Hero'
+import AutoMarquee from './AutoMarquee'
 
 const HappyClients = () => {
   const testimonials = [
@@ -79,11 +80,8 @@ const HappyClients = () => {
       </div>
 
       {/* Testimonials marquee */}
-      <div className="w-full overflow-hidden group py-2"
-        onTouchStart={(e) => e.currentTarget.querySelector('.marquee-inner').style.animationPlayState = 'paused'}
-        onTouchEnd={(e) => e.currentTarget.querySelector('.marquee-inner').style.animationPlayState = 'running'}
-      >
-        <div className="marquee-inner flex gap-4 md:gap-6 px-5 md:px-8 animate-marquee group-hover:[animation-play-state:paused]" style={{ animationDuration: '40s' }}>
+      <AutoMarquee speed={35} className="py-2">
+        <div className="flex gap-4 md:gap-6 px-5 md:px-8 w-max">
           {[...testimonials, ...testimonials].map((client, idx) => (
             <figure key={idx} className="w-[280px] sm:w-[380px] flex flex-col shrink-0 bg-cream rounded-[24px] border border-line p-6 sm:p-8">
               <div className="flex gap-[3px] mb-5" aria-label="5 out of 5 stars">
@@ -108,7 +106,7 @@ const HappyClients = () => {
             </figure>
           ))}
         </div>
-      </div>
+      </AutoMarquee>
 
       {/* Result ticker */}
       <div className="relative z-50 w-full bg-brand overflow-hidden whitespace-nowrap py-3.5 mt-12 md:mt-16">

@@ -1,6 +1,7 @@
 "use client";
 import Image from 'next/image';
 import { AnimatedCounter } from './Hero'
+import AutoMarquee from './AutoMarquee'
 
 const LOGOS = [
   'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png',
@@ -90,11 +91,8 @@ export default function HeroVCards() {
       </div>
 
       {/* Marquee */}
-      <div className="relative w-full overflow-hidden group py-2"
-        onTouchStart={(e) => e.currentTarget.querySelector('.marquee-inner').style.animationPlayState = 'paused'}
-        onTouchEnd={(e) => e.currentTarget.querySelector('.marquee-inner').style.animationPlayState = 'running'}
-      >
-        <div className="marquee-inner animate-marquee-left flex gap-4 md:gap-6 px-5 md:px-12 hover:[animation-play-state:paused]">
+      <AutoMarquee speed={45} className="py-2">
+        <div className="flex gap-4 md:gap-6 px-5 md:px-12 w-max">
           {[...row1Cards, ...row1Cards].map((card, idx) => (
             <a
               key={idx}
@@ -116,7 +114,7 @@ export default function HeroVCards() {
             </a>
           ))}
         </div>
-      </div>
+      </AutoMarquee>
     </section>
   );
 }

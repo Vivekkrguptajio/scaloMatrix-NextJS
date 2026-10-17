@@ -123,7 +123,7 @@ export default function Hero() {
           </div>
 
           {/* RIGHT — store previews (coverflow) */}
-          <div className="flex-1 w-full lg:max-w-[44%] relative hidden lg:flex items-center justify-center hero-cards-animate overflow-visible p-2" style={{ minHeight: '480px' }}>
+          <div className="flex-1 w-full lg:max-w-[44%] relative flex items-center justify-center hero-cards-animate overflow-visible p-2 min-h-[370px] sm:min-h-[420px] lg:min-h-[480px]">
             {stores.map(({ src, name, stat }, idx) => {
               const position = (idx - activeIndex + 3) % 3;
               const slots = [
@@ -135,20 +135,20 @@ export default function Hero() {
               return (
                 <div
                   key={idx}
-                  className="absolute w-[280px] xl:w-[330px] rounded-[26px] overflow-hidden shadow-[0_30px_60px_-20px_rgba(20,18,16,0.35)] border border-line bg-paper transition-all duration-700 ease-in-out"
+                  className="absolute w-[200px] sm:w-[240px] lg:w-[280px] xl:w-[330px] rounded-[26px] overflow-hidden shadow-[0_30px_60px_-20px_rgba(20,18,16,0.35)] border border-line bg-paper transition-all duration-700 ease-in-out"
                   style={{
                     transform: `translateX(${slots.x}) scale(${slots.scale}) rotate(${slots.rotate})`,
                     zIndex: slots.z,
                     opacity: slots.opacity,
                   }}
                 >
-                  <div className="relative w-full h-[390px] xl:h-[470px]">
+                  <div className="relative w-full h-[290px] sm:h-[340px] lg:h-[390px] xl:h-[470px]">
                     <Image
                       src={src}
                       alt={`${name} — Shopify store by Scalomatrix`}
                       fill
                       className="object-cover object-top"
-                      sizes="(max-width: 1280px) 280px, 330px"
+                      sizes="(max-width: 640px) 200px, (max-width: 1280px) 280px, 330px"
                       priority={idx === 0}
                     />
                   </div>
