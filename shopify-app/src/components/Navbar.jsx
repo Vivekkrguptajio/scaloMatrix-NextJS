@@ -17,7 +17,7 @@ export default function Navbar() {
     setTheme(next)
     if (next === 'dark') document.documentElement.setAttribute('data-theme', 'dark')
     else document.documentElement.removeAttribute('data-theme')
-    try { localStorage.setItem('theme', next) } catch (e) {}
+    try { localStorage.setItem('theme-v2', next) } catch (e) {}
   }
 
   const ThemeToggle = (
@@ -97,7 +97,7 @@ export default function Navbar() {
     <header className="fixed left-0 right-0 z-50 flex justify-center transition-[opacity,transform] duration-700 ease-in-out top-4 px-4">
       <nav
         ref={navRef}
-        className={`relative w-full flex flex-col transition-all duration-300 backdrop-blur-md backdrop-saturate-200 max-w-7xl border rounded-[32px] ${
+        className={`relative z-10 w-full flex flex-col transition-all duration-300 backdrop-blur-md backdrop-saturate-200 max-w-7xl border rounded-[32px] ${
           isDark
             ? 'bg-paper/5 border-white/10'
             : 'bg-paper/70 border-line'
@@ -175,50 +175,72 @@ export default function Navbar() {
 
       </nav>
 
-      {/* Mobile Nav Menu Dropdown */}
-      <div className={`md:hidden absolute top-[calc(100%+12px)] left-4 right-4 rounded-2xl bg-paper border border-gray-100 overflow-y-auto overflow-x-hidden transition-all duration-300 shadow-[0_20px_40px_rgba(0,0,0,0.15)] origin-top ${
-        mobileMenu ? 'max-h-[75vh] opacity-100 py-2 pointer-events-auto scale-y-100' : 'max-h-0 opacity-0 py-0 border-transparent shadow-none pointer-events-none scale-y-95'
-      }`}>
-        <div className="flex flex-col px-4 py-2 gap-3">
-          {navLinks.map((link) => (
-            <div key={link.name} className="flex flex-col">
-              <a 
+      {/* Mobile menu — full-screen sheet */}
+      <div
+        className={`md:hidden fixed inset-0 z-0 bg-paper transition-opacity duration-300 ${
+          mobileMenu ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+        aria-hidden={!mobileMenu}
+      >
+        <div className="absolute -top-24 -right-24 w-[320px] h-[320px] rounded-full bg-brand/[0.12] blur-3xl pointer-events-none" />
+
+        <div className="relative h-full flex flex-col px-6 pt-28 pb-8 overflow-y-auto">
+          <p className="eyebrow mb-4">Menu</p>
+
+          <nav className="flex flex-col">
+            {navLinks.map((link, i) => (
+              <a
+                key={link.name}
                 href={link.href}
                 onClick={(e) => {
-                  if (link.href.startsWith('#')) {
-                    e.preventDefault();
-                    setMobileMenu(false);
-                    document.body.style.overflow = 'unset';
-                    setTimeout(() => {
-                      document.getElementById(link.href.substring(1))?.scrollIntoView({ behavior: 'smooth' });
-                    }, 100);
-                  } else {
-                    setMobileMenu(false);
-                  }
+                  e.preventDefault();
+                  setMobileMenu(false);
+                  setTimeout(() => {
+                    document.getElementById(link.href.substring(1))?.scrollIntoView({ behavior: 'smooth' });
+                  }, 150);
                 }}
-                className="flex items-center justify-between text-base font-medium px-4 py-3 min-h-[44px] transition-all rounded-xl text-ink hover:text-[#FD5800] hover:bg-brand-soft active:bg-brand-soft"
+                style={{ transitionDelay: mobileMenu ? `${100 + i * 70}ms` : '0ms' }}
+                className={`group flex items-center gap-4 py-5 border-b border-line transition-all duration-500 ${
+                  mobileMenu ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                }`}
               >
-                {link.name}
+                <span className="font-mono text-xs text-brand-text w-6">{String(i + 1).padStart(2, '0')}</span>
+                <span className="h-display text-[2rem] flex-1 group-active:text-brand">{link.name}</span>
+                <svg className="w-5 h-5 text-muted group-active:text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H8M17 7v9" />
+                </svg>
               </a>
-            </div>
-          ))}
-          <a 
-            href="#contact" 
-            onClick={(e) => {
-              e.preventDefault();
-              setMobileMenu(false);
-              document.body.style.overflow = 'unset';
-              setTimeout(() => {
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-              }, 100);
-            }}
-            className="flex items-center justify-center gap-2 text-base font-semibold rounded-full px-4 py-3 mt-2 bg-panel text-white border border-ink hover:bg-brand hover:border-brand transition-colors"
+            ))}
+          </nav>
+
+          <div
+            style={{ transitionDelay: mobileMenu ? `${100 + navLinks.length * 70}ms` : '0ms' }}
+            className={`mt-auto pt-8 flex flex-col gap-5 transition-all duration-500 ${
+              mobileMenu ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
           >
-            Book a free audit
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                setMobileMenu(false);
+                setTimeout(() => {
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }, 150);
+              }}
+              className="btn-primary w-full !py-4 !text-base"
+            >
+              Book a free audit
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+
+            <div className="flex flex-col gap-1.5 text-sm">
+              <a href="mailto:scalomatrix@gmail.com" className="text-muted">scalomatrix@gmail.com</a>
+              <a href="tel:+919217728977" className="text-muted">+91 92177 28977</a>
+            </div>
+          </div>
         </div>
       </div>
     </header>

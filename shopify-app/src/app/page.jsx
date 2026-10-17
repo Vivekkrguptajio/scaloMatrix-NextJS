@@ -9,6 +9,7 @@ import ScrollReveal from '../components/ScrollReveal'
 import CustomCursor from '../components/CustomCursor'
 import ScrollToTop from '../components/ScrollToTop'
 import SmoothScroll from '../components/SmoothScroll'
+import Loader from '../components/Loader'
 
 // Dynamic imports for below-the-fold components — reduces initial JS bundle by ~60-70%
 const HappyClients = dynamic(() => import('../components/HappyClients'), { ssr: false })
@@ -28,6 +29,7 @@ const ServicesAndPricing = dynamic(() => import('../components/ServicesAndPricin
 function App() {
   return (
     <SmoothScroll>
+    <Loader />
     <div className="relative min-h-screen bg-[#0a0a0a] font-sans overflow-x-clip">
       <ScrollProgressBar />
       <CustomCursor />
