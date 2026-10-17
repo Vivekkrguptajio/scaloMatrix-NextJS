@@ -67,13 +67,13 @@ const HappyClients = () => {
       <div className="max-w-[1280px] mx-auto px-5 sm:px-8 md:px-12 xl:px-16 mb-10 md:mb-12 w-full">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <span className="eyebrow mb-4">In their words</span>
+            <span className="eyebrow mb-4">What founders say</span>
             <h2 className="h-display h-section">
-              <AnimatedCounter target={100} suffix="+" /> founders, <span className="accent">one</span> pattern.
+              <AnimatedCounter target={100} suffix="+" /> founders. <span className="accent">Same</span> result.
             </h2>
           </div>
           <p className="lead max-w-[400px]">
-            More orders from the traffic they were already paying for. Here is how they put it.
+            More orders from the traffic they already had. In their own words.
           </p>
         </div>
       </div>

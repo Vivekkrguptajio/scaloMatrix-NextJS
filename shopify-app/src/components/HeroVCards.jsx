@@ -54,15 +54,15 @@ export default function HeroVCards() {
   ];
 
   return (
-    <section id="work" className="w-full pt-14 md:pt-20 pb-14 md:pb-20 bg-paper text-ink font-sans overflow-hidden relative z-10">
+    <section id="work" className="w-full pt-10 md:pt-14 pb-12 md:pb-16 bg-paper text-ink font-sans overflow-hidden relative z-10">
 
       {/* Header */}
       <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-12 w-full mb-8 md:mb-10">
         <div className="flex flex-col md:flex-row justify-between md:items-end gap-6">
           <div>
-            <span className="eyebrow mb-4">Recent builds</span>
+            <span className="eyebrow mb-4">Our work</span>
             <h2 className="h-display h-section max-w-[640px]">
-              Stores people <span className="accent">actually</span> buy from.
+              Stores people <span className="accent">love</span> to buy from.
             </h2>
           </div>
 

@@ -38,7 +38,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Work', href: '#work' },
-    { name: 'Why CRO', href: '#cro' },
+    { name: 'Our approach', href: '#cro' },
     { name: 'Pricing', href: '#services' },
   ]
 

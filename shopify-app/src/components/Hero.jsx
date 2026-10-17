@@ -66,7 +66,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-[85vh] md:min-h-screen flex flex-col justify-center pt-28 md:pt-32 pb-8 md:pb-14 px-5 sm:px-8 md:px-12 lg:px-20 bg-cream relative overflow-hidden"
+      className="flex flex-col pt-24 md:pt-28 pb-6 md:pb-8 px-5 sm:px-8 md:px-12 lg:px-20 bg-cream relative overflow-hidden"
     >
       {/* Soft brand glow */}
       <div className="hidden md:block absolute -top-24 right-[-8%] w-[640px] h-[640px] rounded-full bg-brand/[0.10] blur-3xl pointer-events-none" />

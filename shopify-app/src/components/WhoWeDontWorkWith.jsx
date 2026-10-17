@@ -1,19 +1,19 @@
-﻿"use client";
+"use client";
 
 const notFor = [
-  ['Your CEO has a doc of 47 things the page must say.', 'It should say one.'],
-  ["You haven't talked to a customer in 90 days.", "We won't guess for you."],
-  ['You measure deliverables in pages, not revenue.', 'Hire a freelancer.'],
-  ['You treat agencies like vendors, not partners.', "Life's too short."],
-  ['You sell vapes, predatory lending, or MLMs.', 'Hard no.'],
+  ['Your team wants the page to say 47 things.', 'It should say one.'],
+  ["You haven't spoken to a customer in 3 months.", "We won't guess for you."],
+  ['You want pages delivered, not sales growth.', 'Hire a freelancer.'],
+  ['You treat agencies as order-takers, not partners.', "Life's too short."],
+  ['You sell vapes, risky loans or MLM.', 'Hard no.'],
 ];
 
 const forYou = [
-  ["You've hit a ceiling on CVR and don't know why."],
-  ['You have a product that actually works.', "We can't fix a bad one."],
-  ['You spend at least ₹2L/mo on ads.', 'We need traffic to test.'],
-  ["You want a team that pushes back when you're wrong."],
-  ['You want to build a brand, not just a dropshipping store.'],
+  ["Your sales have stopped growing and you don't know why."],
+  ['Your product is genuinely good.', "We can't fix a bad one."],
+  ['You spend ₹2L+ a month on ads.', 'We need traffic to test.'],
+  ["You want a team that says so when you're wrong."],
+  ['You want to build a brand, not a dropshipping store.'],
 ];
 
 const Item = ({ main, note, dark }) => (
@@ -32,13 +32,13 @@ const WhoWeDontWorkWith = () => {
 
         <div className="flex flex-col lg:flex-row w-full justify-between items-start lg:items-end mb-10 md:mb-14 gap-6">
           <div className="lg:w-[58%]">
-            <span className="eyebrow mb-4">Fit check</span>
+            <span className="eyebrow mb-4">Good fit?</span>
             <h2 className="h-display h-section">
-              Who we <span className="accent">don&apos;t</span> work with.
+              Are we a <span className="accent">good</span> fit?
             </h2>
           </div>
           <p className="lead lg:w-[34%]">
-            Saying no is our competitive advantage. Here&apos;s the list, in writing, so we can both skip a discovery call.
+            We say no to some projects. Here is who we work best with, so neither of us wastes a call.
           </p>
         </div>
 

@@ -3,39 +3,39 @@
 const factors = [
   {
     n: '01',
-    tag: 'Audience',
-    meta: '12-month LTV',
-    title: <>The page <span className="accent">chooses</span> your customer.</>,
+    tag: 'Who buys',
+    meta: '12-month value',
+    title: <>Your page decides <span className="accent">who</span> buys.</>,
     body: (
       <>
-        Discount-forward hero → discount-forward buyers. They convert <strong className="text-ink font-semibold">+18%</strong> faster and churn <strong className="text-ink font-semibold">3×</strong> harder. A brand-forward page is slower on day one and <strong className="text-ink font-semibold">compounds</strong> over year one. We pick for LTV, not Monday.
+        A page built around discounts attracts people who only buy on discount. They buy <strong className="text-ink font-semibold">18% faster</strong> but leave <strong className="text-ink font-semibold">3× sooner</strong>. A brand-first page starts slower and earns more over the year. We aim for long-term value, not a quick spike.
       </>
     ),
-    foot: [['Discount LTV', '₹1.8k'], ['Brand LTV', '₹5.4k']],
+    foot: [['Discount buyer', '₹1.8k'], ['Brand buyer', '₹5.4k']],
   },
   {
     n: '02',
-    tag: 'Language',
-    meta: '5+ buyer interviews',
-    title: <>Resonance is a <span className="accent">metric</span>. It just hides.</>,
+    tag: 'What you say',
+    meta: '5+ buyer chats',
+    title: <>Use your customer&apos;s <span className="accent">own words</span>.</>,
     body: (
       <>
-        Pages that convert don&apos;t describe the product — they <strong className="text-ink font-semibold">sound like the customer already thinking about it.</strong> &ldquo;Bloated after lunch&rdquo; beats &ldquo;gut health optimisation.&rdquo; We interview real buyers and borrow their exact words.
+        Pages that sell sound like what the customer is already thinking. <strong className="text-ink font-semibold">&ldquo;Bloated after lunch&rdquo;</strong> works better than &ldquo;gut health optimisation.&rdquo; We talk to real buyers and use their exact words.
       </>
     ),
-    foot: [['Agency copy', '✕'], ['Customer words', '✓']],
+    foot: [['Agency-speak', '✕'], ['Customer words', '✓']],
   },
   {
     n: '03',
     tag: 'Trust',
-    meta: 'Brand ≠ vibes',
-    title: <>Brand is the <span className="accent">floor</span> your CVR bounces off.</>,
+    meta: 'Looks matter',
+    title: <>Look like a brand people <span className="accent">trust</span>.</>,
     body: (
       <>
-        Two pages, identical copy, identical CTAs. Page A looks like it&apos;ll still exist in 2027. Page B doesn&apos;t. Page A wins <strong className="text-ink font-semibold">+27%</strong>. Design and trust are the same fight — and neither shows up in a heatmap.
+        Same text, same buttons. One page looks like a brand that will still be around next year, the other doesn&apos;t. The first one sold <strong className="text-ink font-semibold">27% more</strong>. Good design and trust go together.
       </>
     ),
-    foot: [['Trust', '→'], ['Conversion', '+27%']],
+    foot: [['Trust', '→'], ['Sales', '+27%']],
   },
 ];
 
@@ -47,35 +47,24 @@ const CroBrandExercise = () => {
         {/* Header */}
         <div className="flex flex-col lg:flex-row w-full justify-between items-start lg:items-end gap-6">
           <div className="lg:w-[60%]">
-            <span className="eyebrow mb-4">Why CRO</span>
+            <span className="eyebrow mb-4">Our approach</span>
             <h2 className="h-display h-section">
-              CRO is a brand exercise.<br />
-              The % is{' '}
-              <a
-                href="#case-studies"
-                className="accent underline decoration-brand/30 underline-offset-[6px] hover:decoration-brand"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('case-studies')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                the receipt.
-              </a>
+              More sales, from the <span className="accent">right</span> customers.
             </h2>
           </div>
           <p className="lead lg:w-[34%]">
-            A &ldquo;+30% lift&rdquo; on the wrong audience attracts more of the wrong customer, who churn in six weeks. We optimise what moves the number — story, audience, trust. Not the button colour.
+            A big jump in orders means little if those buyers return the product or never come back. We improve what really drives sales: who you attract, what you say, and how much shoppers trust you.
           </p>
         </div>
 
         {/* Re-frame */}
         <div className="bg-cream rounded-[32px] border border-line p-6 sm:p-10 lg:p-14 grid lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-16 items-center">
           <h3 className="h-display text-[clamp(1.4rem,2.6vw,2.1rem)]">
-            CRO isn&apos;t <span className="line-through decoration-2 text-muted/60 font-medium">a button-colour war.</span>{' '}
-            It&apos;s <span className="bg-brand text-white px-2.5 py-0.5 rounded-lg inline-block -rotate-1">who walks in the door.</span>
+            It&apos;s not about <span className="line-through decoration-2 text-muted/60 font-medium">button colours.</span>{' '}
+            It&apos;s about <span className="bg-brand text-white px-2.5 py-0.5 rounded-lg inline-block -rotate-1">who walks in the door.</span>
           </h3>
           <p className="lead">
-            A landing page is the first thing your brand says out loud. Say it wrong and the test still &ldquo;wins&rdquo; — with people who were never going to stay. Say it right and the % compounds over twelve months, not twelve hours.
+            Your landing page is the first thing a customer sees from your brand. If it says the wrong thing, you can still get more orders — from people who never come back. Say the right thing and the gains keep growing for months.
           </p>
         </div>
 
@@ -97,43 +86,43 @@ const CroBrandExercise = () => {
           ))}
         </div>
 
-        {/* Case: the win nobody should want */}
+        {/* Example: two tests */}
         <div className="bg-panel text-white rounded-[32px] overflow-hidden grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr]">
           <div className="p-7 sm:p-10 flex flex-col justify-between gap-6 border-b lg:border-b-0 lg:border-r border-white/10">
             <div>
-              <p className="font-mono text-[11px] tracking-[0.14em] text-white/50 uppercase mb-4">The &ldquo;win&rdquo; nobody should want</p>
-              <h4 className="h-card text-xl mb-3">Variant lifted CVR week one.</h4>
+              <p className="font-mono text-[11px] tracking-[0.14em] text-white/50 uppercase mb-4">A win that isn&apos;t a win</p>
+              <h4 className="h-card text-xl mb-3">Test A: more orders in week 1</h4>
               <p className="h-display text-5xl sm:text-6xl text-[#FF6B6B]">+34%</p>
             </div>
-            <p className="font-mono text-xs text-white/55 leading-relaxed pt-4 border-t border-dashed border-white/15">
-              Discount-led. Returns up <span className="text-[#FF6B6B]">+61%</span>. LTV fell to <span className="text-[#FF6B6B]">₹1.8k</span>. Losing money, faster.
+            <p className="text-sm text-white/60 leading-relaxed pt-4 border-t border-dashed border-white/15">
+              It was built on discounts. Returns went up <span className="text-[#FF6B6B]">61%</span> and each customer was worth only <span className="text-[#FF6B6B]">₹1.8k</span>. More sales, less money.
             </p>
           </div>
 
           <div className="px-6 py-5 lg:px-8 bg-white/[0.04] flex items-center justify-center text-center">
             <p className="font-mono text-[11px] tracking-[0.14em] text-brand uppercase font-medium">
-              We killed it<br />in week 2 →
+              We stopped it<br />in week 2 →
             </p>
           </div>
 
           <div className="p-7 sm:p-10 flex flex-col justify-between gap-6">
             <div>
-              <p className="font-mono text-[11px] tracking-[0.14em] text-white/50 uppercase mb-4">The win worth keeping</p>
-              <h4 className="h-card text-xl mb-3">Brand-led hero, compounding by month three.</h4>
+              <p className="font-mono text-[11px] tracking-[0.14em] text-white/50 uppercase mb-4">A win worth keeping</p>
+              <h4 className="h-card text-xl mb-3">Test B: brand-first page</h4>
               <p className="h-display text-5xl sm:text-6xl text-brand">+22%</p>
             </div>
-            <p className="font-mono text-xs text-white/55 leading-relaxed pt-4 border-t border-dashed border-white/15">
-              Day-one CVR +22%. 90-day LTV ₹5.4k. Repeat rate <span className="text-brand">+41%</span>. This is the case study.
+            <p className="text-sm text-white/60 leading-relaxed pt-4 border-t border-dashed border-white/15">
+              Orders up 22% from day one. After 90 days each customer was worth <span className="text-brand">₹5.4k</span>, and repeat purchases rose <span className="text-brand">41%</span>.
             </p>
           </div>
         </div>
 
         {/* Footer row */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5">
-          <p className="font-mono text-[11px] tracking-[0.14em] text-muted uppercase">
-            TL;DR — the % is the score. The brand is the game.
+          <p className="text-muted text-[15px]">
+            In short: sales numbers are the score. Your brand is the game.
           </p>
-          <a href="#contact" className="btn-primary">Get the real audit <span aria-hidden="true">→</span></a>
+          <a href="#contact" className="btn-primary">Get a free audit <span aria-hidden="true">→</span></a>
         </div>
 
       </div>

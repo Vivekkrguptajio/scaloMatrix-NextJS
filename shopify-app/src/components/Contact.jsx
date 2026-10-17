@@ -23,7 +23,7 @@ export default function Contact({ reveal = false }) {
     <footer 
       id={reveal ? "contact-footer" : "contact"}
       ref={footerRef}
-      className={`w-full bg-panel text-white pt-16 md:pt-24 pb-6 md:pb-8 min-h-[70vh] md:min-h-[90vh] flex flex-col justify-between overflow-hidden font-sans ${reveal ? 'fixed bottom-0 left-0 z-0' : 'relative scroll-mt-24'}`}
+      className={`w-full bg-panel text-white pt-12 md:pt-16 pb-6 md:pb-8 flex flex-col justify-between overflow-hidden font-sans ${reveal ? 'fixed bottom-0 left-0 z-0' : 'relative scroll-mt-24'}`}
     >
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col items-center h-full w-full flex-grow">
         
@@ -32,7 +32,7 @@ export default function Contact({ reveal = false }) {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-full flex flex-col justify-center items-center flex-grow mt-10 md:mt-20"
+          className="w-full flex flex-col justify-center items-center flex-grow mt-4 md:mt-8 mb-10 md:mb-14"
         >
           <h2 className="text-[11vw] sm:text-[13vw] md:text-[14.5vw] font-display font-extrabold tracking-[-0.05em] leading-none select-none whitespace-nowrap">
             <span className="text-[#FD5800]">scalo</span>

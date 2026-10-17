@@ -1,15 +1,15 @@
 "use client";
 export const heroData = {
   badge: 'Shopify Partner',
-  badge2: 'CRO-Led',
+  badge2: 'Built to sell',
   rotatingWords: ['Shopify Stores', 'Landing Pages', 'Custom Themes', 'Product Pages'],
   headlineSuffix: 'that make more money from the same ad spend.',
-  description: "From custom Shopify themes to high-converting landing pages — we ship stores that convert at least 20% better than what's running today.",
-  descriptionHighlight: 'at least 20% better',
+  description: "From custom Shopify themes to high-converting landing pages — we build stores that sell at least 20% more than the one you have today.",
+  descriptionHighlight: 'at least 20% more',
   stats: [
-    { value: 20, prefix: '+', suffix: '%', label: 'Guaranteed CVR Lift' },
-    { value: 450, prefix: '', suffix: '+', label: 'Stores Shipped' },
-    { value: 98, prefix: '', suffix: '+', label: 'NPS Score · 2025' },
+    { value: 20, prefix: '+', suffix: '%', label: 'Minimum sales lift' },
+    { value: 450, prefix: '', suffix: '+', label: 'Stores launched' },
+    { value: 98, prefix: '', suffix: '+', label: 'Client satisfaction score' },
   ]
 };
 

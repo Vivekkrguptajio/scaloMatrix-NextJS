@@ -8,7 +8,7 @@ export default function D2CBanner() {
       <div className="absolute top-1/2 -translate-y-1/2 -right-24 w-[260px] h-[260px] md:w-[400px] md:h-[400px] rounded-full border-[44px] md:border-[60px] border-brand/[0.12] pointer-events-none" />
 
       <div className="relative z-10 max-w-[920px] mx-auto px-6 text-center flex flex-col items-center gap-6 md:gap-8">
-        <span className="eyebrow !text-brand">Who we build for</span>
+        <span className="eyebrow !text-brand">Who we work with</span>
 
         <h2 className="h-display h-section text-white">
           Shopify stores for <span className="accent">D2C brands</span> that want to scale.

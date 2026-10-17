@@ -29,8 +29,8 @@ const Calculator = () => {
 
   const sliders = [
     { label: 'Monthly ad spend', value: formatMoney(adSpend), min: 5, max: 200, step: 5, state: adSpend, set: setAdSpend, lo: '₹5L', hi: '₹2Cr' },
-    { label: 'Current ROAS', value: `${roas}x`, min: 1, max: 20, step: 0.5, state: roas, set: setRoas, lo: '1x', hi: '20x' },
-    { label: 'Conversion lift', value: `+${lift}%`, min: 20, max: 60, step: 5, state: lift, set: setLift, lo: '+20%', hi: '+60%' },
+    { label: 'Sales per ₹1 of ads (ROAS)', value: `${roas}x`, min: 1, max: 20, step: 0.5, state: roas, set: setRoas, lo: '1x', hi: '20x' },
+    { label: 'Extra sales', value: `+${lift}%`, min: 20, max: 60, step: 5, state: lift, set: setLift, lo: '+20%', hi: '+60%' },
   ];
 
   return (
@@ -39,13 +39,13 @@ const Calculator = () => {
 
         <div className="flex flex-col lg:flex-row w-full justify-between items-start lg:items-end mb-10 md:mb-14 gap-6">
           <div className="lg:w-[58%]">
-            <span className="eyebrow mb-4">ROI calculator</span>
+            <span className="eyebrow mb-4">Calculator</span>
             <h2 className="h-display h-section">
               Do the <span className="accent">math.</span>
             </h2>
           </div>
           <p className="lead lg:w-[34%]">
-            Move the sliders and see what a 20%+ conversion lift is worth on the ad budget you already spend.
+            Move the sliders to see what 20% or more extra sales is worth on the ad budget you already spend.
           </p>
         </div>
 
@@ -81,30 +81,30 @@ const Calculator = () => {
           <div className="w-full lg:w-[45%] bg-panel text-white flex flex-col justify-between">
             <div className="p-6 md:p-10 flex-1 flex flex-col gap-7">
               <div>
-                <p className="font-mono text-[11px] tracking-[0.14em] text-white/55 uppercase mb-2">Extra revenue / month</p>
+                <p className="font-mono text-[11px] tracking-[0.14em] text-white/55 uppercase mb-2">Extra sales / month</p>
                 <p className="h-display text-4xl md:text-5xl text-brand">{formatExtra(extraRevLakhs)}</p>
               </div>
 
               <div className="grid grid-cols-2 gap-6 border-t border-white/10 pt-6">
                 <div>
-                  <p className="font-mono text-[10px] tracking-[0.14em] text-white/55 uppercase mb-1.5">Before · monthly</p>
+                  <p className="font-mono text-[10px] tracking-[0.14em] text-white/55 uppercase mb-1.5">Today · monthly</p>
                   <p className="h-display text-xl md:text-2xl">{formatMoney(beforeRevLakhs)}</p>
                 </div>
                 <div>
-                  <p className="font-mono text-[10px] tracking-[0.14em] text-white/55 uppercase mb-1.5">After · monthly</p>
+                  <p className="font-mono text-[10px] tracking-[0.14em] text-white/55 uppercase mb-1.5">With us · monthly</p>
                   <p className="h-display text-xl md:text-2xl text-[#6EE7A8]">{formatMoney(afterRevLakhs)}</p>
                 </div>
               </div>
 
               <div className="border-t border-white/10 pt-6">
-                <p className="font-mono text-[10px] tracking-[0.14em] text-white/55 uppercase mb-1.5">12-month net gain</p>
+                <p className="font-mono text-[10px] tracking-[0.14em] text-white/55 uppercase mb-1.5">Extra in 12 months</p>
                 <p className="h-display text-2xl md:text-3xl text-[#6EE7A8]">{formatMoney(yearlyNetGainLakhs)}</p>
               </div>
             </div>
 
             <a href="#contact" className="group bg-brand hover:bg-brand-deep transition-colors p-5 md:p-6 flex items-center justify-between gap-4">
               <p className="text-sm md:text-[15px] text-white font-semibold leading-snug">
-                Payback in under a quarter. Book the call.
+                Pays for itself in under 3 months. Book a free call.
               </p>
               <span className="text-white text-xl transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
             </a>

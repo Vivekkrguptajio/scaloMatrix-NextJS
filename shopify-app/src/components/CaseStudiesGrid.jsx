@@ -105,7 +105,7 @@ const CaseStudiesGrid = () => {
             <div className="h-display text-xl sm:text-2xl text-brand leading-none mb-1.5">
               <AnimatedCounter target={parseInt(study.aov)} prefix="+" suffix="%" />
             </div>
-            <div className="font-mono text-[10px] text-muted uppercase tracking-[0.14em]">Order value</div>
+            <div className="font-mono text-[10px] text-muted uppercase tracking-[0.14em]">Avg. order</div>
           </div>
           <div className="w-px h-9 bg-line" />
           <div className="flex flex-col items-end">
@@ -128,11 +128,11 @@ const CaseStudiesGrid = () => {
           <div className="lg:w-[58%]">
             <span className="eyebrow mb-4">Results</span>
             <h2 className="h-display h-section">
-              Numbers first. <span className="accent">Then</span> the praise.
+              Real stores. <span className="accent">Real</span> numbers.
             </h2>
           </div>
           <p className="lead lg:w-[34%]">
-            Every tile below is a live store we shipped and measured over 10,000+ sessions. Same traffic, better store.
+            Every store below is live. We built it, then measured it over 10,000+ visits. Same traffic, more sales.
           </p>
         </div>
 

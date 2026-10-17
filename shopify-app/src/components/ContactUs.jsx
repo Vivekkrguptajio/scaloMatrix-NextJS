@@ -75,7 +75,7 @@ export default function ContactUs() {
                 transition={{ delay: 0.1 }}
                 className="lead max-w-md"
               >
-                Tell us about your store and your ad spend. We reply within 24 hours with a free teardown if it&apos;s a fit — no pitch on call one.
+                Tell us about your store and your ad spend. We reply within 24 hours with a free review if it&apos;s a fit — no pitch on call one.
               </motion.p>
             </div>
 

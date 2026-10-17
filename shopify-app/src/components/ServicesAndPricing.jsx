@@ -58,16 +58,16 @@ const services = [
   {
     id: 3,
     title: 'Website Redesign',
-    desc: 'Your store exists but leaks money. We redesign it conversion-first to boost sales.',
+    desc: 'Your store gets visitors but loses sales. We redesign it to turn more of them into buyers.',
     price: '₹44,999',
     hasOptions: true,
     options: ['Same theme', 'Premium theme'],
     includes: [
-      'Full conversion & UX audit of current store',
+      'Full review of your current store',
       'Redesigned homepage & landing pages',
-      'Optimized product pages for higher AOV',
+      'Product pages built to raise order value',
       'Improved navigation & user flow',
-      'A/B test-ready page variants',
+      'Pages ready for A/B testing',
       'Post-launch performance tracking',
     ],
     badge: 'Popular',
@@ -77,17 +77,17 @@ const services = [
   {
     id: 4,
     title: 'Website Audit',
-    desc: 'A 30-minute live teardown of your store — we show exactly what\'s killing your conversions.',
+    desc: 'A free 30-minute live review of your store. We show you exactly what is costing you sales.',
     price: 'Free',
     hasOptions: false,
     options: [],
     includes: [
-      'Live conversion teardown of your store',
-      'Heatmap & analytics-based insights',
-      'Prioritized list of quick wins',
-      'Competitor benchmarking snapshot',
+      'Live review of your store',
+      'Insights from heatmaps and analytics',
+      'Quick wins, in order of priority',
+      'Quick look at your competitors',
       'No upsell pitch — honest feedback only',
-      'Actionable report you keep forever',
+      'A report you keep',
     ],
     badge: null,
     featured: false,
@@ -283,11 +283,11 @@ const ServicesAndPricing = () => {
           <div className="lg:w-[58%]">
             <span className="eyebrow mb-4">Services &amp; pricing</span>
             <h2 className="h-display h-section">
-              Clear scope. <span className="accent">Clear</span> prices.
+              Simple plans. <span className="accent">Clear</span> prices.
             </h2>
           </div>
           <div className="flex flex-col items-start lg:items-end gap-3 lg:w-[34%]">
-            <p className="lead lg:text-right">Start with a free audit, or go straight to a build.</p>
+            <p className="lead lg:text-right">Pick a plan, or start with a free audit.</p>
             <span className="inline-flex items-center gap-2 bg-cream border border-line rounded-full px-4 py-1.5 font-mono text-[11px] tracking-[0.12em] uppercase text-muted">
               Prices in <span className="text-ink font-medium">INR ₹</span>
             </span>

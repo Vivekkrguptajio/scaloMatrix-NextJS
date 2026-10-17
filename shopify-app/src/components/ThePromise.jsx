@@ -12,12 +12,12 @@ export default function ThePromise() {
           <span className="font-mono text-[11px] tracking-[0.16em] uppercase text-white/90 mb-6">The promise</span>
 
           <h2 className="h-display h-section text-white mb-6">
-            Pages that earn their keep —{' '}
+            Pages that pay for themselves —{' '}
             <span className="text-black/80">or we keep working.</span>
           </h2>
 
           <p className="text-white text-sm md:text-base max-w-xl leading-relaxed mb-10">
-            We build every page to beat your current one by at least 20%. If it doesn&apos;t, we don&apos;t disappear — we keep iterating. That&apos;s the deal, in writing.
+            Every page we build aims to beat your current one by at least 20%. If it doesn&apos;t, we don&apos;t disappear — we keep improving it until it does.
           </p>
 
           <a
@@ -29,7 +29,7 @@ export default function ThePromise() {
           </a>
 
           <p className="font-mono text-white/90 text-[10px] md:text-[11px] mt-8 tracking-[0.14em] uppercase">
-            Reply within 24 hours · free teardown if it&apos;s a fit · no pitch on call one
+            Reply within 24 hours · free review if it&apos;s a fit · no pitch on call one
           </p>
         </div>
       </div>
