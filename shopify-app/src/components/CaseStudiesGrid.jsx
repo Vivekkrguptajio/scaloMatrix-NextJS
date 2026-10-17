@@ -21,14 +21,14 @@ const itemVariants = {
 const DesktopMobileMockup = ({ src, mobileSrc, alt }) => (
   <div className="flex gap-2 sm:gap-4 h-full w-full items-end justify-center pt-2 sm:pt-4 px-2 sm:px-4 group-hover/link:scale-[1.03] transition-transform duration-500 overflow-hidden">
     {/* Desktop View */}
-    <div className="flex-[2.5] bg-white rounded-t-lg md:rounded-t-2xl shadow-[0_-4px_25px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col border-t border-l border-r border-gray-200 relative h-[95%] md:h-[98%]">
+    <div className="flex-[2.5] bg-paper rounded-t-lg md:rounded-t-2xl shadow-[0_-4px_25px_rgba(0,0,0,0.08)] overflow-hidden flex flex-col border-t border-l border-r border-gray-200 relative h-[95%] md:h-[98%]">
       <div className="w-full h-full relative overflow-hidden bg-gray-100 min-h-[140px] sm:min-h-[180px] md:min-h-[220px]">
         <Image src={src} alt={alt} fill className="object-cover object-top" sizes="(max-width: 768px) 70vw, 50vw" />
       </div>
     </div>
 
     {/* Mobile View */}
-    <div className="flex-[1] max-w-[90px] sm:max-w-[140px] bg-white rounded-t-lg md:rounded-t-2xl shadow-[0_-4px_25px_rgba(0,0,0,0.15)] overflow-hidden flex flex-col border-t border-l border-r border-gray-200 shrink-0 relative h-[82%] md:h-[88%]">
+    <div className="flex-[1] max-w-[90px] sm:max-w-[140px] bg-paper rounded-t-lg md:rounded-t-2xl shadow-[0_-4px_25px_rgba(0,0,0,0.15)] overflow-hidden flex flex-col border-t border-l border-r border-gray-200 shrink-0 relative h-[82%] md:h-[88%]">
        <div className="w-full h-full relative overflow-hidden bg-gray-100 min-h-[120px] sm:min-h-[150px] md:min-h-[180px]">
          <Image src={mobileSrc || src} alt={`${alt} Mobile`} fill className="object-cover object-top" sizes="(max-width: 768px) 30vw, 25vw" />
        </div>
@@ -93,142 +93,77 @@ const CaseStudiesGrid = () => {
   // Mobile pairs (2 cards per page)
   const mobileVisibleStudies = allStudies.slice(activePage * 2, activePage * 2 + 2);
 
-  return (
-    <section id="case-studies" className="w-full py-5 md:py-8 lg:py-10 bg-white font-sans">
-      <div className="max-w-[1440px] mx-auto flex flex-col items-center px-4 sm:px-6 md:px-12 xl:px-16 w-full">
-        
-        {/* Header Section */}
-        <div className="flex flex-col lg:flex-row w-full justify-between items-start lg:items-end mb-4 gap-4">
-          <h2 className="text-[32px] sm:text-4xl md:text-5xl lg:text-6xl font-black font-sans leading-[1.1] text-black tracking-tight lg:w-[60%]">
-            Things we are happy<br />
-            <span className="text-[#FD5800]">about.</span>
-          </h2>
-          <div className="w-full lg:w-[40%] flex lg:justify-end">
-            <p className="text-gray-500 text-sm md:text-base leading-relaxed lg:text-right">
-              We don't do testimonials until there's a number next to them. Each tile is a real page, shipped, measured over n≥10,000 sessions.
-            </p>
+  const StudyCard = ({ study }) => (
+    <article className="bg-paper border border-line rounded-[28px] p-4 sm:p-5 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(20,18,16,0.4)]">
+      <div className="bg-cream rounded-2xl p-2 sm:p-3 mb-5 w-full h-[220px] sm:h-[270px] lg:h-[300px] flex items-end justify-center relative overflow-hidden">
+        {study.mockup}
+      </div>
+      <div className="flex items-end justify-between gap-4 px-1 mt-auto">
+        <div className="shrink-0 bg-white rounded-lg px-2 py-1">{study.badge}</div>
+        <div className="flex items-center gap-4 sm:gap-6">
+          <div className="flex flex-col items-end">
+            <div className="h-display text-xl sm:text-2xl text-brand leading-none mb-1.5">
+              <AnimatedCounter target={parseInt(study.aov)} prefix="+" suffix="%" />
+            </div>
+            <div className="font-mono text-[10px] text-muted uppercase tracking-[0.14em]">Order value</div>
+          </div>
+          <div className="w-px h-9 bg-line" />
+          <div className="flex flex-col items-end">
+            <div className="h-display text-xl sm:text-2xl text-brand leading-none mb-1.5">
+              <AnimatedCounter target={parseInt(study.rev)} prefix="+" suffix="%" />
+            </div>
+            <div className="font-mono text-[10px] text-muted uppercase tracking-[0.14em]">Revenue</div>
           </div>
         </div>
+      </div>
+    </article>
+  );
 
-        {/* MOBILE VIEW */}
-        <div className="lg:hidden w-full flex flex-col gap-6">
-          <div className="bg-white border-[0.5px] border-black rounded-2xl overflow-hidden w-full flex flex-col hover:-translate-y-1 hover:shadow-[5px_5px_0px_0px_rgba(253,88,0,0.2)] transition-all duration-300">
-            {mobileVisibleStudies.map((study, idx) => (
-              <div 
-                key={study.id} 
-                className={`p-4 sm:p-5 pb-8 sm:pb-8 flex flex-col ${idx === 0 ? 'border-b-[0.5px] border-black' : ''}`}
-              >
-                <div className="bg-[#f1f1f1] border border-black rounded-xl p-2 sm:p-3 mb-4 w-full h-[200px] sm:h-[250px] flex items-end justify-center relative overflow-hidden shrink-0">
-                  {study.mockup}
-                </div>
-                <div className="flex justify-between items-end mt-auto">
-                  {study.badge}
-                  <div className="flex items-center gap-4">
-                    <div className="flex flex-col items-end">
-                      <div className="text-xl sm:text-2xl font-bold text-[#FD5800] leading-none mb-1">
-                        <AnimatedCounter target={parseInt(study.aov)} prefix="+" suffix="%" />
-                      </div>
-                      <div className="text-[9px] font-mono text-gray-400 uppercase tracking-widest">AOV</div>
-                    </div>
-                    <div className="w-[1px] h-8 bg-gray-300"></div>
-                    <div className="flex flex-col items-end">
-                      <div className="text-xl sm:text-2xl font-bold text-[#FD5800] leading-none mb-1">
-                        <AnimatedCounter target={parseInt(study.rev)} prefix="+" suffix="%" />
-                      </div>
-                      <div className="text-[9px] font-mono text-gray-400 uppercase tracking-widest">REVENUE</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+  return (
+    <section id="case-studies" className="w-full py-16 md:py-24 bg-cream font-sans">
+      <div className="max-w-[1280px] mx-auto flex flex-col px-5 sm:px-8 md:px-12 xl:px-16 w-full">
+
+        {/* Header */}
+        <div className="flex flex-col lg:flex-row w-full justify-between items-start lg:items-end mb-10 md:mb-14 gap-6">
+          <div className="lg:w-[58%]">
+            <span className="eyebrow mb-4">Results</span>
+            <h2 className="h-display h-section">
+              Numbers first. <span className="accent">Then</span> the praise.
+            </h2>
           </div>
+          <p className="lead lg:w-[34%]">
+            Every tile below is a live store we shipped and measured over 10,000+ sessions. Same traffic, better store.
+          </p>
+        </div>
 
-          {/* Interactive Mobile Pagination Dots */}
-          <div className="flex gap-2 justify-center items-center mt-2">
+        {/* Mobile: paged pairs */}
+        <div className="lg:hidden w-full flex flex-col gap-5">
+          {mobileVisibleStudies.map((study) => <StudyCard key={study.id} study={study} />)}
+          <div className="flex gap-2 justify-center items-center mt-1">
             {[0, 1].map((pageIdx) => (
               <button
                 key={pageIdx}
                 onClick={() => setActivePage(pageIdx)}
-                className={`w-3.5 h-3.5 transition-colors border border-black ${
-                  activePage === pageIdx ? 'bg-[#FD5800]' : 'bg-black'
-                }`}
+                className={`h-2.5 rounded-full transition-all ${activePage === pageIdx ? 'w-8 bg-brand' : 'w-2.5 bg-ink/25'}`}
                 aria-label={`Go to page ${pageIdx + 1}`}
               />
             ))}
           </div>
         </div>
 
-        {/* DESKTOP VIEW */}
-        <motion.div 
+        {/* Desktop: 2×2 */}
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
-          className="hidden lg:flex flex-col w-full gap-8"
+          className="hidden lg:grid grid-cols-2 gap-6"
         >
-          {/* Row 1 */}
-          <motion.div variants={itemVariants} className="bg-white border border-black rounded-3xl overflow-hidden w-full grid grid-cols-2 hover:-translate-y-1 hover:shadow-[10px_10px_0px_0px_rgba(253,88,0,0.2)] transition-all duration-300">
-            {allStudies.slice(0, 2).map((study, idx) => (
-              <div
-                key={study.id}
-                className={`p-4 md:p-5 flex flex-col overflow-hidden ${idx < 1 ? 'border-r border-black' : ''}`}
-              >
-                <div className="bg-[#f1f1f1] border border-black rounded-2xl p-3 md:p-4 mb-5 w-full h-[280px] lg:h-[310px] flex items-end justify-center overflow-hidden relative">
-                  {study.mockup}
-                </div>
-                <div className="flex flex-wrap xl:flex-nowrap justify-between items-end mt-auto gap-2 xl:gap-4">
-                  <div className="shrink-0">{study.badge}</div>
-                  <div className="flex items-center gap-3 xl:gap-5 shrink-0">
-                    <div className="flex flex-col items-end">
-                      <div className="text-xl lg:text-2xl xl:text-3xl font-bold text-[#FD5800] leading-none mb-1.5">
-                        <AnimatedCounter target={parseInt(study.aov)} prefix="+" suffix="%" />
-                      </div>
-                      <div className="text-[8px] xl:text-[9px] font-mono text-gray-400 uppercase tracking-widest">AOV</div>
-                    </div>
-                    <div className="w-[1px] h-6 xl:h-8 bg-gray-300"></div>
-                    <div className="flex flex-col items-end">
-                      <div className="text-xl lg:text-2xl xl:text-3xl font-bold text-[#FD5800] leading-none mb-1.5">
-                        <AnimatedCounter target={parseInt(study.rev)} prefix="+" suffix="%" />
-                      </div>
-                      <div className="text-[8px] xl:text-[9px] font-mono text-gray-400 uppercase tracking-widest">REVENUE</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </motion.div>
-
-          {/* Row 2 */}
-          <motion.div variants={itemVariants} className="bg-white border border-black rounded-3xl overflow-hidden w-full grid grid-cols-2 hover:-translate-y-1 hover:shadow-[10px_10px_0px_0px_rgba(253,88,0,0.2)] transition-all duration-300">
-            {allStudies.slice(2, 4).map((study, idx) => (
-              <div
-                key={study.id}
-                className={`p-4 md:p-5 flex flex-col overflow-hidden ${idx < 1 ? 'border-r border-black' : ''}`}
-              >
-                <div className="bg-[#f1f1f1] border border-black rounded-2xl p-3 md:p-4 mb-5 w-full h-[280px] lg:h-[310px] flex items-end justify-center overflow-hidden relative">
-                  {study.mockup}
-                </div>
-                <div className="flex flex-wrap xl:flex-nowrap justify-between items-end mt-auto gap-2 xl:gap-4">
-                  <div className="shrink-0">{study.badge}</div>
-                  <div className="flex items-center gap-3 xl:gap-5 shrink-0">
-                    <div className="flex flex-col items-end">
-                      <div className="text-xl lg:text-2xl xl:text-3xl font-bold text-[#FD5800] leading-none mb-1.5">
-                        <AnimatedCounter target={parseInt(study.aov)} prefix="+" suffix="%" />
-                      </div>
-                      <div className="text-[8px] xl:text-[9px] font-mono text-gray-400 uppercase tracking-widest">AOV</div>
-                    </div>
-                    <div className="w-[1px] h-6 xl:h-8 bg-gray-300"></div>
-                    <div className="flex flex-col items-end">
-                      <div className="text-xl lg:text-2xl xl:text-3xl font-bold text-[#FD5800] leading-none mb-1.5">
-                        <AnimatedCounter target={parseInt(study.rev)} prefix="+" suffix="%" />
-                      </div>
-                      <div className="text-[8px] xl:text-[9px] font-mono text-gray-400 uppercase tracking-widest">REVENUE</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </motion.div>
+          {allStudies.map((study) => (
+            <motion.div key={study.id} variants={itemVariants}>
+              <StudyCard study={study} />
+            </motion.div>
+          ))}
         </motion.div>
 
       </div>

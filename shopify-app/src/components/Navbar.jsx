@@ -6,12 +6,40 @@ export default function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false)
   const [isDark, setIsDark] = useState(false)
   const navRef = useRef(null)
+  const [theme, setTheme] = useState('dark')
+
+  useEffect(() => {
+    setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light')
+  }, [])
+
+  const toggleTheme = () => {
+    const next = theme === 'dark' ? 'light' : 'dark'
+    setTheme(next)
+    if (next === 'dark') document.documentElement.setAttribute('data-theme', 'dark')
+    else document.documentElement.removeAttribute('data-theme')
+    try { localStorage.setItem('theme', next) } catch (e) {}
+  }
+
+  const ThemeToggle = (
+    <button
+      onClick={toggleTheme}
+      aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+      className={`w-10 h-10 shrink-0 rounded-full border flex items-center justify-center transition-colors hover:border-[#FD5800] hover:text-[#FD5800] ${isDark ? 'border-white/20 text-white' : 'border-line text-ink'}`}
+    >
+      {theme === 'dark' ? (
+        <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" /></svg>
+      ) : (
+        <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></svg>
+      )}
+    </button>
+  )
   const logoX = useMotionValue(0)
   const logoY = useMotionValue(0)
 
   const navLinks = [
-    { name: 'Services & Price', href: '#services' },
+    { name: 'Work', href: '#work' },
     { name: 'Why CRO', href: '#cro' },
+    { name: 'Pricing', href: '#services' },
   ]
 
   // Prevent background body scroll when mobile menu is open
@@ -71,9 +99,9 @@ export default function Navbar() {
         ref={navRef}
         className={`relative w-full flex flex-col transition-all duration-300 backdrop-blur-md backdrop-saturate-200 max-w-7xl border rounded-[32px] ${
           isDark
-            ? 'bg-white/5 border-white/10'
-            : 'bg-white/20 border-white/30'
-        } shadow-[0_10px_30px_rgba(253,88,0,0.15)]`}
+            ? 'bg-paper/5 border-white/10'
+            : 'bg-paper/70 border-line'
+        } shadow-[0_10px_30px_-12px_rgba(20,18,16,0.2)]`}
       >
         {/* Main Navbar Row */}
         <div className="w-full flex items-center justify-between py-2 px-6 md:px-8">
@@ -85,11 +113,11 @@ export default function Navbar() {
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           style={{ x: logoX, y: logoY }}
-          className={`group flex items-center gap-3 font-semibold tracking-tight select-none whitespace-nowrap z-10 ${isDark ? 'text-white' : 'text-gray-900'}`}
+          className={`group flex items-center gap-3 font-semibold tracking-tight select-none whitespace-nowrap z-10 ${isDark ? 'text-white' : 'text-ink'}`}
         >
-          <span className="text-2xl md:text-3xl font-sans font-black transition-colors duration-300 tracking-tight">
+          <span className="text-2xl md:text-[1.7rem] font-display font-extrabold transition-colors duration-300 tracking-tight">
             <span className="text-[#FD5800]">scalo</span>
-            <span className={isDark ? 'text-white' : 'text-black'}>MATRIX</span>
+            <span className={isDark ? 'text-white' : 'text-ink'}>MATRIX</span>
           </span>
         </motion.a>
         
@@ -105,8 +133,8 @@ export default function Navbar() {
                     document.getElementById(link.href.substring(1))?.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className={`flex items-center gap-1.5 text-[15px] lg:text-[16px] font-semibold font-sans tracking-wide transition-colors duration-300 ease-out relative px-4 py-2 rounded-full ${
-                  isDark ? 'text-gray-300 hover:bg-[#FD5800]/10 hover:text-[#FD5800]' : 'text-gray-700 hover:bg-[#FD5800]/10 hover:text-[#FD5800]'
+                className={`flex items-center gap-1.5 text-[14px] lg:text-[15px] font-medium font-sans transition-colors duration-300 ease-out relative px-4 py-2 rounded-full ${
+                  isDark ? 'text-gray-300 hover:bg-[#FD5800]/10 hover:text-[#FD5800]' : 'text-ink/80 hover:bg-[#FD5800]/10 hover:text-[#FD5800]'
                 }`}
               >
                 {link.name}
@@ -116,10 +144,11 @@ export default function Navbar() {
         </div>
 
         {/* Contact Button (Right Side) */}
-        <div className="hidden md:flex items-center z-10">
+        <div className="hidden md:flex items-center gap-3 z-10">
+          {ThemeToggle}
           <a 
             href="#contact" 
-            className="group flex items-center gap-2 text-sm md:text-base font-bold px-5 py-1.5 md:py-2 rounded-full bg-[#FD5800] text-white border border-transparent hover:bg-white hover:text-black hover:border-black transition-colors tracking-wide"
+            className={`group flex items-center gap-2 text-sm font-semibold px-5 py-2 rounded-full text-white border transition-colors hover:bg-brand hover:border-brand ${isDark ? 'bg-brand border-brand' : 'bg-panel border-ink'}`}
           >
             Book a free audit
             <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -128,22 +157,26 @@ export default function Navbar() {
           </a>
         </div>
         
+        {/* Mobile: theme + menu */}
+        <div className="md:hidden flex items-center gap-1 z-20">
+        {ThemeToggle}
         {/* Mobile menu button */}
         <button 
           onClick={() => setMobileMenu(!mobileMenu)}
-          className="md:hidden flex flex-col gap-1.5 p-3 z-20 min-w-[44px] min-h-[44px] items-center justify-center active:scale-90 transition-transform duration-150"
+          className="flex flex-col gap-1.5 p-3 z-20 min-w-[44px] min-h-[44px] items-center justify-center active:scale-90 transition-transform duration-150"
         >
           <span className={`block w-5 h-[2px] transition-all duration-300 bg-[#FD5800] ${mobileMenu ? 'rotate-45 translate-y-[5px]' : ''}`}></span>
           <span className={`block w-5 h-[2px] transition-all duration-300 bg-[#FD5800] ${mobileMenu ? 'opacity-0' : ''}`}></span>
           <span className={`block w-5 h-[2px] transition-all duration-300 bg-[#FD5800] ${mobileMenu ? '-rotate-45 -translate-y-[5px]' : ''}`}></span>
         </button>
+        </div>
 
         </div> {/* End Main Navbar Row */}
 
       </nav>
 
       {/* Mobile Nav Menu Dropdown */}
-      <div className={`md:hidden absolute top-[calc(100%+12px)] left-4 right-4 rounded-2xl bg-white border border-gray-100 overflow-y-auto overflow-x-hidden transition-all duration-300 shadow-[0_20px_40px_rgba(0,0,0,0.15)] origin-top ${
+      <div className={`md:hidden absolute top-[calc(100%+12px)] left-4 right-4 rounded-2xl bg-paper border border-gray-100 overflow-y-auto overflow-x-hidden transition-all duration-300 shadow-[0_20px_40px_rgba(0,0,0,0.15)] origin-top ${
         mobileMenu ? 'max-h-[75vh] opacity-100 py-2 pointer-events-auto scale-y-100' : 'max-h-0 opacity-0 py-0 border-transparent shadow-none pointer-events-none scale-y-95'
       }`}>
         <div className="flex flex-col px-4 py-2 gap-3">
@@ -163,7 +196,7 @@ export default function Navbar() {
                     setMobileMenu(false);
                   }
                 }}
-                className="flex items-center justify-between text-base font-bold px-4 py-3 min-h-[44px] transition-all rounded-xl text-[#FD5800]/80 hover:text-[#FD5800] hover:bg-orange-50/50 active:bg-orange-50"
+                className="flex items-center justify-between text-base font-medium px-4 py-3 min-h-[44px] transition-all rounded-xl text-ink hover:text-[#FD5800] hover:bg-brand-soft active:bg-brand-soft"
               >
                 {link.name}
               </a>
@@ -179,7 +212,7 @@ export default function Navbar() {
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
               }, 100);
             }}
-            className="flex items-center justify-center gap-2 text-base font-bold rounded-full px-4 py-2 mt-2 bg-[#FD5800] text-white border border-transparent hover:bg-white hover:text-black hover:border-black transition-colors tracking-wide"
+            className="flex items-center justify-center gap-2 text-base font-semibold rounded-full px-4 py-3 mt-2 bg-panel text-white border border-ink hover:bg-brand hover:border-brand transition-colors"
           >
             Book a free audit
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

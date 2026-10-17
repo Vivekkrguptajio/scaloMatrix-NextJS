@@ -17,39 +17,38 @@ function RotatingText() {
   const [isVisible, setIsVisible] = useState(true)
 
   useEffect(() => {
+    let swap
     const interval = setInterval(() => {
       setIsVisible(false)
-      setTimeout(() => {
+      swap = setTimeout(() => {
         setIndex(prev => (prev + 1) % rotatingWords.length)
         setIsVisible(true)
       }, 400)
     }, 3000)
-    return () => clearInterval(interval)
+    return () => { clearInterval(interval); clearTimeout(swap) }
   }, [])
 
   return (
-    <span className="relative inline-block text-[#FD5800] py-1 px-1">
-      <span 
+    <span className="accent relative inline-block pr-1">
+      <span
         className={`inline-block transition-all duration-400 ${
-          isVisible 
-            ? 'opacity-100 translate-y-0' 
-            : 'opacity-0 -translate-y-3'
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3'
         }`}
       >
         {rotatingWords[index]}
       </span>
-      <svg className="absolute -bottom-1 left-0 w-full" viewBox="0 0 300 8" fill="none">
-        <path d="M2 6C75 2 225 2 298 6" stroke="#FD5800" strokeWidth="3" strokeLinecap="round" opacity="0.5"/>
+      <svg className="absolute -bottom-1 left-0 w-full" viewBox="0 0 300 8" fill="none" aria-hidden="true">
+        <path d="M2 6C75 2 225 2 298 6" stroke="#FD5800" strokeWidth="3" strokeLinecap="round" opacity="0.45"/>
       </svg>
     </span>
   )
 }
 
 // Static data moved outside component to prevent re-creation on every render
-const storeImages = [
-  'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509485/shopify-app/photsWork/Drapes.webp',
-  'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509488/shopify-app/photsWork/Nada.webp',
-  'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509487/shopify-app/photsWork/Luxury.webp'
+const stores = [
+  { src: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509485/shopify-app/photsWork/Drapes.webp', name: 'Drapes Corner', stat: '+50% revenue' },
+  { src: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509488/shopify-app/photsWork/Nada.webp', name: 'House of Nada', stat: '+44% revenue' },
+  { src: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509487/shopify-app/photsWork/Luxury.webp', name: 'Shopify store', stat: null },
 ]
 
 export default function Hero() {
@@ -57,175 +56,117 @@ export default function Hero() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % storeImages.length)
+      setActiveIndex((prev) => (prev + 1) % stores.length)
     }, 3000)
     return () => clearInterval(interval)
   }, [])
 
+  const [before, after] = heroData.description.split(heroData.descriptionHighlight)
+
   return (
-    <section 
-      id="hero" 
-      className="min-h-[75vh] md:min-h-screen flex flex-col justify-between pt-20 md:pt-28 pb-4 md:pb-10 px-4 sm:px-6 md:px-12 lg:px-20 bg-white relative overflow-hidden"
+    <section
+      id="hero"
+      className="min-h-[85vh] md:min-h-screen flex flex-col justify-center pt-28 md:pt-32 pb-8 md:pb-14 px-5 sm:px-8 md:px-12 lg:px-20 bg-cream relative overflow-hidden"
     >
-      {/* Animated gradient orbs background — hidden on mobile via CSS */}
-      <div className="hidden md:block absolute top-20 -left-32 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-[#FD5800]/[0.04] to-[#FF9066]/[0.02] blur-3xl pointer-events-none [transform:translateZ(0)] will-change-transform" />
-      <div className="hidden md:block absolute bottom-20 -right-32 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-[#95BF47]/[0.04] to-[#5a8a00]/[0.02] blur-3xl pointer-events-none [transform:translateZ(0)] will-change-transform" />
+      {/* Soft brand glow */}
+      <div className="hidden md:block absolute -top-24 right-[-8%] w-[640px] h-[640px] rounded-full bg-brand/[0.10] blur-3xl pointer-events-none" />
+      <div className="hidden md:block absolute bottom-[-12%] left-[-6%] w-[480px] h-[480px] rounded-full bg-shopify/[0.08] blur-3xl pointer-events-none" />
 
-      {/* Subtle dot grid */}
-      <div className="absolute inset-0 opacity-[0.025] pointer-events-none" style={{
-        backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)',
-        backgroundSize: '32px 32px'
-      }} />
+      <div className="max-w-[1400px] mx-auto w-full relative z-10">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-10 xl:gap-16">
 
-      {/* Main Content - Two Column Layout on Desktop */}
-      <div className="max-w-[1400px] mx-auto w-full relative z-10 mt-4 md:mt-14 md:-translate-y-[15px]">
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-8 xl:gap-12">
-          
-          {/* LEFT COLUMN - Text Content */}
-          <div className="flex-1 w-full lg:max-w-[58%] xl:max-w-[55%]">
-            
-            {/* Top Badges */}
-            <div className="flex items-center justify-center md:justify-start gap-3 mb-4 md:mb-5 hero-animate-1">
-              <div className="inline-flex items-center gap-2.5 bg-[#f0fdf4] border border-[#95BF47]/30 text-[#5a8a00] text-xs font-bold tracking-wider uppercase px-4 py-2 rounded-full shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 cursor-default">
-                <FaShopify className="w-4 h-4 text-[#95BF47]" />
-                <span>{heroData.badge}</span>
-              </div>
-              <div className="hidden sm:inline-flex items-center gap-2 bg-orange-50 border border-[#FD5800]/20 text-[#FD5800] text-xs font-bold tracking-wider uppercase px-4 py-2 rounded-full shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 cursor-default">
-                <span className="w-2 h-2 rounded-full bg-[#FD5800] animate-pulse" />
-                <span>{heroData.badge2}</span>
-              </div>
+          {/* LEFT — message */}
+          <div className="flex-1 w-full lg:max-w-[56%] text-center lg:text-left">
+
+            <div className="flex items-center justify-center lg:justify-start gap-2.5 mb-6 hero-animate-1">
+              <span className="inline-flex items-center gap-2 bg-paper border border-line text-ink text-[11px] font-semibold tracking-[0.12em] uppercase px-3.5 py-2 rounded-full font-mono">
+                <FaShopify className="w-4 h-4 text-shopify" />
+                {heroData.badge}
+              </span>
+              <span className="hidden sm:inline-flex items-center gap-2 bg-brand-soft text-brand-text text-[11px] font-semibold tracking-[0.12em] uppercase px-3.5 py-2 rounded-full font-mono">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse" />
+                {heroData.badge2}
+              </span>
             </div>
 
-            {/* Main Heading with Rotating Text */}
-            <h1 
-              className="text-[18px] sm:text-2xl md:text-3xl lg:text-[36px] xl:text-[42px] font-black font-sans text-black leading-[1.25] md:leading-[1.15] tracking-tight mb-3 md:mb-5 text-center md:text-left hero-animate-2"
-            >
+            <h1 className="h-display text-[clamp(1.9rem,3.5vw,3rem)] mb-6 hero-animate-2">
               We build <RotatingText />
-              <span className="block mt-1 md:mt-2" />
-              <span className="text-black">{heroData.headlineSuffix}</span>
+              <span className="block" />
+              {heroData.headlineSuffix}
             </h1>
 
-            {/* Sub Heading */}
-            <p 
-              className="text-[13px] sm:text-[15px] md:text-base text-[#555] font-medium max-w-[620px] leading-relaxed mb-4 md:mb-7 text-center md:text-left mx-auto md:mx-0 hero-animate-3"
-              dangerouslySetInnerHTML={{ __html: heroData.description }}
-            />
+            <p className="lead max-w-[560px] mx-auto lg:mx-0 mb-9 hero-animate-3">
+              {before}<strong className="font-semibold text-ink">{heroData.descriptionHighlight}</strong>{after}
+            </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center md:justify-start gap-3 mb-7 hero-animate-4">
-              <a 
-                href="#contact" 
-                className="group relative flex w-full sm:w-auto items-center justify-center gap-2 px-5 py-2.5 sm:py-2 rounded-full font-bold text-[12px] sm:text-[13px] bg-[#FD5800] text-white border-2 border-transparent hover:shadow-[0_0_30px_rgba(253,88,0,0.3)] hover:scale-105 transition-all duration-300 tracking-wide overflow-hidden hero-pulse-glow"
-              >
-                <span className="relative z-10 flex items-center gap-2.5">
-                  <FaShopify className="w-5 h-5" />
-                  Get your Shopify store
-                  <svg className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </span>
-              </a>
-              
-              <a 
-                href="#math" 
-                className="group flex w-full sm:w-auto items-center justify-center gap-2 px-5 py-2.5 sm:py-2 rounded-full font-bold text-[12px] sm:text-[13px] text-gray-700 border-2 border-black/10 hover:border-[#FD5800]/40 hover:text-[#FD5800] hover:bg-orange-50/50 hover:scale-105 hover:shadow-md transition-all duration-300"
-              >
-                <span>See our work</span>
-                <svg className="w-4 h-4 transform group-hover:translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 mb-12 hero-animate-4">
+              <a href="#contact" className="btn-primary group">
+                Get your Shopify store
+                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </a>
+              <a href="#work" className="btn-ghost">See our work</a>
             </div>
 
-            {/* Stats Row */}
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 lg:gap-7 hero-animate-5">
+            {/* Stats */}
+            <dl className="grid grid-cols-3 max-w-[560px] mx-auto lg:mx-0 border-t border-line pt-6 hero-animate-5">
               {heroData.stats.map((stat, i) => (
-                <div key={i} className="flex flex-col items-center md:items-start group cursor-default">
-                  <span className="text-[#FD5800] text-2xl md:text-3xl font-black tracking-tighter group-hover:scale-110 transition-transform duration-300">
+                <div key={i} className={`flex flex-col gap-1 ${i > 0 ? 'pl-4 sm:pl-6 border-l border-line' : ''}`}>
+                  <dd className="h-display text-2xl sm:text-3xl text-ink order-1">
                     {stat.prefix}<AnimatedCounter target={stat.value} />{stat.suffix}
-                  </span>
-                  <span className="text-[11px] sm:text-xs font-bold text-gray-500 tracking-wide uppercase mt-1">{stat.label}</span>
+                  </dd>
+                  <dt className="font-mono text-[10px] sm:text-[11px] tracking-[0.1em] uppercase text-muted order-2 leading-snug">{stat.label}</dt>
                 </div>
               ))}
-            </div>
+            </dl>
           </div>
 
-          {/* RIGHT COLUMN - Floating Store Previews (Coverflow Carousel) */}
-          <div className="flex-1 w-full lg:max-w-[45%] xl:max-w-[48%] relative hidden lg:flex items-center justify-center hero-cards-animate overflow-visible p-2" style={{ minHeight: '440px' }}>
-            
-            {storeImages.map((src, idx) => {
+          {/* RIGHT — store previews (coverflow) */}
+          <div className="flex-1 w-full lg:max-w-[44%] relative hidden lg:flex items-center justify-center hero-cards-animate overflow-visible p-2" style={{ minHeight: '480px' }}>
+            {stores.map(({ src, name, stat }, idx) => {
               const position = (idx - activeIndex + 3) % 3;
-              
-              let translateX = '0%';
-              let scale = 1;
-              let zIndex = 20;
-              let opacity = 1;
-              let rotate = '0deg';
-
-              if (position === 0) {
-                translateX = '0%';
-                scale = 1;
-                zIndex = 30;
-                opacity = 1;
-                rotate = '0deg';
-              } else if (position === 1) {
-                translateX = '45%';
-                scale = 0.85;
-                zIndex = 10;
-                opacity = 0.7;
-                rotate = '4deg';
-              } else if (position === 2) {
-                translateX = '-45%';
-                scale = 0.85;
-                zIndex = 10;
-                opacity = 0.7;
-                rotate = '-4deg';
-              }
+              const slots = [
+                { x: '0%',   scale: 1,    z: 30, opacity: 1,   rotate: '0deg'  },
+                { x: '48%',  scale: 0.85, z: 10, opacity: 0.7, rotate: '4deg'  },
+                { x: '-48%', scale: 0.85, z: 10, opacity: 0.7, rotate: '-4deg' },
+              ][position];
 
               return (
-                <div 
+                <div
                   key={idx}
-                  className="absolute w-[280px] xl:w-[340px] rounded-2xl overflow-hidden shadow-2xl border border-gray-100 bg-white transition-all duration-700 ease-in-out"
+                  className="absolute w-[280px] xl:w-[330px] rounded-[26px] overflow-hidden shadow-[0_30px_60px_-20px_rgba(20,18,16,0.35)] border border-line bg-paper transition-all duration-700 ease-in-out"
                   style={{
-                    transform: `translateX(${translateX}) scale(${scale}) rotate(${rotate})`,
-                    zIndex: zIndex,
-                    opacity: opacity,
+                    transform: `translateX(${slots.x}) scale(${slots.scale}) rotate(${slots.rotate})`,
+                    zIndex: slots.z,
+                    opacity: slots.opacity,
                   }}
                 >
-                  <div className="relative">
-                    <div className="relative w-full h-[380px] xl:h-[460px]">
-                      <Image 
-                        src={src} 
-                        alt="Shopify Store Preview" 
-                        fill
-                        className="object-cover object-top"
-                        sizes="(max-width: 1280px) 280px, 340px"
-                        priority={idx === 0}
-                      />
-                    </div>
-                    <div className="absolute top-3 left-3">
-                      <div className="flex items-center gap-1.5 bg-white/90 backdrop-blur-sm text-[#95BF47] text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm">
-                        <FaShopify className="w-3 h-3" />
-                        Shopify Store
-                      </div>
-                    </div>
-                    {position === 0 && (
-                      <div className="absolute bottom-3 right-3 animate-pulse">
-                        <div className="bg-[#FD5800] text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-lg">
-                          +44% CVR ↑
-                        </div>
-                      </div>
-                    )}
+                  <div className="relative w-full h-[390px] xl:h-[470px]">
+                    <Image
+                      src={src}
+                      alt={`${name} — Shopify store by Scalomatrix`}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 1280px) 280px, 330px"
+                      priority={idx === 0}
+                    />
                   </div>
+                  <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-white/95 text-shopify text-[10px] font-mono font-medium tracking-wide uppercase px-2.5 py-1 rounded-full shadow-sm">
+                    <FaShopify className="w-3 h-3" />
+                    Shopify store
+                  </div>
+                  {position === 0 && stat && (
+                    <div className="absolute bottom-3 right-3 bg-brand-deep text-white font-mono text-[11px] font-medium px-3 py-1.5 rounded-full shadow-lg">
+                      {stat} ↑
+                    </div>
+                  )}
                 </div>
               );
             })}
-
           </div>
 
         </div>
-
-
       </div>
     </section>
   )

@@ -2,6 +2,13 @@
 import Image from 'next/image';
 import { AnimatedCounter } from './Hero'
 
+const LOGOS = [
+  'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png',
+  'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509471/shopify-app/logo/Nada.png',
+  'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png',
+  'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png',
+];
+
 export default function HeroVCards() {
   const row1Cards = [
     { 
@@ -9,7 +16,7 @@ export default function HeroVCards() {
       img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509488/shopify-app/photsWork/Nada.webp', 
       title: 'Nada', 
       url: 'https://www.houseofnada.com',
-      stat: '+44% CVR',
+      stat: '+44% revenue',
       category: 'Apparel & Fashion' 
     },
     { 
@@ -17,7 +24,7 @@ export default function HeroVCards() {
       img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509489/shopify-app/photsWork/Nutraphyll.webp', 
       title: 'Nutraphyll', 
       url: 'https://www.nutraphyll.com',
-      stat: '+35% Orders',
+      stat: '+20% revenue',
       category: 'Health & Wellness' 
     },
     { 
@@ -26,14 +33,14 @@ export default function HeroVCards() {
       title: 'Velmukha', 
       url: 'https://www.velmukha.com/',
       stat: '+50% Sales',
-      category: 'CRO' 
+      category: 'Spiritual & Jewellery' 
     },
     {
       id: 5, 
       img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509485/shopify-app/photsWork/Drapes.webp', 
       title: 'Drapes Corner', 
       url: 'https://www.drapescorner.com',
-      stat: '+60% CVR',
+      stat: '+50% revenue',
       category: 'Home & Decor' 
     },
     { 
@@ -41,69 +48,73 @@ export default function HeroVCards() {
       img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509486/shopify-app/photsWork/Judex.webp', 
       title: 'Judex Fragrance', 
       url: 'https://www.judex.in',
-      stat: '+45% Sales',
+      stat: '+43% revenue',
       category: 'Beauty & Fragrance' 
     },
   ];
 
   return (
-    <section className="w-full pt-4 md:pt-8 pb-8 md:pb-16 bg-white text-black font-sans overflow-hidden relative z-10">
+    <section id="work" className="w-full pt-14 md:pt-20 pb-14 md:pb-20 bg-paper text-ink font-sans overflow-hidden relative z-10">
 
-      {/* Header Container */}
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 w-full mb-3">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 pb-6 border-b border-gray-100">
-          
-          {/* Left Controls */}
-          <div className="flex flex-col items-start gap-4">
+      {/* Header */}
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-12 w-full mb-8 md:mb-10">
+        <div className="flex flex-col md:flex-row justify-between md:items-end gap-6">
+          <div>
+            <span className="eyebrow mb-4">Recent builds</span>
+            <h2 className="h-display h-section max-w-[640px]">
+              Stores people <span className="accent">actually</span> buy from.
+            </h2>
           </div>
 
-          {/* Right Social Proof Stack */}
-          <div className="flex items-center gap-4 bg-gray-50/80 p-3.5 px-5 rounded-2xl border border-[#FD5800] shadow-sm">
+          <div className="flex items-center gap-4 bg-cream p-3.5 pr-6 rounded-2xl border border-line self-start md:self-auto">
             <div className="flex -space-x-3">
-              {['https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509471/shopify-app/logo/Nada.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png', 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png'].map((src, i) => (
-                <div key={i} className="relative w-10 h-10 rounded-full border-2 border-white bg-gray-200 overflow-hidden shadow-sm">
-                  <Image src={src} alt="Client" fill className="object-cover" sizes="40px" />
+              {LOGOS.map((src, i) => (
+                <div key={i} className="relative w-10 h-10 rounded-full border-2 border-cream bg-white overflow-hidden">
+                  <Image src={src} alt="Client logo" fill className="object-cover" sizes="40px" />
                 </div>
               ))}
             </div>
             <div className="flex flex-col">
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-0.5" aria-label="Rated 4.9 out of 5">
                 {[1,2,3,4,5].map(star => (
-                  <span key={star} className="text-amber-400 text-sm">★</span>
+                  <span key={star} className="text-brand text-sm" aria-hidden="true">★</span>
                 ))}
-                <span className="text-xs font-bold text-black ml-1">4.9/5</span>
+                <span className="font-mono text-xs font-medium text-ink ml-1.5">4.9/5</span>
               </div>
-              <span className="font-bold text-gray-900 text-sm tracking-tight">
-                <AnimatedCounter target={100} suffix="+ Happy Clients" />
+              <span className="font-display font-semibold text-ink text-sm tracking-tight">
+                <AnimatedCounter target={100} suffix="+ happy clients" />
               </span>
             </div>
           </div>
-
         </div>
       </div>
 
-      {/* Marquee Wrapper */}
-      <div className="relative w-full overflow-hidden flex flex-col gap-6 py-2 px-6 md:px-12">
-
-        {/* Row 1: Left Moving Marquee */}
-        <div className="w-full overflow-hidden group py-4"
-          onTouchStart={(e) => e.currentTarget.querySelector('.marquee-inner').style.animationPlayState = 'paused'}
-          onTouchEnd={(e) => e.currentTarget.querySelector('.marquee-inner').style.animationPlayState = 'running'}
-        >
-          <div className="marquee-inner animate-marquee-left flex gap-4 md:gap-6 hover:[animation-play-state:paused]">
-            {[...row1Cards, ...row1Cards].map((card, idx) => (
-              <div 
-                key={idx} 
-                className={`w-[260px] sm:w-[325px] md:w-[390px] min-w-[260px] sm:min-w-[325px] md:min-w-[390px] max-w-[260px] sm:max-w-[325px] md:max-w-[390px] h-[368px] sm:h-[486px] md:h-[550px] rounded-xl md:rounded-2xl overflow-hidden shadow-md bg-white shrink-0 group/card cursor-pointer flex-col flex`}
-              >
-
-                {/* Screenshot Image Container */}
-                <div className="relative flex-1 w-full overflow-hidden bg-gray-50 block">
-                  <Image src={card.img} alt={card.title} fill className="object-cover object-top" sizes="(max-width: 768px) 325px, 390px" priority={idx < 2} />
-                </div>
+      {/* Marquee */}
+      <div className="relative w-full overflow-hidden group py-2"
+        onTouchStart={(e) => e.currentTarget.querySelector('.marquee-inner').style.animationPlayState = 'paused'}
+        onTouchEnd={(e) => e.currentTarget.querySelector('.marquee-inner').style.animationPlayState = 'running'}
+      >
+        <div className="marquee-inner animate-marquee-left flex gap-4 md:gap-6 px-5 md:px-12 hover:[animation-play-state:paused]">
+          {[...row1Cards, ...row1Cards].map((card, idx) => (
+            <a
+              key={idx}
+              href={card.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/card w-[260px] sm:w-[320px] md:w-[380px] shrink-0 flex flex-col rounded-[22px] overflow-hidden bg-paper border border-line shadow-[0_10px_30px_-18px_rgba(20,18,16,0.35)] transition-transform duration-500 hover:-translate-y-1.5"
+            >
+              <div className="relative w-full h-[330px] sm:h-[420px] md:h-[480px] overflow-hidden bg-cream">
+                <Image src={card.img} alt={`${card.title} Shopify store`} fill className="object-cover object-top transition-transform duration-700 group-hover/card:scale-[1.03]" sizes="(max-width: 768px) 320px, 380px" priority={idx < 2} />
               </div>
-            ))}
-          </div>
+              <div className="flex items-center justify-between gap-3 px-4 py-3.5 border-t border-line">
+                <div className="min-w-0">
+                  <p className="font-display font-semibold text-[15px] leading-tight truncate">{card.title}</p>
+                  <p className="font-mono text-[10px] tracking-[0.1em] uppercase text-muted mt-1 truncate">{card.category}</p>
+                </div>
+                <span className="shrink-0 bg-brand-soft text-brand-text font-mono text-[11px] font-medium px-2.5 py-1 rounded-full">{card.stat}</span>
+              </div>
+            </a>
+          ))}
         </div>
       </div>
     </section>

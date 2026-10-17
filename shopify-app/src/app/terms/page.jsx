@@ -1,65 +1,56 @@
 import Link from 'next/link';
+import LegalLayout from '../../components/LegalLayout';
 
 export const metadata = {
   title: 'Terms & Conditions | scaloMATRIX',
 };
 
+const sections = [
+  {
+    title: 'Agreement to terms',
+    body: <p>By accessing or using scaloMATRIX services, you agree to be bound by these Terms &amp; Conditions. If you do not agree, please do not use our services.</p>,
+  },
+  {
+    title: 'Services',
+    body: <p>scaloMATRIX provides Shopify store design, development, conversion rate optimization (CRO) and related digital services. The scope of each project is defined in its own project agreement or proposal.</p>,
+  },
+  {
+    title: 'Intellectual property',
+    body: <p>All content, designs, code and materials created by scaloMATRIX remain our intellectual property until full payment is received. After complete payment, ownership of the deliverables transfers to the client as set out in the project agreement.</p>,
+  },
+  {
+    title: 'Payment terms',
+    body: <p>Payment terms are specified in each project proposal. Late payments may delay or suspend the project. All fees are <strong>non-refundable</strong> unless stated otherwise in writing.</p>,
+  },
+  {
+    title: 'Client responsibilities',
+    body: <p>Clients are responsible for providing accurate information, timely feedback, and the access to platforms and accounts that the project needs.</p>,
+  },
+  {
+    title: 'Limitation of liability',
+    body: <p>scaloMATRIX is not liable for indirect, incidental or consequential damages arising from the use of our services. Our total liability is limited to the amount paid for the specific service in question.</p>,
+  },
+  {
+    title: 'Termination',
+    body: <p>Either party may end the engagement with written notice, as specified in the project agreement. On termination, the client pays for all work completed up to the termination date.</p>,
+  },
+  {
+    title: 'Governing law',
+    body: <p>These terms are governed by the laws of India. Disputes will be resolved through arbitration under applicable Indian law.</p>,
+  },
+  {
+    title: 'Contact',
+    body: <p>For questions about these terms, reach out through our <Link href="/#contact">contact form</Link>.</p>,
+  },
+];
+
 export default function TermsPage() {
   return (
-    <div className="min-h-screen bg-white text-black font-sans">
-      <div className="max-w-3xl mx-auto px-6 py-20 md:py-28">
-        <Link href="/" className="text-sm text-[#FD5800] font-medium hover:underline mb-8 inline-block">&larr; Back to Home</Link>
-
-        <h1 className="text-4xl md:text-5xl font-black mb-4 tracking-tight">Terms & Conditions</h1>
-        <p className="text-sm text-gray-400 mb-12">Last updated: October 2026</p>
-
-        <div className="space-y-10 text-[15px] leading-relaxed text-gray-700">
-          <section>
-            <h2 className="text-xl font-bold text-black mb-3">1. Agreement to Terms</h2>
-            <p>By accessing or using scaloMATRIX services, you agree to be bound by these Terms & Conditions. If you do not agree, you may not use our services.</p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-black mb-3">2. Services</h2>
-            <p>scaloMATRIX provides Shopify store design, development, conversion rate optimization (CRO), and related digital services. The specific scope of work for each project is defined in individual project agreements or proposals.</p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-black mb-3">3. Intellectual Property</h2>
-            <p>All content, designs, code, and materials created by scaloMATRIX remain our intellectual property until full payment is received. Upon complete payment, ownership of deliverables transfers to the client as specified in the project agreement.</p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-black mb-3">4. Payment Terms</h2>
-            <p>Payment terms are specified in individual project proposals. Late payments may result in project delays or suspension of services. All fees are non-refundable unless otherwise stated in writing.</p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-black mb-3">5. Client Responsibilities</h2>
-            <p>Clients are responsible for providing accurate information, timely feedback, and necessary access to platforms and accounts required for project completion.</p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-black mb-3">6. Limitation of Liability</h2>
-            <p>scaloMATRIX shall not be liable for any indirect, incidental, or consequential damages arising from the use of our services. Our total liability shall not exceed the amount paid for the specific service in question.</p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-black mb-3">7. Termination</h2>
-            <p>Either party may terminate services with written notice as specified in the project agreement. Upon termination, the client is responsible for payment of all work completed up to the termination date.</p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-black mb-3">8. Governing Law</h2>
-            <p>These terms are governed by the laws of India. Any disputes shall be resolved through arbitration in accordance with applicable Indian law.</p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold text-black mb-3">9. Contact</h2>
-            <p>For questions regarding these terms, please reach out to us through our <Link href="/#contact" className="text-[#FD5800] hover:underline">contact page</Link>.</p>
-          </section>
-        </div>
-      </div>
-    </div>
+    <LegalLayout
+      title="Terms & Conditions"
+      current="/terms"
+      intro="The ground rules for working with scaloMATRIX, in plain language."
+      sections={sections}
+    />
   );
 }

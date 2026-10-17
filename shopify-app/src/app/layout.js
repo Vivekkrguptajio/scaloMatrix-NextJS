@@ -1,15 +1,15 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Shopify Development | Scalomatrix",
-  description: "Expert Shopify development and eCommerce solutions.",
+  title: "Shopify Stores That Convert | Scalomatrix",
+  description: "Custom Shopify stores, redesigns and landing pages for D2C brands — built to lift conversion by 20% or more from the same ad spend.",
   keywords: "Shopify development, eCommerce solutions, Shopify plus, online store, custom Shopify theme",
   authors: [{ name: "Scalomatrix" }],
   creator: "Scalomatrix",
   publisher: "Scalomatrix",
   openGraph: {
-    title: "Shopify Development | Scalomatrix",
-    description: "Expert Shopify development and eCommerce solutions.",
+    title: "Shopify Stores That Convert | Scalomatrix",
+    description: "Custom Shopify stores, redesigns and landing pages for D2C brands — built to lift conversion by 20% or more from the same ad spend.",
     url: "https://www.scalomatrix.com/",
     siteName: "Scalomatrix",
     images: [
@@ -25,8 +25,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shopify Development | Scalomatrix",
-    description: "Expert Shopify development and eCommerce solutions.",
+    title: "Shopify Stores That Convert | Scalomatrix",
+    description: "Custom Shopify stores, redesigns and landing pages for D2C brands — built to lift conversion by 20% or more from the same ad spend.",
     images: ["https://www.scalomatrix.com/icon.png"],
   },
   robots: {
@@ -50,13 +50,14 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: "var d=true;try{d=localStorage.getItem('theme')!=='light'}catch(e){}if(d)document.documentElement.setAttribute('data-theme','dark')" }} />
         {/* Preconnect to Google Fonts for faster font loading */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Libre+Caslon+Text:wght@400;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Sora:wght@300;400;500;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
           rel="stylesheet"
         />
       </head>

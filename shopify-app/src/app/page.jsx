@@ -34,24 +34,19 @@ function App() {
       <ScrollToTop />
       <Navbar />
       
-      <main className="relative z-20 bg-white rounded-b-[40px] md:rounded-b-[60px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+      <main className="relative z-20 bg-paper rounded-b-[40px] md:rounded-b-[60px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
         <Hero />
         <HeroVCards />
-        
-        <ScrollReveal variant="scaleUp"><HappyClients /></ScrollReveal>
 
         <ScrollReveal variant="scaleUp"><CaseStudiesGrid /></ScrollReveal>
+        <ScrollReveal variant="scaleUp"><HappyClients /></ScrollReveal>
         <D2CBanner />
         <ScrollReveal><Calculator /></ScrollReveal>
-        <ScrollReveal><AiManifesto /></ScrollReveal>
         <ScrollReveal variant="blur"><CroBrandExercise /></ScrollReveal>
-
-        <ScrollReveal><HiringPhilosophy /></ScrollReveal>
         <ScrollReveal><WhoWeDontWorkWith /></ScrollReveal>
         <ScrollReveal variant="scaleUp"><ServicesAndPricing /></ScrollReveal>
-        {/* <ScrollReveal><TeamMembers /></ScrollReveal> */}
-        <ContactUs />
         <ScrollReveal variant="blur"><ThePromise /></ScrollReveal>
+        <ContactUs />
       </main>
 
       <Contact reveal={true} />

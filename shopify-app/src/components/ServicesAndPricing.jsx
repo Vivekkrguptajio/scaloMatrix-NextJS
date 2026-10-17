@@ -34,6 +34,7 @@ const services = [
     badge: 'Enterprise',
     featured: false,
     isCustom: true,
+    cta: 'Get a quote',
   },
   {
     id: 2,
@@ -52,6 +53,7 @@ const services = [
     ],
     badge: null,
     featured: false,
+    cta: 'Start my store',
   },
   {
     id: 3,
@@ -70,6 +72,7 @@ const services = [
     ],
     badge: 'Popular',
     featured: true,
+    cta: 'Redesign my store',
   },
   {
     id: 4,
@@ -88,6 +91,7 @@ const services = [
     ],
     badge: null,
     featured: false,
+    cta: 'Book free audit',
   },
 ];
 
@@ -103,10 +107,10 @@ const ServiceCard = ({ service }) => {
       variants={cardVariants}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className={`group relative flex flex-col h-full rounded-3xl overflow-hidden transition-all duration-500 ease-out cursor-default ${
+      className={`group relative flex flex-col h-full rounded-[28px] overflow-hidden transition-all duration-500 ease-out cursor-default ${
         service.featured
-          ? 'bg-[#111111] text-white shadow-2xl shadow-orange-500/10 ring-1 ring-[#FD5800]/30 scale-[1.02] md:scale-105'
-          : 'bg-white text-black border border-gray-200 shadow-sm hover:shadow-2xl hover:-translate-y-2'
+          ? 'bg-panel text-white shadow-[0_30px_60px_-30px_rgba(253,88,0,0.5)] ring-1 ring-[#FD5800]/40'
+          : 'bg-cream text-ink border border-line hover:bg-paper hover:shadow-[0_24px_50px_-30px_rgba(20,18,16,0.4)] hover:-translate-y-1.5'
       }`}
     >
       {/* Top accent line */}
@@ -118,22 +122,22 @@ const ServiceCard = ({ service }) => {
       {/* Badge */}
       {service.badge && (
         <div className="absolute top-5 right-5 z-10">
-          <span className="bg-[#FD5800] text-white text-[10px] font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow-lg shadow-orange-500/30">
+          <span className="bg-[#FD5800] text-white text-[10px] font-mono font-medium px-3 py-1.5 rounded-full uppercase tracking-[0.12em]">
             {service.badge}
           </span>
         </div>
       )}
 
-      <div className="p-5 md:p-6 flex flex-col flex-1">
+      <div className="p-6 md:p-7 flex flex-col flex-1">
         {/* Title & Description */}
         <div className="mb-4">
-          <h3 className={`text-lg md:text-xl font-bold mb-1 leading-snug tracking-tight transition-colors duration-300 ${
-            service.featured ? 'text-white' : 'text-black group-hover:text-[#FD5800]'
+          <h3 className={`h-card text-lg md:text-xl mb-2 transition-colors duration-300 ${service.badge ? 'pr-20' : ''} ${
+            service.featured ? 'text-white' : 'text-ink group-hover:text-[#FD5800]'
           }`}>
             {service.title}
           </h3>
-          <p className={`text-sm md:text-[15px] leading-relaxed font-medium ${
-            service.featured ? 'text-white/60' : 'text-gray-500'
+          <p className={`text-[15px] leading-relaxed ${
+            service.featured ? 'text-white/60' : 'text-muted'
           }`}>
             {service.desc}
           </p>
@@ -142,22 +146,24 @@ const ServiceCard = ({ service }) => {
         {/* Price */}
         <div className="mb-4">
           <div className="flex items-baseline gap-2">
-            <span className={`text-2xl md:text-3xl font-black tracking-tight ${
-              service.featured ? 'text-[#FD5800]' : 'text-black'
+            <span className={`font-display font-bold text-2xl md:text-3xl tracking-tight ${
+              service.featured ? 'text-[#FD5800]' : 'text-ink'
             }`}>
               {service.price}
             </span>
-            <span className={`text-sm font-medium ${service.featured ? 'text-white/40' : 'text-gray-400'}`}>
-              onwards
-            </span>
+            {service.price.startsWith('₹') && (
+              <span className={`text-sm font-medium ${service.featured ? 'text-white/40' : 'text-muted'}`}>
+                onwards
+              </span>
+            )}
           </div>
         </div>
 
         {/* Options Selector */}
         {service.hasOptions && (
           <div className="mb-4">
-            <p className={`text-[11px] font-bold tracking-[0.15em] uppercase mb-3 font-mono ${
-              service.featured ? 'text-[#FD5800]' : 'text-[#FD5800]'
+            <p className={`text-[11px] font-medium tracking-[0.15em] uppercase mb-3 font-mono ${
+              service.featured ? 'text-[#FD5800]' : 'text-brand-text'
             }`}>
               Choose option
             </p>
@@ -166,14 +172,14 @@ const ServiceCard = ({ service }) => {
                 <button
                   key={i}
                   onClick={() => setSelectedOption(i)}
-                  className={`text-xs md:text-sm font-semibold px-4 py-2.5 rounded-full transition-all duration-300 border ${
+                  className={`text-xs md:text-[13px] font-semibold px-4 py-2.5 rounded-full transition-all duration-300 border ${
                     selectedOption === i
                       ? service.featured
                         ? 'bg-[#FD5800] text-white border-[#FD5800]'
-                        : 'bg-black text-white border-black'
+                        : 'bg-panel text-white border-ink'
                       : service.featured
                         ? 'bg-transparent text-white/70 border-white/20 hover:border-white/50'
-                        : 'bg-transparent text-gray-600 border-gray-200 hover:border-gray-400'
+                        : 'bg-transparent text-muted border-line hover:border-ink/40'
                   }`}
                 >
                   {opt}
@@ -184,12 +190,12 @@ const ServiceCard = ({ service }) => {
         )}
 
         {/* Divider */}
-        <div className={`w-full h-px mb-4 ${service.featured ? 'bg-white/10' : 'bg-gray-200'}`}></div>
+        <div className={`w-full h-px mb-4 ${service.featured ? 'bg-white/10' : 'bg-line'}`}></div>
 
         {/* What's Included */}
         <div className="flex-1">
-          <p className={`text-[11px] font-bold tracking-[0.15em] uppercase mb-4 font-mono ${
-            service.featured ? 'text-white/50' : 'text-gray-400'
+          <p className={`text-[11px] font-medium tracking-[0.15em] uppercase mb-4 font-mono ${
+            service.featured ? 'text-white/50' : 'text-muted'
           }`}>
             What&apos;s included
           </p>
@@ -197,10 +203,10 @@ const ServiceCard = ({ service }) => {
             {visibleItems.map((item, i) => (
               <li
                 key={i}
-                className={`flex items-start gap-2.5 py-2 border-b border-dashed last:border-b-0 font-medium text-[12px] md:text-[13px] leading-relaxed transition-colors duration-300 ${
+                className={`flex items-start gap-2.5 py-2 border-b border-dashed last:border-b-0 text-[13px] leading-relaxed transition-colors duration-300 ${
                   service.featured
                     ? 'text-white/80 border-white/10 group-hover:text-white'
-                    : 'text-gray-700 border-gray-100 group-hover:text-gray-900'
+                    : 'text-ink/80 border-line group-hover:text-ink'
                 }`}
               >
                 <span
@@ -234,13 +240,13 @@ const ServiceCard = ({ service }) => {
               e.preventDefault();
               document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className={`group/btn w-full flex items-center justify-center gap-2.5 font-bold text-sm md:text-base px-6 py-3.5 rounded-full transition-all duration-300 ${
+            className={`group/btn w-full flex items-center justify-center gap-2.5 font-semibold text-sm md:text-[15px] px-6 py-3.5 rounded-full transition-all duration-300 ${
               service.featured
                 ? 'bg-[#FD5800] text-white border border-[#FD5800] hover:bg-white hover:text-black hover:border-white'
-                : 'bg-black text-white border border-black hover:bg-[#FD5800] hover:border-[#FD5800]'
+                : 'bg-panel text-white border border-ink hover:bg-[#FD5800] hover:border-[#FD5800]'
             }`}
           >
-            Contact Us
+            {service.cta}
             <svg
               className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform duration-300"
               fill="none"
@@ -264,40 +270,36 @@ const ServiceCard = ({ service }) => {
 
 const ServicesAndPricing = () => {
   return (
-    <section id="services" className="w-full py-8 md:py-12 lg:py-14 bg-[#fafafa] font-sans">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 xl:px-16">
+    <section id="services" className="w-full py-16 md:py-24 bg-paper font-sans">
+      <div className="max-w-[1360px] mx-auto px-5 sm:px-8 md:px-12 xl:px-16">
 
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="mb-14"
+          className="mb-10 md:mb-14 flex flex-col lg:flex-row w-full justify-between items-start lg:items-end gap-6"
         >
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-[3px] bg-[#FD5800] rounded-full"></div>
-            <span className="text-[#FD5800] text-xs font-bold tracking-[0.25em] uppercase font-mono">Pricing</span>
-          </div>
-
-          <div className="flex flex-col lg:flex-row w-full justify-between items-start lg:items-end gap-6">
-            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-sans leading-[1.1] tracking-tight text-black lg:w-[60%]">
-              Services and<br /><span className="text-[#FD5800]">pricing.</span>
+          <div className="lg:w-[58%]">
+            <span className="eyebrow mb-4">Services &amp; pricing</span>
+            <h2 className="h-display h-section">
+              Clear scope. <span className="accent">Clear</span> prices.
             </h2>
-            <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-full px-4 py-2 shadow-sm">
-              <span className="text-[11px] font-bold tracking-wider text-gray-400 uppercase">Currency</span>
-              <span className="text-sm font-bold text-black">INR ₹</span>
-            </div>
+          </div>
+          <div className="flex flex-col items-start lg:items-end gap-3 lg:w-[34%]">
+            <p className="lead lg:text-right">Start with a free audit, or go straight to a build.</p>
+            <span className="inline-flex items-center gap-2 bg-cream border border-line rounded-full px-4 py-1.5 font-mono text-[11px] tracking-[0.12em] uppercase text-muted">
+              Prices in <span className="text-ink font-medium">INR ₹</span>
+            </span>
           </div>
         </motion.div>
 
-        {/* Cards Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-4 items-stretch"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch"
         >
           {services.map((service) => (
             <ServiceCard key={service.id} service={service} />

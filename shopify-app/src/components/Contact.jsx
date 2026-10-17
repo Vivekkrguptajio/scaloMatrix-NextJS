@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export default function Contact({ reveal = false }) {
   const footerRef = useRef(null);
@@ -22,7 +23,7 @@ export default function Contact({ reveal = false }) {
     <footer 
       id={reveal ? "contact-footer" : "contact"}
       ref={footerRef}
-      className={`w-full bg-[#0a0a0a] text-white pt-16 md:pt-24 pb-6 md:pb-8 min-h-[70vh] md:min-h-[90vh] flex flex-col justify-between overflow-hidden font-sans ${reveal ? 'fixed bottom-0 left-0 z-0' : 'relative scroll-mt-24'}`}
+      className={`w-full bg-panel text-white pt-16 md:pt-24 pb-6 md:pb-8 min-h-[70vh] md:min-h-[90vh] flex flex-col justify-between overflow-hidden font-sans ${reveal ? 'fixed bottom-0 left-0 z-0' : 'relative scroll-mt-24'}`}
     >
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col items-center h-full w-full flex-grow">
         
@@ -33,7 +34,7 @@ export default function Contact({ reveal = false }) {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="w-full flex flex-col justify-center items-center flex-grow mt-10 md:mt-20"
         >
-          <h2 className="text-[11vw] sm:text-[13vw] md:text-[14.5vw] font-sans font-black tracking-tighter leading-none select-none whitespace-nowrap">
+          <h2 className="text-[11vw] sm:text-[13vw] md:text-[14.5vw] font-display font-extrabold tracking-[-0.05em] leading-none select-none whitespace-nowrap">
             <span className="text-[#FD5800]">scalo</span>
             <span className="text-white">MATRIX</span>
           </h2>
@@ -75,11 +76,11 @@ export default function Contact({ reveal = false }) {
 
           {/* Navigation Links */}
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-white text-xs md:text-sm">
-            <a href="/terms" className="hover:text-gray-400 transition-colors">Terms & Conditions</a>
+            <Link href="/terms" className="hover:text-brand transition-colors">Terms &amp; Conditions</Link>
             <span className="text-white/40">•</span>
-            <a href="/privacy" className="hover:text-gray-400 transition-colors">Privacy Policy</a>
+            <Link href="/privacy" className="hover:text-brand transition-colors">Privacy Policy</Link>
             <span className="text-white/40">•</span>
-            <a href="/legal" className="hover:text-gray-400 transition-colors">Legal & Policies</a>
+            <Link href="/legal" className="hover:text-brand transition-colors">Legal &amp; Policies</Link>
           </div>
 
           {/* Copyright text */}
