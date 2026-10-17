@@ -6,6 +6,7 @@ export default function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false)
   const [isDark, setIsDark] = useState(false)
   const navRef = useRef(null)
+  const [hidden, setHidden] = useState(false)
   const [theme, setTheme] = useState('dark')
 
   useEffect(() => {
@@ -82,6 +83,21 @@ export default function Navbar() {
     };
   }, []);
 
+  // Phone: hide the bar while scrolling down, bring it back on scroll up
+  useEffect(() => {
+    let lastY = window.scrollY
+    const onScroll = () => {
+      const y = window.scrollY
+      const dy = y - lastY
+      if (y < 80) setHidden(false)
+      else if (dy > 6) setHidden(true)
+      else if (dy < -6) setHidden(false)
+      if (Math.abs(dy) > 6) lastY = y
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   const handleMouseMove = useCallback((e) => {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect()
     logoX.set((e.clientX - (left + width / 2)) * 0.2)
@@ -94,7 +110,7 @@ export default function Navbar() {
   }, [logoX, logoY])
 
   return (
-    <header className="fixed left-0 right-0 z-50 flex justify-center transition-[opacity,transform] duration-700 ease-in-out top-4 px-4">
+    <header className={`fixed left-0 right-0 z-50 flex justify-center transition-[opacity,transform] duration-300 ease-out top-4 px-4 ${hidden && !mobileMenu ? '-translate-y-[140%] md:translate-y-0' : 'translate-y-0'}`}>
       <nav
         ref={navRef}
         className={`relative z-10 w-full flex flex-col transition-all duration-300 backdrop-blur-md backdrop-saturate-200 max-w-7xl border rounded-[32px] ${

@@ -10,7 +10,7 @@ const rand = () => GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
 const randRain = () => RAIN[Math.floor(Math.random() * RAIN.length)];
 
 // ~1s "Matrix rain" intro that resolves into the scaloMATRIX logo
-export default function Loader({ duration = 1100 }) {
+export default function Loader({ duration = 900 }) {
   const canvasRef = useRef(null);
   const [phase, setPhase] = useState('on'); // on → out → done
   const [text, setText] = useState(() => '0'.repeat(LOGO.length)); // deterministic: avoids a hydration mismatch
@@ -62,7 +62,7 @@ export default function Loader({ duration = 1100 }) {
     const done = setTimeout(() => {
       setPhase('done');
       root.style.overflow = '';
-    }, (reduce ? 200 : duration) + 500);
+    }, (reduce ? 200 : duration) + 300);
 
     return () => {
       clearInterval(rain);
@@ -79,7 +79,7 @@ export default function Loader({ duration = 1100 }) {
   return (
     <div
       aria-hidden="true"
-      className={`fixed inset-0 z-[10000] bg-[#0E0D0C] flex items-center justify-center transition-opacity duration-500 ${
+      className={`fixed inset-0 z-[10000] bg-[#0E0D0C] flex items-center justify-center transition-opacity duration-300 ${
         phase === 'out' ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >
