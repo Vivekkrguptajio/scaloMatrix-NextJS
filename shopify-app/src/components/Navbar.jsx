@@ -110,6 +110,7 @@ export default function Navbar() {
   }, [logoX, logoY])
 
   return (
+    <>
     <header className={`fixed left-0 right-0 z-50 flex justify-center transition-[opacity,transform] duration-300 ease-out top-4 px-4 ${hidden && !mobileMenu ? '-translate-y-[140%] md:translate-y-0' : 'translate-y-0'}`}>
       <nav
         ref={navRef}
@@ -191,9 +192,12 @@ export default function Navbar() {
 
       </nav>
 
-      {/* Mobile menu — full-screen sheet */}
+    </header>
+
+      {/* Mobile menu — full-screen sheet. Lives OUTSIDE <header>: the header carries a
+          transform (hide-on-scroll), which would turn this fixed layer into a header-sized box. */}
       <div
-        className={`md:hidden fixed inset-0 z-0 bg-paper transition-opacity duration-300 ${
+        className={`md:hidden fixed inset-0 z-40 bg-paper transition-opacity duration-300 ${
           mobileMenu ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         aria-hidden={!mobileMenu}
@@ -259,6 +263,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-    </header>
+    </>
   )
 }
