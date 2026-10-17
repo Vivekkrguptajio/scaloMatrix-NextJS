@@ -29,7 +29,7 @@ function RotatingText() {
   }, [])
 
   return (
-    <span className="accent relative inline-block pr-1">
+    <span className="accent relative block md:inline-block w-fit mx-auto md:mx-0 my-1 md:my-0 pr-1 min-h-[1.15em]">
       <span
         className={`inline-block transition-all duration-400 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3'
