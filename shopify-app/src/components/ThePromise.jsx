@@ -2,8 +2,9 @@
 
 export default function ThePromise() {
   return (
-    <section className="w-full bg-paper px-5 sm:px-8 md:px-12 xl:px-16 pb-16 md:pb-24">
-      <div className="max-w-[1280px] mx-auto relative overflow-hidden bg-gradient-to-br from-brand to-brand-deep text-white rounded-[36px] px-6 sm:px-12 lg:px-20 py-14 md:py-20 flex flex-col items-center text-center font-sans">
+    <section className="w-full bg-paper pb-16 md:pb-24">
+      <div className="container-x">
+      <div className="relative overflow-hidden bg-gradient-to-br from-brand to-brand-deep text-white rounded-[36px] px-6 sm:px-12 lg:px-20 py-14 md:py-20 flex flex-col items-center text-center font-sans">
         {/* Decorative rings */}
         <div className="absolute -top-24 -left-24 w-[280px] h-[280px] md:w-[420px] md:h-[420px] rounded-full border-[44px] md:border-[64px] border-white/[0.08] pointer-events-none" />
         <div className="absolute -bottom-28 -right-20 w-[240px] h-[240px] md:w-[380px] md:h-[380px] rounded-full border-[40px] md:border-[58px] border-black/[0.07] pointer-events-none" />
@@ -32,6 +33,7 @@ export default function ThePromise() {
             Reply within 24 hours · free review if it&apos;s a fit · no pitch on call one
           </p>
         </div>
+      </div>
       </div>
     </section>
   );

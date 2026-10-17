@@ -65,7 +65,7 @@ const HappyClients = () => {
   return (
     <section className="w-full pt-16 md:pt-24 font-sans bg-paper relative z-10">
 
-      <div className="max-w-[1280px] mx-auto px-5 sm:px-8 md:px-12 xl:px-16 mb-10 md:mb-12 w-full">
+      <div className="container-x mb-10 md:mb-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <span className="eyebrow mb-4">What founders say</span>
@@ -81,7 +81,7 @@ const HappyClients = () => {
 
       {/* Testimonials marquee */}
       <AutoMarquee speed={35} className="py-2">
-        <div className="flex gap-4 md:gap-6 px-5 md:px-8 w-max">
+        <div className="flex gap-4 md:gap-6 w-max ps-[max(1.25rem,calc((100vw-1280px)/2))] sm:ps-[max(2rem,calc((100vw-1280px)/2))] pe-5">
           {[...testimonials, ...testimonials].map((client, idx) => (
             <figure key={idx} className="w-[280px] sm:w-[380px] flex flex-col shrink-0 bg-cream rounded-[24px] border border-line p-6 sm:p-8">
               <div className="flex gap-[3px] mb-5" aria-label="5 out of 5 stars">

@@ -52,7 +52,7 @@ export default function ContactUs() {
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(253,88,0,0.1)_0%,transparent_70%)] rounded-full pointer-events-none -translate-y-1/3 translate-x-1/3"></div>
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(253,88,0,0.05)_0%,transparent_70%)] rounded-full pointer-events-none translate-y-1/3 -translate-x-1/3"></div>
 
-      <div className="max-w-[1280px] mx-auto px-5 sm:px-8 md:px-12 xl:px-16 relative z-10 w-full">
+      <div className="container-x relative z-10">
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           

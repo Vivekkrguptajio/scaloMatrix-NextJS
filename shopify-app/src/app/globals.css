@@ -112,6 +112,20 @@ html[data-theme='dark'] {
 }
 .btn-ghost:hover { background: var(--color-ink); color: var(--color-paper); }
 
+/* ═══════ PAGE GUTTERS ═══════
+   One horizontal rhythm for the whole page: content is max 1280px wide with a
+   20px (phone) / 32px (>=640px) gutter. Navbar, cards, text, marquees and footer
+   all use it, so left and right edges line up everywhere. */
+.container-x {
+  width: 100%;
+  max-width: calc(1280px + 4rem);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+@media (min-width: 640px) {
+  .container-x { padding-inline: 2rem; }
+}
+
 /* ═══════ GLOBAL STYLES ═══════ */
 /* Custom cursor only on non-touch desktop devices — applied via JS class on html */
 @media (hover: hover) and (pointer: fine) {

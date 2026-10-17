@@ -42,7 +42,7 @@ const factors = [
 const CroBrandExercise = () => {
   return (
     <section id="cro" className="w-full py-16 md:py-24 bg-paper text-ink font-sans">
-      <div className="max-w-[1280px] mx-auto w-full px-5 sm:px-8 md:px-12 xl:px-16 flex flex-col gap-12 md:gap-16">
+      <div className="container-x flex flex-col gap-12 md:gap-16">
 
         {/* Header */}
         <div className="flex flex-col lg:flex-row w-full justify-between items-start lg:items-end gap-6">
@@ -52,9 +52,6 @@ const CroBrandExercise = () => {
               More sales, from the <span className="accent">right</span> customers.
             </h2>
           </div>
-          <p className="lead lg:w-[34%]">
-            A big jump in orders means little if those buyers return the product or never come back. We improve what really drives sales: who you attract, what you say, and how much shoppers trust you.
-          </p>
         </div>
 
         {/* Re-frame */}

@@ -66,13 +66,13 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="flex flex-col pt-28 md:pt-36 pb-6 md:pb-8 px-5 sm:px-8 md:px-12 lg:px-20 bg-cream relative overflow-hidden"
+      className="flex flex-col pt-28 md:pt-36 pb-6 md:pb-8 bg-cream relative overflow-hidden"
     >
       {/* Soft brand glow */}
       <div className="hidden md:block absolute -top-24 right-[-8%] w-[640px] h-[640px] rounded-full bg-brand/[0.10] blur-3xl pointer-events-none" />
       <div className="hidden md:block absolute bottom-[-12%] left-[-6%] w-[480px] h-[480px] rounded-full bg-shopify/[0.08] blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1400px] mx-auto w-full relative z-10">
+      <div className="container-x relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-10 xl:gap-16">
 
           {/* LEFT — message */}

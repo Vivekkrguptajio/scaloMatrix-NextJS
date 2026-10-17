@@ -31,7 +31,7 @@ export default function Contact({ reveal = false }) {
       ref={footerRef}
       className={`w-full bg-panel text-white pt-12 md:pt-16 pb-6 md:pb-8 flex flex-col justify-between overflow-hidden font-sans ${reveal ? 'fixed bottom-0 left-0 z-0' : 'relative scroll-mt-24'}`}
     >
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col items-center h-full w-full flex-grow">
+      <div className="container-x flex flex-col items-center h-full flex-grow">
         
         {/* Large Typography Logo */}
         <motion.div 
@@ -40,7 +40,7 @@ export default function Contact({ reveal = false }) {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="w-full flex flex-col justify-center items-center flex-grow mt-4 md:mt-8 mb-10 md:mb-14"
         >
-          <h2 className="text-[11vw] sm:text-[13vw] md:text-[14.5vw] font-display font-extrabold tracking-[-0.05em] leading-none select-none whitespace-nowrap">
+          <h2 className="text-[11vw] sm:text-[13vw] md:text-[min(14.5vw,13.5rem)] font-display font-extrabold tracking-[-0.05em] leading-none select-none whitespace-nowrap">
             <span className="text-[#FD5800]">scalo</span>
             <span className="text-white">MATRIX</span>
           </h2>

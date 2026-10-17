@@ -28,7 +28,7 @@ const Item = ({ main, note, dark }) => (
 const WhoWeDontWorkWith = () => {
   return (
     <section className="w-full py-16 md:py-24 font-sans bg-cream">
-      <div className="max-w-[1280px] mx-auto w-full px-5 sm:px-8 md:px-12 xl:px-16">
+      <div className="container-x">
 
         <div className="flex flex-col lg:flex-row w-full justify-between items-start lg:items-end mb-10 md:mb-14 gap-6">
           <div className="lg:w-[58%]">

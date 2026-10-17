@@ -271,7 +271,7 @@ const ServiceCard = ({ service }) => {
 const ServicesAndPricing = () => {
   return (
     <section id="services" className="w-full py-16 md:py-24 bg-paper font-sans">
-      <div className="max-w-[1360px] mx-auto px-5 sm:px-8 md:px-12 xl:px-16">
+      <div className="container-x">
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}

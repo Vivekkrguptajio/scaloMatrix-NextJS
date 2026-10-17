@@ -58,7 +58,7 @@ export default function HeroVCards() {
     <section id="work" className="w-full pt-10 md:pt-14 pb-12 md:pb-16 bg-paper text-ink font-sans overflow-hidden relative z-10">
 
       {/* Header */}
-      <div className="max-w-[1400px] mx-auto px-5 sm:px-8 md:px-12 w-full mb-8 md:mb-10">
+      <div className="container-x mb-8 md:mb-10">
         <div className="flex flex-col md:flex-row justify-between md:items-end gap-6">
           <div>
             <span className="eyebrow mb-4">Our work</span>
@@ -92,7 +92,7 @@ export default function HeroVCards() {
 
       {/* Marquee */}
       <AutoMarquee speed={45} className="py-2">
-        <div className="flex gap-4 md:gap-6 px-5 md:px-12 w-max">
+        <div className="flex gap-4 md:gap-6 w-max ps-[max(1.25rem,calc((100vw-1280px)/2))] sm:ps-[max(2rem,calc((100vw-1280px)/2))] pe-5">
           {[...row1Cards, ...row1Cards].map((card, idx) => (
             <a
               key={idx}

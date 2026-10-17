@@ -111,7 +111,7 @@ export default function Navbar() {
 
   return (
     <>
-    <header className={`fixed left-0 right-0 z-50 flex justify-center transition-[opacity,transform] duration-300 ease-out top-4 px-4 ${hidden && !mobileMenu ? '-translate-y-[140%] md:translate-y-0' : 'translate-y-0'}`}>
+    <header className={`fixed left-0 right-0 z-50 flex justify-center transition-[opacity,transform] duration-300 ease-out top-4 px-5 sm:px-8 ${hidden && !mobileMenu ? '-translate-y-[140%] md:translate-y-0' : 'translate-y-0'}`}>
       <nav
         ref={navRef}
         className={`relative z-10 w-full flex flex-col transition-all duration-300 backdrop-blur-md backdrop-saturate-200 max-w-7xl border rounded-[32px] ${

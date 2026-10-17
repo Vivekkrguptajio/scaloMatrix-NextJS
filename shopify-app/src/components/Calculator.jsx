@@ -35,7 +35,7 @@ const Calculator = () => {
 
   return (
     <section id="math" className="w-full py-16 md:py-24 font-sans bg-cream">
-      <div className="max-w-[1280px] mx-auto flex flex-col px-5 sm:px-8 md:px-12 xl:px-16 w-full">
+      <div className="container-x flex flex-col">
 
         <div className="flex flex-col lg:flex-row w-full justify-between items-start lg:items-end mb-10 md:mb-14 gap-6">
           <div className="lg:w-[58%]">
