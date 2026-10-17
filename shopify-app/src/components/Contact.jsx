@@ -16,7 +16,13 @@ export default function Contact({ reveal = false }) {
     };
     updateHeight();
     window.addEventListener('resize', updateHeight);
-    return () => window.removeEventListener('resize', updateHeight);
+    // fonts/layout can change the footer height after first paint
+    const ro = new ResizeObserver(updateHeight);
+    if (footerRef.current) ro.observe(footerRef.current);
+    return () => {
+      window.removeEventListener('resize', updateHeight);
+      ro.disconnect();
+    };
   }, [reveal]);
 
   const footerContent = (
@@ -84,7 +90,7 @@ export default function Contact({ reveal = false }) {
           </div>
 
           {/* Copyright text */}
-          <div className="text-center lg:text-right text-white/80 leading-relaxed text-xs md:text-sm">
+          <div className="text-center lg:text-right lg:pr-16 text-white/80 leading-relaxed text-xs md:text-sm">
             <p>Proudly created in India.</p>
             <p>All Right Reserved, All Wrong Reversed.</p>
             <p className="mt-2 text-white/50">Powered by <span className="text-white/70 font-semibold">Krafton Enterprises</span></p>
@@ -101,7 +107,7 @@ export default function Contact({ reveal = false }) {
   if (reveal) {
     return (
       <>
-        <div id="footer-spacer" style={{ height: footerHeight ? footerHeight * 0.8 : '100vh' }} className="w-full relative z-0 pointer-events-none" />
+        <div id="footer-spacer" style={{ height: footerHeight || '100vh' }} className="w-full relative z-0 pointer-events-none" />
         {footerContent}
       </>
     );

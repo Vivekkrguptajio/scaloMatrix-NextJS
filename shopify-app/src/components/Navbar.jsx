@@ -7,7 +7,7 @@ export default function Navbar() {
   const [isDark, setIsDark] = useState(false)
   const navRef = useRef(null)
   const [hidden, setHidden] = useState(false)
-  const [theme, setTheme] = useState('dark')
+  const [theme, setTheme] = useState('light')
 
   useEffect(() => {
     setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light')
@@ -18,7 +18,7 @@ export default function Navbar() {
     setTheme(next)
     if (next === 'dark') document.documentElement.setAttribute('data-theme', 'dark')
     else document.documentElement.removeAttribute('data-theme')
-    try { localStorage.setItem('theme-v2', next) } catch (e) {}
+    try { localStorage.setItem('theme-v3', next) } catch (e) {}
   }
 
   const ThemeToggle = (

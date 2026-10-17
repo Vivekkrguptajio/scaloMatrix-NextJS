@@ -179,6 +179,11 @@ a, button, [role="button"], input, select, textarea, label {
   }
 }
 
+/* Dark mode: orange rim along the curved bottom edge of the page, just above the footer */
+html[data-theme='dark'] main {
+  box-shadow: 0 3px 0 0 var(--color-brand), 0 22px 50px -12px rgba(253, 88, 0, 0.35);
+}
+
 /* ═══════ HIDE SCROLLBAR ═══════ */
 ::-webkit-scrollbar {
   display: none;
