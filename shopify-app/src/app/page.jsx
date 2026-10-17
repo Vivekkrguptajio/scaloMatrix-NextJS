@@ -15,7 +15,6 @@ import Loader from '../components/Loader'
 // Dynamic imports for below-the-fold components — reduces initial JS bundle by ~60-70%
 const HappyClients = dynamic(() => import('../components/HappyClients'))
 const CaseStudiesGrid = dynamic(() => import('../components/CaseStudiesGrid'))
-const D2CBanner = dynamic(() => import('../components/D2CBanner'))
 const Calculator = dynamic(() => import('../components/Calculator'))
 const AiManifesto = dynamic(() => import('../components/AiManifesto'))
 const CroBrandExercise = dynamic(() => import('../components/CroBrandExercise'))
@@ -43,7 +42,6 @@ function App() {
 
         <ScrollReveal variant="scaleUp"><CaseStudiesGrid /></ScrollReveal>
         <ScrollReveal variant="scaleUp"><HappyClients /></ScrollReveal>
-        <D2CBanner />
         <ScrollReveal><Calculator /></ScrollReveal>
         <ScrollReveal variant="blur"><CroBrandExercise /></ScrollReveal>
         <ScrollReveal><WhoWeDontWorkWith /></ScrollReveal>
