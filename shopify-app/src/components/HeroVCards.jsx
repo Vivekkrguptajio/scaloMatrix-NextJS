@@ -71,7 +71,7 @@ export default function HeroVCards() {
             <div className="flex -space-x-3">
               {LOGOS.map((src, i) => (
                 <div key={i} className="relative w-10 h-10 rounded-full border-2 border-cream bg-white overflow-hidden">
-                  <Image src={src} alt="Client logo" fill className="object-cover" sizes="40px" />
+                  <Image src={src} alt="" fill className="object-cover" sizes="40px" />
                 </div>
               ))}
             </div>

@@ -2,7 +2,9 @@ import Link from 'next/link';
 import LegalLayout from '../../components/LegalLayout';
 
 export const metadata = {
-  title: 'Terms & Conditions | scaloMATRIX',
+  title: 'Terms & Conditions',
+  description: 'The terms for working with Scalomatrix: services, payments, ownership of deliverables, liability and governing law.',
+  alternates: { canonical: '/terms' },
 };
 
 const sections = [

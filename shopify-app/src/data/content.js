@@ -12,15 +12,3 @@ export const heroData = {
     { value: 98, prefix: '', suffix: '+', label: 'Client satisfaction score' },
   ]
 };
-
-export const faqData = {
-  badge: 'Got Questions?',
-  headline: {
-    text: 'Frequently Asked ',
-    highlight: 'Questions'
-  },
-  description: 'Find answers to common questions here.',
-  faqs: [
-    { q: 'How does it work?', a: 'Update this answer in src/data/content.js' }
-  ]
-};

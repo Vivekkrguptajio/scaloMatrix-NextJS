@@ -2,7 +2,9 @@ import Link from 'next/link';
 import LegalLayout from '../../components/LegalLayout';
 
 export const metadata = {
-  title: 'Privacy Policy | scaloMATRIX',
+  title: 'Privacy Policy',
+  description: 'How Scalomatrix collects, uses and protects your personal information, and the rights you have over it.',
+  alternates: { canonical: '/privacy' },
 };
 
 const sections = [

@@ -9,22 +9,23 @@ import ScrollReveal from '../components/ScrollReveal'
 import CustomCursor from '../components/CustomCursor'
 import ScrollToTop from '../components/ScrollToTop'
 import SmoothScroll from '../components/SmoothScroll'
+import Faq from '../components/Faq'
 import Loader from '../components/Loader'
 
 // Dynamic imports for below-the-fold components — reduces initial JS bundle by ~60-70%
-const HappyClients = dynamic(() => import('../components/HappyClients'), { ssr: false })
-const CaseStudiesGrid = dynamic(() => import('../components/CaseStudiesGrid'), { ssr: false })
-const D2CBanner = dynamic(() => import('../components/D2CBanner'), { ssr: false })
-const Calculator = dynamic(() => import('../components/Calculator'), { ssr: false })
-const AiManifesto = dynamic(() => import('../components/AiManifesto'), { ssr: false })
-const CroBrandExercise = dynamic(() => import('../components/CroBrandExercise'), { ssr: false })
-const HiringPhilosophy = dynamic(() => import('../components/HiringPhilosophy'), { ssr: false })
-const WhoWeDontWorkWith = dynamic(() => import('../components/WhoWeDontWorkWith'), { ssr: false })
-const TeamMembers = dynamic(() => import('../components/TeamMembers'), { ssr: false })
-const ContactUs = dynamic(() => import('../components/ContactUs'), { ssr: false })
-const ThePromise = dynamic(() => import('../components/ThePromise'), { ssr: false })
-const Contact = dynamic(() => import('../components/Contact'), { ssr: false })
-const ServicesAndPricing = dynamic(() => import('../components/ServicesAndPricing'), { ssr: false })
+const HappyClients = dynamic(() => import('../components/HappyClients'))
+const CaseStudiesGrid = dynamic(() => import('../components/CaseStudiesGrid'))
+const D2CBanner = dynamic(() => import('../components/D2CBanner'))
+const Calculator = dynamic(() => import('../components/Calculator'))
+const AiManifesto = dynamic(() => import('../components/AiManifesto'))
+const CroBrandExercise = dynamic(() => import('../components/CroBrandExercise'))
+const HiringPhilosophy = dynamic(() => import('../components/HiringPhilosophy'))
+const WhoWeDontWorkWith = dynamic(() => import('../components/WhoWeDontWorkWith'))
+const TeamMembers = dynamic(() => import('../components/TeamMembers'))
+const ContactUs = dynamic(() => import('../components/ContactUs'))
+const ThePromise = dynamic(() => import('../components/ThePromise'))
+const Contact = dynamic(() => import('../components/Contact'))
+const ServicesAndPricing = dynamic(() => import('../components/ServicesAndPricing'))
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
         <ScrollReveal variant="scaleUp"><ServicesAndPricing /></ScrollReveal>
         <ScrollReveal variant="blur"><ThePromise /></ScrollReveal>
         <ContactUs />
+        <Faq />
       </main>
 
       <Contact reveal={true} />

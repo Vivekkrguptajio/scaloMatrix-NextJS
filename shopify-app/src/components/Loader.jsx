@@ -85,10 +85,10 @@ export default function Loader({ duration = 900 }) {
     >
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-80" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,13,12,0.9)_0%,rgba(14,13,12,0.35)_40%,transparent_70%)]" />
-      <h1 className="relative font-display font-extrabold tracking-[-0.04em] text-[clamp(2.4rem,9vw,5.5rem)] leading-none">
+      <div className="relative font-display font-extrabold tracking-[-0.04em] text-[clamp(2.4rem,9vw,5.5rem)] leading-none">
         <span className="text-brand">{text.slice(0, SPLIT)}</span>
         <span className="text-white">{text.slice(SPLIT)}</span>
-      </h1>
+      </div>
     </div>
   );
 }

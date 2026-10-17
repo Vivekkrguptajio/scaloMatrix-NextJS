@@ -2,7 +2,9 @@ import Link from 'next/link';
 import LegalLayout from '../../components/LegalLayout';
 
 export const metadata = {
-  title: 'Legal & Policies | scaloMATRIX',
+  title: 'Legal & Policies',
+  description: 'Company information, disclaimer, refund policy, confidentiality and dispute resolution for Scalomatrix services.',
+  alternates: { canonical: '/legal' },
 };
 
 const sections = [

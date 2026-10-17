@@ -124,9 +124,7 @@ export default function Navbar() {
         <div className="w-full flex items-center justify-between py-2 px-6 md:px-8">
         {/* Logo */}
         <motion.a 
-          href={process.env.NEXT_PUBLIC_MAIN_SITE_URL || "https://www.scalomatrix.com/"}
-          target="_blank"
-          rel="noopener noreferrer" 
+          href="/"
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           style={{ x: logoX, y: logoY }}
