@@ -255,8 +255,9 @@ export default function Navbar() {
             </a>
 
             <div className="flex flex-col gap-1.5 text-sm">
-              <a href="mailto:scalomatrix@gmail.com" className="text-muted">scalomatrix@gmail.com</a>
+              <a href="mailto:info@krafficgroup.com" className="text-muted">info@krafficgroup.com</a>
               <a href="tel:+919217728977" className="text-muted">+91 92177 28977</a>
+              <a href="https://wa.me/919217728977" target="_blank" rel="noopener noreferrer" className="text-[#25D366] font-medium">WhatsApp us</a>
             </div>
           </div>
         </div>

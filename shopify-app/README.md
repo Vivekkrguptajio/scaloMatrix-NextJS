@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# scaloMATRIX — Shopify landing page
 
-## Getting Started
-
-First, run the development server:
+Marketing site for scaloMATRIX's Shopify store-building service. Live at **https://www.scalomatrix.com**.
+Built with **Next.js (App Router)**, **Tailwind CSS 4** and **Framer Motion**.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build — run this before every push
+npm start        # serve the production build locally
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> `AGENTS.md` / `CLAUDE.md` are notes for AI coding tools; leave them.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Folder map
 
-## Learn More
+```
+shopify-app/
+├─ src/
+│  ├─ app/                    ← pages + site-wide config
+│  │  ├─ layout.js            fonts, <html>, SEO metadata, theme script, JSON-LD
+│  │  ├─ page.jsx             THE HOME PAGE: lists every section in order
+│  │  ├─ globals.css          design tokens (colours, fonts), dark theme, shared classes
+│  │  ├─ terms/ privacy/ legal/   the 3 policy pages (use components/LegalLayout.jsx)
+│  │  ├─ api/contact/route.js     contact form → sends an email (Resend)
+│  │  ├─ sitemap.js · robots.js   generated sitemap.xml / robots.txt
+│  │  ├─ opengraph-image.jsx      the image shown when the link is shared
+│  │  └─ icon.png                 favicon
+│  ├─ components/             ← one file per section / widget (see below)
+│  ├─ data/
+│  │  ├─ content.js           hero text + the 3 hero stats
+│  │  └─ faq.js               FAQ questions & answers (page + Google FAQ schema)
+│  └─ utils/
+│     ├─ site.js              the site's canonical URL (https://www.scalomatrix.com)
+│     └─ cloudinaryLoader.js  serves images straight from Cloudinary, resized
+├─ public/                    static files: icon.png, work/ (store screenshots)
+├─ next.config.mjs            image settings (uses cloudinaryLoader)
+└─ .env.production            NEXT_PUBLIC_SITE_URL
+```
 
-To learn more about Next.js, take a look at the following resources:
+## The home page, top to bottom (`src/app/page.jsx`)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| # | What the visitor sees | File |
+|---|---|---|
+| – | 1-second matrix loading screen | `Loader.jsx` |
+| – | Navbar (+ full-screen mobile menu, dark/light toggle) | `Navbar.jsx` |
+| 1 | Hero: headline, stats, rotating store previews | `Hero.jsx` |
+| 2 | "Our work" — auto-scrolling, swipeable store cards | `HeroVCards.jsx` |
+| 3 | "What founders say" — testimonials + orange results ticker | `HappyClients.jsx` |
+| 4 | "Real stores. Real numbers." — 4 case studies | `CaseStudiesGrid.jsx` |
+| 5 | "Do the math" — ROI calculator | `Calculator.jsx` |
+| 6 | "Our approach" — why conversion work matters | `CroBrandExercise.jsx` |
+| 7 | "Are we a good fit?" | `WhoWeDontWorkWith.jsx` |
+| 8 | "Simple plans. Clear prices." — 4 pricing cards | `ServicesAndPricing.jsx` |
+| 9 | "The promise" orange block | `ThePromise.jsx` |
+| 10 | "Let's build something worth buying" — contact form | `ContactUs.jsx` |
+| 11 | FAQ accordion | `Faq.jsx` |
+| – | Footer with the big logo (revealed as you scroll) | `Contact.jsx` |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Small helpers: `AutoMarquee.jsx` (auto-scroll + swipe), `ScrollReveal.jsx` (fade-in on scroll + progress bar),
+`ScrollToTop.jsx`, `WhatsAppButton.jsx`, `CustomCursor.jsx`, `SmoothScroll.jsx`,
+`JsonLd.jsx` (Google structured data), `LegalLayout.jsx` (policy page frame).
 
-## Deploy on Vercel
+## "I want to change…" cheat sheet
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Change | Edit |
+|---|---|
+| Hero headline / stats | `src/data/content.js` (rotating words, stats) · `Hero.jsx` (layout) |
+| Prices, plans, what's included | `ServicesAndPricing.jsx` (`services` array at the top) |
+| FAQ questions | `src/data/faq.js` |
+| Testimonials / ticker numbers | `HappyClients.jsx` |
+| Case-study numbers & screenshots | `CaseStudiesGrid.jsx` (`allStudies`) · `HeroVCards.jsx` (cards) |
+| Phone, email, WhatsApp number | `ContactUs.jsx`, `Navbar.jsx`, `LegalLayout.jsx`, `Faq.jsx`, `JsonLd.jsx`, `WhatsAppButton.jsx` |
+| Colours, dark mode, fonts | `src/app/globals.css` (`@theme` + `html[data-theme='dark']`) and `layout.js` (Google Fonts link) |
+| Page title / description / share image | `src/app/layout.js`, `opengraph-image.jsx` |
+| Section order | `src/app/page.jsx` |
+| Left/right page padding | `.container-x` in `globals.css` |
+| Policy text | `terms/page.jsx`, `privacy/page.jsx`, `legal/page.jsx` |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Adding a new store to "Our work"
+
+1. Put the full-page screenshot in `public/work/` as a **.webp**, about 800px wide and cropped to the top ~1100px
+   (the card only shows the top; a 10MB PNG will slow the site down).
+2. Add one object at the top of `row1Cards` in `HeroVCards.jsx`:
+   `{ id, img: '/work/<file>.webp', title, url, category, stat }`.
+   `stat` (e.g. `'+30% revenue'`) is optional — leave it out until you have a real, measured number.
+
+## Design system (all in `globals.css`)
+
+- **Colours** are tokens: `brand` (orange), `ink` (text), `muted`, `cream` (page background),
+  `paper` (cards), `panel` (dark blocks), `line` (borders). Dark mode swaps their values — never hard-code hex in components.
+- **Fonts:** Plus Jakarta Sans (headlines) · Inter (body) · JetBrains Mono (small labels).
+- **Helper classes:** `.h-display` / `.h-section` / `.h-card` (headings), `.accent` (orange word),
+  `.eyebrow` (small label), `.lead` (intro text), `.btn-primary` / `.btn-ghost`, `.container-x` (page width + side padding).
+- **Theme:** light by default; the sun/moon button saves the choice in `localStorage` (`theme-v3`).
+
+## Contact form (important)
+
+`ContactUs.jsx` → `POST /api/contact` → Resend email. Needs these **Vercel environment variables**:
+
+- `RESEND_API_KEY` — required.
+- `CONTACT_TO_EMAIL` — where leads are delivered (defaults to a developer address).
+  Until `krafficgroup.com` is verified in Resend, only the Resend account owner's address can receive mail.
+
+## Deploy
+
+Push to `main` → Vercel builds automatically. **Always run `npm run build` first** — a failed build means a failed deploy.

@@ -1,9 +1,8 @@
 "use client";
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 // Apple-style cubic bezier
-const appleEase = [0.25, 0.1, 0.25, 1.0];
 const appleEaseOut = [0.22, 1, 0.36, 1];
 
 // Hook to detect mobile
@@ -82,84 +81,6 @@ const ScrollReveal = ({
         delay: delay / 1000,
       }}
       className={className}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
-// Parallax wrapper
-export const ScrollParallax = ({ children, className = "", speed = 0.15 }) => {
-  const ref = useRef(null);
-  const isMobile = useIsMobile();
-  const mobileSpeed = speed * 0.5;
-  const effectiveSpeed = isMobile ? mobileSpeed : speed;
-  
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  });
-  
-  const y = useTransform(scrollYProgress, [0, 1], [100 * effectiveSpeed, -100 * effectiveSpeed]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.6, 1, 1, 0.6]);
-
-  return (
-    <motion.div
-      ref={ref}
-      style={{ y, opacity }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
-// Text reveal — words animate in one by one
-export const ScrollTextReveal = ({ text, className = "", tag: Tag = "h2" }) => {
-  const words = text.split(' ');
-  const isMobile = useIsMobile();
-  
-  return (
-    <Tag className={className}>
-      {words.map((word, i) => (
-        <motion.span
-          key={i}
-          initial={{ opacity: 0, y: isMobile ? 10 : 20, filter: isMobile ? 'blur(2px)' : 'blur(4px)' }}
-          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          viewport={{ once: true, margin: "-5%" }}
-          transition={{
-            duration: isMobile ? 0.4 : 0.6,
-            ease: appleEase,
-            delay: i * (isMobile ? 0.04 : 0.06),
-          }}
-          style={{ display: 'inline-block', marginRight: '0.3em' }}
-        >
-          {word}
-        </motion.span>
-      ))}
-    </Tag>
-  );
-};
-
-// Section scale reveal
-export const ScrollScaleSection = ({ children, className = "" }) => {
-  const ref = useRef(null);
-  const isMobile = useIsMobile();
-  
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  });
-  
-  const scale = useTransform(scrollYProgress, [0, 0.3], [isMobile ? 0.95 : 0.92, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
-  const borderRadius = useTransform(scrollYProgress, [0, 0.3], [isMobile ? 20 : 40, 0]);
-
-  return (
-    <motion.div
-      ref={ref}
-      style={{ scale, opacity, borderRadius }}
-      className={`overflow-hidden ${className}`}
     >
       {children}
     </motion.div>

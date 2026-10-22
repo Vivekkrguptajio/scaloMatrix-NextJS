@@ -110,7 +110,7 @@ const ServiceCard = ({ service }) => {
       className={`group relative flex flex-col h-full rounded-[28px] overflow-hidden transition-all duration-500 ease-out cursor-default ${
         service.featured
           ? 'bg-panel text-white shadow-[0_30px_60px_-30px_rgba(253,88,0,0.5)] ring-1 ring-[#FD5800]/40'
-          : 'bg-cream text-ink border border-line hover:bg-paper hover:shadow-[0_24px_50px_-30px_rgba(20,18,16,0.4)] hover:-translate-y-1.5'
+          : 'bg-paper text-ink border border-line hover:shadow-[0_24px_50px_-30px_rgba(20,18,16,0.4)] hover:-translate-y-1.5'
       }`}
     >
       {/* Top accent line */}
@@ -270,7 +270,7 @@ const ServiceCard = ({ service }) => {
 
 const ServicesAndPricing = () => {
   return (
-    <section id="services" className="w-full py-16 md:py-24 bg-paper font-sans">
+    <section id="services" className="w-full py-16 md:py-24 bg-cream font-sans">
       <div className="container-x">
 
         <motion.div
@@ -288,7 +288,7 @@ const ServicesAndPricing = () => {
           </div>
           <div className="flex flex-col items-start lg:items-end gap-3 lg:w-[34%]">
             <p className="lead lg:text-right">Pick a plan, or start with a free audit.</p>
-            <span className="inline-flex items-center gap-2 bg-cream border border-line rounded-full px-4 py-1.5 font-mono text-[11px] tracking-[0.12em] uppercase text-muted">
+            <span className="inline-flex items-center gap-2 bg-paper border border-line rounded-full px-4 py-1.5 font-mono text-[11px] tracking-[0.12em] uppercase text-muted">
               Prices in <span className="text-ink font-medium">INR ₹</span>
             </span>
           </div>

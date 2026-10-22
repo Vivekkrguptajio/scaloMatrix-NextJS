@@ -1,5 +1,4 @@
 "use client";
-import React, { useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
@@ -8,6 +7,7 @@ import HeroVCards from '../components/HeroVCards'
 import ScrollReveal from '../components/ScrollReveal'
 import CustomCursor from '../components/CustomCursor'
 import ScrollToTop from '../components/ScrollToTop'
+import WhatsAppButton from '../components/WhatsAppButton'
 import SmoothScroll from '../components/SmoothScroll'
 import Faq from '../components/Faq'
 import Loader from '../components/Loader'
@@ -16,11 +16,8 @@ import Loader from '../components/Loader'
 const HappyClients = dynamic(() => import('../components/HappyClients'))
 const CaseStudiesGrid = dynamic(() => import('../components/CaseStudiesGrid'))
 const Calculator = dynamic(() => import('../components/Calculator'))
-const AiManifesto = dynamic(() => import('../components/AiManifesto'))
 const CroBrandExercise = dynamic(() => import('../components/CroBrandExercise'))
-const HiringPhilosophy = dynamic(() => import('../components/HiringPhilosophy'))
 const WhoWeDontWorkWith = dynamic(() => import('../components/WhoWeDontWorkWith'))
-const TeamMembers = dynamic(() => import('../components/TeamMembers'))
 const ContactUs = dynamic(() => import('../components/ContactUs'))
 const ThePromise = dynamic(() => import('../components/ThePromise'))
 const Contact = dynamic(() => import('../components/Contact'))
@@ -34,14 +31,15 @@ function App() {
       <ScrollProgressBar />
       <CustomCursor />
       <ScrollToTop />
+      <WhatsAppButton />
       <Navbar />
       
-      <main className="relative z-20 bg-paper rounded-b-[40px] md:rounded-b-[60px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+      <main className="relative z-20 bg-cream rounded-b-[40px] md:rounded-b-[60px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
         <Hero />
         <HeroVCards />
 
-        <ScrollReveal variant="scaleUp"><CaseStudiesGrid /></ScrollReveal>
         <ScrollReveal variant="scaleUp"><HappyClients /></ScrollReveal>
+        <ScrollReveal variant="scaleUp"><CaseStudiesGrid /></ScrollReveal>
         <ScrollReveal><Calculator /></ScrollReveal>
         <ScrollReveal variant="blur"><CroBrandExercise /></ScrollReveal>
         <ScrollReveal><WhoWeDontWorkWith /></ScrollReveal>

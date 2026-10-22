@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 const factors = [
   {
@@ -41,7 +41,7 @@ const factors = [
 
 const CroBrandExercise = () => {
   return (
-    <section id="cro" className="w-full py-16 md:py-24 bg-paper text-ink font-sans">
+    <section id="cro" className="w-full py-16 md:py-24 bg-cream text-ink font-sans">
       <div className="container-x flex flex-col gap-12 md:gap-16">
 
         {/* Header */}
@@ -55,7 +55,7 @@ const CroBrandExercise = () => {
         </div>
 
         {/* Re-frame */}
-        <div className="bg-cream rounded-[32px] border border-line p-6 sm:p-10 lg:p-14 grid lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-16 items-center">
+        <div className="bg-paper rounded-[32px] border border-line p-6 sm:p-10 lg:p-14 grid lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-16 items-center">
           <h3 className="h-display text-[clamp(1.4rem,2.6vw,2.1rem)]">
             It&apos;s not about <span className="line-through decoration-2 text-muted/60 font-medium">button colours.</span>{' '}
             It&apos;s about <span className="bg-brand text-white px-2.5 py-0.5 rounded-lg inline-block -rotate-1">who walks in the door.</span>
@@ -68,7 +68,7 @@ const CroBrandExercise = () => {
         {/* Three factors */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {factors.map((f) => (
-            <article key={f.n} className="bg-paper border border-line rounded-[26px] p-6 sm:p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-30px_rgba(20,18,16,0.4)]">
+            <article key={f.n} className="bg-cream border border-line rounded-[26px] p-6 sm:p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-30px_rgba(20,18,16,0.4)]">
               <div className="flex items-center justify-between mb-8">
                 <span className="h-display text-4xl text-brand/25 leading-none">{f.n}</span>
                 <span className="font-mono text-[10px] tracking-[0.14em] uppercase text-muted text-right">{f.tag}<br />{f.meta}</span>

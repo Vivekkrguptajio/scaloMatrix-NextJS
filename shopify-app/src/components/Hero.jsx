@@ -1,7 +1,7 @@
 "use client";
 
 import { FaShopify } from 'react-icons/fa'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { heroData } from '../data/content'
 
@@ -68,9 +68,6 @@ export default function Hero() {
       id="hero"
       className="flex flex-col pt-28 md:pt-36 pb-6 md:pb-8 bg-cream relative overflow-hidden"
     >
-      {/* Soft brand glow */}
-      <div className="hidden md:block absolute -top-24 right-[-8%] w-[640px] h-[640px] rounded-full bg-brand/[0.10] blur-3xl pointer-events-none" />
-      <div className="hidden md:block absolute bottom-[-12%] left-[-6%] w-[480px] h-[480px] rounded-full bg-shopify/[0.08] blur-3xl pointer-events-none" />
 
       <div className="container-x relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-10 xl:gap-16">

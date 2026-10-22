@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 // Endless auto-scrolling strip that the user can also grab and swipe left/right.
 // Children must be ONE flex row whose items are the same set rendered twice
 // (the loop point is measured from the first item of the second copy).
-export default function AutoMarquee({ children, speed = 40, resumeAfter = 1600, className = '' }) {
+export default function AutoMarquee({ children, speed = 40, direction = 'left', resumeAfter = 1600, className = '' }) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ export default function AutoMarquee({ children, speed = 40, resumeAfter = 1600, 
     if (!el) return;
     const inner = el.firstElementChild;
 
-    let pos = el.scrollLeft;
+    const dir = direction === 'right' ? -1 : 1; // moving right = scrollLeft shrinking
     let paused = false;
     let resumeTimer;
     let last = performance.now();
@@ -35,13 +35,18 @@ export default function AutoMarquee({ children, speed = 40, resumeAfter = 1600, 
       }, resumeAfter);
     };
 
+    // a rightward strip has to start at the end of the first copy so there is room to travel back
+    if (dir < 0) el.scrollLeft = period();
+    let pos = el.scrollLeft;
+
     const tick = (now) => {
       const dt = Math.min(now - last, 64);
       last = now;
       const p = period();
       if (!paused) {
-        pos += (speed * dt) / 1000;
+        pos += (dir * speed * dt) / 1000;
         if (pos >= p) pos -= p;
+        if (pos <= 0) pos += p;
         el.scrollLeft = pos;
       } else if (p > 0) {
         // user is dragging — keep the loop seamless in both directions
@@ -71,7 +76,7 @@ export default function AutoMarquee({ children, speed = 40, resumeAfter = 1600, 
       el.removeEventListener('pointerenter', onEnter);
       el.removeEventListener('pointerleave', onLeave);
     };
-  }, [speed, resumeAfter]);
+  }, [speed, resumeAfter, direction]);
 
   return (
     <div ref={ref} className={`w-full overflow-x-auto scrollbar-hide ${className}`}>

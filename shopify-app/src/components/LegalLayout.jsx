@@ -69,7 +69,7 @@ export default function LegalLayout({ title, intro, current, sections }) {
               <p className="text-sm text-muted">We reply within 24 hours.</p>
             </div>
             <div className="flex flex-col gap-1 text-sm font-medium">
-              <a href="mailto:scalomatrix@gmail.com" className="hover:text-brand">scalomatrix@gmail.com</a>
+              <a href="mailto:info@krafficgroup.com" className="hover:text-brand">info@krafficgroup.com</a>
               <a href="tel:+919217728977" className="hover:text-brand">+91 92177 28977</a>
             </div>
           </div>

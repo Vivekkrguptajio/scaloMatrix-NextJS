@@ -1,6 +1,8 @@
 "use client";
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { FaWhatsapp } from 'react-icons/fa';
+import { whatsappUrl } from './WhatsAppButton';
 
 
 
@@ -43,10 +45,10 @@ export default function ContactUs() {
     }
   };
 
-  const inputClasses = "w-full bg-cream border border-line px-5 py-4 text-ink placeholder:text-muted/70 focus:outline-none focus:border-[#FD5800] focus:bg-paper transition-colors rounded-2xl";
+  const inputClasses = "w-full bg-paper border border-line px-5 py-4 text-ink placeholder:text-muted/70 focus:outline-none focus:border-[#FD5800] focus:bg-paper transition-colors rounded-2xl";
 
   return (
-    <section id="contact" className="relative w-full py-16 md:py-24 bg-paper font-sans overflow-hidden">
+    <section id="contact" className="relative w-full py-16 md:py-24 bg-cream font-sans overflow-hidden">
       
       {/* ─── Background Ambient Waves ─── */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(253,88,0,0.1)_0%,transparent_70%)] rounded-full pointer-events-none -translate-y-1/3 translate-x-1/3"></div>
@@ -88,20 +90,20 @@ export default function ContactUs() {
             >
               {/* Contact Item */}
               <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-cream border border-line flex items-center justify-center text-ink group-hover:bg-[#FD5800] group-hover:text-white transition-colors duration-300">
+                <div className="w-12 h-12 rounded-full bg-paper border border-line flex items-center justify-center text-ink group-hover:bg-[#FD5800] group-hover:text-white transition-colors duration-300">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
                   <p className="font-mono text-[11px] text-muted uppercase tracking-[0.14em] mb-1">Email Us</p>
-                  <a href="mailto:scalomatrix@gmail.com" className="text-lg font-semibold text-ink hover:text-[#FD5800] transition-colors">scalomatrix@gmail.com</a>
+                  <a href="mailto:info@krafficgroup.com" className="text-lg font-semibold text-ink hover:text-[#FD5800] transition-colors">info@krafficgroup.com</a>
                 </div>
               </div>
 
               {/* Contact Item */}
               <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-cream border border-line flex items-center justify-center text-ink group-hover:bg-[#FD5800] group-hover:text-white transition-colors duration-300">
+                <div className="w-12 h-12 rounded-full bg-paper border border-line flex items-center justify-center text-ink group-hover:bg-[#FD5800] group-hover:text-white transition-colors duration-300">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
@@ -109,6 +111,17 @@ export default function ContactUs() {
                 <div>
                   <p className="font-mono text-[11px] text-muted uppercase tracking-[0.14em] mb-1">Call Us</p>
                   <a href="tel:+919217728977" className="text-lg font-semibold text-ink hover:text-[#FD5800] transition-colors">+91 92177 28977</a>
+                </div>
+              </div>
+
+              {/* Contact Item */}
+              <div className="flex items-center gap-4 group">
+                <div className="w-12 h-12 rounded-full bg-paper border border-line flex items-center justify-center text-ink group-hover:bg-[#25D366] group-hover:border-[#25D366] group-hover:text-white transition-colors duration-300">
+                  <FaWhatsapp className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="font-mono text-[11px] text-muted uppercase tracking-[0.14em] mb-1">WhatsApp</p>
+                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-lg font-semibold text-ink hover:text-[#25D366] transition-colors">Chat with us</a>
                 </div>
               </div>
             </motion.div>
@@ -222,7 +235,10 @@ export default function ContactUs() {
                   )}
                 </button>
                 {status === 'error' && (
-                  <p className="mt-4 text-red-500 font-medium">Something went wrong. Please try again.</p>
+                  <p className="mt-4 text-red-500 font-medium">
+                    Sorry, your message didn&apos;t go through. Please email us at{' '}
+                    <a href="mailto:info@krafficgroup.com" className="underline">info@krafficgroup.com</a> or message us on WhatsApp.
+                  </p>
                 )}
               </motion.div>
               

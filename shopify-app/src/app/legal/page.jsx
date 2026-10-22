@@ -10,7 +10,7 @@ export const metadata = {
 const sections = [
   {
     title: 'Company information',
-    body: <p>scaloMATRIX is a Shopify design and CRO agency operated under Krafton Enterprises. We build high-converting Shopify stores and optimize existing ones for more revenue.</p>,
+    body: <p>scaloMATRIX is a Shopify design and CRO agency operated under Kraffic Enterprises. We build high-converting Shopify stores and optimize existing ones for more revenue.</p>,
   },
   {
     title: 'Disclaimer',

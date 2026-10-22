@@ -16,8 +16,8 @@ export default function Faq() {
           </h2>
           <p className="lead max-w-sm">
             Still unsure? Send us a message above or email{' '}
-            <a href="mailto:scalomatrix@gmail.com" className="text-ink font-semibold hover:text-brand">
-              scalomatrix@gmail.com
+            <a href="mailto:info@krafficgroup.com" className="text-ink font-semibold hover:text-brand">
+              info@krafficgroup.com
             </a>
             .
           </p>

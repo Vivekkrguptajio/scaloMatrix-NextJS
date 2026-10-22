@@ -12,6 +12,27 @@ const LOGOS = [
 
 export default function HeroVCards() {
   const row1Cards = [
+    {
+      id: 'wayora-home',
+      img: '/work/wayora-home.webp',
+      title: 'Wayora',
+      url: 'https://www.wayoranatural.com',
+      category: 'Food & Spices · Homepage',
+    },
+    {
+      id: 'veeyuu-home',
+      img: '/work/veeyuu-home.webp',
+      title: 'Veeyuu',
+      url: 'https://veeyuu.com',
+      category: 'Women\'s Ethnic Wear · Homepage',
+    },
+    {
+      id: 'fett-home',
+      img: '/work/house-of-fett-home.webp',
+      title: 'House of Fett',
+      url: 'https://www.houseoffett.com',
+      category: 'Women\'s Fashion · Homepage',
+    },
     { 
       id: 1, 
       img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509488/shopify-app/photsWork/Nada.webp', 
@@ -55,7 +76,7 @@ export default function HeroVCards() {
   ];
 
   return (
-    <section id="work" className="w-full pt-10 md:pt-14 pb-12 md:pb-16 bg-paper text-ink font-sans overflow-hidden relative z-10">
+    <section id="work" className="w-full pt-10 md:pt-14 pb-12 md:pb-16 bg-cream text-ink font-sans overflow-hidden relative z-10">
 
       {/* Header */}
       <div className="container-x mb-8 md:mb-10">
@@ -67,10 +88,10 @@ export default function HeroVCards() {
             </h2>
           </div>
 
-          <div className="flex items-center gap-4 bg-cream p-3.5 pr-6 rounded-2xl border border-line self-start md:self-auto">
+          <div className="flex items-center gap-4 bg-paper p-3.5 pr-6 rounded-2xl border border-line self-start md:self-auto">
             <div className="flex -space-x-3">
               {LOGOS.map((src, i) => (
-                <div key={i} className="relative w-10 h-10 rounded-full border-2 border-cream bg-white overflow-hidden">
+                <div key={i} className="relative w-10 h-10 rounded-full border-2 border-paper bg-white overflow-hidden">
                   <Image src={src} alt="" fill className="object-cover" sizes="40px" />
                 </div>
               ))}
@@ -91,14 +112,14 @@ export default function HeroVCards() {
       </div>
 
       {/* Marquee */}
-      <AutoMarquee speed={45} className="py-2">
+      <AutoMarquee speed={45} direction="right" className="py-2">
         <div className="flex gap-4 md:gap-6 w-max ps-[max(1.25rem,calc((100vw-1280px)/2))] sm:ps-[max(2rem,calc((100vw-1280px)/2))] pe-5">
-          {[...row1Cards, ...row1Cards].map((card, idx) => (
-            <a
+          {[...row1Cards, ...row1Cards].map((card, idx) => {
+            const Card = card.url ? 'a' : 'div'
+            return (
+            <Card
               key={idx}
-              href={card.url}
-              target="_blank"
-              rel="noopener noreferrer"
+              {...(card.url ? { href: card.url, target: '_blank', rel: 'noopener noreferrer' } : {})}
               className="group/card w-[260px] sm:w-[320px] md:w-[380px] shrink-0 flex flex-col rounded-[22px] overflow-hidden bg-paper border border-line shadow-[0_10px_30px_-18px_rgba(20,18,16,0.35)] transition-transform duration-500 hover:-translate-y-1.5"
             >
               <div className="relative w-full h-[330px] sm:h-[420px] md:h-[480px] overflow-hidden bg-cream">
@@ -109,10 +130,11 @@ export default function HeroVCards() {
                   <p className="font-display font-semibold text-[15px] leading-tight truncate">{card.title}</p>
                   <p className="font-mono text-[10px] tracking-[0.1em] uppercase text-muted mt-1 truncate">{card.category}</p>
                 </div>
-                <span className="shrink-0 bg-brand-soft text-brand-text font-mono text-[11px] font-medium px-2.5 py-1 rounded-full">{card.stat}</span>
+                {card.stat && <span className="shrink-0 bg-brand-soft text-brand-text font-mono text-[11px] font-medium px-2.5 py-1 rounded-full">{card.stat}</span>}
               </div>
-            </a>
-          ))}
+            </Card>
+            )
+          })}
         </div>
       </AutoMarquee>
     </section>

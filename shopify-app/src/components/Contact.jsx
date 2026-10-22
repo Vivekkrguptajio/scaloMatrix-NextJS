@@ -2,6 +2,8 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { FaWhatsapp } from 'react-icons/fa';
+import { whatsappUrl } from './WhatsAppButton';
 
 export default function Contact({ reveal = false }) {
   const footerRef = useRef(null);
@@ -56,6 +58,9 @@ export default function Contact({ reveal = false }) {
           
           {/* Social Icons */}
           <div className="flex items-center gap-6">
+            <a href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="hover:text-[#25D366] transition-colors">
+              <FaWhatsapp className="w-6 h-6" />
+            </a>
             <a href="#" target="_blank" rel="noreferrer" className="hover:text-gray-400 transition-colors">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
@@ -93,7 +98,7 @@ export default function Contact({ reveal = false }) {
           <div className="text-center lg:text-right lg:pr-16 text-white/80 leading-relaxed text-xs md:text-sm">
             <p>Proudly created in India.</p>
             <p>All Right Reserved, All Wrong Reversed.</p>
-            <p className="mt-2 text-white/50">Powered by <span className="text-white/70 font-semibold">Krafton Enterprises</span></p>
+            <p className="mt-2 text-white/50">Powered by <span className="text-white/70 font-semibold">Kraffic Enterprises</span></p>
           </div>
 
         </div>

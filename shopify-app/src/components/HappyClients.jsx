@@ -63,7 +63,7 @@ const HappyClients = () => {
   ];
 
   return (
-    <section className="w-full pt-16 md:pt-24 font-sans bg-paper relative z-10">
+    <section className="w-full pt-16 md:pt-24 font-sans bg-cream relative z-10">
 
       <div className="container-x mb-10 md:mb-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -83,7 +83,7 @@ const HappyClients = () => {
       <AutoMarquee speed={35} className="py-2">
         <div className="flex gap-4 md:gap-6 w-max ps-[max(1.25rem,calc((100vw-1280px)/2))] sm:ps-[max(2rem,calc((100vw-1280px)/2))] pe-5">
           {[...testimonials, ...testimonials].map((client, idx) => (
-            <figure key={idx} className="w-[280px] sm:w-[380px] flex flex-col shrink-0 bg-cream rounded-[24px] border border-line p-6 sm:p-8">
+            <figure key={idx} className="w-[280px] sm:w-[380px] flex flex-col shrink-0 bg-paper rounded-[24px] border border-line p-6 sm:p-8">
               <div className="flex gap-[3px] mb-5" aria-label="5 out of 5 stars">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <svg key={star} width="16" height="16" viewBox="0 0 24 24" fill="#FD5800" aria-hidden="true">

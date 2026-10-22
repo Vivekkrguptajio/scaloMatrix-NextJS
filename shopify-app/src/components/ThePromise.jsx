@@ -2,7 +2,7 @@
 
 export default function ThePromise() {
   return (
-    <section className="w-full bg-paper pb-16 md:pb-24">
+    <section className="w-full bg-cream pb-16 md:pb-24">
       <div className="container-x">
       <div className="relative overflow-hidden bg-gradient-to-br from-brand to-brand-deep text-white rounded-[36px] px-6 sm:px-12 lg:px-20 py-14 md:py-20 flex flex-col items-center text-center font-sans">
         {/* Decorative rings */}
