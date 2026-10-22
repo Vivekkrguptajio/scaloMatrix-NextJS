@@ -76,7 +76,7 @@ const PhoneCaseStudies = ({ studies, StudyCard }) => {
     return () => clearInterval(t);
   }, [paused, n]);
 
-  const btn = 'w-9 h-9 rounded-full border border-line flex items-center justify-center text-ink active:bg-brand active:text-white active:border-brand transition-colors';
+  const btn = 'w-11 h-11 rounded-full border border-line flex items-center justify-center text-ink active:bg-brand active:text-white active:border-brand transition-colors';
 
   return (
     <div className="rounded-[28px] bg-paper border border-line overflow-hidden">
@@ -88,45 +88,45 @@ const PhoneCaseStudies = ({ studies, StudyCard }) => {
         role="region"
         aria-label="Case studies"
         tabIndex={0}
-        className="relative h-[390px] sm:h-[440px] overflow-y-auto snap-y snap-mandatory scrollbar-hide"
+        className="relative h-[470px] sm:h-[520px] overflow-y-auto snap-y snap-mandatory scrollbar-hide"
       >
         {studies.map((study, i) => (
           <div
             key={study.id}
             ref={(el) => { slides.current[i] = el; }}
-            className="snap-start h-[330px] sm:h-[380px] px-4 pt-4 pb-5 border-b border-line"
+            className="snap-start h-[400px] sm:h-[450px] px-4 pt-4 pb-6 border-b border-line"
           >
             <StudyCard study={study} flat />
           </div>
         ))}
-        <div className="h-[60px] shrink-0" aria-hidden="true" />
+        <div className="h-[70px] shrink-0" aria-hidden="true" />
       </div>
 
       {/* controls: buttons on the left so the floating WhatsApp / scroll-to-top buttons never cover them */}
-      <div className="flex items-center justify-between gap-3 px-4 py-3 border-t border-line bg-cream/60">
+      <div className="flex items-center justify-between gap-3 px-4 py-3.5 border-t border-line bg-cream/60">
         <div className="flex items-center gap-2">
           <button type="button" aria-label="Previous case study" className={btn} onClick={() => { poke(); goTo(index - 1); }}>
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" /></svg>
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" /></svg>
           </button>
           <button type="button" aria-label="Next case study" className={btn} onClick={() => { poke(); goTo(index + 1); }}>
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
           </button>
           <button type="button" aria-label={paused ? 'Play' : 'Pause'} className={btn} onClick={() => setPaused((p) => !p)}>
             {paused ? (
-              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
             ) : (
-              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z" /></svg>
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z" /></svg>
             )}
           </button>
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5" aria-hidden="true">
+          <div className="hidden sm:flex items-center gap-1.5" aria-hidden="true">
             {studies.map((s, i) => (
               <span key={s.id} className={`h-1.5 rounded-full transition-all duration-300 ${i === index ? 'w-5 bg-brand' : 'w-1.5 bg-ink/20'}`} />
             ))}
           </div>
-          <span className="font-mono text-xs tracking-[0.1em] text-muted tabular-nums whitespace-nowrap">
+          <span className="font-mono tracking-[0.1em] text-muted tabular-nums whitespace-nowrap text-sm">
             <span className="text-ink font-medium">{String(index + 1).padStart(2, '0')}</span> / {String(n).padStart(2, '0')}
           </span>
         </div>
@@ -209,25 +209,25 @@ const CaseStudiesGrid = () => {
     <article className={flat
       ? 'w-full flex flex-col'
       : 'w-[300px] sm:w-[440px] lg:w-[520px] shrink-0 bg-paper border border-line rounded-[28px] p-4 sm:p-5 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(20,18,16,0.4)]'}>
-      <div className="bg-cream rounded-2xl p-2 sm:p-3 mb-5 w-full h-[220px] sm:h-[270px] lg:h-[300px] flex items-end justify-center relative overflow-hidden">
+      <div className={`bg-cream rounded-2xl p-2 sm:p-3 mb-5 w-full flex items-end justify-center relative overflow-hidden ${flat ? 'h-[270px] sm:h-[320px]' : 'h-[220px] sm:h-[270px] lg:h-[300px]'}`}>
         {study.mockup}
       </div>
       <div className="flex items-end justify-between gap-4 px-1 mt-auto">
-        <div className="shrink-0 bg-white rounded-lg px-2 py-1">{study.badge}</div>
+        <div className={`shrink-0 bg-white rounded-lg px-2 py-1 `}>{study.badge}</div>
         {study.aov && study.rev && (
-        <div className="flex items-center gap-4 sm:gap-6">
+        <div className={`flex items-center ${flat ? 'gap-3.5' : 'gap-4 sm:gap-6'}`}>
           <div className="flex flex-col items-end">
-            <div className="h-display text-xl sm:text-2xl text-brand leading-none mb-1.5">
+            <div className={`h-display text-brand leading-none mb-1.5 ${flat ? 'text-[1.6rem] sm:text-3xl' : 'text-xl sm:text-2xl'}`}>
               <AnimatedCounter target={parseInt(study.aov)} prefix="+" suffix="%" />
             </div>
-            <div className="font-mono text-[10px] text-muted uppercase tracking-[0.14em]">Avg. order</div>
+            <div className={`font-mono text-muted uppercase tracking-[0.14em] ${flat ? 'text-[10.5px] whitespace-nowrap' : 'text-[10px]'}`}>Avg. order</div>
           </div>
-          <div className="w-px h-9 bg-line" />
+          <div className={`w-px bg-line ${flat ? 'h-10' : 'h-9'}`} />
           <div className="flex flex-col items-end">
-            <div className="h-display text-xl sm:text-2xl text-brand leading-none mb-1.5">
+            <div className={`h-display text-brand leading-none mb-1.5 ${flat ? 'text-[1.6rem] sm:text-3xl' : 'text-xl sm:text-2xl'}`}>
               <AnimatedCounter target={parseInt(study.rev)} prefix="+" suffix="%" />
             </div>
-            <div className="font-mono text-[10px] text-muted uppercase tracking-[0.14em]">Revenue</div>
+            <div className={`font-mono text-muted uppercase tracking-[0.14em] ${flat ? 'text-[10.5px] whitespace-nowrap' : 'text-[10px]'}`}>Revenue</div>
           </div>
         </div>
         )}
