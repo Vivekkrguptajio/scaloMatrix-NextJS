@@ -72,6 +72,7 @@ Small helpers: `AutoMarquee.jsx` (auto-scroll + swipe), `ScrollReveal.jsx` (fade
 | FAQ questions | `src/data/faq.js` |
 | Testimonials / ticker numbers | `HappyClients.jsx` |
 | Case-study numbers & screenshots | `CaseStudiesGrid.jsx` (`allStudies`) · `HeroVCards.jsx` (cards) |
+| Social links (Instagram, YouTube) | `Contact.jsx` (footer icons) and `JsonLd.jsx` (`sameAs`) |
 | Phone, email, WhatsApp number | `ContactUs.jsx`, `Navbar.jsx`, `LegalLayout.jsx`, `Faq.jsx`, `JsonLd.jsx`, `WhatsAppButton.jsx` |
 | Colours, dark mode, fonts | `src/app/globals.css` (`@theme` + `html[data-theme='dark']`) and `layout.js` (Google Fonts link) |
 | Page title / description / share image | `src/app/layout.js`, `opengraph-image.jsx` |

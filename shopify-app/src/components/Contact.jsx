@@ -61,26 +61,16 @@ export default function Contact({ reveal = false }) {
             <a href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="hover:text-[#25D366] transition-colors">
               <FaWhatsapp className="w-6 h-6" />
             </a>
-            <a href="#" target="_blank" rel="noreferrer" className="hover:text-gray-400 transition-colors">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
-              </svg>
-            </a>
-            <a href="#" target="_blank" rel="noreferrer" className="hover:text-gray-400 transition-colors">
+            <a href="https://www.instagram.com/scalomatrix/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-brand transition-colors">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
               </svg>
             </a>
-            <a href="#" target="_blank" rel="noreferrer" className="hover:text-gray-400 transition-colors">
+            <a href="https://www.youtube.com/@scalomatrix" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-brand transition-colors">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path d="M21.582 6.186a2.63 2.63 0 0 0-1.854-1.854C18.09 4 12 4 12 4s-6.09 0-7.728.332A2.63 2.63 0 0 0 2.418 6.186C2.086 7.824 2 12 2 12s.086 4.176.418 5.814a2.63 2.63 0 0 0 1.854 1.854C5.91 20 12 20 12 20s6.09 0 7.728-.332a2.63 2.63 0 0 0 1.854-1.854C21.914 16.176 22 12 22 12s-.086-4.176-.418-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-              </svg>
-            </a>
-            <a href="#" target="_blank" rel="noreferrer" className="hover:text-gray-400 transition-colors">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
               </svg>
             </a>
           </div>

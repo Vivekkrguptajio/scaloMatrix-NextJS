@@ -44,6 +44,7 @@ const graph = {
       telephone: '+91-92177-28977',
       areaServed: { '@type': 'Country', name: 'India' },
       parentOrganization: { '@type': 'Organization', name: 'Kraffic Enterprises' },
+      sameAs: ['https://www.instagram.com/scalomatrix/', 'https://www.youtube.com/@scalomatrix'],
       knowsAbout: ['Shopify', 'Conversion rate optimization', 'D2C ecommerce', 'Landing page design'],
       contactPoint: {
         '@type': 'ContactPoint',
