@@ -144,12 +144,6 @@ const CaseStudiesGrid = () => {
       link: 'https://www.wayoranatural.com'
     },
     {
-      id: 'house-of-fett',
-      mockup: <DesktopMobileMockup src="/work/house-of-fett-desktop.webp" mobileSrc="/work/house-of-fett-mobile.webp" alt="House of Fett" />,
-      badge: <span className="font-display font-extrabold text-lg md:text-xl tracking-tight text-[#141210] whitespace-nowrap">HOUSE OF FETT</span>,
-      link: 'https://www.houseoffett.com'
-    },
-    {
       id: 'veeyuu',
       mockup: <DesktopMobileMockup src="/work/veeyuu-desktop.webp" mobileSrc="/work/veeyuu-mobile.webp" alt="Veeyuu" />,
       badge: <span className="font-display font-extrabold text-lg md:text-xl tracking-tight text-[#141210]">VEEYUU</span>,

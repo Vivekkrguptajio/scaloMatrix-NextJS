@@ -26,13 +26,6 @@ export default function HeroVCards() {
       url: 'https://veeyuu.com',
       category: 'Women\'s Ethnic Wear · Homepage',
     },
-    {
-      id: 'fett-home',
-      img: '/work/house-of-fett-home.webp',
-      title: 'House of Fett',
-      url: 'https://www.houseoffett.com',
-      category: 'Women\'s Fashion · Homepage',
-    },
     { 
       id: 1, 
       img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509488/shopify-app/photsWork/Nada.webp', 
