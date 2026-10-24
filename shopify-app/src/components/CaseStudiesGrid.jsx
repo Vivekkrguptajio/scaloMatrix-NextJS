@@ -230,7 +230,7 @@ const CaseStudiesGrid = () => {
   );
 
   return (
-    <section id="case-studies" className="w-full py-16 md:py-24 bg-cream font-sans">
+    <section id="case-studies" className="w-full py-16 md:py-24 bg-cream font-sans scroll-mt-16">
       <div className="container-x flex flex-col">
 
         {/* Header */}

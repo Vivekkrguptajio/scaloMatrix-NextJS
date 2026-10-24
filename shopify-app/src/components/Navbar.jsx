@@ -38,8 +38,10 @@ export default function Navbar() {
   const logoY = useMotionValue(0)
 
   const navLinks = [
-    { name: 'Work', href: '#work' },
-    { name: 'Our approach', href: '#cro' },
+    { name: 'Work', href: '#case-studies' },   // "Real stores. Real numbers."
+    { name: 'Why CRO', href: '#why-cro' },
+    { name: 'Our approach', href: '#approach' },
+    { name: 'Brand', href: '#brand' },
     { name: 'Pricing', href: '#services' },
   ]
 
@@ -111,7 +113,7 @@ export default function Navbar() {
 
   return (
     <>
-    <header className={`fixed left-0 right-0 z-50 flex justify-center transition-[opacity,transform] duration-300 ease-out top-4 px-5 sm:px-8 ${hidden && !mobileMenu ? '-translate-y-[140%] md:translate-y-0' : 'translate-y-0'}`}>
+    <header className={`fixed left-0 right-0 z-50 flex justify-center transition-[opacity,transform] duration-300 ease-out top-4 px-5 sm:px-8 ${hidden && !mobileMenu ? '-translate-y-[140%] lg:translate-y-0' : 'translate-y-0'}`}>
       <nav
         ref={navRef}
         className={`relative z-10 w-full flex flex-col transition-all duration-300 backdrop-blur-md backdrop-saturate-200 max-w-7xl border rounded-[32px] ${
@@ -137,7 +139,7 @@ export default function Navbar() {
         </motion.a>
         
         {/* Desktop Nav Links (Centered perfectly) */}
-        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-1 lg:gap-2 h-full">
+        <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-0.5 h-full">
           {navLinks.map((link) => (
             <div key={link.name} className="relative h-full flex items-center">
               <a 
@@ -148,7 +150,7 @@ export default function Navbar() {
                     document.getElementById(link.href.substring(1))?.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className={`flex items-center gap-1.5 text-[14px] lg:text-[15px] font-medium font-sans transition-colors duration-300 ease-out relative px-4 py-2 rounded-full ${
+                className={`flex items-center gap-1.5 text-[14px] lg:text-[15px] font-medium font-sans transition-colors duration-300 ease-out relative px-3 py-2 rounded-full ${
                   isDark ? 'text-gray-300 hover:bg-[#FD5800]/10 hover:text-[#FD5800]' : 'text-ink/80 hover:bg-[#FD5800]/10 hover:text-[#FD5800]'
                 }`}
               >
@@ -159,7 +161,7 @@ export default function Navbar() {
         </div>
 
         {/* Contact Button (Right Side) */}
-        <div className="hidden md:flex items-center gap-3 z-10">
+        <div className="hidden lg:flex items-center gap-3 z-10">
           {ThemeToggle}
           <a 
             href="#contact" 
@@ -173,7 +175,7 @@ export default function Navbar() {
         </div>
         
         {/* Mobile: theme + menu */}
-        <div className="md:hidden flex items-center gap-1 z-20">
+        <div className="lg:hidden flex items-center gap-1 z-20">
         {ThemeToggle}
         {/* Mobile menu button */}
         <button 
@@ -195,7 +197,7 @@ export default function Navbar() {
       {/* Mobile menu — full-screen sheet. Lives OUTSIDE <header>: the header carries a
           transform (hide-on-scroll), which would turn this fixed layer into a header-sized box. */}
       <div
-        className={`md:hidden fixed inset-0 z-40 bg-paper transition-opacity duration-300 ${
+        className={`lg:hidden fixed inset-0 z-40 bg-paper transition-opacity duration-300 ${
           mobileMenu ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         aria-hidden={!mobileMenu}

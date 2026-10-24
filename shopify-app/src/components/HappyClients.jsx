@@ -11,7 +11,7 @@ const HappyClients = () => {
           <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png" alt="Nutraphyll" fill className="object-contain" sizes="96px" />
         </div>
       ),
-      text: "One of the pages we have made with TLPC team has resulted into 44% increase in conversion rate",
+      text: "One of the pages we made with the scaloMATRIX team resulted in a 44% increase in conversion rate.",
       author: "Agarwal",
       title: "Founder, Nutraphyll",
       avatarColor: "bg-orange-200",
@@ -23,7 +23,7 @@ const HappyClients = () => {
           <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png" alt="Judex" fill className="object-contain" sizes="96px" />
         </div>
       ),
-      text: "The strategic approach they brought to the project resulted in a revenue jump by 35%",
+      text: "The strategic approach they brought to the project resulted in a revenue jump of 35%.",
       author: "Ujjwal",
       title: "Founder, Judex",
       avatarColor: "bg-gray-300",

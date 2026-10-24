@@ -77,6 +77,7 @@ Small helpers: `AutoMarquee.jsx` (auto-scroll + swipe), `ScrollReveal.jsx` (fade
 | Colours, dark mode, fonts | `src/app/globals.css` (`@theme` + `html[data-theme='dark']`) and `layout.js` (Google Fonts link) |
 | Page title / description / share image | `src/app/layout.js`, `opengraph-image.jsx` |
 | Section order | `src/app/page.jsx` |
+| Navbar links (and where each scrolls to) | `Navbar.jsx` (`navLinks`) — targets are section ids: `case-studies`, `why-cro`, `approach`, `brand`, `services` |
 | Left/right page padding | `.container-x` in `globals.css` |
 | Policy text | `terms/page.jsx`, `privacy/page.jsx`, `legal/page.jsx` |
 

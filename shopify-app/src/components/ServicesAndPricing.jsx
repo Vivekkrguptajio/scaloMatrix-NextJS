@@ -270,7 +270,7 @@ const ServiceCard = ({ service }) => {
 
 const ServicesAndPricing = () => {
   return (
-    <section id="services" className="w-full py-16 md:py-24 bg-cream font-sans">
+    <section id="services" className="w-full py-16 md:py-24 bg-cream font-sans scroll-mt-16">
       <div className="container-x">
 
         <motion.div
