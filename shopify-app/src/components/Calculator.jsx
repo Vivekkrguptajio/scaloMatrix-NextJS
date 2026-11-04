@@ -104,13 +104,17 @@ const Calculator = () => {
 
             <a href="#contact" className="group bg-brand hover:bg-brand-deep transition-colors p-5 md:p-6 flex items-center justify-between gap-4">
               <p className="text-sm md:text-[15px] text-white font-semibold leading-snug">
-                Pays for itself in under 3 months. Book a free call.
+                See what this could mean for your store. Book a free call.
               </p>
               <span className="text-white text-xl transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
             </a>
           </div>
 
         </div>
+
+        <p className="mt-4 text-xs text-muted leading-relaxed">
+          Illustration only, based on the numbers you enter. It is not a forecast or a guarantee of results, which depend on your traffic, product and market (<a href="/terms#s12" className="underline underline-offset-2">Terms, section 12</a>).
+        </p>
       </div>
     </section>
   );

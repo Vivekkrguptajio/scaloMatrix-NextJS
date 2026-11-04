@@ -28,7 +28,7 @@ export default function OpengraphImage() {
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', fontSize: 76, fontWeight: 800, lineHeight: 1.05, letterSpacing: -2 }}>
-            Shopify stores that make more money from the same ad spend.
+            Shopify stores built to turn visitors into buyers.
           </div>
           <div style={{ display: 'flex', marginTop: 28, fontSize: 30, color: '#A39C90' }}>
             Custom stores, redesigns and landing pages for D2C brands

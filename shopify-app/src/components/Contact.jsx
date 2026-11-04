@@ -79,6 +79,8 @@ export default function Contact({ reveal = false }) {
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-white text-xs md:text-sm">
             <Link href="/terms" className="hover:text-brand transition-colors">Terms &amp; Conditions</Link>
             <span className="text-white/40">•</span>
+            <Link href="/refund-policy" className="hover:text-brand transition-colors">Refund &amp; Cancellation</Link>
+            <span className="text-white/40">•</span>
             <Link href="/privacy" className="hover:text-brand transition-colors">Privacy Policy</Link>
             <span className="text-white/40">•</span>
             <Link href="/legal" className="hover:text-brand transition-colors">Legal &amp; Policies</Link>

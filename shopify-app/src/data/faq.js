@@ -15,8 +15,8 @@ export const faqs = [
     a: 'A 30-minute live review of your store. We show you what is costing you sales and give you a list of quick wins in order of priority. There is no sales pitch, just honest feedback, and you keep the report.',
   },
   {
-    q: 'Do you really promise 20% more sales?',
-    a: 'Every page we build aims to beat your current one by at least 20%. If it does not, we keep improving it until it does. Results still depend on your traffic, product and market, so we cannot guarantee a specific number. Details are on our Legal & Policies page.',
+    q: 'Do you guarantee 20% more sales?',
+    a: 'No. Nobody can honestly guarantee sales. We design every page to beat your current one and we set a 20% lift as our target, but results depend on your traffic, product, pricing and market. If a page falls short, we go through the data with you and agree the next improvements in writing. See section 12 of our Terms & Conditions.',
   },
   {
     q: 'Who do you work best with?',

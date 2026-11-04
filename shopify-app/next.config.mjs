@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   compress: true,
+  // Dev only: let phones / other devices on your Wi-Fi open the dev server by its network IP
+  // (otherwise Next.js 16 blocks the dev assets & hot-reload from that origin and the page breaks).
+  allowedDevOrigins: ['192.168.*.*', '10.*.*.*', '172.16.*.*'],
   images: {
     loader: 'custom',
     loaderFile: './src/utils/cloudinaryLoader.js',

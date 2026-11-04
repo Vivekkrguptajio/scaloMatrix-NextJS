@@ -13,12 +13,12 @@ export default function ThePromise() {
           <span className="font-mono text-[11px] tracking-[0.16em] uppercase text-white/90 mb-6">The promise</span>
 
           <h2 className="h-display h-section text-white mb-6">
-            Pages that pay for themselves —{' '}
-            <span className="text-black/80">or we keep working.</span>
+            Pages built to beat your current one —{' '}
+            <span className="text-black/80">and a team that stays on it.</span>
           </h2>
 
           <p className="text-white text-sm md:text-base max-w-xl leading-relaxed mb-10">
-            Every page we build aims to beat your current one by at least 20%. If it doesn&apos;t, we don&apos;t disappear — we keep improving it until it does.
+            Every page we build is designed to beat your current one, and we set a 20% lift as the target. If it falls short we don&apos;t disappear: we go through the data with you and agree the next round of improvements in writing. Results depend on your product, traffic and market, so they can&apos;t be guaranteed (see our <a href="/terms#s12" className="underline underline-offset-2">Terms</a>).
           </p>
 
           <a

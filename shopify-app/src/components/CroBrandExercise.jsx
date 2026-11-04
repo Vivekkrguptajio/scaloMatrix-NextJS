@@ -1,41 +1,23 @@
 "use client";
 
-const factors = [
+const steps = [
   {
     n: '01',
-    tag: 'Who buys',
-    meta: '12-month value',
-    title: <>Your page decides <span className="accent">who</span> buys.</>,
-    body: (
-      <>
-        A page built around discounts attracts people who only buy on discount. They buy <strong className="text-ink font-semibold">18% faster</strong> but leave <strong className="text-ink font-semibold">3× sooner</strong>. A brand-first page starts slower and earns more over the year. We aim for long-term value, not a quick spike.
-      </>
-    ),
-    foot: [['Discount buyer', '₹1.8k'], ['Brand buyer', '₹5.4k']],
+    tag: 'Data in',
+    title: 'Deep platform analysis.',
+    body: 'We pull signal from Meta, Shopify, GA, Clarity and every other platform that matters. Heatmaps, funnels, drop-offs, session recordings — the full picture before we touch a pixel.',
   },
   {
     n: '02',
-    tag: 'What you say',
-    meta: '5+ buyer chats',
-    title: <>Use your customer&apos;s <span className="accent">own words</span>.</>,
-    body: (
-      <>
-        Pages that sell sound like what the customer is already thinking. <strong className="text-ink font-semibold">&ldquo;Bloated after lunch&rdquo;</strong> works better than &ldquo;gut health optimisation.&rdquo; We talk to real buyers and use their exact words.
-      </>
-    ),
-    foot: [['Agency-speak', '✕'], ['Customer words', '✓']],
+    tag: 'Design out',
+    title: 'Mobile-first, perfected.',
+    body: 'Rounds of iteration, as agreed in your proposal, until the design is right. Real copy, real assets, the exact strategy that will go live. No surprises: scope, revisions and refunds are written down before we start. That\u2019s the deal.',
   },
   {
     n: '03',
-    tag: 'Trust',
-    meta: 'Looks matter',
-    title: <>Look like a brand people <span className="accent">trust</span>.</>,
-    body: (
-      <>
-        Same text, same buttons. One page looks like a brand that will still be around next year, the other doesn&apos;t. The first one sold <strong className="text-ink font-semibold">27% more</strong>. Good design and trust go together.
-      </>
-    ),
-    foot: [['Trust', '→'], ['Sales', '+27%']],
+    tag: 'Shipped live',
+    title: 'Development + live link.',
+    body: 'Hand-coded, speed-tuned, QA\u2019d on real devices. You get a live link to test, click, break. We call it done when you\u2019ve tested it and signed it off.',
   },
 ];
 
@@ -70,25 +52,27 @@ const CroBrandExercise = () => {
 
         {/* OUR APPROACH */}
         <div id="approach" className="scroll-mt-28">
-          <div className="mb-8 md:mb-10">
-            <span className="eyebrow mb-4">Our approach</span>
-            <h2 className="h-display text-[clamp(1.75rem,3.4vw,2.6rem)]">
-              Three things we <span className="accent">fix first.</span>
-            </h2>
+          <div className="mb-8 md:mb-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+            <div className="lg:w-[55%]">
+              <span className="eyebrow mb-4">Our approach</span>
+              <h2 className="h-display text-[clamp(1.75rem,3.4vw,2.6rem)]">
+                How the <span className="accent">sausage</span> gets made.
+              </h2>
+            </div>
+            <p className="lead lg:w-[38%]">
+              Data in. Design out. Shipped live. No &ldquo;creative exploration phase.&rdquo; No 40-slide decks. We&apos;re builders who happen to be researchers.
+            </p>
           </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {factors.map((f) => (
-              <article key={f.n} className="bg-cream border border-line rounded-[26px] p-6 sm:p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-30px_rgba(20,18,16,0.4)]">
+            {steps.map((st) => (
+              <article key={st.n} className="bg-cream border border-line rounded-[26px] p-6 sm:p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-30px_rgba(20,18,16,0.4)]">
                 <div className="flex items-center justify-between mb-8">
-                  <span className="h-display text-4xl text-brand/25 leading-none">{f.n}</span>
-                  <span className="font-mono text-[10px] tracking-[0.14em] uppercase text-muted text-right">{f.tag}<br />{f.meta}</span>
+                  <span className="h-display text-4xl text-brand/25 leading-none">{st.n}</span>
+                  <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-brand-text">{st.tag}</span>
                 </div>
-                <h4 className="h-card text-xl mb-4">{f.title}</h4>
-                <p className="text-[15px] text-muted leading-relaxed mb-8">{f.body}</p>
-                <div className="mt-auto pt-4 border-t border-dashed border-line flex justify-between items-center font-mono text-[10px] uppercase tracking-[0.1em]">
-                  <span className="text-muted">{f.foot[0][0]} · <span className="text-ink">{f.foot[0][1]}</span></span>
-                  <span className="text-brand-text">{f.foot[1][0]} · {f.foot[1][1]}</span>
-                </div>
+                <h3 className="h-card text-xl mb-4">{st.title}</h3>
+                <p className="text-[15px] text-muted leading-relaxed">{st.body}</p>
               </article>
             ))}
           </div>

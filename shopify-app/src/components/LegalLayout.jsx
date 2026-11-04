@@ -2,11 +2,12 @@ import Link from 'next/link';
 
 const docs = [
   { href: '/terms', label: 'Terms & Conditions' },
+  { href: '/refund-policy', label: 'Refund & Cancellation' },
   { href: '/privacy', label: 'Privacy Policy' },
   { href: '/legal', label: 'Legal & Policies' },
 ];
 
-export default function LegalLayout({ title, intro, current, sections }) {
+export default function LegalLayout({ title, intro, current, sections, updated = 'October 2026' }) {
   return (
     <div className="min-h-screen bg-paper text-ink font-sans">
       {/* Top bar */}
@@ -45,16 +46,16 @@ export default function LegalLayout({ title, intro, current, sections }) {
         {/* Content */}
         <main>
           <h1 className="h-display text-[clamp(2rem,4.5vw,3rem)] mb-3">{title}</h1>
-          <p className="font-mono text-[11px] tracking-[0.14em] uppercase text-muted mb-6">Last updated: October 2026</p>
+          <p className="font-mono text-[11px] tracking-[0.14em] uppercase text-muted mb-6">Last updated: {updated}</p>
           <p className="lead mb-10 max-w-2xl">{intro}</p>
 
           <div className="divide-y divide-line border-t border-line">
             {sections.map((s, i) => (
-              <section key={s.title} className="py-7 grid md:grid-cols-[48px_1fr] gap-x-4 gap-y-2">
+              <section key={s.title} id={`s${i + 1}`} className="py-7 grid md:grid-cols-[48px_1fr] gap-x-4 gap-y-2 scroll-mt-8">
                 <span className="font-mono text-xs text-brand-text pt-1.5">{String(i + 1).padStart(2, '0')}</span>
                 <div>
                   <h2 className="h-card text-xl mb-3">{s.title}</h2>
-                  <div className="text-[15px] leading-relaxed text-muted [&_strong]:text-ink [&_a]:text-brand-text [&_a]:underline [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2">
+                  <div className="text-[15px] leading-relaxed text-muted [&_strong]:text-ink [&_a]:text-brand-text [&_a]:underline [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2 [&_p+p]:mt-3 [&_ul+p]:mt-3">
                     {s.body}
                   </div>
                 </div>

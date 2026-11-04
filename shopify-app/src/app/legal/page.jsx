@@ -22,7 +22,7 @@ const sections = [
   },
   {
     title: 'Refund policy',
-    body: <p>Payments for our services are <strong>non-refundable</strong> once a project has started and payment is received, unless stated otherwise in writing in your project agreement. By engaging our services you agree to this policy.</p>,
+    body: <p>Payments are for time reserved and work performed, and are <strong>non-refundable</strong> once work on a stage or month has begun, unless stated otherwise in writing. Read the full <Link href="/refund-policy">Refund &amp; Cancellation Policy</Link> for advances, stage payments, retainers, cancellations and the cases where we do refund.</p>,
   },
   {
     title: 'Confidentiality',
@@ -37,6 +37,7 @@ const sections = [
     body: (
       <ul>
         <li><Link href="/terms">Terms &amp; Conditions</Link></li>
+        <li><Link href="/refund-policy">Refund &amp; Cancellation Policy</Link></li>
         <li><Link href="/privacy">Privacy Policy</Link></li>
       </ul>
     ),

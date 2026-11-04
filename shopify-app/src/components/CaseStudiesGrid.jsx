@@ -242,7 +242,7 @@ const CaseStudiesGrid = () => {
             </h2>
           </div>
           <p className="lead lg:w-[34%]">
-            Every store below is live. We built it, then measured it over 10,000+ visits. Same traffic, more sales.
+            Every store below is live. We built it, then measured it over 10,000+ visits. Results are from past client projects and will differ for your business (<a href="/terms#s12" className="underline underline-offset-2">see Terms</a>).
           </p>
         </div>
 

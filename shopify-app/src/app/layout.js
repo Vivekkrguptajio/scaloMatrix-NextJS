@@ -4,7 +4,7 @@ import { SITE_URL } from "../utils/site";
 
 const TITLE = "Shopify Store Development for D2C Brands | Scalomatrix";
 const DESCRIPTION =
-  "Custom Shopify stores, redesigns and landing pages for D2C brands in India. Built to sell 20%+ more from the same ad spend. Free store audit.";
+  "Custom Shopify stores, redesigns and landing pages for D2C brands in India. Conversion-focused design built around your customers. Free store audit.";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),

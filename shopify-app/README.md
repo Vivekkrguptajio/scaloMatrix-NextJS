@@ -23,7 +23,7 @@ shopify-app/
 │  │  ├─ layout.js            fonts, <html>, SEO metadata, theme script, JSON-LD
 │  │  ├─ page.jsx             THE HOME PAGE: lists every section in order
 │  │  ├─ globals.css          design tokens (colours, fonts), dark theme, shared classes
-│  │  ├─ terms/ privacy/ legal/   the 3 policy pages (use components/LegalLayout.jsx)
+│  │  ├─ terms/ refund-policy/ privacy/ legal/   the 3 policy pages (use components/LegalLayout.jsx)
 │  │  ├─ api/contact/route.js     contact form → sends an email (Resend)
 │  │  ├─ sitemap.js · robots.js   generated sitemap.xml / robots.txt
 │  │  ├─ opengraph-image.jsx      the image shown when the link is shared
@@ -79,7 +79,7 @@ Small helpers: `AutoMarquee.jsx` (auto-scroll + swipe), `ScrollReveal.jsx` (fade
 | Section order | `src/app/page.jsx` |
 | Navbar links (and where each scrolls to) | `Navbar.jsx` (`navLinks`) — targets are section ids: `case-studies`, `why-cro`, `approach`, `brand`, `services` |
 | Left/right page padding | `.container-x` in `globals.css` |
-| Policy text | `terms/page.jsx`, `privacy/page.jsx`, `legal/page.jsx` |
+| Policy text | `terms/page.jsx`, `refund-policy/page.jsx`, `privacy/page.jsx`, `legal/page.jsx` (registered office address: `REGISTERED_OFFICE` at the top of `terms/page.jsx`) |
 
 ## Adding a new store to "Our work"
 
