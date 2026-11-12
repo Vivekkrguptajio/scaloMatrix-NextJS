@@ -76,12 +76,43 @@ export default function Navbar() {
   const logoY = useMotionValue(0)
 
   const navLinks = [
-    { name: 'Work', href: '#case-studies' },   // "Real stores. Real numbers."
+    { name: 'Work', href: '#work' },
     { name: 'Why CRO', href: '#why-cro' },
     { name: 'Our approach', href: '#approach' },
-    { name: 'Brand', href: '#brand' },
+    { name: 'Brand', href: '#case-studies' },   // "Real stores. Real numbers."
     { name: 'Pricing', href: '#services' },
   ]
+
+  // Scroll-spy: the orange square follows the section that is on screen.
+  // Every section on the page maps to the nav link it belongs to (Brand = Real stores. Real numbers.).
+  useEffect(() => {
+    const map = [
+      ['work', 'Work'], ['case-studies', 'Brand'],
+      ['why-cro', 'Why CRO'], ['approach', 'Our approach'],
+      ['services', 'Pricing'],
+    ]
+    let ticking = false
+    const update = () => {
+      ticking = false
+      const line = window.innerHeight * 0.35
+      let found = null
+      for (const [id, name] of map) {
+        const el = document.getElementById(id)
+        if (!el) continue
+        const r = el.getBoundingClientRect()
+        if (r.top <= line && r.bottom > line) { found = name; break }
+      }
+      setActiveLink(found)
+    }
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update) } }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll, { passive: true })
+    onScroll()
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [])
 
   // Prevent background body scroll when mobile menu is open
   useEffect(() => {

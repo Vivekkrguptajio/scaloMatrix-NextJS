@@ -65,17 +65,16 @@ const CroBrandExercise = () => {
         <div className="container-x flex flex-col gap-12 md:gap-16">
           {/* Header */}
           <div className="flex flex-col lg:flex-row w-full justify-between items-start lg:items-end gap-6">
-            <h2 className="h-display h-section lg:w-[50%]">
-              Same traffic. <br className="hidden sm:block" />
-              <span className="accent">More</span> orders.
+            <h2 className="h-display h-section lg:whitespace-nowrap">
+              Same traffic. <span className="accent">More</span> orders.
             </h2>
-            <p className="lead lg:w-[42%]">
+            <p className="lead lg:w-[36%]">
               CRO (conversion rate optimisation) means making your store better at turning visitors into buyers. You don&apos;t pay for more ads. You fix what stops the people already on your store from buying.
             </p>
           </div>
 
           {/* Why 1% changes everything */}
-          <div className="bg-paper border border-line p-6 sm:p-10 lg:p-12">
+          <div>
             <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 mb-8">
               <h3 className="h-display text-[clamp(1.4rem,2.6vw,2.1rem)]">
                 Why 1% changes <span className="accent">everything</span>.
@@ -168,11 +167,10 @@ const CroBrandExercise = () => {
         <span className="eyebrow">Our approach</span>
         <div className="container-x">
           <div className="mb-8 md:mb-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-            <h2 className="h-display h-section lg:w-[50%]">
-              How we find and fix <br className="hidden sm:block" />
-              the <span className="accent">leaks</span>.
+            <h2 className="h-display h-section lg:whitespace-nowrap">
+              How we find and fix the <span className="accent">leaks</span>.
             </h2>
-            <p className="lead lg:w-[38%]">
+            <p className="lead lg:w-[34%]">
               Data in. Design out. Shipped live. No &ldquo;creative exploration phase&rdquo;, no 40-slide decks.
             </p>
           </div>
