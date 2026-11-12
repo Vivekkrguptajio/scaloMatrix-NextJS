@@ -70,7 +70,7 @@ const HappyClients = () => {
           <div>
             <span className="eyebrow mb-4">What founders say</span>
             <h2 className="h-display h-section">
-              <AnimatedCounter target={100} suffix="+" /> founders. <span className="accent">Same</span> result.
+              <AnimatedCounter target={50} suffix="+" /> founders. <span className="accent">Same</span> result.
             </h2>
           </div>
           <p className="lead max-w-[340px]">

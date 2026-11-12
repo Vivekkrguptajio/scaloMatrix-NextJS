@@ -97,7 +97,7 @@ export default function HeroVCards() {
                 <span className="font-mono text-xs font-medium text-ink ml-1.5">4.9/5</span>
               </div>
               <span className="font-display font-semibold text-ink text-sm tracking-tight">
-                <AnimatedCounter target={100} suffix="+ happy clients" />
+                <AnimatedCounter target={50} suffix="+ happy clients" />
               </span>
             </div>
           </div>

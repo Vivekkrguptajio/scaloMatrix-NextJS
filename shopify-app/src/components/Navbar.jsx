@@ -2,6 +2,12 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
 import { flushSync } from 'react-dom'
 import { scrollToId } from '../utils/smoothScroll'
+
+// On other pages (e.g. /answer) the section isn't there: go to the home page section instead
+const goTo = (id) => {
+  if (document.getElementById(id)) scrollToId(id)
+  else window.location.href = `/#${id}`
+}
 import { motion, useMotionValue } from 'framer-motion'
 
 export default function Navbar() {
@@ -9,6 +15,7 @@ export default function Navbar() {
   const [isDark, setIsDark] = useState(false)
   const navRef = useRef(null)
   const [hidden, setHidden] = useState(false)
+  const [activeLink, setActiveLink] = useState(null)
   const [theme, setTheme] = useState('light')
 
   useEffect(() => {
@@ -56,7 +63,7 @@ export default function Navbar() {
     <button
       onClick={toggleTheme}
       aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-      className={`w-10 h-10 shrink-0 border flex items-center justify-center transition-colors hover:border-[#FD5800] hover:text-[#FD5800] ${isDark ? 'border-white/20 text-white' : 'border-line text-ink'}`}
+      className={`w-[40px] h-[40px] shrink-0 border flex items-center justify-center transition-colors hover:border-[#FD5800] hover:text-[#FD5800] ${isDark ? 'border-white/20 text-white' : 'border-line text-ink'}`}
     >
       {theme === 'dark' ? (
         <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" /></svg>
@@ -154,7 +161,7 @@ export default function Navbar() {
         }`}
       >
         {/* Main Navbar Row */}
-        <div className="w-full flex items-center justify-between py-[15.5px] px-[24px]">
+        <div className="w-full flex items-center justify-between py-[12.5px] px-[24px]">
         {/* Logo */}
         <motion.a 
           href="/"
@@ -178,16 +185,22 @@ export default function Navbar() {
                 <a 
                   href={link.href} 
                   onClick={(e) => {
+                    setActiveLink(link.name)
                     if (link.href.startsWith('#')) {
                       e.preventDefault();
-                      scrollToId(link.href.substring(1));
+                      goTo(link.href.substring(1));
                     }
                   }}
-                  className={`flex items-center gap-1.5 text-[16px] font-medium font-sans transition-colors duration-300 ease-out relative px-3 py-2 ${
-                    isDark ? 'text-white hover:bg-[#FD5800]/10 hover:text-[#FD5800]' : 'text-ink hover:bg-[#FD5800]/10 hover:text-[#FD5800]'
+                  className={`nav-link flex items-center gap-1.5 text-[16px] font-medium font-sans transition-colors duration-300 ease-out relative px-3 py-2 ${
+                    isDark ? 'text-white hover:text-[#FD5800]' : 'text-ink hover:text-[#FD5800]'
                   }`}
                 >
                   {link.name}
+                  {/* orange square under the link that was clicked */}
+                  <span
+                    aria-hidden="true"
+                    className={`absolute left-1/2 -bottom-[3px] w-[6px] h-[6px] -translate-x-1/2 bg-[#FD5800] transition-all duration-300 ${activeLink === link.name ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}
+                  />
                 </a>
               </div>
             ))}
@@ -195,9 +208,9 @@ export default function Navbar() {
           {ThemeToggle}
           <a 
             href="#contact" 
-            className={`group flex items-center gap-2 text-[14px] font-semibold px-5 py-2.5 text-white border transition-colors hover:bg-brand hover:border-brand ${isDark ? 'bg-brand border-brand' : 'bg-panel border-ink'}`}
+            className="btn-slide group flex items-center gap-2 text-[14px] font-semibold px-5 h-[40px] text-white bg-brand border border-brand hover:border-ink"
           >
-            Book a free audit
+            <span>Book a free audit</span>
             <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
@@ -246,7 +259,7 @@ export default function Navbar() {
                   e.preventDefault();
                   setMobileMenu(false);
                   setTimeout(() => {
-                    scrollToId(link.href.substring(1));
+                    goTo(link.href.substring(1));
                   }, 150);
                 }}
                 style={{ transitionDelay: mobileMenu ? `${100 + i * 70}ms` : '0ms' }}
@@ -275,7 +288,7 @@ export default function Navbar() {
                 e.preventDefault();
                 setMobileMenu(false);
                 setTimeout(() => {
-                  scrollToId('contact');
+                  goTo('contact');
                 }, 150);
               }}
               className="btn-primary w-full !py-4 !text-base"

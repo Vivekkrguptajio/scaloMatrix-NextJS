@@ -38,7 +38,7 @@ const ScrollToTop = () => {
           exit={{ opacity: 0, scale: 0.5, y: 20 }}
           transition={{ duration: 0.3, type: 'spring', stiffness: 260, damping: 20 }}
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[100] w-12 h-12 md:w-14 md:h-14 bg-[#FD5800] text-white flex items-center justify-center shadow-[0_8px_30px_rgba(253,88,0,0.3)] hover:bg-black hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+          className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[100] w-12 h-12 md:w-14 md:h-14 btn-slide bg-[#FD5800] text-white flex items-center justify-center shadow-[0_8px_30px_rgba(253,88,0,0.3)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
           aria-label="Scroll to top"
         >
           <svg

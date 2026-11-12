@@ -102,7 +102,7 @@ const Calculator = () => {
               </div>
             </div>
 
-            <a href="#contact" className="group bg-brand hover:bg-brand-deep transition-colors p-5 md:p-6 flex items-center justify-between gap-4">
+            <a href="#contact" className="btn-slide group bg-brand p-5 md:p-6 flex items-center justify-between gap-4">
               <p className="text-sm md:text-[12px] text-white font-semibold leading-snug">
                 See what this could mean for your store. Book a free call.
               </p>

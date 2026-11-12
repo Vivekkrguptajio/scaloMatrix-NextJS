@@ -108,22 +108,18 @@ const ServiceCard = ({ service }) => {
       variants={cardVariants}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className={`group relative flex flex-col h-full overflow-hidden transition-all duration-500 ease-out cursor-default ${
-        service.featured
-          ? 'bg-panel text-white shadow-[0_30px_60px_-30px_rgba(253,88,0,0.5)] ring-1 ring-[#FD5800]/40'
-          : 'bg-paper text-ink border border-line hover:shadow-[0_24px_50px_-30px_rgba(20,18,16,0.4)] hover:-translate-y-1.5'
-      }`}
+      className="group relative flex flex-col h-full overflow-hidden transition-all duration-500 ease-out cursor-default bg-paper text-ink border border-line hover:bg-[#FD5800] hover:border-[#FD5800] hover:text-white hover:shadow-[0_24px_50px_-30px_rgba(253,88,0,0.6)] hover:-translate-y-1.5"
     >
       {/* Top accent line */}
       <div
-        className="absolute top-0 left-0 h-[3px] bg-[#FD5800] transition-all duration-500 ease-out"
-        style={{ width: hovered ? '100%' : service.featured ? '100%' : '0%' }}
+        className="absolute top-0 left-0 h-[3px] bg-[#FD5800] group-hover:bg-white transition-all duration-500 ease-out"
+        style={{ width: hovered || service.featured ? '100%' : '0%' }}
       ></div>
 
       {/* Badge */}
       {service.badge && (
         <div className="absolute top-5 right-5 z-10">
-          <span className="bg-[#FD5800] text-white text-[10px] font-mono font-medium px-3 py-1.5 uppercase tracking-[0.12em]">
+          <span className="bg-[#FD5800] text-white group-hover:bg-white group-hover:text-[#FD5800] transition-colors duration-500 text-[10px] font-mono font-medium px-3 py-1.5 uppercase tracking-[0.12em]">
             {service.badge}
           </span>
         </div>
@@ -132,14 +128,10 @@ const ServiceCard = ({ service }) => {
       <div className="p-6 md:p-7 flex flex-col flex-1">
         {/* Title & Description */}
         <div className="mb-4">
-          <h3 className={`h-card text-lg md:text-xl mb-2 transition-colors duration-300 ${service.badge ? 'pr-20' : ''} ${
-            service.featured ? 'text-white' : 'text-ink group-hover:text-[#FD5800]'
-          }`}>
+          <h3 className={`h-card text-lg md:text-xl mb-2 transition-colors duration-500 text-ink group-hover:text-white ${service.badge ? 'pr-20' : ''}`}>
             {service.title}
           </h3>
-          <p className={`text-[12px] leading-relaxed ${
-            service.featured ? 'text-white/60' : 'text-muted'
-          }`}>
+          <p className="text-[12px] leading-relaxed text-muted group-hover:text-white/85 transition-colors duration-500">
             {service.desc}
           </p>
         </div>
@@ -147,13 +139,11 @@ const ServiceCard = ({ service }) => {
         {/* Price */}
         <div className="mb-4">
           <div className="flex items-baseline gap-2">
-            <span className={`font-display font-bold text-2xl md:text-3xl tracking-tight ${
-              service.featured ? 'text-[#FD5800]' : 'text-ink'
-            }`}>
+            <span className="font-display font-bold text-2xl md:text-3xl tracking-tight text-ink group-hover:text-white transition-colors duration-500">
               {service.price}
             </span>
             {service.price.startsWith('₹') && (
-              <span className={`text-sm font-medium ${service.featured ? 'text-white/40' : 'text-muted'}`}>
+              <span className="text-sm font-medium text-muted group-hover:text-white/70 transition-colors duration-500">
                 onwards
               </span>
             )}
@@ -163,9 +153,7 @@ const ServiceCard = ({ service }) => {
         {/* Options Selector */}
         {service.hasOptions && (
           <div className="mb-4">
-            <p className={`text-[11px] font-medium tracking-[0.15em] uppercase mb-3 font-mono ${
-              service.featured ? 'text-[#FD5800]' : 'text-brand-text'
-            }`}>
+            <p className="text-[11px] font-medium tracking-[0.15em] uppercase mb-3 font-mono text-brand-text group-hover:text-white transition-colors duration-500">
               Choose option
             </p>
             <div className="flex gap-2">
@@ -175,12 +163,8 @@ const ServiceCard = ({ service }) => {
                   onClick={() => setSelectedOption(i)}
                   className={`text-xs md:text-[12px] font-semibold px-4 py-2.5 transition-all duration-300 border ${
                     selectedOption === i
-                      ? service.featured
-                        ? 'bg-[#FD5800] text-white border-[#FD5800]'
-                        : 'bg-panel text-white border-ink'
-                      : service.featured
-                        ? 'bg-transparent text-white/70 border-white/20 hover:border-white/50'
-                        : 'bg-transparent text-muted border-line hover:border-ink/40'
+                      ? 'bg-panel text-white border-ink'
+                      : 'bg-transparent text-muted border-line hover:border-ink/40 group-hover:text-white group-hover:border-white/60'
                   }`}
                 >
                   {opt}
@@ -191,27 +175,21 @@ const ServiceCard = ({ service }) => {
         )}
 
         {/* Divider */}
-        <div className={`w-full h-px mb-4 ${service.featured ? 'bg-white/10' : 'bg-line'}`}></div>
+        <div className="w-full h-px mb-4 bg-line group-hover:bg-white/30 transition-colors duration-500"></div>
 
         {/* What's Included */}
         <div className="flex-1">
-          <p className={`text-[11px] font-medium tracking-[0.15em] uppercase mb-4 font-mono ${
-            service.featured ? 'text-white/50' : 'text-muted'
-          }`}>
+          <p className="text-[11px] font-medium tracking-[0.15em] uppercase mb-4 font-mono text-muted group-hover:text-white/80 transition-colors duration-500">
             What&apos;s included
           </p>
           <ul className="flex flex-col gap-0">
             {visibleItems.map((item, i) => (
               <li
                 key={i}
-                className={`flex items-start gap-2.5 py-2 border-b border-dashed last:border-b-0 text-[12px] leading-relaxed transition-colors duration-300 ${
-                  service.featured
-                    ? 'text-white/80 border-white/10 group-hover:text-white'
-                    : 'text-ink/80 border-line group-hover:text-ink'
-                }`}
+                className="flex items-start gap-2.5 py-2 border-b border-dashed last:border-b-0 text-[12px] leading-relaxed transition-colors duration-500 text-ink/80 border-line group-hover:text-white group-hover:border-white/30"
               >
                 <span
-                  className="text-[#FD5800] mt-0.5 font-bold text-xs shrink-0 group-hover:translate-x-1 transition-transform duration-300"
+                  className="text-[#FD5800] group-hover:text-white mt-0.5 font-bold text-xs shrink-0 group-hover:translate-x-1 transition-all duration-300"
                   style={{ transitionDelay: `${i * 50}ms` }}
                 >
                   ✓
@@ -224,16 +202,14 @@ const ServiceCard = ({ service }) => {
           {service.includes.length > 4 && (
             <button
               onClick={() => setShowAll(!showAll)}
-              className={`text-xs font-bold mt-3 transition-colors duration-300 ${
-                service.featured ? 'text-[#FD5800] hover:text-[#ff7733]' : 'text-[#FD5800] hover:text-[#ff7733]'
-              }`}
+              className="text-xs font-bold mt-3 transition-colors duration-500 text-[#FD5800] group-hover:text-white underline-offset-2 hover:underline"
             >
               {showAll ? 'Show less' : `+ ${service.includes.length - 4} more deliverables`}
             </button>
           )}
         </div>
 
-        {/* CTA Button */}
+        {/* CTA Button: always black, its fill turns white on hover so it stays visible on the orange card */}
         <div className="mt-4 pt-1">
           <a
             href="#contact"
@@ -241,11 +217,7 @@ const ServiceCard = ({ service }) => {
               e.preventDefault();
               scrollToId('contact');
             }}
-            className={`group/btn w-full flex items-center justify-center gap-2.5 font-semibold text-sm md:text-[12px] px-6 py-3.5 transition-all duration-300 ${
-              service.featured
-                ? 'bg-[#FD5800] text-white border border-[#FD5800] hover:bg-white hover:text-black hover:border-white'
-                : 'bg-panel text-white border border-ink hover:bg-[#FD5800] hover:border-[#FD5800]'
-            }`}
+            className="group/btn btn-slide btn-slide-white w-full flex items-center justify-center gap-2.5 font-semibold text-sm md:text-[12px] px-6 py-3.5 transition-all duration-300 bg-panel text-white border border-ink hover:text-[#141210]"
           >
             {service.cta}
             <svg
@@ -262,9 +234,7 @@ const ServiceCard = ({ service }) => {
       </div>
 
       {/* Subtle corner glow on hover */}
-      <div className={`absolute -bottom-20 -right-20 w-40 h-40 opacity-0 group-hover:opacity-[0.06] transition-opacity duration-500 blur-3xl pointer-events-none ${
-        service.featured ? 'bg-[#FD5800]' : 'bg-[#FD5800]'
-      }`}></div>
+      <div className="absolute -bottom-20 -right-20 w-40 h-40 opacity-0 group-hover:opacity-[0.12] transition-opacity duration-500 blur-3xl pointer-events-none bg-white"></div>
     </motion.div>
   );
 };

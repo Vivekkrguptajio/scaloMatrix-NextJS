@@ -5,7 +5,7 @@ import { AnimatedCounter } from './Hero';
 import AutoMarquee from './AutoMarquee';
 
 const DesktopMobileMockup = ({ src, mobileSrc, alt }) => (
-  <div className="flex gap-2 sm:gap-4 h-full w-full items-end justify-center pt-2 sm:pt-4 px-2 sm:px-4 group-hover/link:scale-[1.03] transition-transform duration-500 overflow-hidden">
+  <div className="flex gap-2 sm:gap-4 h-full w-full items-end justify-center group-hover/link:scale-[1.03] transition-transform duration-500 overflow-hidden">
     {/* Desktop View */}
     <div className="flex-[2.5] bg-paper shadow-[0_-4px_25px_rgba(0,0,0,0.08)] overflow-hidden flex flex-col border-t border-l border-r border-gray-200 relative h-[95%] md:h-[98%]">
       <div className="w-full h-full relative overflow-hidden bg-gray-100 min-h-[119px] sm:min-h-[153px] md:min-h-[187px]">
@@ -203,8 +203,8 @@ const CaseStudiesGrid = () => {
   const StudyCard = ({ study, flat = false }) => (
     <article className={flat
       ? 'w-full flex flex-col'
-      : 'w-[255px] sm:w-[374px] lg:w-[442px] shrink-0 bg-paper border border-ink p-4 sm:p-5 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(20,18,16,0.4)]'}>
-      <div className={`bg-cream p-2 sm:p-3 mb-5 w-full flex items-end justify-center relative overflow-hidden ${flat ? 'h-[229px] sm:h-[272px]' : 'h-[187px] sm:h-[229px] lg:h-[255px]'}`}>
+      : 'w-[255px] sm:w-[374px] lg:w-[442px] shrink-0 bg-paper border border-ink p-4 sm:p-6 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(20,18,16,0.4)]'}>
+      <div className={`case-shot border border-ink px-3 sm:px-5 pt-3 sm:pt-5 pb-0 mb-5 w-full flex items-end justify-center relative overflow-hidden ${flat ? 'h-[229px] sm:h-[272px]' : 'h-[187px] sm:h-[229px] lg:h-[255px]'}`}>
         {study.mockup}
       </div>
       <div className="flex items-end justify-between gap-4 px-1 mt-auto">

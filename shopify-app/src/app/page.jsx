@@ -35,7 +35,7 @@ function App() {
       <WhatsAppButton />
       <Navbar />
       
-      <main className="page-frame relative z-20 bg-cream shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+      <main className="page-frame main-curve relative z-20 bg-cream shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
         <Hero />
         <HeroVCards />
         <ScrollReveal><Partners /></ScrollReveal>
@@ -46,7 +46,8 @@ function App() {
         <ScrollReveal variant="blur"><CroBrandExercise /></ScrollReveal>
         <ScrollReveal><WhoWeDontWorkWith /></ScrollReveal>
         <ScrollReveal variant="scaleUp"><ServicesAndPricing /></ScrollReveal>
-        <ScrollReveal variant="blur"><ThePromise /></ScrollReveal>
+        {/* The Promise card is hidden for now: put it back by restoring the line below
+        <ScrollReveal variant="blur"><ThePromise /></ScrollReveal> */}
         <ContactUs />
         <Faq />
       </main>

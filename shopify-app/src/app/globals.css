@@ -126,14 +126,15 @@ html.theme-switching *::after {
   padding: 0.7rem 1.4rem; border: 1.5px solid var(--color-brand);
   transition: background .25s, color .25s, border-color .25s, transform .25s;
 }
-.btn-primary:hover { background: var(--color-brand-deep); border-color: var(--color-brand-deep); }
 .btn-ghost {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
   color: var(--color-ink); font-weight: 600; font-size: 0.9rem;
   padding: 0.7rem 1.4rem; border: 1.5px solid var(--color-ink);
   transition: background .25s, color .25s;
 }
-.btn-ghost:hover { background: var(--color-ink); color: var(--color-paper); }
+.btn-ghost { --slide-bg: var(--color-ink); }
+.btn-ghost:hover { color: var(--color-paper); }
+.btn-primary:hover { border-color: #141210; }
 
 /* ═══════ PAGE GUTTERS ═══════
    One horizontal rhythm for the whole page: content always runs from 24px inside the
@@ -167,6 +168,53 @@ html[data-theme='dark'] {
 /* Partner logo cells sit on the page colour; in dark mode they go white so dark logos stay readable */
 .partner-cell { background: var(--color-cream); }
 html[data-theme='dark'] .partner-cell { background: #fff; }
+
+/* One button effect everywhere: the fill slides in from the left on hover and drains out to the
+   right when the mouse leaves. Default fill is black; --slide-bg changes it
+   (.btn-slide-brand = orange fill, .btn-ghost = ink fill). */
+.btn-primary, .btn-ghost, .btn-slide { isolation: isolate; overflow: hidden; }
+.btn-primary:not(.fixed), .btn-ghost:not(.fixed), .btn-slide:not(.fixed) { position: relative; }
+.btn-primary::before, .btn-ghost::before, .btn-slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--slide-bg, #141210);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.btn-primary:hover::before, .btn-ghost:hover::before, .btn-slide:hover::before { transform: scaleX(1); transform-origin: left; }
+.btn-slide-brand { --slide-bg: var(--color-brand); }
+.btn-slide-white { --slide-bg: #ffffff; }
+
+/* Case-study screenshot well: neutral light grey (a soft dark tone in dark mode) */
+.case-shot { background: #ebebeb; }
+html[data-theme='dark'] .case-shot { background: #1d1a17; }
+
+/* FAQ answer text: #45444F at 17px / 27px, weight 400 (softer grey in dark mode) */
+.faq-answer { color: #45444f; }
+html[data-theme='dark'] .faq-answer { color: var(--color-muted); }
+
+/* Soft curve on the bottom corners of the page, where it lifts off the dark footer.
+   overflow: clip rounds the margin strips too, and (unlike hidden) keeps position: sticky working. */
+.main-curve { border-bottom-left-radius: 28px; border-bottom-right-radius: 28px; overflow: clip; }
+@media (min-width: 768px) { .main-curve { border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; } }
+
+/* Navbar links: an underline slides in from the left on hover and leaves to the right */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 4px;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
 
 /* Scroll-in effect (class toggled from SmoothScroll.jsx) */
 .rv { opacity: 0; transform: translateY(16px); transition: opacity 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
