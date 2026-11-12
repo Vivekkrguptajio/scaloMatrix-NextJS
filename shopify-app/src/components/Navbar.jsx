@@ -154,7 +154,7 @@ export default function Navbar() {
         }`}
       >
         {/* Main Navbar Row */}
-        <div className="w-full flex items-center justify-between py-[18px] px-4 md:px-6">
+        <div className="w-full flex items-center justify-between py-[18px] px-[24px]">
         {/* Logo */}
         <motion.a 
           href="/"
