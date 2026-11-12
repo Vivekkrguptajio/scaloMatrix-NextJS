@@ -79,7 +79,7 @@ const PhoneCaseStudies = ({ studies, StudyCard }) => {
   const btn = 'w-11 h-11 border border-line flex items-center justify-center text-ink active:bg-brand active:text-white active:border-brand transition-colors';
 
   return (
-    <div className=" bg-paper border border-line overflow-hidden">
+    <div className=" bg-paper border border-ink overflow-hidden">
       <div
         ref={scroller}
         data-lenis-prevent
@@ -203,7 +203,7 @@ const CaseStudiesGrid = () => {
   const StudyCard = ({ study, flat = false }) => (
     <article className={flat
       ? 'w-full flex flex-col'
-      : 'w-[255px] sm:w-[374px] lg:w-[442px] shrink-0 bg-paper border border-line p-4 sm:p-5 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(20,18,16,0.4)]'}>
+      : 'w-[255px] sm:w-[374px] lg:w-[442px] shrink-0 bg-paper border border-ink p-4 sm:p-5 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(20,18,16,0.4)]'}>
       <div className={`bg-cream p-2 sm:p-3 mb-5 w-full flex items-end justify-center relative overflow-hidden ${flat ? 'h-[229px] sm:h-[272px]' : 'h-[187px] sm:h-[229px] lg:h-[255px]'}`}>
         {study.mockup}
       </div>

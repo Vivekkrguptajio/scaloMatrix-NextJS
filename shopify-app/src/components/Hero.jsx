@@ -24,7 +24,7 @@ function RotatingText() {
         setIndex(prev => (prev + 1) % rotatingWords.length)
         setIsVisible(true)
       }, 400)
-    }, 3000)
+    }, 2500)
     return () => { clearInterval(interval); clearTimeout(swap) }
   }, [])
 
@@ -57,7 +57,7 @@ export default function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % stores.length)
-    }, 3000)
+    }, 2500)
     return () => clearInterval(interval)
   }, [])
 
@@ -132,7 +132,7 @@ export default function Hero() {
               return (
                 <div
                   key={idx}
-                  className="absolute w-[165px] sm:w-[198px] lg:w-[231px] xl:w-[271px] overflow-hidden shadow-[0_30px_60px_-20px_rgba(20,18,16,0.35)] border border-line bg-paper transition-all duration-700 ease-in-out"
+                  className="absolute w-[165px] sm:w-[198px] lg:w-[231px] xl:w-[271px] overflow-hidden shadow-[0_30px_60px_-20px_rgba(20,18,16,0.35)] border border-line bg-paper transition-all duration-500 ease-in-out"
                   style={{
                     transform: `translateX(${slots.x}) scale(${slots.scale}) rotate(${slots.rotate})`,
                     zIndex: slots.z,

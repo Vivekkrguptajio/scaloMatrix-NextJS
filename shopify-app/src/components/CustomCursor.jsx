@@ -29,8 +29,8 @@ export default function CustomCursor() {
     let animationFrameId = null;
     let tx = -100, ty = -100, cx = -100, cy = -100;
     const tick = () => {
-      cx += (tx - cx) * 0.22;
-      cy += (ty - cy) * 0.22;
+      cx += (tx - cx) * 0.32;
+      cy += (ty - cy) * 0.32;
       outer.style.transform = `translate3d(${cx - 16}px, ${cy - 16}px, 0)`;
       if (Math.abs(tx - cx) > 0.1 || Math.abs(ty - cy) > 0.1) {
         animationFrameId = requestAnimationFrame(tick);

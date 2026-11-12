@@ -63,7 +63,7 @@ const HappyClients = () => {
   ];
 
   return (
-    <section className="w-full pt-16 md:pt-24 font-sans bg-cream relative z-10">
+    <section className="w-full pt-16 md:pt-24 pb-8 md:pb-12 font-sans bg-cream relative z-10">
 
       <div className="container-x mb-10 md:mb-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">

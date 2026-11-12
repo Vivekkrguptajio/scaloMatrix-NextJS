@@ -46,7 +46,7 @@ export default function Navbar() {
     t.ready.then(() => {
       root.animate(
         { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
-        { duration: 800, easing: 'cubic-bezier(0.4, 0, 0.2, 1)', pseudoElement: '::view-transition-new(root)' }
+        { duration: 600, easing: 'cubic-bezier(0.4, 0, 0.2, 1)', pseudoElement: '::view-transition-new(root)' }
       )
     }).catch(() => {})
     t.finished.finally(() => root.classList.remove('theme-switching'))
@@ -154,7 +154,7 @@ export default function Navbar() {
         }`}
       >
         {/* Main Navbar Row */}
-        <div className="w-full flex items-center justify-between py-[18px] px-[24px]">
+        <div className="w-full flex items-center justify-between py-[15.5px] px-[24px]">
         {/* Logo */}
         <motion.a 
           href="/"

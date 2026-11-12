@@ -60,6 +60,36 @@ export default function AutoMarquee({ children, speed = 40, direction = 'left', 
     const onEnter = (e) => { if (e.pointerType === 'mouse') pause(); };
     const onLeave = (e) => { if (e.pointerType === 'mouse') resume(); };
 
+    // Mouse: click and drag the strip left/right (touch already swipes natively)
+    let dragging = false, startX = 0, startScroll = 0, moved = 0;
+    const onDown = (e) => {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      dragging = true; moved = 0;
+      startX = e.clientX; startScroll = el.scrollLeft;
+      pause();
+      el.style.cursor = 'grabbing';
+    };
+    const onMove = (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - startX;
+      moved = Math.max(moved, Math.abs(dx));
+      el.scrollLeft = startScroll - dx;
+    };
+    const onUp = () => {
+      if (!dragging) return;
+      dragging = false;
+      el.style.cursor = '';
+      // keep hover-pause while the mouse is still over the strip; resume when it leaves
+    };
+    // a drag must not open the card link underneath
+    const onClickCapture = (e) => { if (moved > 5) { e.preventDefault(); e.stopPropagation(); moved = 0; } };
+    const onDragStart = (e) => e.preventDefault(); // no ghost-image dragging
+    el.addEventListener('pointerdown', onDown);
+    window.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerup', onUp);
+    el.addEventListener('click', onClickCapture, true);
+    el.addEventListener('dragstart', onDragStart);
+
     el.addEventListener('touchstart', pause, { passive: true });
     el.addEventListener('touchend', resume, { passive: true });
     el.addEventListener('touchcancel', resume, { passive: true });
@@ -70,6 +100,11 @@ export default function AutoMarquee({ children, speed = 40, direction = 'left', 
     return () => {
       cancelAnimationFrame(raf);
       clearTimeout(resumeTimer);
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerup', onUp);
+      el.removeEventListener('pointerdown', onDown);
+      el.removeEventListener('click', onClickCapture, true);
+      el.removeEventListener('dragstart', onDragStart);
       el.removeEventListener('touchstart', pause);
       el.removeEventListener('touchend', resume);
       el.removeEventListener('touchcancel', resume);
@@ -79,7 +114,7 @@ export default function AutoMarquee({ children, speed = 40, direction = 'left', 
   }, [speed, resumeAfter, direction]);
 
   return (
-    <div ref={ref} className={`w-full overflow-x-auto scrollbar-hide ${className}`}>
+    <div ref={ref} className={`w-full overflow-x-auto scrollbar-hide cursor-grab select-none ${className}`}>
       {children}
     </div>
   );
