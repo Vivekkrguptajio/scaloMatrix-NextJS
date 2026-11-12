@@ -278,6 +278,16 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-stopped { overflow: hidden; }
 .lenis.lenis-smooth iframe { pointer-events: none; }
 
+/* ═══════ POLISH ═══════ */
+html { scroll-padding-top: 84px; text-rendering: optimizeLegibility; }
+body { font-feature-settings: 'kern' 1, 'liga' 1; }
+/* a clear, on-brand keyboard focus ring (mouse clicks don't show it) */
+:focus-visible { outline: 2px solid var(--color-brand); outline-offset: 3px; }
+:focus:not(:focus-visible) { outline: none; }
+/* only promote layers while something is actually animating */
+.rv { will-change: opacity, transform; }
+img { -webkit-user-drag: none; }
+
 html {
   /* Global scale: every rem-based size (type, padding, cards) follows this */
   font-size: 14.5px;
@@ -354,7 +364,7 @@ html, body {
 .hero-animate-3 { animation: slideInUp 0.55s ease-out 0.2s both; }
 .hero-animate-4 { animation: slideInUp 0.55s ease-out 0.3s both; }
 .hero-animate-5 { animation: slideInUp 0.55s ease-out 0.4s both; }
-.hero-cards-animate { animation: slideInRight 0.7s ease-out 0.3s both; }
+.hero-cards-animate { animation: slideInRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both; }
 /* ═══════ MARQUEE ANIMATION ═══════ */
 @keyframes marquee {
   0% { transform: translateX(0); }

@@ -20,7 +20,6 @@ const Calculator = dynamic(() => import('../components/Calculator'))
 const CroBrandExercise = dynamic(() => import('../components/CroBrandExercise'))
 const WhoWeDontWorkWith = dynamic(() => import('../components/WhoWeDontWorkWith'))
 const ContactUs = dynamic(() => import('../components/ContactUs'))
-const ThePromise = dynamic(() => import('../components/ThePromise'))
 const Contact = dynamic(() => import('../components/Contact'))
 const ServicesAndPricing = dynamic(() => import('../components/ServicesAndPricing'))
 

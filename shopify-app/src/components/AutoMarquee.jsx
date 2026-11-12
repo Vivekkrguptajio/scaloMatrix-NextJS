@@ -39,7 +39,9 @@ export default function AutoMarquee({ children, speed = 40, direction = 'left', 
     if (dir < 0) el.scrollLeft = period();
     let pos = el.scrollLeft;
 
+    let visible = true;
     const tick = (now) => {
+      if (!visible) { raf = null; return; } // off-screen: no frames, no work
       const dt = Math.min(now - last, 64);
       last = now;
       const p = period();
@@ -56,6 +58,11 @@ export default function AutoMarquee({ children, speed = 40, direction = 'left', 
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
+    const io = new IntersectionObserver(([e]) => {
+      visible = e.isIntersecting;
+      if (visible && !raf) { last = performance.now(); raf = requestAnimationFrame(tick); }
+    }, { rootMargin: '200px' });
+    io.observe(el);
 
 
     // Mouse: click and drag the strip left/right (touch already swipes natively)
@@ -95,6 +102,7 @@ export default function AutoMarquee({ children, speed = 40, direction = 'left', 
 
     return () => {
       cancelAnimationFrame(raf);
+      io.disconnect();
       clearTimeout(resumeTimer);
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('pointerup', onUp);
