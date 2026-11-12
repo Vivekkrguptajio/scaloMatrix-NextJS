@@ -27,7 +27,7 @@ const Item = ({ main, note, dark }) => (
 
 const WhoWeDontWorkWith = () => {
   return (
-    <section className="w-full py-16 md:py-24 font-sans bg-cream">
+    <section className="relative w-full py-16 md:py-24 font-sans bg-cream">
       <div className="container-x">
 
         <div className="flex flex-col lg:flex-row w-full justify-between items-start lg:items-end mb-10 md:mb-14 gap-6">
@@ -43,17 +43,17 @@ const WhoWeDontWorkWith = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-5">
-          <div className="bg-panel rounded-[28px] p-7 sm:p-10">
+          <div className="bg-panel p-7 sm:p-10">
             <h3 className="h-card text-white text-xl mb-3 flex items-center gap-3">
-              <span className="w-8 h-8 rounded-full bg-white/10 text-white/80 text-sm flex items-center justify-center" aria-hidden="true">✕</span>
+              <span className="w-8 h-8 bg-white/10 text-white/80 text-sm flex items-center justify-center" aria-hidden="true">✕</span>
               Not for you if
             </h3>
             <ul>{notFor.map(([m, n]) => <Item key={m} main={m} note={n} dark />)}</ul>
           </div>
 
-          <div className="bg-paper border border-line rounded-[28px] p-7 sm:p-10">
+          <div className="bg-paper border border-line p-7 sm:p-10">
             <h3 className="h-card text-ink text-xl mb-3 flex items-center gap-3">
-              <span className="w-8 h-8 rounded-full bg-brand text-white text-sm flex items-center justify-center" aria-hidden="true">✓</span>
+              <span className="w-8 h-8 bg-brand text-white text-sm flex items-center justify-center" aria-hidden="true">✓</span>
               For you if
             </h3>
             <ul>{forYou.map(([m, n]) => <Item key={m} main={m} note={n} />)}</ul>

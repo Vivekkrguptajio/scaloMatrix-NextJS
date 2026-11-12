@@ -73,7 +73,7 @@ const HappyClients = () => {
               <AnimatedCounter target={100} suffix="+" /> founders. <span className="accent">Same</span> result.
             </h2>
           </div>
-          <p className="lead max-w-[400px]">
+          <p className="lead max-w-[340px]">
             More orders from the traffic they already had. In their own words.
           </p>
         </div>
@@ -83,7 +83,7 @@ const HappyClients = () => {
       <AutoMarquee speed={35} className="py-2">
         <div className="flex gap-4 md:gap-6 w-max ps-[max(1.25rem,calc((100vw-1280px)/2))] sm:ps-[max(2rem,calc((100vw-1280px)/2))] pe-5">
           {[...testimonials, ...testimonials].map((client, idx) => (
-            <figure key={idx} className="w-[280px] sm:w-[380px] flex flex-col shrink-0 bg-paper rounded-[24px] border border-line p-6 sm:p-8">
+            <figure key={idx} className="w-[238px] sm:w-[323px] flex flex-col shrink-0 bg-paper border border-line p-6 sm:p-8">
               <div className="flex gap-[3px] mb-5" aria-label="5 out of 5 stars">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <svg key={star} width="16" height="16" viewBox="0 0 24 24" fill="#FD5800" aria-hidden="true">
@@ -98,10 +98,10 @@ const HappyClients = () => {
 
               <figcaption className="flex items-center justify-between gap-4 pt-5 border-t border-line">
                 <div>
-                  <p className="font-semibold text-ink text-[15px] leading-tight">{client.author}</p>
+                  <p className="font-semibold text-ink text-[12px] leading-tight">{client.author}</p>
                   <p className="font-mono text-[10px] tracking-[0.1em] uppercase text-muted mt-1">{client.title}</p>
                 </div>
-                <div className="shrink-0 bg-white rounded-lg px-2 py-1">{client.logo}</div>
+                <div className="shrink-0 bg-white px-2 py-1">{client.logo}</div>
               </figcaption>
             </figure>
           ))}

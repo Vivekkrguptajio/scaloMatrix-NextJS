@@ -47,7 +47,7 @@ export default function Loader({ duration = 900 }) {
     const rain = setInterval(() => {
       ctx.fillStyle = `rgba(${bg}, 0.1)`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.font = `${fontSize}px "JetBrains Mono", monospace`;
+      ctx.font = `${fontSize}px "General Sans", sans-serif`;
       drops.forEach((y, i) => {
         const x = i * fontSize;
         // bright head, orange trail

@@ -45,14 +45,14 @@ export default function ContactUs() {
     }
   };
 
-  const inputClasses = "w-full bg-paper border border-line px-5 py-4 text-ink placeholder:text-muted/70 focus:outline-none focus:border-[#FD5800] focus:bg-paper transition-colors rounded-2xl";
+  const inputClasses = "w-full bg-paper border border-line px-5 py-4 text-ink placeholder:text-muted/70 focus:outline-none focus:border-[#FD5800] focus:bg-paper transition-colors";
 
   return (
     <section id="contact" className="relative w-full py-16 md:py-24 bg-cream font-sans overflow-hidden">
       
       {/* ─── Background Ambient Waves ─── */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(253,88,0,0.1)_0%,transparent_70%)] rounded-full pointer-events-none -translate-y-1/3 translate-x-1/3"></div>
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(253,88,0,0.05)_0%,transparent_70%)] rounded-full pointer-events-none translate-y-1/3 -translate-x-1/3"></div>
+      <div className="absolute top-0 right-0 w-[680px] h-[680px] bg-[radial-gradient(circle,rgba(253,88,0,0.1)_0%,transparent_70%)] pointer-events-none -translate-y-1/3 translate-x-1/3"></div>
+      <div className="absolute bottom-0 left-0 w-[510px] h-[510px] bg-[radial-gradient(circle,rgba(253,88,0,0.05)_0%,transparent_70%)] pointer-events-none translate-y-1/3 -translate-x-1/3"></div>
 
       <div className="container-x relative z-10">
         
@@ -90,7 +90,7 @@ export default function ContactUs() {
             >
               {/* Contact Item */}
               <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-paper border border-line flex items-center justify-center text-ink group-hover:bg-[#FD5800] group-hover:text-white transition-colors duration-300">
+                <div className="w-12 h-12 bg-paper border border-line flex items-center justify-center text-ink group-hover:bg-[#FD5800] group-hover:text-white transition-colors duration-300">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
@@ -103,7 +103,7 @@ export default function ContactUs() {
 
               {/* Contact Item */}
               <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-paper border border-line flex items-center justify-center text-ink group-hover:bg-[#FD5800] group-hover:text-white transition-colors duration-300">
+                <div className="w-12 h-12 bg-paper border border-line flex items-center justify-center text-ink group-hover:bg-[#FD5800] group-hover:text-white transition-colors duration-300">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
@@ -116,7 +116,7 @@ export default function ContactUs() {
 
               {/* Contact Item */}
               <div className="flex items-center gap-4 group">
-                <div className="w-12 h-12 rounded-full bg-paper border border-line flex items-center justify-center text-ink group-hover:bg-[#25D366] group-hover:border-[#25D366] group-hover:text-white transition-colors duration-300">
+                <div className="w-12 h-12 bg-paper border border-line flex items-center justify-center text-ink group-hover:bg-[#25D366] group-hover:border-[#25D366] group-hover:text-white transition-colors duration-300">
                   <FaWhatsapp className="w-5 h-5" />
                 </div>
                 <div>

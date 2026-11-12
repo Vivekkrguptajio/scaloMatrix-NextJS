@@ -2,9 +2,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-display: 'Plus Jakarta Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --font-sans: 'General Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'General Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'General Sans', ui-sans-serif, system-ui, sans-serif;
 
   --color-brand: #FD5800;
   --color-brand-deep: #BF3D00;
@@ -32,17 +32,51 @@ html[data-theme='dark'] {
   --color-brand-text: #FF8A4C;
 }
 
+/* While this class is on <html> no element fades its colours, so the theme change is a
+   clean single state (the reveal animation below is what spreads it across the page). */
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition: none !important;
+}
+
+/* Circular theme reveal (View Transitions): the new theme is drawn on top and grown
+   from the toggle button via clip-path (see toggleTheme in Navbar.jsx). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 2; }
+
+/* ═══════ SMOOTHNESS DEFAULTS ═══════
+   Every link, button and form field eases its colour / lift / shadow instead of
+   snapping. Lives in @layer base, so any Tailwind transition-* / duration-* class
+   on an element still overrides it. */
+@layer base {
+  a, button, input, textarea, select, summary, [role='button'] {
+    transition-property: color, background-color, border-color, opacity, transform, box-shadow;
+    transition-duration: 280ms;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  img, video { image-rendering: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
 /* ═══════ TYPE SYSTEM ═══════
-   display  → Plus Jakarta Sans (headlines, big numbers)
-   sans     → Inter (body, UI)
-   mono     → JetBrains Mono (eyebrows, labels, data captions)            */
+   One font site-wide: General Sans. The three tokens below all point to it, so
+   existing font-sans / font-display / font-mono classes keep working.            */
 .h-display {
   font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.035em;   /* -2.31px at 66px */
+  line-height: 1.045;         /* 69px at 66px */
 }
-.h-section { font-size: clamp(1.7rem, 3.4vw, 2.75rem); }
+.h-section { font-size: clamp(30px, 3.8vw, 48px); }
 .h-card { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; }
 .accent {
   color: var(--color-brand);
@@ -63,8 +97,24 @@ html[data-theme='dark'] {
   width: 1.5rem;
   height: 2px;
   background: currentColor;
-  border-radius: 2px;
+ 
 }
+
+/* On the page itself, a section's eyebrow becomes an orange tab pinned to the section's
+   top-left corner, flush with the margin line (same as the Partners tab). */
+.page-frame .eyebrow {
+  position: absolute;
+  top: 0;
+  left: var(--m);
+  margin: 0;
+  padding: 0.5rem 1rem;
+  background: var(--color-brand);
+  color: #fff;
+  font-size: 0.69rem;
+  line-height: 1.2;
+  z-index: 2;
+}
+.page-frame .eyebrow::before { display: none; }
 .lead {
   font-size: clamp(0.9rem, 1.05vw, 1rem);
   line-height: 1.65;
@@ -73,14 +123,14 @@ html[data-theme='dark'] {
 .btn-primary {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
   background: var(--color-brand); color: #fff; font-weight: 600; font-size: 0.9rem;
-  padding: 0.7rem 1.4rem; border-radius: 999px; border: 1.5px solid var(--color-brand);
+  padding: 0.7rem 1.4rem; border: 1.5px solid var(--color-brand);
   transition: background .25s, color .25s, border-color .25s, transform .25s;
 }
 .btn-primary:hover { background: var(--color-brand-deep); border-color: var(--color-brand-deep); }
 .btn-ghost {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
   color: var(--color-ink); font-weight: 600; font-size: 0.9rem;
-  padding: 0.7rem 1.4rem; border-radius: 999px; border: 1.5px solid var(--color-ink);
+  padding: 0.7rem 1.4rem; border: 1.5px solid var(--color-ink);
   transition: background .25s, color .25s;
 }
 .btn-ghost:hover { background: var(--color-ink); color: var(--color-paper); }
@@ -90,13 +140,75 @@ html[data-theme='dark'] {
    20px (phone) / 32px (>=640px) gutter. Navbar, cards, text, marquees and footer
    all use it, so left and right edges line up everywhere. */
 .container-x {
+  /* content starts a small fixed gap (10px) after the margin's vertical line */
+  --gutter: calc(var(--m) + 10px);
   width: 100%;
-  max-width: calc(1280px + 4rem);
+  max-width: calc(1280px + 2 * var(--gutter));
   margin-inline: auto;
-  padding-inline: 1.25rem;
+  padding-inline: var(--gutter);
 }
-@media (min-width: 640px) {
-  .container-x { padding-inline: 2rem; }
+
+/* ═══════ RULED SIDE MARGINS ═══════
+   Each side: a plain outer margin (--m), a 1px beige vertical line at its inner edge,
+   and fine horizontal ruling (every 5px) that stops at the vertical line. Fixed to the viewport (they do not scroll), same on both sides. */
+:root {
+  --m: 32px;       /* outer margin, up to and including the vertical line */
+  --z: 0px;        /* no ruling past the vertical line */
+  --vband: #E6E2DD;   /* vertical line: soft light grey */
+  --hband: #EEE7DF;   /* horizontal ruling */
+}
+html[data-theme='dark'] {
+  --vband: #33302B;
+  --hband: rgba(255, 255, 255, 0.06);
+}
+@media (min-width: 640px)  { :root { --m: 62px; } }
+@media (min-width: 1024px) { :root { --m: 104px; } }
+.page-frame { position: relative; }
+
+/* Partner logo cells sit on the page colour; in dark mode they go white so dark logos stay readable */
+.partner-cell { background: var(--color-cream); }
+html[data-theme='dark'] .partner-cell { background: #fff; }
+
+/* A thin divider under every section (not the last one, which sits on the footer) */
+.page-frame > *:not(:last-child) { border-bottom: 1px solid var(--color-line); }
+
+/* One viewport-tall layer that sticks to the top while <main> is on screen, so the ruled
+   margins stay put while the content scrolls, and leave together with <main> (the dark
+   footer is revealed underneath without them). The negative bottom margin keeps it
+   from taking up any space in the layout. */
+.page-frame::before {
+  content: '';
+  display: block;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  margin-bottom: -100vh;
+  margin-bottom: -100dvh;
+  pointer-events: none;
+  z-index: 30;
+  background-repeat: no-repeat, no-repeat, repeat-y, repeat-y, no-repeat, no-repeat;
+  background-image:
+    linear-gradient(var(--vband), var(--vband)),                       /* left vertical line  */
+    linear-gradient(var(--vband), var(--vband)),                       /* right vertical line */
+    repeating-linear-gradient(to bottom, transparent 0 4px, var(--hband) 4px 5px), /* left ruling  */
+    repeating-linear-gradient(to bottom, transparent 0 4px, var(--hband) 4px 5px), /* right ruling */
+    linear-gradient(var(--color-cream), var(--color-cream)),           /* left plain backing  */
+    linear-gradient(var(--color-cream), var(--color-cream));           /* right plain backing */
+  background-size:
+    1px 100%,
+    1px 100%,
+    var(--m) 100%,
+    var(--m) 100%,
+    var(--m) 100%,
+    var(--m) 100%;
+  background-position:
+    calc(var(--m) - 1px) 0,
+    calc(100% - var(--m)) 0,
+    0 0,
+    100% 0,
+    0 0,
+    100% 0;
 }
 
 /* ═══════ GLOBAL STYLES ═══════ */
@@ -107,12 +219,21 @@ html[data-theme='dark'] {
   }
 }
 
+/* Lenis (inertial scroll) needs native smooth-scrolling off so the two don't fight */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
 html {
+  /* Global scale: every rem-based size (type, padding, cards) follows this */
+  font-size: 14.5px;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-overflow-scrolling: touch;
 }
+@media (min-width: 1024px) { html { font-size: 13.5px; } }
 
 body {
   font-family: var(--font-sans);
@@ -202,20 +323,20 @@ html, body {
 }
 .custom-slider:focus { outline: none; }
 .custom-slider::-webkit-slider-runnable-track {
-  width: 100%; height: 4px; cursor: pointer; background: var(--color-line); border-radius: 4px;
+  width: 100%; height: 4px; cursor: pointer; background: var(--color-line);
 }
 .custom-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 26px; width: 26px; margin-top: -11px;
-  background: var(--color-brand); border: 4px solid var(--color-paper); border-radius: 50%;
+  background: var(--color-brand); border: 4px solid var(--color-paper);
   box-shadow: 0 2px 10px rgba(20, 18, 16, 0.3); cursor: pointer;
 }
 .custom-slider::-moz-range-track {
-  width: 100%; height: 4px; cursor: pointer; background: var(--color-line); border-radius: 4px;
+  width: 100%; height: 4px; cursor: pointer; background: var(--color-line);
 }
 .custom-slider::-moz-range-thumb {
   height: 22px; width: 22px; background: var(--color-brand);
-  border: 4px solid var(--color-paper); border-radius: 50%;
+  border: 4px solid var(--color-paper);
   box-shadow: 0 2px 10px rgba(20, 18, 16, 0.3); cursor: pointer;
 }
 

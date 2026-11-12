@@ -76,15 +76,15 @@ export default function HeroVCards() {
         <div className="flex flex-col md:flex-row justify-between md:items-end gap-6">
           <div>
             <span className="eyebrow mb-4">Our work</span>
-            <h2 className="h-display h-section max-w-[640px]">
-              Stores people <span className="accent">love</span> to buy from.
+            <h2 className="h-display h-section !font-medium !text-[clamp(1.6rem,3.1vw,45px)] max-w-[400px] xl:max-w-none xl:whitespace-nowrap">
+              <span className="accent">Shopify Stores</span> We’re Proud to Build &amp; Scale.
             </h2>
           </div>
 
-          <div className="flex items-center gap-4 bg-paper p-3.5 pr-6 rounded-2xl border border-line self-start md:self-auto">
+          <div className="flex items-center gap-4 bg-paper p-3.5 pr-6 border border-line self-start md:self-auto">
             <div className="flex -space-x-3">
               {LOGOS.map((src, i) => (
-                <div key={i} className="relative w-10 h-10 rounded-full border-2 border-paper bg-white overflow-hidden">
+                <div key={i} className="relative w-10 h-10 border-2 border-paper bg-white overflow-hidden">
                   <Image src={src} alt="" fill className="object-cover" sizes="40px" />
                 </div>
               ))}
@@ -113,17 +113,17 @@ export default function HeroVCards() {
             <Card
               key={idx}
               {...(card.url ? { href: card.url, target: '_blank', rel: 'noopener noreferrer' } : {})}
-              className="group/card w-[260px] sm:w-[320px] md:w-[380px] shrink-0 flex flex-col rounded-[22px] overflow-hidden bg-paper border border-line shadow-[0_10px_30px_-18px_rgba(20,18,16,0.35)] transition-transform duration-500 hover:-translate-y-1.5"
+              className="group/card w-[221px] sm:w-[272px] md:w-[323px] shrink-0 flex flex-col overflow-hidden bg-paper border border-line shadow-[0_10px_30px_-18px_rgba(20,18,16,0.35)] transition-transform duration-500 hover:-translate-y-1.5"
             >
-              <div className="relative w-full h-[330px] sm:h-[420px] md:h-[480px] overflow-hidden bg-cream">
+              <div className="relative w-full h-[280px] sm:h-[357px] md:h-[408px] overflow-hidden bg-cream">
                 <Image src={card.img} alt={`${card.title} Shopify store`} fill className="object-cover object-top transition-transform duration-700 group-hover/card:scale-[1.03]" sizes="(max-width: 768px) 320px, 380px" priority={idx < 2} />
               </div>
               <div className="flex items-center justify-between gap-3 px-4 py-3.5 border-t border-line">
                 <div className="min-w-0">
-                  <p className="font-display font-semibold text-[15px] leading-tight truncate">{card.title}</p>
+                  <p className="font-display font-semibold text-[12px] leading-tight truncate">{card.title}</p>
                   <p className="font-mono text-[10px] tracking-[0.1em] uppercase text-muted mt-1 truncate">{card.category}</p>
                 </div>
-                {card.stat && <span className="shrink-0 bg-brand-soft text-brand-text font-mono text-[11px] font-medium px-2.5 py-1 rounded-full">{card.stat}</span>}
+                {card.stat && <span className="shrink-0 bg-brand-soft text-brand-text font-mono text-[11px] font-medium px-2.5 py-1">{card.stat}</span>}
               </div>
             </Card>
             )

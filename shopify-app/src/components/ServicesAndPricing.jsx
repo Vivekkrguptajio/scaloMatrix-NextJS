@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import { scrollToId } from '../utils/smoothScroll'
 import { motion } from 'framer-motion';
 
 const containerVariants = {
@@ -107,7 +108,7 @@ const ServiceCard = ({ service }) => {
       variants={cardVariants}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className={`group relative flex flex-col h-full rounded-[28px] overflow-hidden transition-all duration-500 ease-out cursor-default ${
+      className={`group relative flex flex-col h-full overflow-hidden transition-all duration-500 ease-out cursor-default ${
         service.featured
           ? 'bg-panel text-white shadow-[0_30px_60px_-30px_rgba(253,88,0,0.5)] ring-1 ring-[#FD5800]/40'
           : 'bg-paper text-ink border border-line hover:shadow-[0_24px_50px_-30px_rgba(20,18,16,0.4)] hover:-translate-y-1.5'
@@ -122,7 +123,7 @@ const ServiceCard = ({ service }) => {
       {/* Badge */}
       {service.badge && (
         <div className="absolute top-5 right-5 z-10">
-          <span className="bg-[#FD5800] text-white text-[10px] font-mono font-medium px-3 py-1.5 rounded-full uppercase tracking-[0.12em]">
+          <span className="bg-[#FD5800] text-white text-[10px] font-mono font-medium px-3 py-1.5 uppercase tracking-[0.12em]">
             {service.badge}
           </span>
         </div>
@@ -136,7 +137,7 @@ const ServiceCard = ({ service }) => {
           }`}>
             {service.title}
           </h3>
-          <p className={`text-[15px] leading-relaxed ${
+          <p className={`text-[12px] leading-relaxed ${
             service.featured ? 'text-white/60' : 'text-muted'
           }`}>
             {service.desc}
@@ -172,7 +173,7 @@ const ServiceCard = ({ service }) => {
                 <button
                   key={i}
                   onClick={() => setSelectedOption(i)}
-                  className={`text-xs md:text-[13px] font-semibold px-4 py-2.5 rounded-full transition-all duration-300 border ${
+                  className={`text-xs md:text-[12px] font-semibold px-4 py-2.5 transition-all duration-300 border ${
                     selectedOption === i
                       ? service.featured
                         ? 'bg-[#FD5800] text-white border-[#FD5800]'
@@ -203,7 +204,7 @@ const ServiceCard = ({ service }) => {
             {visibleItems.map((item, i) => (
               <li
                 key={i}
-                className={`flex items-start gap-2.5 py-2 border-b border-dashed last:border-b-0 text-[13px] leading-relaxed transition-colors duration-300 ${
+                className={`flex items-start gap-2.5 py-2 border-b border-dashed last:border-b-0 text-[12px] leading-relaxed transition-colors duration-300 ${
                   service.featured
                     ? 'text-white/80 border-white/10 group-hover:text-white'
                     : 'text-ink/80 border-line group-hover:text-ink'
@@ -238,9 +239,9 @@ const ServiceCard = ({ service }) => {
             href="#contact"
             onClick={(e) => {
               e.preventDefault();
-              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              scrollToId('contact');
             }}
-            className={`group/btn w-full flex items-center justify-center gap-2.5 font-semibold text-sm md:text-[15px] px-6 py-3.5 rounded-full transition-all duration-300 ${
+            className={`group/btn w-full flex items-center justify-center gap-2.5 font-semibold text-sm md:text-[12px] px-6 py-3.5 transition-all duration-300 ${
               service.featured
                 ? 'bg-[#FD5800] text-white border border-[#FD5800] hover:bg-white hover:text-black hover:border-white'
                 : 'bg-panel text-white border border-ink hover:bg-[#FD5800] hover:border-[#FD5800]'
@@ -261,7 +262,7 @@ const ServiceCard = ({ service }) => {
       </div>
 
       {/* Subtle corner glow on hover */}
-      <div className={`absolute -bottom-20 -right-20 w-40 h-40 rounded-full opacity-0 group-hover:opacity-[0.06] transition-opacity duration-500 blur-3xl pointer-events-none ${
+      <div className={`absolute -bottom-20 -right-20 w-40 h-40 opacity-0 group-hover:opacity-[0.06] transition-opacity duration-500 blur-3xl pointer-events-none ${
         service.featured ? 'bg-[#FD5800]' : 'bg-[#FD5800]'
       }`}></div>
     </motion.div>
@@ -270,7 +271,7 @@ const ServiceCard = ({ service }) => {
 
 const ServicesAndPricing = () => {
   return (
-    <section id="services" className="w-full py-16 md:py-24 bg-cream font-sans scroll-mt-16">
+    <section id="services" className="relative w-full py-16 md:py-24 bg-cream font-sans scroll-mt-16">
       <div className="container-x">
 
         <motion.div
@@ -288,7 +289,7 @@ const ServicesAndPricing = () => {
           </div>
           <div className="flex flex-col items-start lg:items-end gap-3 lg:w-[34%]">
             <p className="lead lg:text-right">Pick a plan, or start with a free audit.</p>
-            <span className="inline-flex items-center gap-2 bg-paper border border-line rounded-full px-4 py-1.5 font-mono text-[11px] tracking-[0.12em] uppercase text-muted">
+            <span className="inline-flex items-center gap-2 bg-paper border border-line px-4 py-1.5 font-mono text-[11px] tracking-[0.12em] uppercase text-muted">
               Prices in <span className="text-ink font-medium">INR ₹</span>
             </span>
           </div>

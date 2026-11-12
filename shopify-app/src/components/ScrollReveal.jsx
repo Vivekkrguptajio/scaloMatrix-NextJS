@@ -74,9 +74,9 @@ const ScrollReveal = ({
     <motion.div
       initial={selected.initial}
       whileInView={selected.animate}
-      viewport={{ once: true, margin: isMobile ? "-2%" : "-5%" }}
+      viewport={{ once: true, margin: isMobile ? "-4%" : "-8%" }}
       transition={{ 
-        duration: isMobile ? 0.45 : 0.55, 
+        duration: isMobile ? 0.7 : 0.9, 
         ease: appleEaseOut,
         delay: delay / 1000,
       }}

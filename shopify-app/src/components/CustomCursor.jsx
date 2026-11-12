@@ -25,16 +25,24 @@ export default function CustomCursor() {
     const outer = outerRef.current;
     if (!dot || !outer) return;
 
+    // Cursor glides toward the pointer (lerp) instead of snapping to it
     let animationFrameId = null;
-    const handleMouseMove = (e) => {
-      const x = e.clientX;
-      const y = e.clientY;
-      if (!animationFrameId) {
-        animationFrameId = requestAnimationFrame(() => {
-          outer.style.transform = `translate3d(${x - 16}px, ${y - 16}px, 0)`;
-          animationFrameId = null;
-        });
+    let tx = -100, ty = -100, cx = -100, cy = -100;
+    const tick = () => {
+      cx += (tx - cx) * 0.22;
+      cy += (ty - cy) * 0.22;
+      outer.style.transform = `translate3d(${cx - 16}px, ${cy - 16}px, 0)`;
+      if (Math.abs(tx - cx) > 0.1 || Math.abs(ty - cy) > 0.1) {
+        animationFrameId = requestAnimationFrame(tick);
+      } else {
+        animationFrameId = null;
       }
+    };
+    const handleMouseMove = (e) => {
+      if (cx === -100 && cy === -100) { cx = e.clientX; cy = e.clientY; } // first move: no fly-in from the corner
+      tx = e.clientX;
+      ty = e.clientY;
+      if (!animationFrameId) animationFrameId = requestAnimationFrame(tick);
     };
 
     let lastTarget = null;
@@ -76,9 +84,11 @@ export default function CustomCursor() {
       <div className="flex items-center justify-center w-8 h-8">
         <div 
           ref={dotRef}
-          className="w-2 h-2 rounded-full bg-[#FD5800] border border-white shadow-sm"
+          className="w-2 h-2 bg-[#FD5800] border border-white shadow-sm"
           style={{ 
-            transition: 'transform 0.15s ease',
+            outline: '1.5px solid #000', // black outline around the cursor
+            outlineOffset: '10px',       // 10px gap between the dot and the outline
+            transition: 'transform 0.3s cubic-bezier(0.22, 1, 0.36, 1)',
             willChange: 'transform',
           }}
         />

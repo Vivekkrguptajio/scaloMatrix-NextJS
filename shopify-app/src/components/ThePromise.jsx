@@ -4,10 +4,10 @@ export default function ThePromise() {
   return (
     <section className="w-full bg-cream pb-16 md:pb-24">
       <div className="container-x">
-      <div className="relative overflow-hidden bg-gradient-to-br from-brand to-brand-deep text-white rounded-[36px] px-6 sm:px-12 lg:px-20 py-14 md:py-20 flex flex-col items-center text-center font-sans">
+      <div className="relative overflow-hidden bg-gradient-to-br from-brand to-brand-deep text-white px-6 sm:px-12 lg:px-20 py-14 md:py-20 flex flex-col items-center text-center font-sans">
         {/* Decorative rings */}
-        <div className="absolute -top-24 -left-24 w-[280px] h-[280px] md:w-[420px] md:h-[420px] rounded-full border-[44px] md:border-[64px] border-white/[0.08] pointer-events-none" />
-        <div className="absolute -bottom-28 -right-20 w-[240px] h-[240px] md:w-[380px] md:h-[380px] rounded-full border-[40px] md:border-[58px] border-black/[0.07] pointer-events-none" />
+        <div className="absolute -top-24 -left-24 w-[238px] h-[238px] md:w-[357px] md:h-[357px] border-[44px] md:border-[64px] border-white/[0.08] pointer-events-none" />
+        <div className="absolute -bottom-28 -right-20 w-[204px] h-[204px] md:w-[323px] md:h-[323px] border-[40px] md:border-[58px] border-black/[0.07] pointer-events-none" />
 
         <div className="relative max-w-3xl flex flex-col items-center">
           <span className="font-mono text-[11px] tracking-[0.16em] uppercase text-white/90 mb-6">The promise</span>
@@ -23,7 +23,7 @@ export default function ThePromise() {
 
           <a
             href="#contact"
-            className="group inline-flex items-center justify-center gap-2 bg-white text-[#141210] font-semibold py-4 px-8 rounded-full hover:bg-[#141210] hover:text-white transition-colors duration-300"
+            className="group inline-flex items-center justify-center gap-2 bg-white text-[#141210] font-semibold py-4 px-8 hover:bg-[#141210] hover:text-white transition-colors duration-300"
           >
             Request your free audit
             <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>

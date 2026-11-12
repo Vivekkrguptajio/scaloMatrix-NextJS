@@ -31,7 +31,7 @@ export default function LegalLayout({ title, intro, current, sections, updated =
               <Link
                 key={d.href}
                 href={d.href}
-                className={`text-sm px-4 py-2 rounded-full border transition-colors ${
+                className={`text-sm px-4 py-2 border transition-colors ${
                   d.href === current
                     ? 'bg-brand text-white border-brand font-semibold'
                     : 'border-line text-muted hover:text-ink hover:border-ink/40'
@@ -55,7 +55,7 @@ export default function LegalLayout({ title, intro, current, sections, updated =
                 <span className="font-mono text-xs text-brand-text pt-1.5">{String(i + 1).padStart(2, '0')}</span>
                 <div>
                   <h2 className="h-card text-xl mb-3">{s.title}</h2>
-                  <div className="text-[15px] leading-relaxed text-muted [&_strong]:text-ink [&_a]:text-brand-text [&_a]:underline [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2 [&_p+p]:mt-3 [&_ul+p]:mt-3">
+                  <div className="text-[12px] leading-relaxed text-muted [&_strong]:text-ink [&_a]:text-brand-text [&_a]:underline [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2 [&_p+p]:mt-3 [&_ul+p]:mt-3">
                     {s.body}
                   </div>
                 </div>
@@ -64,7 +64,7 @@ export default function LegalLayout({ title, intro, current, sections, updated =
           </div>
 
           {/* Contact */}
-          <div className="mt-10 rounded-[24px] bg-cream border border-line p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="mt-10 bg-cream border border-line p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <p className="h-card text-lg mb-1">Questions about this page?</p>
               <p className="text-sm text-muted">We reply within 24 hours.</p>

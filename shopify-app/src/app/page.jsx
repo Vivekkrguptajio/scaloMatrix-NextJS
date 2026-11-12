@@ -13,6 +13,7 @@ import Faq from '../components/Faq'
 import Loader from '../components/Loader'
 
 // Dynamic imports for below-the-fold components — reduces initial JS bundle by ~60-70%
+const Partners = dynamic(() => import('../components/Partners'))
 const HappyClients = dynamic(() => import('../components/HappyClients'))
 const CaseStudiesGrid = dynamic(() => import('../components/CaseStudiesGrid'))
 const Calculator = dynamic(() => import('../components/Calculator'))
@@ -34,9 +35,10 @@ function App() {
       <WhatsAppButton />
       <Navbar />
       
-      <main className="relative z-20 bg-cream rounded-b-[40px] md:rounded-b-[60px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+      <main className="page-frame relative z-20 bg-cream shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
         <Hero />
         <HeroVCards />
+        <ScrollReveal><Partners /></ScrollReveal>
 
         <ScrollReveal variant="scaleUp"><HappyClients /></ScrollReveal>
         <ScrollReveal variant="scaleUp"><CaseStudiesGrid /></ScrollReveal>

@@ -34,7 +34,7 @@ const Calculator = () => {
   ];
 
   return (
-    <section id="math" className="w-full py-16 md:py-24 font-sans bg-cream">
+    <section id="math" className="relative w-full py-16 md:py-24 font-sans bg-cream">
       <div className="container-x flex flex-col">
 
         <div className="flex flex-col lg:flex-row w-full justify-between items-start lg:items-end mb-10 md:mb-14 gap-6">
@@ -49,7 +49,7 @@ const Calculator = () => {
           </p>
         </div>
 
-        <div className="w-full bg-paper rounded-[32px] border border-line shadow-[0_30px_60px_-40px_rgba(20,18,16,0.35)] flex flex-col lg:flex-row overflow-hidden">
+        <div className="w-full bg-paper border border-line shadow-[0_30px_60px_-40px_rgba(20,18,16,0.35)] flex flex-col lg:flex-row overflow-hidden">
 
           {/* Inputs */}
           <div className="w-full lg:w-[55%] p-6 md:p-10 flex flex-col justify-center gap-8">
@@ -103,7 +103,7 @@ const Calculator = () => {
             </div>
 
             <a href="#contact" className="group bg-brand hover:bg-brand-deep transition-colors p-5 md:p-6 flex items-center justify-between gap-4">
-              <p className="text-sm md:text-[15px] text-white font-semibold leading-snug">
+              <p className="text-sm md:text-[12px] text-white font-semibold leading-snug">
                 See what this could mean for your store. Book a free call.
               </p>
               <span className="text-white text-xl transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>

@@ -7,15 +7,15 @@ import AutoMarquee from './AutoMarquee';
 const DesktopMobileMockup = ({ src, mobileSrc, alt }) => (
   <div className="flex gap-2 sm:gap-4 h-full w-full items-end justify-center pt-2 sm:pt-4 px-2 sm:px-4 group-hover/link:scale-[1.03] transition-transform duration-500 overflow-hidden">
     {/* Desktop View */}
-    <div className="flex-[2.5] bg-paper rounded-t-lg md:rounded-t-2xl shadow-[0_-4px_25px_rgba(0,0,0,0.08)] overflow-hidden flex flex-col border-t border-l border-r border-gray-200 relative h-[95%] md:h-[98%]">
-      <div className="w-full h-full relative overflow-hidden bg-gray-100 min-h-[140px] sm:min-h-[180px] md:min-h-[220px]">
+    <div className="flex-[2.5] bg-paper shadow-[0_-4px_25px_rgba(0,0,0,0.08)] overflow-hidden flex flex-col border-t border-l border-r border-gray-200 relative h-[95%] md:h-[98%]">
+      <div className="w-full h-full relative overflow-hidden bg-gray-100 min-h-[119px] sm:min-h-[153px] md:min-h-[187px]">
         <Image src={src} alt={alt} fill className="object-cover object-top" sizes="(max-width: 768px) 70vw, 50vw" />
       </div>
     </div>
 
     {/* Mobile View */}
-    <div className="flex-[1] max-w-[90px] sm:max-w-[140px] bg-paper rounded-t-lg md:rounded-t-2xl shadow-[0_-4px_25px_rgba(0,0,0,0.15)] overflow-hidden flex flex-col border-t border-l border-r border-gray-200 shrink-0 relative h-[82%] md:h-[88%]">
-       <div className="w-full h-full relative overflow-hidden bg-gray-100 min-h-[120px] sm:min-h-[150px] md:min-h-[180px]">
+    <div className="flex-[1] max-w-[90px] sm:max-w-[119px] bg-paper shadow-[0_-4px_25px_rgba(0,0,0,0.15)] overflow-hidden flex flex-col border-t border-l border-r border-gray-200 shrink-0 relative h-[82%] md:h-[88%]">
+       <div className="w-full h-full relative overflow-hidden bg-gray-100 min-h-[102px] sm:min-h-[127px] md:min-h-[153px]">
          <Image src={mobileSrc || src} alt={`${alt} Mobile`} fill className="object-cover object-top" sizes="(max-width: 768px) 30vw, 25vw" />
        </div>
     </div>
@@ -76,25 +76,26 @@ const PhoneCaseStudies = ({ studies, StudyCard }) => {
     return () => clearInterval(t);
   }, [paused, n]);
 
-  const btn = 'w-11 h-11 rounded-full border border-line flex items-center justify-center text-ink active:bg-brand active:text-white active:border-brand transition-colors';
+  const btn = 'w-11 h-11 border border-line flex items-center justify-center text-ink active:bg-brand active:text-white active:border-brand transition-colors';
 
   return (
-    <div className="rounded-[28px] bg-paper border border-line overflow-hidden">
+    <div className=" bg-paper border border-line overflow-hidden">
       <div
         ref={scroller}
+        data-lenis-prevent
         onScroll={onScroll}
         onTouchStart={poke}
         onWheel={poke}
         role="region"
         aria-label="Case studies"
         tabIndex={0}
-        className="relative h-[470px] sm:h-[520px] overflow-y-auto snap-y snap-mandatory scrollbar-hide"
+        className="relative h-[399px] sm:h-[442px] overflow-y-auto snap-y snap-mandatory scrollbar-hide"
       >
         {studies.map((study, i) => (
           <div
             key={study.id}
             ref={(el) => { slides.current[i] = el; }}
-            className="snap-start h-[400px] sm:h-[450px] px-4 pt-4 pb-6 border-b border-line"
+            className="snap-start h-[340px] sm:h-[382px] px-4 pt-4 pb-6 border-b border-line"
           >
             <StudyCard study={study} flat />
           </div>
@@ -123,7 +124,7 @@ const PhoneCaseStudies = ({ studies, StudyCard }) => {
         <div className="flex items-center gap-3">
           <div className="hidden sm:flex items-center gap-1.5" aria-hidden="true">
             {studies.map((s, i) => (
-              <span key={s.id} className={`h-1.5 rounded-full transition-all duration-300 ${i === index ? 'w-5 bg-brand' : 'w-1.5 bg-ink/20'}`} />
+              <span key={s.id} className={`h-1.5 transition-all duration-300 ${i === index ? 'w-5 bg-brand' : 'w-1.5 bg-ink/20'}`} />
             ))}
           </div>
           <span className="font-mono tracking-[0.1em] text-muted tabular-nums whitespace-nowrap text-sm">
@@ -202,12 +203,12 @@ const CaseStudiesGrid = () => {
   const StudyCard = ({ study, flat = false }) => (
     <article className={flat
       ? 'w-full flex flex-col'
-      : 'w-[300px] sm:w-[440px] lg:w-[520px] shrink-0 bg-paper border border-line rounded-[28px] p-4 sm:p-5 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(20,18,16,0.4)]'}>
-      <div className={`bg-cream rounded-2xl p-2 sm:p-3 mb-5 w-full flex items-end justify-center relative overflow-hidden ${flat ? 'h-[270px] sm:h-[320px]' : 'h-[220px] sm:h-[270px] lg:h-[300px]'}`}>
+      : 'w-[255px] sm:w-[374px] lg:w-[442px] shrink-0 bg-paper border border-line p-4 sm:p-5 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(20,18,16,0.4)]'}>
+      <div className={`bg-cream p-2 sm:p-3 mb-5 w-full flex items-end justify-center relative overflow-hidden ${flat ? 'h-[229px] sm:h-[272px]' : 'h-[187px] sm:h-[229px] lg:h-[255px]'}`}>
         {study.mockup}
       </div>
       <div className="flex items-end justify-between gap-4 px-1 mt-auto">
-        <div className={`shrink-0 bg-white rounded-lg px-2 py-1 `}>{study.badge}</div>
+        <div className={`shrink-0 bg-white px-2 py-1 `}>{study.badge}</div>
         {study.aov && study.rev && (
         <div className={`flex items-center ${flat ? 'gap-3.5' : 'gap-4 sm:gap-6'}`}>
           <div className="flex flex-col items-end">
@@ -230,7 +231,7 @@ const CaseStudiesGrid = () => {
   );
 
   return (
-    <section id="case-studies" className="w-full py-16 md:py-24 bg-cream font-sans scroll-mt-16">
+    <section id="case-studies" className="relative w-full py-16 md:py-24 bg-cream font-sans scroll-mt-16">
       <div className="container-x flex flex-col">
 
         {/* Header */}

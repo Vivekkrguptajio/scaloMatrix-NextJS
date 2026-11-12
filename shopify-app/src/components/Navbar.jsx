@@ -1,5 +1,7 @@
 "use client";
 import { useState, useCallback, useEffect, useRef } from 'react'
+import { flushSync } from 'react-dom'
+import { scrollToId } from '../utils/smoothScroll'
 import { motion, useMotionValue } from 'framer-motion'
 
 export default function Navbar() {
@@ -13,19 +15,48 @@ export default function Navbar() {
     setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light')
   }, [])
 
-  const toggleTheme = () => {
+  const toggleTheme = (e) => {
     const next = theme === 'dark' ? 'light' : 'dark'
-    setTheme(next)
-    if (next === 'dark') document.documentElement.setAttribute('data-theme', 'dark')
-    else document.documentElement.removeAttribute('data-theme')
-    try { localStorage.setItem('theme-v3', next) } catch (e) {}
+    const root = document.documentElement
+    const apply = () => {
+      flushSync(() => setTheme(next))
+      if (next === 'dark') root.setAttribute('data-theme', 'dark')
+      else root.removeAttribute('data-theme')
+      try { localStorage.setItem('theme-v3', next) } catch (err) {}
+    }
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!document.startViewTransition || reduce) {
+      // No circular-reveal support: switch in one go
+      root.classList.add('theme-switching')
+      apply()
+      void root.offsetHeight
+      requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove('theme-switching')))
+      return
+    }
+
+    // New theme spreads out as a growing circle from the toggle button
+    const r = e.currentTarget.getBoundingClientRect()
+    const x = r.left + r.width / 2
+    const y = r.top + r.height / 2
+    const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))
+
+    root.classList.add('theme-switching') // keep per-element fades off so the reveal edge is clean
+    const t = document.startViewTransition(apply)
+    t.ready.then(() => {
+      root.animate(
+        { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+        { duration: 800, easing: 'cubic-bezier(0.4, 0, 0.2, 1)', pseudoElement: '::view-transition-new(root)' }
+      )
+    }).catch(() => {})
+    t.finished.finally(() => root.classList.remove('theme-switching'))
   }
 
   const ThemeToggle = (
     <button
       onClick={toggleTheme}
       aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-      className={`w-10 h-10 shrink-0 rounded-full border flex items-center justify-center transition-colors hover:border-[#FD5800] hover:text-[#FD5800] ${isDark ? 'border-white/20 text-white' : 'border-line text-ink'}`}
+      className={`w-10 h-10 shrink-0 border flex items-center justify-center transition-colors hover:border-[#FD5800] hover:text-[#FD5800] ${isDark ? 'border-white/20 text-white' : 'border-line text-ink'}`}
     >
       {theme === 'dark' ? (
         <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" /></svg>
@@ -113,17 +144,17 @@ export default function Navbar() {
 
   return (
     <>
-    <header className={`fixed left-0 right-0 z-50 flex justify-center transition-[opacity,transform] duration-300 ease-out top-4 px-5 sm:px-8 ${hidden && !mobileMenu ? '-translate-y-[140%] lg:translate-y-0' : 'translate-y-0'}`}>
+    <header className={`fixed left-[var(--m)] right-[var(--m)] z-50 flex justify-center transition-[opacity,transform] duration-300 ease-out top-0 ${hidden && !mobileMenu ? '-translate-y-[140%] lg:translate-y-0' : 'translate-y-0'}`}>
       <nav
         ref={navRef}
-        className={`relative z-10 w-full flex flex-col transition-all duration-300 backdrop-blur-md backdrop-saturate-200 max-w-7xl border rounded-[32px] ${
+        className={`relative z-10 w-full flex flex-col transition-all duration-300 backdrop-blur-md backdrop-saturate-200 border-b ${
           isDark
             ? 'bg-paper/5 border-white/10'
             : 'bg-paper/70 border-line'
-        } shadow-[0_10px_30px_-12px_rgba(20,18,16,0.2)]`}
+        }`}
       >
         {/* Main Navbar Row */}
-        <div className="w-full flex items-center justify-between py-2 px-6 md:px-8">
+        <div className="w-full flex items-center justify-between py-[18px] px-4 md:px-6">
         {/* Logo */}
         <motion.a 
           href="/"
@@ -132,40 +163,39 @@ export default function Navbar() {
           style={{ x: logoX, y: logoY }}
           className={`group flex items-center gap-3 font-semibold tracking-tight select-none whitespace-nowrap z-10 ${isDark ? 'text-white' : 'text-ink'}`}
         >
-          <span className="text-2xl md:text-[1.7rem] font-display font-extrabold transition-colors duration-300 tracking-tight">
+          <span className="text-[1.65rem] md:text-[1.85rem] font-display font-extrabold transition-colors duration-300 tracking-tight">
             <span className="text-[#FD5800]">scalo</span>
             <span className={isDark ? 'text-white' : 'text-ink'}>MATRIX</span>
           </span>
         </motion.a>
         
-        {/* Desktop Nav Links (Centered perfectly) */}
-        <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-0.5 h-full">
-          {navLinks.map((link) => (
-            <div key={link.name} className="relative h-full flex items-center">
-              <a 
-                href={link.href} 
-                onClick={(e) => {
-                  if (link.href.startsWith('#')) {
-                    e.preventDefault();
-                    document.getElementById(link.href.substring(1))?.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className={`flex items-center gap-1.5 text-[14px] lg:text-[15px] font-medium font-sans transition-colors duration-300 ease-out relative px-3 py-2 rounded-full ${
-                  isDark ? 'text-gray-300 hover:bg-[#FD5800]/10 hover:text-[#FD5800]' : 'text-ink/80 hover:bg-[#FD5800]/10 hover:text-[#FD5800]'
-                }`}
-              >
-                {link.name}
-              </a>
-            </div>
-          ))}
-        </div>
-
         {/* Contact Button (Right Side) */}
         <div className="hidden lg:flex items-center gap-3 z-10">
+          {/* Desktop Nav Links (right side, next to the theme toggle + CTA) */}
+          <div className="flex items-center gap-1 h-full mr-3">
+            {navLinks.map((link) => (
+              <div key={link.name} className="relative h-full flex items-center">
+                <a 
+                  href={link.href} 
+                  onClick={(e) => {
+                    if (link.href.startsWith('#')) {
+                      e.preventDefault();
+                      scrollToId(link.href.substring(1));
+                    }
+                  }}
+                  className={`flex items-center gap-1.5 text-[16px] font-medium font-sans transition-colors duration-300 ease-out relative px-3 py-2 ${
+                    isDark ? 'text-white hover:bg-[#FD5800]/10 hover:text-[#FD5800]' : 'text-ink hover:bg-[#FD5800]/10 hover:text-[#FD5800]'
+                  }`}
+                >
+                  {link.name}
+                </a>
+              </div>
+            ))}
+          </div>
           {ThemeToggle}
           <a 
             href="#contact" 
-            className={`group flex items-center gap-2 text-sm font-semibold px-5 py-2 rounded-full text-white border transition-colors hover:bg-brand hover:border-brand ${isDark ? 'bg-brand border-brand' : 'bg-panel border-ink'}`}
+            className={`group flex items-center gap-2 text-[14px] font-semibold px-5 py-2.5 text-white border transition-colors hover:bg-brand hover:border-brand ${isDark ? 'bg-brand border-brand' : 'bg-panel border-ink'}`}
           >
             Book a free audit
             <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -202,9 +232,9 @@ export default function Navbar() {
         }`}
         aria-hidden={!mobileMenu}
       >
-        <div className="absolute -top-24 -right-24 w-[320px] h-[320px] rounded-full bg-brand/[0.12] blur-3xl pointer-events-none" />
+        <div className="absolute -top-24 -right-24 w-[272px] h-[272px] bg-brand/[0.12] blur-3xl pointer-events-none" />
 
-        <div className="relative h-full flex flex-col px-6 pt-28 pb-8 overflow-y-auto">
+        <div data-lenis-prevent className="relative h-full flex flex-col px-6 pt-28 pb-8 overflow-y-auto">
           <p className="eyebrow mb-4">Menu</p>
 
           <nav className="flex flex-col">
@@ -216,7 +246,7 @@ export default function Navbar() {
                   e.preventDefault();
                   setMobileMenu(false);
                   setTimeout(() => {
-                    document.getElementById(link.href.substring(1))?.scrollIntoView({ behavior: 'smooth' });
+                    scrollToId(link.href.substring(1));
                   }, 150);
                 }}
                 style={{ transitionDelay: mobileMenu ? `${100 + i * 70}ms` : '0ms' }}
@@ -245,7 +275,7 @@ export default function Navbar() {
                 e.preventDefault();
                 setMobileMenu(false);
                 setTimeout(() => {
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                  scrollToId('contact');
                 }, 150);
               }}
               className="btn-primary w-full !py-4 !text-base"

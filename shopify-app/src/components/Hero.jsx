@@ -66,61 +66,61 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="flex flex-col pt-28 md:pt-36 pb-6 md:pb-8 bg-cream relative overflow-hidden"
+      className="flex flex-col pt-32 md:pt-[11.5rem] pb-12 md:pb-20 bg-cream relative overflow-hidden"
     >
 
       <div className="container-x relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-10 xl:gap-16">
 
           {/* LEFT — message */}
-          <div className="flex-1 w-full lg:max-w-[56%] text-center lg:text-left">
+          <div className="flex-1 w-full lg:max-w-[60%] text-center lg:text-left">
 
             <div className="flex items-center justify-center lg:justify-start gap-2.5 mb-6 hero-animate-1">
-              <span className="inline-flex items-center gap-2 bg-paper border border-line text-ink text-[11px] font-semibold tracking-[0.12em] uppercase px-3.5 py-2 rounded-full font-mono">
+              <span className="inline-flex items-center gap-2 bg-paper border border-line text-ink text-[12px] font-semibold tracking-[0.12em] uppercase px-3.5 py-2 font-mono">
                 <FaShopify className="w-4 h-4 text-shopify" />
                 {heroData.badge}
               </span>
-              <span className="hidden sm:inline-flex items-center gap-2 bg-brand-soft text-brand-text text-[11px] font-semibold tracking-[0.12em] uppercase px-3.5 py-2 rounded-full font-mono">
-                <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse" />
+              <span className="hidden sm:inline-flex items-center gap-2 bg-brand-soft text-brand-text text-[12px] font-semibold tracking-[0.12em] uppercase px-3.5 py-2 font-mono">
+                <span className="w-1.5 h-1.5 bg-brand animate-pulse" />
                 {heroData.badge2}
               </span>
             </div>
 
-            <h1 className="h-display text-[clamp(1.9rem,3.5vw,3rem)] mb-6 hero-animate-2">
+            <h1 className="h-display !font-semibold !leading-[1.28] md:!leading-[65px] text-[clamp(1.7rem,3.2vw,45px)] lg:whitespace-nowrap mb-6 hero-animate-2">
               We build <RotatingText />
               <span className="block" />
               {heroData.headlineSuffix}
             </h1>
 
-            <p className="lead max-w-[560px] mx-auto lg:mx-0 mb-9 hero-animate-3">
+            <p className="lead !text-[15.5px] max-w-[540px] mx-auto lg:mx-0 mb-9 hero-animate-3">
               {before}<strong className="font-semibold text-ink">{heroData.descriptionHighlight}</strong>{after}
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 mb-12 hero-animate-4">
-              <a href="#contact" className="btn-primary group">
+              <a href="#contact" className="btn-primary group !text-[14px] !py-[0.85rem] !px-[1.6rem]">
                 Get your Shopify store
                 <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </a>
-              <a href="#work" className="btn-ghost">See our work</a>
+              <a href="#work" className="btn-ghost !text-[14px] !py-[0.85rem] !px-[1.6rem]">See our work</a>
             </div>
 
             {/* Stats */}
-            <dl className="grid grid-cols-3 max-w-[560px] mx-auto lg:mx-0 border-t border-line pt-6 hero-animate-5">
+            <dl className="grid grid-cols-3 max-w-[540px] mx-auto lg:mx-0 border-t border-line pt-6 hero-animate-5">
               {heroData.stats.map((stat, i) => (
                 <div key={i} className={`flex flex-col gap-1 ${i > 0 ? 'pl-4 sm:pl-6 border-l border-line' : ''}`}>
-                  <dd className="h-display text-2xl sm:text-3xl text-ink order-1">
+                  <dd className="h-display text-3xl sm:text-4xl text-ink order-1">
                     {stat.prefix}<AnimatedCounter target={stat.value} />{stat.suffix}
                   </dd>
-                  <dt className="font-mono text-[10px] sm:text-[11px] tracking-[0.1em] uppercase text-muted order-2 leading-snug">{stat.label}</dt>
+                  <dt className="font-mono text-[11px] sm:text-[12px] tracking-[0.1em] uppercase text-muted order-2 leading-snug">{stat.label}</dt>
                 </div>
               ))}
             </dl>
           </div>
 
           {/* RIGHT — store previews (coverflow) */}
-          <div className="flex-1 w-full lg:max-w-[44%] relative flex items-center justify-center hero-cards-animate overflow-visible p-2 min-h-[370px] sm:min-h-[420px] lg:min-h-[480px]">
+          <div className="flex-1 w-full lg:max-w-[40%] relative lg:right-[30px] flex items-center justify-center hero-cards-animate overflow-visible p-2 min-h-[304px] sm:min-h-[345px] lg:min-h-[395px]">
             {stores.map(({ src, name, stat }, idx) => {
               const position = (idx - activeIndex + 3) % 3;
               const slots = [
@@ -132,14 +132,14 @@ export default function Hero() {
               return (
                 <div
                   key={idx}
-                  className="absolute w-[200px] sm:w-[240px] lg:w-[280px] xl:w-[330px] rounded-[26px] overflow-hidden shadow-[0_30px_60px_-20px_rgba(20,18,16,0.35)] border border-line bg-paper transition-all duration-700 ease-in-out"
+                  className="absolute w-[165px] sm:w-[198px] lg:w-[231px] xl:w-[271px] overflow-hidden shadow-[0_30px_60px_-20px_rgba(20,18,16,0.35)] border border-line bg-paper transition-all duration-700 ease-in-out"
                   style={{
                     transform: `translateX(${slots.x}) scale(${slots.scale}) rotate(${slots.rotate})`,
                     zIndex: slots.z,
                     opacity: slots.opacity,
                   }}
                 >
-                  <div className="relative w-full h-[290px] sm:h-[340px] lg:h-[390px] xl:h-[470px]">
+                  <div className="relative w-full h-[239px] sm:h-[279px] lg:h-[320px] xl:h-[386px]">
                     <Image
                       src={src}
                       alt={`${name} — Shopify store by Scalomatrix`}
@@ -149,12 +149,12 @@ export default function Hero() {
                       priority={idx === 0}
                     />
                   </div>
-                  <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-white/95 text-shopify text-[10px] font-mono font-medium tracking-wide uppercase px-2.5 py-1 rounded-full shadow-sm">
+                  <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-white/95 text-shopify text-[10px] font-mono font-medium tracking-wide uppercase px-2.5 py-1 shadow-sm">
                     <FaShopify className="w-3 h-3" />
                     Shopify store
                   </div>
                   {position === 0 && stat && (
-                    <div className="absolute bottom-3 right-3 bg-brand-deep text-white font-mono text-[11px] font-medium px-3 py-1.5 rounded-full shadow-lg">
+                    <div className="absolute bottom-3 right-3 bg-brand-deep text-white font-mono text-[11px] font-medium px-3 py-1.5 shadow-lg">
                       {stat} ↑
                     </div>
                   )}

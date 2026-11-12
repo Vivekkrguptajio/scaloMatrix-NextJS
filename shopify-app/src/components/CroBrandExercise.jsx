@@ -23,11 +23,12 @@ const steps = [
 
 const CroBrandExercise = () => {
   return (
-    <section id="cro" className="w-full py-16 md:py-24 bg-cream text-ink font-sans">
-      <div className="container-x flex flex-col gap-12 md:gap-16">
+    <>
+
 
         {/* WHY CRO */}
-        <div id="why-cro" className="flex flex-col gap-12 md:gap-16 scroll-mt-28">
+        <section id="why-cro" className="relative w-full py-16 md:py-24 bg-cream text-ink font-sans scroll-mt-28 border-b border-line">
+        <div className="container-x flex flex-col gap-12 md:gap-16">
           {/* Header */}
           <div className="flex flex-col lg:flex-row w-full justify-between items-start lg:items-end gap-6">
             <div className="lg:w-[60%]">
@@ -39,19 +40,21 @@ const CroBrandExercise = () => {
           </div>
 
           {/* Re-frame */}
-          <div className="bg-paper rounded-[32px] border border-line p-6 sm:p-10 lg:p-14 grid lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-16 items-center">
+          <div className="bg-paper border border-line p-6 sm:p-10 lg:p-14 grid lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-16 items-center">
             <h3 className="h-display text-[clamp(1.4rem,2.6vw,2.1rem)]">
               It&apos;s not about <span className="line-through decoration-2 text-muted/60 font-medium">button colours.</span>{' '}
-              It&apos;s about <span className="bg-brand text-white px-2.5 py-0.5 rounded-lg inline-block -rotate-1">who walks in the door.</span>
+              It&apos;s about <span className="bg-brand text-white px-2.5 py-0.5 inline-block -rotate-1">who walks in the door.</span>
             </h3>
             <p className="lead">
               Your landing page is the first thing a customer sees from your brand. If it says the wrong thing, you can still get more orders — from people who never come back. Say the right thing and the gains keep growing for months.
             </p>
           </div>
         </div>
+        </section>
 
         {/* OUR APPROACH */}
-        <div id="approach" className="scroll-mt-28">
+        <section id="approach" className="relative w-full py-16 md:py-24 bg-cream text-ink font-sans scroll-mt-28 border-b border-line">
+        <div className="container-x">
           <div className="mb-8 md:mb-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div className="lg:w-[55%]">
               <span className="eyebrow mb-4">Our approach</span>
@@ -66,27 +69,30 @@ const CroBrandExercise = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {steps.map((st) => (
-              <article key={st.n} className="bg-cream border border-line rounded-[26px] p-6 sm:p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-30px_rgba(20,18,16,0.4)]">
+              <article key={st.n} className="bg-cream border border-line p-6 sm:p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-30px_rgba(20,18,16,0.4)]">
                 <div className="flex items-center justify-between mb-8">
                   <span className="h-display text-4xl text-brand/25 leading-none">{st.n}</span>
                   <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-brand-text">{st.tag}</span>
                 </div>
                 <h3 className="h-card text-xl mb-4">{st.title}</h3>
-                <p className="text-[15px] text-muted leading-relaxed">{st.body}</p>
+                <p className="text-[12px] text-muted leading-relaxed">{st.body}</p>
               </article>
             ))}
           </div>
         </div>
+        </section>
 
         {/* BRAND */}
-        <div id="brand" className="scroll-mt-28">
+        <section id="brand" className="relative w-full py-16 md:py-24 bg-cream text-ink font-sans scroll-mt-28">
+        <div className="container-x flex flex-col gap-12 md:gap-16">
+        <div>
           <div className="mb-8 md:mb-10">
             <span className="eyebrow mb-4">Brand</span>
             <h2 className="h-display text-[clamp(1.75rem,3.4vw,2.6rem)]">
               Brand-first, <span className="accent">not</span> discount-first.
             </h2>
           </div>
-          <div className="bg-panel text-white rounded-[32px] overflow-hidden grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr]">
+          <div className="bg-panel text-white overflow-hidden grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr]">
             <div className="p-7 sm:p-10 flex flex-col justify-between gap-6 border-b lg:border-b-0 lg:border-r border-white/10">
               <div>
                 <p className="font-mono text-[11px] tracking-[0.14em] text-white/50 uppercase mb-4">A win that isn&apos;t a win</p>
@@ -119,7 +125,7 @@ const CroBrandExercise = () => {
 
         {/* Footer row */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5">
-          <p className="text-muted text-[15px]">
+          <p className="text-muted text-[12px]">
             In short: sales numbers are the score. Your brand is the game.
           </p>
           <a href="#contact" className="btn-primary">Get a free audit <span aria-hidden="true">→</span></a>
@@ -127,6 +133,7 @@ const CroBrandExercise = () => {
 
       </div>
     </section>
+    </>
   );
 };
 
