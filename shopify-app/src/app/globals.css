@@ -152,7 +152,7 @@ html.theme-switching *::after {
    Each side: a plain outer margin (--m), a 1px beige vertical line at its inner edge,
    and fine horizontal ruling (every 5px) that stops at the vertical line. Fixed to the viewport (they do not scroll), same on both sides. */
 :root {
-  --m: 32px;       /* outer margin, up to and including the vertical line */
+  --m: 26px;       /* outer margin, up to and including the vertical line */
   --z: 0px;        /* no ruling past the vertical line */
   --vband: #E6E2DD;   /* vertical line: soft light grey */
   --hband: #EEE7DF;   /* horizontal ruling */
@@ -161,8 +161,8 @@ html[data-theme='dark'] {
   --vband: #33302B;
   --hband: rgba(255, 255, 255, 0.06);
 }
-@media (min-width: 640px)  { :root { --m: 62px; } }
-@media (min-width: 1024px) { :root { --m: 104px; } }
+@media (min-width: 640px)  { :root { --m: 50px; } }
+@media (min-width: 1024px) { :root { --m: 86px; } }
 .page-frame { position: relative; }
 
 /* Partner logo cells sit on the page colour; in dark mode they go white so dark logos stay readable */

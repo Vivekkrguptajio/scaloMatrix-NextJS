@@ -8,9 +8,11 @@ export default function Faq() {
       id="faq"
       className="relative w-full py-16 md:py-24 bg-cream font-sans"
     >
+      {/* Tab lives outside the sticky column so it pins to the section's corner, not the column's */}
+      <span className="eyebrow">FAQ</span>
+
       <div className="container-x grid lg:grid-cols-[1fr_1.6fr] gap-10 lg:gap-16">
         <div className="lg:sticky lg:top-32 h-fit">
-          <span className="eyebrow mb-4">FAQ</span>
           <h2 className="h-display h-section mb-5">
             Questions, <span className="accent">answered.</span>
           </h2>

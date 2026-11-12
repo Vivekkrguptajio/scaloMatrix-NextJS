@@ -272,6 +272,9 @@ const ServiceCard = ({ service }) => {
 const ServicesAndPricing = () => {
   return (
     <section id="services" className="relative w-full py-16 md:py-24 bg-cream font-sans scroll-mt-16">
+      {/* Tab sits outside the animated block so it pins to the section's corner */}
+      <span className="eyebrow">Services &amp; pricing</span>
+
       <div className="container-x">
 
         <motion.div
@@ -282,7 +285,6 @@ const ServicesAndPricing = () => {
           className="mb-10 md:mb-14 flex flex-col lg:flex-row w-full justify-between items-start lg:items-end gap-6"
         >
           <div className="lg:w-[58%]">
-            <span className="eyebrow mb-4">Services &amp; pricing</span>
             <h2 className="h-display h-section">
               Simple plans. <span className="accent">Clear</span> prices.
             </h2>
