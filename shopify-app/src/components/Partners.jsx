@@ -31,10 +31,10 @@ export default function Partners() {
           </h2>
 
           {/* Logo grid: 1px gaps over a line-coloured background draw the cell borders */}
-          <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-px bg-line border border-line">
+          <ul className="grid grid-cols-1 lg:grid-cols-5 gap-px bg-line border border-line">
             {partners.map((p) => (
-              <li key={p.name} className="partner-cell flex flex-col items-center justify-center gap-5 px-2 py-10 md:py-[34px] text-center">
-                <span className="flex items-center justify-center gap-2 h-[36px]">
+              <li key={p.name} className="partner-cell flex flex-row lg:flex-col items-center justify-between lg:justify-center gap-4 lg:gap-5 px-5 lg:px-2 py-5 lg:py-[34px] lg:text-center">
+                <span className="flex items-center justify-start lg:justify-center gap-2 h-[36px]">
                   <Image src={p.logo} alt={p.showName ? '' : `${p.name} logo`} unoptimized className={`${p.className} object-contain`} />
                   {p.showName && <span className="font-display font-bold text-[21px] leading-none tracking-tight text-[#141210]">{p.name}</span>}
                 </span>

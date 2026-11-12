@@ -57,8 +57,6 @@ export default function AutoMarquee({ children, speed = 40, direction = 'left', 
     };
     raf = requestAnimationFrame(tick);
 
-    const onEnter = (e) => { if (e.pointerType === 'mouse') pause(); };
-    const onLeave = (e) => { if (e.pointerType === 'mouse') resume(); };
 
     // Mouse: click and drag the strip left/right (touch already swipes natively)
     let dragging = false, startX = 0, startScroll = 0, moved = 0;
@@ -79,7 +77,7 @@ export default function AutoMarquee({ children, speed = 40, direction = 'left', 
       if (!dragging) return;
       dragging = false;
       el.style.cursor = '';
-      // keep hover-pause while the mouse is still over the strip; resume when it leaves
+      resume(); // hovering never stops the strip; after a drag it carries on shortly after
     };
     // a drag must not open the card link underneath
     const onClickCapture = (e) => { if (moved > 5) { e.preventDefault(); e.stopPropagation(); moved = 0; } };
@@ -94,8 +92,6 @@ export default function AutoMarquee({ children, speed = 40, direction = 'left', 
     el.addEventListener('touchend', resume, { passive: true });
     el.addEventListener('touchcancel', resume, { passive: true });
     el.addEventListener('wheel', () => { pause(); resume(); }, { passive: true });
-    el.addEventListener('pointerenter', onEnter);
-    el.addEventListener('pointerleave', onLeave);
 
     return () => {
       cancelAnimationFrame(raf);
@@ -108,8 +104,6 @@ export default function AutoMarquee({ children, speed = 40, direction = 'left', 
       el.removeEventListener('touchstart', pause);
       el.removeEventListener('touchend', resume);
       el.removeEventListener('touchcancel', resume);
-      el.removeEventListener('pointerenter', onEnter);
-      el.removeEventListener('pointerleave', onLeave);
     };
   }, [speed, resumeAfter, direction]);
 

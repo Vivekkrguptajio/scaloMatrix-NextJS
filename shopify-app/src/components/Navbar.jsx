@@ -192,7 +192,7 @@ export default function Navbar() {
         }`}
       >
         {/* Main Navbar Row */}
-        <div className="w-full flex items-center justify-between py-[12.5px] px-[24px]">
+        <div className="w-full flex items-center justify-between py-[12.5px] px-[10px] sm:px-[24px]">
         {/* Logo */}
         <motion.a 
           href="/"

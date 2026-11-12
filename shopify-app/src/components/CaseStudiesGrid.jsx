@@ -22,115 +22,70 @@ const DesktopMobileMockup = ({ src, mobileSrc, alt }) => (
   </div>
 );
 
-// ───────────── Phone: one card, case studies stacked inside ─────────────
-// Auto-advances upward every few seconds; the visitor can also swipe inside the card,
-// use the arrows, or pause. Auto-advance stops while they interact and when off-screen.
+// ───────────── Phone: swipeable cards ─────────────
+// One case study per screen, the next one peeking in from the right. Swipe, or use the arrows;
+// the counter and bar show where you are.
 const PhoneCaseStudies = ({ studies, StudyCard }) => {
   const scroller = useRef(null);
   const slides = useRef([]);
-  const active = useRef(0);
-  const touching = useRef(false);
-  const inView = useRef(false);
-  const idleTimer = useRef(null);
   const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
   const n = studies.length;
 
-  const goTo = (i, smooth = true) => {
-    const idx = (i + n) % n;
+  const goTo = (i) => {
+    const idx = Math.min(n - 1, Math.max(0, i));
     const el = slides.current[idx];
     if (!el || !scroller.current) return;
-    scroller.current.scrollTo({ top: el.offsetTop, behavior: smooth ? 'smooth' : 'auto' });
-  };
-
-  // the visitor touched / scrolled it: hold the auto-advance for a few seconds
-  const poke = () => {
-    touching.current = true;
-    clearTimeout(idleTimer.current);
-    idleTimer.current = setTimeout(() => { touching.current = false; }, 5000);
+    scroller.current.scrollTo({ left: el.offsetLeft - scroller.current.offsetLeft - 20, behavior: 'smooth' });
   };
 
   const onScroll = () => {
     const el = scroller.current;
     if (!el || n < 2) return;
-    const step = slides.current[1].offsetTop - slides.current[0].offsetTop;
-    const i = Math.min(n - 1, Math.max(0, Math.round(el.scrollTop / step)));
-    active.current = i;
-    setIndex(i);
+    const step = slides.current[1].offsetLeft - slides.current[0].offsetLeft;
+    setIndex(Math.min(n - 1, Math.max(0, Math.round(el.scrollLeft / step))));
   };
 
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) setPaused(true);
-    const io = new IntersectionObserver(([e]) => { inView.current = e.isIntersecting; }, { threshold: 0.4 });
-    io.observe(scroller.current);
-    return () => { io.disconnect(); clearTimeout(idleTimer.current); };
-  }, []);
-
-  useEffect(() => {
-    if (paused) return;
-    const t = setInterval(() => {
-      if (touching.current || !inView.current) return;
-      const next = active.current + 1;
-      goTo(next >= n ? 0 : next, next < n); // wrap back to the first one with a quiet jump
-    }, 3200);
-    return () => clearInterval(t);
-  }, [paused, n]);
-
-  const btn = 'w-11 h-11 border border-line flex items-center justify-center text-ink active:bg-brand active:text-white active:border-brand transition-colors';
+  const btn = 'w-11 h-11 border border-ink flex items-center justify-center text-ink disabled:opacity-30 active:bg-brand active:text-white active:border-brand transition-colors';
 
   return (
-    <div className=" bg-paper border border-ink overflow-hidden">
+    <div>
       <div
         ref={scroller}
-        data-lenis-prevent
         onScroll={onScroll}
-        onTouchStart={poke}
-        onWheel={poke}
         role="region"
         aria-label="Case studies"
         tabIndex={0}
-        className="relative h-[399px] sm:h-[442px] overflow-y-auto snap-y snap-mandatory scrollbar-hide"
+        className="flex gap-3 overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-5 px-5 pb-1"
       >
         {studies.map((study, i) => (
           <div
             key={study.id}
             ref={(el) => { slides.current[i] = el; }}
-            className="snap-start h-[340px] sm:h-[382px] px-4 pt-4 pb-6 border-b border-line"
+            className="snap-start shrink-0 w-[86%] border border-ink bg-paper p-4"
           >
             <StudyCard study={study} flat />
           </div>
         ))}
-        <div className="h-[70px] shrink-0" aria-hidden="true" />
+        <div className="shrink-0 w-2" aria-hidden="true" />
       </div>
 
-      {/* controls: buttons on the left so the floating WhatsApp / scroll-to-top buttons never cover them */}
-      <div className="flex items-center justify-between gap-3 px-4 py-3.5 border-t border-line bg-cream/60">
+      {/* controls */}
+      <div className="mt-5 flex items-center gap-4">
         <div className="flex items-center gap-2">
-          <button type="button" aria-label="Previous case study" className={btn} onClick={() => { poke(); goTo(index - 1); }}>
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" /></svg>
+          <button type="button" aria-label="Previous case study" disabled={index === 0} className={btn} onClick={() => goTo(index - 1)}>
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M15 5l-7 7 7 7" /></svg>
           </button>
-          <button type="button" aria-label="Next case study" className={btn} onClick={() => { poke(); goTo(index + 1); }}>
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
-          </button>
-          <button type="button" aria-label={paused ? 'Play' : 'Pause'} className={btn} onClick={() => setPaused((p) => !p)}>
-            {paused ? (
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
-            ) : (
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z" /></svg>
-            )}
+          <button type="button" aria-label="Next case study" disabled={index === n - 1} className={btn} onClick={() => goTo(index + 1)}>
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
           </button>
         </div>
-
-        <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center gap-1.5" aria-hidden="true">
-            {studies.map((s, i) => (
-              <span key={s.id} className={`h-1.5 transition-all duration-300 ${i === index ? 'w-5 bg-brand' : 'w-1.5 bg-ink/20'}`} />
-            ))}
-          </div>
-          <span className="font-mono tracking-[0.1em] text-muted tabular-nums whitespace-nowrap text-sm">
-            <span className="text-ink font-medium">{String(index + 1).padStart(2, '0')}</span> / {String(n).padStart(2, '0')}
-          </span>
+        {/* progress bar */}
+        <div className="flex-1 h-px bg-line relative" aria-hidden="true">
+          <div className="absolute left-0 -top-px h-[3px] bg-brand transition-all duration-300" style={{ width: `${((index + 1) / n) * 100}%` }} />
         </div>
+        <span className="font-mono tracking-[0.1em] text-muted tabular-nums whitespace-nowrap text-sm">
+          <span className="text-ink font-medium">{String(index + 1).padStart(2, '0')}</span> / {String(n).padStart(2, '0')}
+        </span>
       </div>
     </div>
   );
@@ -249,7 +204,7 @@ const CaseStudiesGrid = () => {
 
       </div>
 
-      {/* Phone: ONE card; case studies stack inside and move bottom → top */}
+      {/* Phone: swipeable cards, one case study per screen */}
       <div className="md:hidden container-x">
         <PhoneCaseStudies studies={allStudies} StudyCard={StudyCard} />
       </div>

@@ -143,17 +143,19 @@ html.theme-switching *::after {
    footer all use it, so left and right edges line up. */
 .container-x {
   /* content starts a fixed gap (24px) after the margin's vertical line */
-  --gutter: calc(var(--m) + 24px);
+  --gutter: calc(var(--m) + var(--gap));
+  --gap: 24px;
   width: 100%;
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
+@media (max-width: 639px) { .container-x { --gap: 10px; } }
 
 /* ═══════ RULED SIDE MARGINS ═══════
    Each side: a plain outer margin (--m), a 1px beige vertical line at its inner edge,
    and fine horizontal ruling (every 5px) that stops at the vertical line. Fixed to the viewport (they do not scroll), same on both sides. */
 :root {
-  --m: 75px;       /* outer margin, up to and including the vertical line: 75px, but 5px on phones */
+  --m: 75px;       /* outer margin, up to and including the vertical line: 75px, but 8px on phones */
   --z: 0px;        /* no ruling past the vertical line */
   --vband: #E6E2DD;   /* vertical line: soft light grey */
   --hband: #EEE7DF;   /* horizontal ruling */
@@ -162,7 +164,7 @@ html[data-theme='dark'] {
   --vband: #33302B;
   --hband: rgba(255, 255, 255, 0.06);
 }
-@media (max-width: 639px) { :root { --m: 5px; } }
+@media (max-width: 639px) { :root { --m: 8px; } }
 .page-frame { position: relative; }
 
 /* Partner logo cells sit on the page colour; in dark mode they go white so dark logos stay readable */
