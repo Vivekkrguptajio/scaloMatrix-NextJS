@@ -159,41 +159,9 @@ const CroBrandExercise = () => {
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* OUR APPROACH */}
-      <section id="approach" className="relative w-full py-16 md:py-24 bg-cream text-ink font-sans scroll-mt-28 border-b border-line">
-        <span className="eyebrow">Our approach</span>
-        <div className="container-x">
-          <div className="mb-8 md:mb-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-            <h2 className="h-display h-section lg:whitespace-nowrap">
-              How we find and fix the <span className="accent">leaks</span>.
-            </h2>
-            <p className="lead lg:w-[34%]">
-              Data in. Design out. Shipped live. No &ldquo;creative exploration phase&rdquo;, no 40-slide decks.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {steps.map((st) => (
-              <article key={st.n} className="bg-cream border border-line p-6 sm:p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-30px_rgba(20,18,16,0.4)]">
-                <div className="flex items-center justify-between mb-8">
-                  <span className="h-display text-4xl text-brand leading-none">{st.n}</span>
-                  <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-brand-text">{st.tag}</span>
-                </div>
-                <h3 className="h-card text-xl mb-4">{st.title}</h3>
-                <p className="text-[13px] text-muted leading-relaxed">{st.body}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* BRAND */}
-      <section id="brand" className="relative w-full py-16 md:py-24 bg-cream text-ink font-sans scroll-mt-28">
-        <span className="eyebrow">Brand</span>
-        <div className="container-x flex flex-col gap-12 md:gap-16">
+          {/* BRAND (now the last block of Why CRO) */}
+          <div id="brand" className="scroll-mt-28 flex flex-col gap-12 md:gap-16">
           <div>
             <div className="mb-8 md:mb-10">
               <h2 className="h-display h-section max-w-3xl">
@@ -233,8 +201,38 @@ const CroBrandExercise = () => {
             </p>
             <a href="#contact" className="btn-primary">Find my store&apos;s leaks <span aria-hidden="true">→</span></a>
           </div>
+          </div>
         </div>
       </section>
+
+      {/* OUR APPROACH */}
+      <section id="approach" className="relative w-full py-16 md:py-24 bg-cream text-ink font-sans scroll-mt-28">
+        <span className="eyebrow">Our approach</span>
+        <div className="container-x">
+          <div className="mb-8 md:mb-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+            <h2 className="h-display h-section lg:whitespace-nowrap">
+              How we find and fix the <span className="accent">leaks</span>.
+            </h2>
+            <p className="lead lg:w-[34%]">
+              Data in. Design out. Shipped live. No &ldquo;creative exploration phase&rdquo;, no 40-slide decks.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {steps.map((st) => (
+              <article key={st.n} className="bg-cream border border-line p-6 sm:p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-30px_rgba(20,18,16,0.4)]">
+                <div className="flex items-center justify-between mb-8">
+                  <span className="h-display text-4xl text-brand leading-none">{st.n}</span>
+                  <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-brand-text">{st.tag}</span>
+                </div>
+                <h3 className="h-card text-xl mb-4">{st.title}</h3>
+                <p className="text-[13px] text-muted leading-relaxed">{st.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
     </>
   );
 };
