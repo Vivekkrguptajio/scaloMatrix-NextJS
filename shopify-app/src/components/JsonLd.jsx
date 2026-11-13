@@ -23,6 +23,15 @@ const graph = {
       publisher: { '@id': `${SITE_URL}/#org` },
     },
     {
+      '@type': 'WebPage',
+      '@id': `${SITE_URL}/#webpage`,
+      url: SITE_URL,
+      name: 'Shopify Development Company in India | scaloMATRIX',
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+      about: { '@id': `${SITE_URL}/#org` },
+      inLanguage: 'en-IN',
+    },
+    {
       '@type': 'FAQPage',
       '@id': `${SITE_URL}/#faq`,
       mainEntity: faqs.map((f) => ({
@@ -45,7 +54,9 @@ const graph = {
       areaServed: { '@type': 'Country', name: 'India' },
       parentOrganization: { '@type': 'Organization', name: 'Kraffic Enterprises' },
       sameAs: ['https://www.instagram.com/scalomatrix/', 'https://www.youtube.com/@scalomatrix'],
-      knowsAbout: ['Shopify', 'Conversion rate optimization', 'D2C ecommerce', 'Landing page design'],
+      knowsAbout: ['Shopify', 'Shopify development', 'Shopify store design', 'Shopify redesign', 'Conversion rate optimization', 'D2C ecommerce', 'Landing page design'],
+      keywords: 'Shopify development company India, Shopify developer, Shopify agency, Shopify store design, Shopify redesign',
+      slogan: 'Shopify stores built to turn more visitors into buyers',
       contactPoint: {
         '@type': 'ContactPoint',
         contactType: 'sales',

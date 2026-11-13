@@ -4,9 +4,9 @@ import Contact from '../../components/Contact';
 import { topics } from '../../utils/answers';
 
 export const metadata = {
-  title: 'All answers',
-  description: 'Every question we get asked about building and scaling Shopify stores with scaloMATRIX, grouped by topic: pricing, the free audit, results, ownership and refunds.',
-  alternates: { canonical: '/answer' },
+  title: '100 Shopify Questions Answered: Development, Design, SEO, CRO & Payments in India',
+  description: '100 straight answers about Shopify for Indian D2C brands: Shopify development, store design, themes, speed, SEO, conversion rate optimisation, COD and payments, migration and growth.',
+  alternates: { canonical: '/answers' },
 };
 
 export default function AnswerPage() {
@@ -28,11 +28,10 @@ export default function AnswerPage() {
 
             {/* Hero */}
             <h1 className="h-display !font-medium text-[34px] !leading-[1.1] !tracking-[-0.03em] md:text-[52px] md:!leading-[56px] md:!tracking-[-1.56px]">
-              {total} questions, <span className="accent">answered.</span>
+              {total} Shopify questions, <span className="accent">answered.</span>
             </h1>
             <p className="faq-answer text-[16px] leading-[1.6] md:text-[18px] md:leading-[29px] font-normal max-w-[640px] mt-5">
-              The questions founders ask us most about Shopify stores, pricing, the free audit, results, ownership
-              and refunds. Open a question for its full answer.
+              Straight answers on Shopify development, store design, speed, SEO, conversion, COD and payments in India, migration and growth. Open a question for its full answer.
             </p>
 
             {/* Topic chips: each jumps to its section */}
@@ -58,12 +57,13 @@ export default function AnswerPage() {
                     <h2 className="h-display !font-medium text-[26px] !leading-[1.25] md:text-[32px] md:!leading-[51px] !tracking-[-0.02em] md:!tracking-[-0.64px]">{t.title}</h2>
                     <span className="font-mono text-[10.5px] tracking-[0.12em] uppercase text-muted">{t.items.length} {t.items.length === 1 ? 'question' : 'questions'}</span>
                   </div>
+                  {t.blurb && <p className="faq-answer text-[14px] leading-[1.6] mt-2 mb-1 max-w-2xl">{t.blurb}</p>}
 
                   <ul className="grid md:grid-cols-2 gap-x-12 items-start">
                     {t.items.map((item) => (
                       <li key={item.slug} className="border-b border-line">
                         <Link
-                          href={`/answer/${item.slug}`}
+                          href={`/answers/${item.slug}`}
                           className="group flex items-start justify-between gap-4 py-4 text-[16px] leading-[26px] font-normal text-ink hover:text-[#D93A1E] transition-colors"
                         >
                           <span>{item.q}</span>

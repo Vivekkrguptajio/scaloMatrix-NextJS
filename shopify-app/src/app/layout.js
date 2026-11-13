@@ -2,9 +2,9 @@ import "./globals.css";
 import JsonLd from "../components/JsonLd";
 import { SITE_URL } from "../utils/site";
 
-const TITLE = "Shopify Store Development for D2C Brands | Scalomatrix";
+const TITLE = "Shopify Development Company in India | Shopify Store Design & CRO | scaloMATRIX";
 const DESCRIPTION =
-  "Custom Shopify stores, redesigns and landing pages for D2C brands in India. Conversion-focused design built around your customers. Free store audit.";
+  "Shopify development company in India. We design and build custom Shopify stores, Shopify redesigns and landing pages for D2C brands, built to turn more visitors into buyers. Get a free Shopify store audit.";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -12,13 +12,22 @@ export const metadata = {
   description: DESCRIPTION,
   applicationName: "Scalomatrix",
   keywords: [
+    "Shopify",
+    "Shopify development company",
     "Shopify development India",
+    "Shopify developer India",
+    "Shopify expert India",
+    "Shopify agency India",
+    "Shopify partner agency",
     "Shopify store design",
+    "Shopify store development",
+    "Shopify website development",
     "Shopify redesign",
     "Shopify agency for D2C brands",
     "Shopify landing page design",
-    "conversion rate optimization",
-    "custom Shopify theme",
+    "custom Shopify theme development",
+    "Shopify conversion rate optimization",
+    "hire Shopify developer",
     "Shopify audit",
   ],
   authors: [{ name: "Scalomatrix" }],

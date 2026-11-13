@@ -3,7 +3,7 @@ import { useState, useCallback, useEffect, useRef } from 'react'
 import { flushSync } from 'react-dom'
 import { scrollToId } from '../utils/smoothScroll'
 
-// On other pages (e.g. /answer) the section isn't there: go to the home page section instead
+// On other pages (e.g. /answers) the section isn't there: go to the home page section instead
 const goTo = (id) => {
   if (document.getElementById(id)) scrollToId(id)
   else window.location.href = `/#${id}`

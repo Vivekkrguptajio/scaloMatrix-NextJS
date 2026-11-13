@@ -18,6 +18,12 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      { source: '/answer', destination: '/answers', permanent: true },
+      { source: '/answer/:slug', destination: '/answers/:slug', permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

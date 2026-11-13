@@ -55,7 +55,7 @@ export default function Faq() {
             </div>
           )}
 
-          <Link href="/answer" className="btn-ghost mt-5 !text-[12px] !py-2 !px-3 !border-ink">
+          <Link href="/answers" className="btn-ghost mt-5 !text-[12px] !py-2 !px-3 !border-ink">
             All 100 answers <span aria-hidden="true">→</span>
           </Link>
 

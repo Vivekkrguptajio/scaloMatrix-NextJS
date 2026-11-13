@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Navbar from '../../../components/Navbar';
 import Contact from '../../../components/Contact';
 import { topics, allAnswers, findAnswer } from '../../../utils/answers';
+import { SITE_URL } from '../../../utils/site';
 
 export function generateStaticParams() {
   return allAnswers.map((a) => ({ slug: a.slug }));
@@ -15,7 +16,7 @@ export async function generateMetadata({ params }) {
   return {
     title: item.q,
     description: item.a.slice(0, 155),
-    alternates: { canonical: `/answer/${item.slug}` },
+    alternates: { canonical: `/answers/${item.slug}` },
   };
 }
 
@@ -28,8 +29,28 @@ export default async function AnswerDetailPage({ params }) {
   const moreInTopic = topic.items.filter((a) => a.slug !== item.slug);
   const alsoAsked = allAnswers.filter((a) => a.topicId !== item.topicId).slice(0, 5);
 
+  const url = `${SITE_URL}/answers/${item.slug}`;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'FAQPage',
+        mainEntity: [{ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } }],
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Answers', item: `${SITE_URL}/answers` },
+          { '@type': 'ListItem', position: 3, name: item.q, item: url },
+        ],
+      },
+    ],
+  };
+
   return (
     <div className="relative min-h-screen bg-[#0a0a0a] text-ink font-sans overflow-x-clip">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\u003c') }} />
       <Navbar />
 
       <main className="page-frame main-curve relative z-20 bg-cream pt-[66px]">
@@ -39,8 +60,8 @@ export default async function AnswerDetailPage({ params }) {
             {/* Breadcrumb */}
             <nav aria-label="Breadcrumb" className="font-mono text-[10.5px] tracking-[0.14em] uppercase text-muted mb-6">
               <Link href="/" className="hover:text-brand">Home</Link> <span className="text-brand" aria-hidden="true">/</span>{' '}
-              <Link href="/answer" className="hover:text-brand">Answers</Link> <span className="text-brand" aria-hidden="true">/</span>{' '}
-              <Link href={`/answer#${topic.id}`} className="hover:text-brand">{topic.title}</Link>
+              <Link href="/answers" className="hover:text-brand">Answers</Link> <span className="text-brand" aria-hidden="true">/</span>{' '}
+              <Link href={`/answers#${topic.id}`} className="hover:text-brand">{topic.title}</Link>
             </nav>
 
             <div className="grid lg:grid-cols-[1fr_340px] gap-12 lg:gap-16">
@@ -82,7 +103,7 @@ export default async function AnswerDetailPage({ params }) {
                     <ul className="border-t border-line">
                       {moreInTopic.map((a) => (
                         <li key={a.slug} className="border-b border-line">
-                          <Link href={`/answer/${a.slug}`} className="block py-3.5 text-[15px] leading-[1.45] text-ink hover:text-[#D93A1E] transition-colors">{a.q}</Link>
+                          <Link href={`/answers/${a.slug}`} className="block py-3.5 text-[15px] leading-[1.45] text-ink hover:text-[#D93A1E] transition-colors">{a.q}</Link>
                         </li>
                       ))}
                     </ul>
@@ -93,12 +114,12 @@ export default async function AnswerDetailPage({ params }) {
                 <ul className="border-t border-line">
                   {alsoAsked.map((a) => (
                     <li key={a.slug} className="border-b border-line">
-                      <Link href={`/answer/${a.slug}`} className="block py-3.5 text-[15px] leading-[1.45] text-ink hover:text-[#D93A1E] transition-colors">{a.q}</Link>
+                      <Link href={`/answers/${a.slug}`} className="block py-3.5 text-[15px] leading-[1.45] text-ink hover:text-[#D93A1E] transition-colors">{a.q}</Link>
                     </li>
                   ))}
                 </ul>
 
-                <Link href="/answer" className="inline-block mt-6 text-[15px] font-medium text-ink border-b border-ink pb-0.5 hover:text-brand hover:border-brand transition-colors">
+                <Link href="/answers" className="inline-block mt-6 text-[15px] font-medium text-ink border-b border-ink pb-0.5 hover:text-brand hover:border-brand transition-colors">
                   All {allAnswers.length} answers →
                 </Link>
               </aside>
