@@ -60,57 +60,57 @@ const Calculator = () => {
 
         {/* ───────── Phone layout: live result on top, thumb-friendly controls below ───────── */}
         <div className="sm:hidden flex flex-col gap-3">
-          {/* Live result (sticks under the navbar while you adjust the controls) */}
-          <div className="sticky top-[74px] z-10 bg-panel text-white p-4">
+          {/* Live result */}
+          <div className="bg-brand text-white p-3">
             <div className="flex items-end justify-between gap-3">
               <div>
-                <p className="font-mono text-[9.5px] tracking-[0.14em] text-white/55 uppercase mb-1">Extra sales / month</p>
-                <p className="h-display text-[34px] leading-none text-brand">{formatExtra(extraRevLakhs)}</p>
+                <p className="font-mono text-[8px] tracking-[0.12em] text-white/85 uppercase mb-0.5">Extra sales / month</p>
+                <p className="h-display text-[24px] leading-none text-white">{formatExtra(extraRevLakhs)}</p>
               </div>
               <div className="text-right">
-                <p className="font-mono text-[9.5px] tracking-[0.14em] text-white/55 uppercase mb-1">In 12 months</p>
-                <p className="h-display text-[20px] leading-none text-[#6EE7A8]">{formatMoney(yearlyNetGainLakhs)}</p>
+                <p className="font-mono text-[8px] tracking-[0.12em] text-white/85 uppercase mb-0.5">In 12 months</p>
+                <p className="h-display text-[15px] leading-none text-white">{formatMoney(yearlyNetGainLakhs)}</p>
               </div>
             </div>
 
             {/* Today vs With us, drawn as two bars */}
-            <div className="mt-4 flex flex-col gap-2">
+            <div className="mt-3 flex flex-col gap-1.5">
               <div className="flex items-center gap-2">
-                <span className="w-[52px] shrink-0 font-mono text-[9px] tracking-[0.1em] text-white/55 uppercase">Today</span>
-                <div className="flex-1 h-2 bg-white/10"><div className="h-full bg-white/60 transition-all duration-300" style={{ width: `${todayPct}%` }} /></div>
-                <span className="w-[52px] shrink-0 text-right text-[12px] font-semibold">{formatMoney(beforeRevLakhs)}</span>
+                <span className="w-[42px] shrink-0 font-mono text-[7.5px] tracking-[0.08em] text-white/85 uppercase">Today</span>
+                <div className="flex-1 h-1.5 bg-black/20"><div className="h-full bg-white/60 transition-all duration-300" style={{ width: `${todayPct}%` }} /></div>
+                <span className="w-[42px] shrink-0 text-right text-[9.5px] font-semibold">{formatMoney(beforeRevLakhs)}</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-[52px] shrink-0 font-mono text-[9px] tracking-[0.1em] text-[#6EE7A8] uppercase">With us</span>
-                <div className="flex-1 h-2 bg-white/10"><div className="h-full bg-[#6EE7A8] transition-all duration-300" style={{ width: '100%' }} /></div>
-                <span className="w-[52px] shrink-0 text-right text-[12px] font-semibold text-[#6EE7A8]">{formatMoney(afterRevLakhs)}</span>
+                <span className="w-[42px] shrink-0 font-mono text-[7.5px] tracking-[0.08em] text-white uppercase">With us</span>
+                <div className="flex-1 h-1.5 bg-black/20"><div className="h-full bg-white transition-all duration-300" style={{ width: '100%' }} /></div>
+                <span className="w-[42px] shrink-0 text-right text-[9.5px] font-semibold text-white">{formatMoney(afterRevLakhs)}</span>
               </div>
             </div>
           </div>
 
           {/* Controls */}
-          <div className="bg-paper border border-line p-4 flex flex-col gap-5">
+          <div className="bg-paper border border-line p-3 flex flex-col gap-3.5">
             {sliders.map((sl) => (
               <div key={sl.label}>
-                <div className="flex items-baseline justify-between mb-2">
-                  <label className="font-mono text-[10px] tracking-[0.12em] text-muted uppercase">{sl.label}</label>
-                  <span className={`h-display text-[18px] ${sl.label === 'Extra sales' ? 'text-up' : 'text-brand'}`}>{sl.value}</span>
+                <div className="flex items-baseline justify-between mb-1">
+                  <label className="font-mono text-[8.5px] tracking-[0.1em] text-muted uppercase">{sl.label}</label>
+                  <span className={`h-display text-[14px] ${sl.label === 'Extra sales' ? 'text-up' : 'text-brand'}`}>{sl.value}</span>
                 </div>
 
 
                 <div className="flex items-center gap-2">
-                  <button type="button" aria-label={`Decrease ${sl.label}`} onClick={() => bump(sl, -1)} className="w-9 h-9 shrink-0 border border-ink flex items-center justify-center text-lg leading-none active:bg-brand active:text-white active:border-brand">−</button>
+                  <button type="button" aria-label={`Decrease ${sl.label}`} onClick={() => bump(sl, -1)} className="w-5 h-5 shrink-0 border border-ink flex items-center justify-center text-[11px] leading-none active:bg-brand active:text-white active:border-brand">−</button>
                   <input
                     type="range"
                     min={sl.min} max={sl.max} step={sl.step}
                     value={sl.state}
                     onChange={(e) => sl.set(Number(e.target.value))}
-                    className="custom-slider flex-1"
+                    className="custom-slider custom-slider-sm flex-1"
                     aria-label={sl.label}
                   />
-                  <button type="button" aria-label={`Increase ${sl.label}`} onClick={() => bump(sl, 1)} className="w-9 h-9 shrink-0 border border-ink flex items-center justify-center text-lg leading-none active:bg-brand active:text-white active:border-brand">+</button>
+                  <button type="button" aria-label={`Increase ${sl.label}`} onClick={() => bump(sl, 1)} className="w-5 h-5 shrink-0 border border-ink flex items-center justify-center text-[11px] leading-none active:bg-brand active:text-white active:border-brand">+</button>
                 </div>
-                <div className="flex justify-between mt-1.5 font-mono text-[9px] text-muted/70 px-[44px]">
+                <div className="flex justify-between mt-1.5 font-mono text-[7.5px] text-muted/70 px-[28px]">
                   <span>{sl.lo}</span>
                   <span>{sl.hi}</span>
                 </div>
@@ -118,7 +118,7 @@ const Calculator = () => {
             ))}
           </div>
 
-          <a href="#contact" className="group/btn btn-slide btn-slide-white w-full flex items-center justify-center gap-2.5 font-semibold text-sm md:text-[12px] px-6 py-3.5 transition-all duration-300 bg-panel text-white border border-ink hover:text-[#141210]">
+          <a href="#contact" className="group/btn btn-slide w-full flex items-center justify-center gap-2.5 font-semibold text-sm md:text-[12px] px-6 py-3.5 transition-all duration-300 bg-brand text-white border border-brand hover:border-ink">
             Book free audit
             <svg className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />

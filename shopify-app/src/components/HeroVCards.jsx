@@ -12,29 +12,13 @@ const LOGOS = [
 
 export default function HeroVCards() {
   const row1Cards = [
-    {
-      id: 'wayora-home',
-      img: '/work/wayora-home.webp',
-      title: 'Wayora',
-      url: 'https://www.wayoranatural.com',
-      stat: '+33% revenue',
-      category: 'Food & Spices · Homepage',
-    },
-    {
-      id: 'veeyuu-home',
-      img: '/work/veeyuu-home.webp',
-      title: 'Veeyuu',
-      url: 'https://veeyuu.com',
-      stat: '+24% revenue',
-      category: 'Women\'s Ethnic Wear · Homepage',
-    },
     { 
-      id: 1, 
-      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509488/shopify-app/photsWork/Nada.webp', 
-      title: 'Nada', 
-      url: 'https://www.houseofnada.com',
-      stat: '+44% revenue',
-      category: 'Apparel & Fashion' 
+      id: 3, 
+      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509490/shopify-app/photsWork/Velmukha.webp', 
+      title: 'Velmukha', 
+      url: 'https://www.velmukha.com/',
+      stat: '+34% Sales',
+      category: 'Spiritual & Jewellery' 
     },
     { 
       id: 2, 
@@ -45,12 +29,28 @@ export default function HeroVCards() {
       category: 'Health & Wellness' 
     },
     { 
-      id: 3, 
-      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509490/shopify-app/photsWork/Velmukha.webp', 
-      title: 'Velmukha', 
-      url: 'https://www.velmukha.com/',
-      stat: '+34% Sales',
-      category: 'Spiritual & Jewellery' 
+      id: 1, 
+      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509488/shopify-app/photsWork/Nada.webp', 
+      title: 'Nada', 
+      url: 'https://www.houseofnada.com',
+      stat: '+44% revenue',
+      category: 'Apparel & Fashion' 
+    },
+    {
+      id: 'wayora-home',
+      img: '/work/wayora-home.webp',
+      title: 'Wayora',
+      url: 'https://www.wayoranatural.com',
+      stat: '+33% revenue',
+      category: 'Food & Spices · Homepage',
+    },
+    { 
+      id: 6, 
+      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509486/shopify-app/photsWork/Judex.webp', 
+      title: 'Judex Fragrance', 
+      url: 'https://www.judex.in',
+      stat: '+43% revenue',
+      category: 'Beauty & Fragrance' 
     },
     {
       id: 5, 
@@ -60,13 +60,13 @@ export default function HeroVCards() {
       stat: '+38% revenue',
       category: 'Home & Decor' 
     },
-    { 
-      id: 6, 
-      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509486/shopify-app/photsWork/Judex.webp', 
-      title: 'Judex Fragrance', 
-      url: 'https://www.judex.in',
-      stat: '+43% revenue',
-      category: 'Beauty & Fragrance' 
+    {
+      id: 'veeyuu-home',
+      img: '/work/veeyuu-home.webp',
+      title: 'Veeyuu',
+      url: 'https://veeyuu.com',
+      stat: '+24% revenue',
+      category: 'Women\'s Ethnic Wear · Homepage',
     },
     {
       id: 7,

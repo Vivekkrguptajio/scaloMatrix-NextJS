@@ -94,20 +94,16 @@ const PhoneCaseStudies = ({ studies, StudyCard }) => {
 const CaseStudiesGrid = () => {
   const allStudies = [
     {
-      id: 'wayora',
-      mockup: <DesktopMobileMockup src="/work/wayora-desktop.webp" mobileSrc="/work/wayora-mobile.webp" alt="Wayora" />,
-      badge: <span className="font-display font-extrabold text-lg md:text-xl tracking-tight text-[#141210] whitespace-nowrap">WAYORA</span>,
-      aov: '+23%',
-      rev: '+33%',
-      link: 'https://www.wayoranatural.com'
-    },
-    {
-      id: 'veeyuu',
-      mockup: <DesktopMobileMockup src="/work/veeyuu-desktop.webp" mobileSrc="/work/veeyuu-mobile.webp" alt="Veeyuu" />,
-      badge: <span className="font-display font-extrabold text-lg md:text-xl tracking-tight text-[#141210]">VEEYUU</span>,
-      aov: '+21%',
-      rev: '+24%',
-      link: 'https://veeyuu.com'
+      id: 'velmukha',
+      mockup: (
+        <div className="relative w-full h-full overflow-hidden bg-paper border-t border-l border-r border-gray-200">
+          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509490/shopify-app/photsWork/Velmukha.webp" alt="Velmukha" fill className="object-cover object-top" sizes="(max-width: 768px) 80vw, 440px" />
+        </div>
+      ),
+      badge: <span className="font-display font-extrabold text-lg md:text-xl tracking-tight text-[#141210] whitespace-nowrap">VELMUKHA</span>,
+      aov: '+25%',
+      rev: '+34%',
+      link: 'https://www.velmukha.com/'
     },
     {
       id: 'nutraphyll',
@@ -134,16 +130,12 @@ const CaseStudiesGrid = () => {
       link: 'https://www.houseofnada.com'
     },
     {
-      id: 'drapescorner',
-      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509463/shopify-app/lap_view/Drapes.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509479/shopify-app/phoneView/Drapes_phone_view.webp" alt="Drapes Corner" />,
-      badge: (
-        <div className="relative h-7 md:h-9 w-24">
-          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png" alt="Drapes Corner" fill className="object-contain object-left" sizes="96px" />
-        </div>
-      ),
-      aov: '+24%',
-      rev: '+38%',
-      link: 'https://www.drapescorner.com'
+      id: 'wayora',
+      mockup: <DesktopMobileMockup src="/work/wayora-desktop.webp" mobileSrc="/work/wayora-mobile.webp" alt="Wayora" />,
+      badge: <span className="font-display font-extrabold text-lg md:text-xl tracking-tight text-[#141210] whitespace-nowrap">WAYORA</span>,
+      aov: '+23%',
+      rev: '+33%',
+      link: 'https://www.wayoranatural.com'
     },
     {
       id: 'judex',
@@ -158,16 +150,24 @@ const CaseStudiesGrid = () => {
       link: 'https://www.judex.in'
     },
     {
-      id: 'velmukha',
-      mockup: (
-        <div className="relative w-full h-full overflow-hidden bg-paper border-t border-l border-r border-gray-200">
-          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509490/shopify-app/photsWork/Velmukha.webp" alt="Velmukha" fill className="object-cover object-top" sizes="(max-width: 768px) 80vw, 440px" />
+      id: 'drapescorner',
+      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509463/shopify-app/lap_view/Drapes.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509479/shopify-app/phoneView/Drapes_phone_view.webp" alt="Drapes Corner" />,
+      badge: (
+        <div className="relative h-7 md:h-9 w-24">
+          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png" alt="Drapes Corner" fill className="object-contain object-left" sizes="96px" />
         </div>
       ),
-      badge: <span className="font-display font-extrabold text-lg md:text-xl tracking-tight text-[#141210] whitespace-nowrap">VELMUKHA</span>,
-      aov: '+25%',
-      rev: '+34%',
-      link: 'https://www.velmukha.com/'
+      aov: '+24%',
+      rev: '+38%',
+      link: 'https://www.drapescorner.com'
+    },
+    {
+      id: 'veeyuu',
+      mockup: <DesktopMobileMockup src="/work/veeyuu-desktop.webp" mobileSrc="/work/veeyuu-mobile.webp" alt="Veeyuu" />,
+      badge: <span className="font-display font-extrabold text-lg md:text-xl tracking-tight text-[#141210]">VEEYUU</span>,
+      aov: '+21%',
+      rev: '+24%',
+      link: 'https://veeyuu.com'
     }
   ];
 
