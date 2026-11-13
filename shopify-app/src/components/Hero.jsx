@@ -29,7 +29,7 @@ function RotatingText() {
   }, [])
 
   return (
-    <span className="accent relative block md:inline-block w-fit mx-auto md:mx-0 my-1 md:my-0 pr-1 min-h-[1.15em]">
+    <span className="accent relative inline-block pr-1 min-h-[1.15em]">
       <span
         className={`inline-block transition-all duration-400 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3'
@@ -66,16 +66,16 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="flex flex-col pt-32 md:pt-[11.5rem] pb-12 md:pb-20 bg-cream relative overflow-hidden"
+      className="flex flex-col pt-[84px] md:pt-[11.5rem] pb-12 md:pb-20 bg-cream relative overflow-hidden"
     >
 
       <div className="container-x relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-10 xl:gap-16">
 
           {/* LEFT — message */}
-          <div className="flex-1 w-full lg:max-w-[60%] text-center lg:text-left">
+          <div className="order-2 lg:order-1 flex-1 w-full lg:max-w-[60%] text-center lg:text-left">
 
-            <div className="flex items-center justify-center lg:justify-start gap-2.5 mb-6 hero-animate-1">
+            <div className="flex items-center justify-center lg:justify-start gap-2.5 mb-3 sm:mb-6 hero-animate-1">
               <span className="inline-flex items-center gap-2 bg-paper border border-line text-ink text-[12px] font-semibold tracking-[0.12em] uppercase px-3.5 py-2 font-mono">
                 <FaShopify className="w-4 h-4 text-shopify" />
                 {heroData.badge}
@@ -86,41 +86,41 @@ export default function Hero() {
               </span>
             </div>
 
-            <h1 className="h-display !font-semibold !leading-[1.28] md:!leading-[65px] text-[clamp(1.7rem,3.2vw,45px)] lg:whitespace-nowrap mb-6 hero-animate-2">
+            <h1 className="h-display !font-semibold !leading-[1.28] md:!leading-[65px] text-[clamp(1.7rem,3.2vw,45px)] lg:whitespace-nowrap mb-3 sm:mb-6 hero-animate-2">
               We build <RotatingText />
               <span className="block" />
               {heroData.headlineSuffix}
             </h1>
 
-            <p className="lead !text-[15.5px] max-w-[540px] mx-auto lg:mx-0 mb-9 hero-animate-3">
+            <p className="lead !text-[15.5px] max-w-[540px] mx-auto lg:mx-0 mb-5 sm:mb-9 hero-animate-3">
               {before}<strong className="font-semibold text-ink">{heroData.descriptionHighlight}</strong>{after}
             </p>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 mb-12 hero-animate-4">
-              <a href="#contact" className="btn-primary group !text-[14px] !py-[0.85rem] !px-[1.6rem]">
+            <div className="flex flex-row items-stretch sm:items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-3 sm:mb-12 w-[80%] mx-auto sm:w-auto sm:mx-0 hero-animate-4">
+              <a href="#contact" className="btn-primary group flex-1 sm:flex-none !text-[10px] sm:!text-[14px] !py-[0.68rem] sm:!py-[0.85rem] !px-1.5 sm:!px-[1.6rem] whitespace-nowrap">
                 Get your Shopify store
-                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <svg className="hidden sm:block w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </a>
-              <a href="#work" className="btn-ghost !text-[14px] !py-[0.85rem] !px-[1.6rem]">See our work</a>
+              <a href="#work" className="btn-ghost flex-1 sm:flex-none !text-[10px] sm:!text-[14px] !py-[0.68rem] sm:!py-[0.85rem] !px-1.5 sm:!px-[1.6rem] whitespace-nowrap">See our work</a>
             </div>
 
             {/* Stats */}
-            <dl className="grid grid-cols-3 max-w-[540px] mx-auto lg:mx-0 border-t border-line pt-6 hero-animate-5">
+            <dl className="grid grid-cols-3 max-w-[540px] mx-auto lg:mx-0 border-t border-line pt-2.5 sm:pt-6 hero-animate-5">
               {heroData.stats.map((stat, i) => (
-                <div key={i} className={`flex flex-col gap-1 ${i > 0 ? 'pl-4 sm:pl-6 border-l border-line' : ''}`}>
-                  <dd className={`h-display text-3xl sm:text-4xl order-1 ${stat.prefix === '+' && stat.suffix === '%' ? 'text-up' : 'text-ink'}`}>
+                <div key={i} className={`flex flex-col gap-0.5 sm:gap-1 ${i > 0 ? 'pl-2.5 sm:pl-6 border-l border-line' : ''}`}>
+                  <dd className={`h-display text-[19px] sm:text-4xl order-1 ${stat.prefix === '+' && stat.suffix === '%' ? 'text-up' : 'text-ink'}`}>
                     {stat.prefix}<AnimatedCounter target={stat.value} />{stat.suffix}
                   </dd>
-                  <dt className="font-mono text-[11px] sm:text-[12px] tracking-[0.1em] uppercase text-muted order-2 leading-snug">{stat.label}</dt>
+                  <dt className="font-mono text-[8.5px] sm:text-[12px] tracking-[0.04em] sm:tracking-[0.1em] uppercase text-muted order-2 leading-[1.25] sm:leading-snug">{stat.label}</dt>
                 </div>
               ))}
             </dl>
           </div>
 
           {/* RIGHT — store previews (coverflow) */}
-          <div className="flex-1 w-full lg:max-w-[40%] relative lg:right-[30px] flex items-center justify-center hero-cards-animate overflow-visible p-2 min-h-[304px] sm:min-h-[345px] lg:min-h-[395px]">
+          <div className="order-1 lg:order-2 flex-1 w-full lg:max-w-[40%] relative lg:right-[30px] flex items-center justify-center hero-cards-animate overflow-visible p-2 min-h-[262px] sm:min-h-[345px] lg:min-h-[395px]">
             {stores.map(({ src, name, stat }, idx) => {
               const position = (idx - activeIndex + 3) % 3;
               const slots = [
