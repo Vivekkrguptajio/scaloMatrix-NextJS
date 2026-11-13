@@ -90,10 +90,10 @@ export default function HeroVCards() {
             </h2>
           </div>
 
-          <div className="flex items-center gap-4 bg-paper p-3.5 pr-6 border border-line self-start md:self-auto">
-            <div className="flex -space-x-3">
+          <div className="flex items-center gap-4 max-sm:gap-2.5 bg-paper p-3.5 pr-6 max-sm:p-2 max-sm:pr-3 border border-line self-start md:self-auto">
+            <div className="flex -space-x-3 max-sm:-space-x-2">
               {LOGOS.map((src, i) => (
-                <div key={i} className="relative w-10 h-10 border-2 border-paper bg-white overflow-hidden">
+                <div key={i} className="relative w-10 h-10 max-sm:w-7 max-sm:h-7 border-2 border-paper bg-white overflow-hidden">
                   <Image src={src} alt="" fill className="object-cover" sizes="40px" />
                 </div>
               ))}
@@ -101,11 +101,11 @@ export default function HeroVCards() {
             <div className="flex flex-col">
               <div className="flex items-center gap-0.5" aria-label="Rated 4.9 out of 5">
                 {[1,2,3,4,5].map(star => (
-                  <span key={star} className="text-brand text-sm" aria-hidden="true">★</span>
+                  <span key={star} className="text-brand text-sm max-sm:text-[10px]" aria-hidden="true">★</span>
                 ))}
                 <span className="font-mono text-xs font-medium text-ink ml-1.5">4.9/5</span>
               </div>
-              <span className="font-display font-semibold text-ink text-sm tracking-tight">
+              <span className="font-display font-semibold text-ink text-sm max-sm:text-[11px] tracking-tight">
                 <AnimatedCounter target={50} suffix="+ happy clients" />
               </span>
             </div>

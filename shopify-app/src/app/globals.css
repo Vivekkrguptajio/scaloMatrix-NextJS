@@ -228,6 +228,31 @@ html[data-theme='dark'] .up-badge { color: #06210f; }
 /* the Shopify Partners logo has dark lettering: give it a white plate in dark mode */
 html[data-theme='dark'] .partner-logo { background: #fff; }
 
+/* Phones: every section / page heading is 20px. The hero is left exactly as it is. */
+@layer utilities {
+@media (max-width: 639px) {
+  .page-frame :is(h1, h2, h3.h-display):not(#hero *) {
+    font-size: 20px !important;
+    line-height: 1.3 !important;
+    letter-spacing: -0.02em !important;
+  }
+}
+}
+
+/* Phones: a little air between the corner tab and the section heading, on every section */
+@media (max-width: 639px) {
+  /* one rhythm for every section on phones, matching the Partners section:
+     tab -> heading gap, and content -> section divider gap, are the same everywhere */
+  .page-frame section:has(.eyebrow) { padding-top: 52px; padding-bottom: 46px; }
+  .page-frame .eyebrow ~ .container-x,
+  .page-frame .container-x:has(.eyebrow) { margin-top: 8px; }
+}
+
+/* Phones: no drop shadows on cards (the nav and floating buttons are outside the page frame) */
+@media (max-width: 639px) {
+  .page-frame *, .page-frame *::before, .page-frame *::after { box-shadow: none !important; }
+}
+
 /* Scroll-in effect (class toggled from SmoothScroll.jsx) */
 .rv { opacity: 0; transform: translateY(16px); transition: opacity 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 .rv.rv-in { opacity: 1; transform: none; }

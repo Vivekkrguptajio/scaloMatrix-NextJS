@@ -71,9 +71,9 @@ export default function Hero() {
 
       <div className="container-x relative z-10">
         {/* Phone only: the Shopify Partners logo, centred at the very top of the hero */}
-        <div className="sm:hidden flex justify-center mb-2 hero-animate-1">
-          <div className="partner-logo relative w-[210px] h-[40px] overflow-hidden">
-            <Image src="/iconshopify.png" alt="Shopify Partners" fill sizes="210px" className="object-cover" priority />
+        <div className="sm:hidden flex justify-center pt-3 pb-4 hero-animate-1">
+          <div className="partner-logo relative w-[147px] h-[28px] overflow-hidden">
+            <Image src="/iconshopify.png" alt="Shopify Partners" fill sizes="147px" className="object-cover" priority />
           </div>
         </div>
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-10 xl:gap-16">
@@ -82,10 +82,9 @@ export default function Hero() {
           <div className="order-2 lg:order-1 flex-1 w-full lg:max-w-[60%] text-center lg:text-left">
 
             <div className="hidden sm:flex items-center justify-center lg:justify-start gap-2.5 mb-6 hero-animate-1">
-              <span className="inline-flex items-center gap-2 bg-paper border border-line text-ink text-[12px] font-semibold tracking-[0.12em] uppercase px-3.5 py-2 font-mono">
-                <FaShopify className="w-4 h-4 text-shopify" />
-                {heroData.badge}
-              </span>
+              <div className="partner-logo relative w-[147px] h-[28px] overflow-hidden" title={heroData.badge}>
+                <Image src="/iconshopify.png" alt="Shopify Partners" fill sizes="147px" className="object-cover" />
+              </div>
               <span className="hidden sm:inline-flex items-center gap-2 bg-brand-soft text-brand-text text-[12px] font-semibold tracking-[0.12em] uppercase px-3.5 py-2 font-mono">
                 <span className="w-1.5 h-1.5 bg-brand animate-pulse" />
                 {heroData.badge2}

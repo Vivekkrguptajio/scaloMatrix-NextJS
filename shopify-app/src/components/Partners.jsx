@@ -37,7 +37,7 @@ export default function Partners() {
       </span>
 
       <div className="container-x">
-        <div className="grid lg:grid-cols-[1fr_1.7fr] gap-10 lg:gap-16 items-center pt-20 pb-14 md:pt-24 md:pb-20">
+        <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[1fr_1.7fr] gap-10 lg:gap-16 items-center pt-20 pb-14 md:pt-24 md:pb-20">
           <h2 className="h-display h-section !text-[clamp(1.4rem,2.3vw,33px)] max-w-[460px]">
             Official partners of the platforms{' '}
             <span className="accent">your store already runs on.</span>

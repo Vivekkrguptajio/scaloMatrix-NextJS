@@ -65,39 +65,53 @@ export default function AutoMarquee({ children, speed = 40, direction = 'left', 
     io.observe(el);
 
 
-    // Mouse: click and drag the strip left/right (touch already swipes natively)
-    let dragging = false, startX = 0, startScroll = 0, moved = 0;
+    // Drag / swipe the strip left or right with ANY pointer (mouse, finger, pen). The browser keeps
+    // handling vertical page scrolling (touch-action: pan-y); sideways movement is ours, with a
+    // little momentum when you let go.
+    let dragging = false, startX = 0, startScroll = 0, moved = 0, lastX = 0, lastT = 0, vel = 0, glide = 0;
+    const stopGlide = () => { cancelAnimationFrame(glide); glide = 0; };
     const onDown = (e) => {
-      if (e.pointerType !== 'mouse' || e.button !== 0) return;
-      dragging = true; moved = 0;
-      startX = e.clientX; startScroll = el.scrollLeft;
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      stopGlide();
+      dragging = true; moved = 0; vel = 0;
+      startX = lastX = e.clientX; lastT = performance.now(); startScroll = el.scrollLeft;
       pause();
-      el.style.cursor = 'grabbing';
+      if (e.pointerType === 'mouse') el.style.cursor = 'grabbing';
     };
     const onMove = (e) => {
       if (!dragging) return;
       const dx = e.clientX - startX;
       moved = Math.max(moved, Math.abs(dx));
       el.scrollLeft = startScroll - dx;
+      const now = performance.now();
+      if (now > lastT) vel = (lastX - e.clientX) / (now - lastT); // px per ms, in scroll direction
+      lastX = e.clientX; lastT = now;
     };
     const onUp = () => {
       if (!dragging) return;
       dragging = false;
       el.style.cursor = '';
+      // momentum
+      let v = Math.abs(vel) > 0.05 ? vel * 16 : 0;
+      const coast = () => {
+        if (Math.abs(v) < 0.3) { glide = 0; return; }
+        el.scrollLeft += v; v *= 0.95;
+        glide = requestAnimationFrame(coast);
+      };
+      if (v) glide = requestAnimationFrame(coast);
       resume(); // hovering never stops the strip; after a drag it carries on shortly after
     };
     // a drag must not open the card link underneath
     const onClickCapture = (e) => { if (moved > 5) { e.preventDefault(); e.stopPropagation(); moved = 0; } };
     const onDragStart = (e) => e.preventDefault(); // no ghost-image dragging
+    el.style.touchAction = 'pan-y';
     el.addEventListener('pointerdown', onDown);
     window.addEventListener('pointermove', onMove);
     window.addEventListener('pointerup', onUp);
+    window.addEventListener('pointercancel', onUp);
     el.addEventListener('click', onClickCapture, true);
     el.addEventListener('dragstart', onDragStart);
 
-    el.addEventListener('touchstart', pause, { passive: true });
-    el.addEventListener('touchend', resume, { passive: true });
-    el.addEventListener('touchcancel', resume, { passive: true });
     el.addEventListener('wheel', () => { pause(); resume(); }, { passive: true });
 
     return () => {
@@ -106,12 +120,11 @@ export default function AutoMarquee({ children, speed = 40, direction = 'left', 
       clearTimeout(resumeTimer);
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('pointerup', onUp);
+      window.removeEventListener('pointercancel', onUp);
+      stopGlide();
       el.removeEventListener('pointerdown', onDown);
       el.removeEventListener('click', onClickCapture, true);
       el.removeEventListener('dragstart', onDragStart);
-      el.removeEventListener('touchstart', pause);
-      el.removeEventListener('touchend', resume);
-      el.removeEventListener('touchcancel', resume);
     };
   }, [speed, resumeAfter, direction]);
 
