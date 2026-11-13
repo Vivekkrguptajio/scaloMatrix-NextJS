@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import AutoMarquee from './AutoMarquee'
 import meta from '../assets/parters/meta.svg'
 import shopify from '../assets/parters/shopify.svg'
 import shiprocket from '../assets/parters/shiprocket.svg'
@@ -15,6 +16,18 @@ const partners = [
   { name: 'AiSensy', role: 'WhatsApp', logo: aisensy, className: 'h-[25px] w-auto' },
 ]
 
+function PartnerCell({ p, card = false }) {
+  return (
+    <li className={`partner-cell flex flex-col items-center justify-center text-center ${card ? 'shrink-0 w-[168px] gap-4 px-3 py-7 border border-line' : 'gap-5 px-2 py-[34px]'}`}>
+      <span className="flex items-center justify-center gap-2 h-[36px]">
+        <Image src={p.logo} alt={p.showName ? '' : `${p.name} logo`} unoptimized className={`${p.className} object-contain`} />
+        {p.showName && <span className="font-display font-bold text-[21px] leading-none tracking-tight text-[#141210]">{p.name}</span>}
+      </span>
+      <span className="font-mono text-[10.5px] tracking-[0.12em] uppercase whitespace-nowrap text-[#6B655C]">{p.role}</span>
+    </li>
+  )
+}
+
 export default function Partners() {
   return (
     <section id="partners" className="relative bg-cream font-sans">
@@ -30,18 +43,21 @@ export default function Partners() {
             <span className="accent">your store already runs on.</span>
           </h2>
 
-          {/* Logo grid: 1px gaps over a line-coloured background draw the cell borders */}
-          <ul className="grid grid-cols-1 lg:grid-cols-5 gap-px bg-line border border-line">
-            {partners.map((p) => (
-              <li key={p.name} className="partner-cell flex flex-row lg:flex-col items-center justify-between lg:justify-center gap-4 lg:gap-5 px-5 lg:px-2 py-5 lg:py-[34px] lg:text-center">
-                <span className="flex items-center justify-start lg:justify-center gap-2 h-[36px]">
-                  <Image src={p.logo} alt={p.showName ? '' : `${p.name} logo`} unoptimized className={`${p.className} object-contain`} />
-                  {p.showName && <span className="font-display font-bold text-[21px] leading-none tracking-tight text-[#141210]">{p.name}</span>}
-                </span>
-                <span className="font-mono text-[10.5px] tracking-[0.12em] uppercase whitespace-nowrap text-[#6B655C]">{p.role}</span>
-              </li>
-            ))}
+          {/* Desktop (1024px+): the 5-cell grid, unchanged */}
+          <ul className="hidden lg:grid grid-cols-5 gap-px bg-line border border-line">
+            {partners.map((p) => <PartnerCell key={p.name} p={p} />)}
           </ul>
+
+          {/* Phone / tablet: a carousel that drifts left to right; drag or swipe it either way */}
+          <div className="lg:hidden -mx-[var(--gap)]">
+            <AutoMarquee speed={30} direction="right">
+              <ul className="flex w-max gap-3 ps-[var(--gap)] pe-[var(--gap)]">
+                {[...partners, ...partners].map((p, i) => (
+                  <PartnerCell key={`${p.name}-${i}`} p={p} card />
+                ))}
+              </ul>
+            </AutoMarquee>
+          </div>
         </div>
       </div>
     </section>

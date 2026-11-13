@@ -66,20 +66,24 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="flex flex-col pt-[124px] md:pt-[11.5rem] pb-12 md:pb-20 bg-cream relative overflow-hidden"
+      className="flex flex-col pt-[84px] md:pt-[11.5rem] pb-12 md:pb-20 bg-cream relative overflow-hidden"
     >
-      {/* Phone: the badge becomes the section tab (like "Our work"), sitting right under the navbar */}
-      <span className="eyebrow sm:hidden !top-[78px]">Shopify Partner</span>
 
       <div className="container-x relative z-10">
+        {/* Phone only: the Shopify Partners logo, centred at the very top of the hero */}
+        <div className="sm:hidden flex justify-center mb-2 hero-animate-1">
+          <div className="partner-logo relative w-[210px] h-[40px] overflow-hidden">
+            <Image src="/iconshopify.png" alt="Shopify Partners" fill sizes="210px" className="object-cover" priority />
+          </div>
+        </div>
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-10 xl:gap-16">
 
           {/* LEFT — message */}
           <div className="order-2 lg:order-1 flex-1 w-full lg:max-w-[60%] text-center lg:text-left">
 
-            <div className="flex items-center justify-center lg:justify-start gap-2.5 mb-3 sm:mb-6 max-sm:hidden hero-animate-1">
-              <span className="inline-flex items-center gap-2 bg-paper border border-line text-ink text-[12px] font-semibold tracking-[0.12em] uppercase px-3.5 py-2 font-mono max-sm:bg-brand max-sm:text-white max-sm:border-brand max-sm:text-[10.5px] max-sm:px-4 max-sm:py-2 max-sm:tracking-[0.14em]">
-                <FaShopify className="w-4 h-4 text-shopify max-sm:text-white max-sm:w-3.5 max-sm:h-3.5" />
+            <div className="hidden sm:flex items-center justify-center lg:justify-start gap-2.5 mb-6 hero-animate-1">
+              <span className="inline-flex items-center gap-2 bg-paper border border-line text-ink text-[12px] font-semibold tracking-[0.12em] uppercase px-3.5 py-2 font-mono">
+                <FaShopify className="w-4 h-4 text-shopify" />
                 {heroData.badge}
               </span>
               <span className="hidden sm:inline-flex items-center gap-2 bg-brand-soft text-brand-text text-[12px] font-semibold tracking-[0.12em] uppercase px-3.5 py-2 font-mono">
@@ -109,7 +113,7 @@ export default function Hero() {
             </div>
 
             {/* Stats */}
-            <dl className="grid grid-cols-3 max-w-[540px] mx-auto lg:mx-0 border-t border-line pt-2.5 sm:pt-6 hero-animate-5">
+            <dl className="grid grid-cols-3 max-w-[540px] mx-auto lg:mx-0 sm:border-t border-line pt-1 sm:pt-6 hero-animate-5">
               {heroData.stats.map((stat, i) => (
                 <div key={i} className={`flex flex-col gap-0.5 sm:gap-1 ${i > 0 ? 'pl-2.5 sm:pl-6 sm:border-l border-line' : ''}`}>
                   <dd className={`h-display text-[19px] sm:text-4xl order-1 ${stat.prefix === '+' && stat.suffix === '%' ? 'text-up' : 'text-ink'}`}>
