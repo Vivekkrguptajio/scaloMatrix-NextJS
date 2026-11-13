@@ -179,7 +179,7 @@ const Calculator = () => {
               </div>
             </div>
 
-            <a href="#contact" className="group/btn btn-slide btn-slide-white w-full flex items-center justify-center gap-2.5 font-semibold text-sm md:text-[12px] px-6 py-3.5 transition-all duration-300 bg-panel text-white border border-ink hover:text-[#141210]">
+            <a href="#contact" className="group/btn btn-slide btn-slide-brand w-full flex items-center justify-center gap-2.5 font-semibold text-sm md:text-[12px] px-6 py-3.5 transition-all duration-300 bg-white text-[#141210] border border-ink hover:border-ink hover:text-white">
             Book free audit
             <svg className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
