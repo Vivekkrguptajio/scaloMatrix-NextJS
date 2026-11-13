@@ -12,11 +12,13 @@
   --color-brand-text: #BF3D00;
   --color-ink: #141210;
   --color-muted: #6B655C;
-  --color-cream: #FFFFFF;
+  --color-cream: #FAF8F5;
   --color-line: #E7E0D4;
   --color-paper: #FFFFFF;
   --color-panel: #141210;
   --color-shopify: #5E8E3E;
+  --color-up: #15803D;        /* increases / growth (+% figures) */
+  --color-up-soft: #E6F5EA;
 }
 
 /* ═══════ DARK THEME — same tokens, swapped values ═══════ */
@@ -30,6 +32,8 @@ html[data-theme='dark'] {
   --color-panel: #1D1A17;
   --color-brand-soft: #2B1A10;
   --color-brand-text: #FF8A4C;
+  --color-up: #4ADE80;
+  --color-up-soft: #10261A;
 }
 
 /* While this class is on <html> no element fades its colours, so the theme change is a
@@ -217,6 +221,9 @@ html[data-theme='dark'] .faq-answer { color: var(--color-muted); }
   transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
 }
 .nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
+
+.up-badge { background: var(--color-up); color: #fff; }
+html[data-theme='dark'] .up-badge { color: #06210f; }
 
 /* Scroll-in effect (class toggled from SmoothScroll.jsx) */
 .rv { opacity: 0; transform: translateY(16px); transition: opacity 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }

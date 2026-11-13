@@ -30,7 +30,7 @@ const Calculator = () => {
   const sliders = [
     { label: 'Monthly ad spend', value: formatMoney(adSpend), min: 5, max: 200, step: 5, state: adSpend, set: setAdSpend, lo: '₹5L', hi: '₹2Cr' },
     { label: 'Sales per ₹1 of ads (ROAS)', value: `${roas}x`, min: 1, max: 20, step: 0.5, state: roas, set: setRoas, lo: '1x', hi: '20x' },
-    { label: 'Extra sales', value: `+${lift}%`, min: 20, max: 60, step: 5, state: lift, set: setLift, lo: '+20%', hi: '+60%' },
+    { label: 'Extra sales', value: `+${lift}%`, min: 20, max: 45, step: 5, state: lift, set: setLift, lo: '+20%', hi: '+45%' },
   ];
 
   return (
@@ -57,7 +57,7 @@ const Calculator = () => {
               <div key={sl.label}>
                 <div className="flex justify-between items-end mb-3">
                   <label className="font-mono text-[11px] tracking-[0.14em] text-muted uppercase">{sl.label}</label>
-                  <span className="h-display text-xl text-brand">{sl.value}</span>
+                  <span className={`h-display text-xl ${sl.label === 'Extra sales' ? 'text-up' : 'text-brand'}`}>{sl.value}</span>
                 </div>
                 <div className="relative pb-6">
                   <input

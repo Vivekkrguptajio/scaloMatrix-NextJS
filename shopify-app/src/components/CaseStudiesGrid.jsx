@@ -97,12 +97,16 @@ const CaseStudiesGrid = () => {
       id: 'wayora',
       mockup: <DesktopMobileMockup src="/work/wayora-desktop.webp" mobileSrc="/work/wayora-mobile.webp" alt="Wayora" />,
       badge: <span className="font-display font-extrabold text-lg md:text-xl tracking-tight text-[#141210] whitespace-nowrap">WAYORA</span>,
+      aov: '+23%',
+      rev: '+33%',
       link: 'https://www.wayoranatural.com'
     },
     {
       id: 'veeyuu',
       mockup: <DesktopMobileMockup src="/work/veeyuu-desktop.webp" mobileSrc="/work/veeyuu-mobile.webp" alt="Veeyuu" />,
       badge: <span className="font-display font-extrabold text-lg md:text-xl tracking-tight text-[#141210]">VEEYUU</span>,
+      aov: '+21%',
+      rev: '+24%',
       link: 'https://veeyuu.com'
     },
     {
@@ -113,7 +117,7 @@ const CaseStudiesGrid = () => {
           <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png" alt="Nutraphyll" fill className="object-contain object-left" sizes="96px" />
         </div>
       ),
-      aov: '+18%',
+      aov: '+22%',
       rev: '+20%',
       link: 'https://www.nutraphyll.com'
     },
@@ -137,8 +141,8 @@ const CaseStudiesGrid = () => {
           <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png" alt="Drapes Corner" fill className="object-contain object-left" sizes="96px" />
         </div>
       ),
-      aov: '+16%',
-      rev: '+50%',
+      aov: '+24%',
+      rev: '+38%',
       link: 'https://www.drapescorner.com'
     },
     {
@@ -149,9 +153,21 @@ const CaseStudiesGrid = () => {
           <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png" alt="Judex" fill className="object-contain object-left" sizes="96px" />
         </div>
       ),
-      aov: '+16%',
+      aov: '+21%',
       rev: '+43%',
       link: 'https://www.judex.in'
+    },
+    {
+      id: 'velmukha',
+      mockup: (
+        <div className="relative w-full h-full overflow-hidden bg-paper border-t border-l border-r border-gray-200">
+          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509490/shopify-app/photsWork/Velmukha.webp" alt="Velmukha" fill className="object-cover object-top" sizes="(max-width: 768px) 80vw, 440px" />
+        </div>
+      ),
+      badge: <span className="font-display font-extrabold text-lg md:text-xl tracking-tight text-[#141210] whitespace-nowrap">VELMUKHA</span>,
+      aov: '+25%',
+      rev: '+34%',
+      link: 'https://www.velmukha.com/'
     }
   ];
 
@@ -164,17 +180,19 @@ const CaseStudiesGrid = () => {
       </div>
       <div className="flex items-end justify-between gap-4 px-1 mt-auto">
         <div className={`shrink-0 bg-white px-2 py-1 `}>{study.badge}</div>
-        {study.aov && study.rev && (
+        {study.rev && (
         <div className={`flex items-center ${flat ? 'gap-3.5' : 'gap-4 sm:gap-6'}`}>
+          {study.aov && (<>
           <div className="flex flex-col items-end">
-            <div className={`h-display text-brand leading-none mb-1.5 ${flat ? 'text-[1.6rem] sm:text-3xl' : 'text-xl sm:text-2xl'}`}>
+            <div className={`h-display text-up leading-none mb-1.5 ${flat ? 'text-[1.6rem] sm:text-3xl' : 'text-xl sm:text-2xl'}`}>
               <AnimatedCounter target={parseInt(study.aov)} prefix="+" suffix="%" />
             </div>
             <div className={`font-mono text-muted uppercase tracking-[0.14em] ${flat ? 'text-[10.5px] whitespace-nowrap' : 'text-[10px]'}`}>Avg. order</div>
           </div>
           <div className={`w-px bg-line ${flat ? 'h-10' : 'h-9'}`} />
+          </>)}
           <div className="flex flex-col items-end">
-            <div className={`h-display text-brand leading-none mb-1.5 ${flat ? 'text-[1.6rem] sm:text-3xl' : 'text-xl sm:text-2xl'}`}>
+            <div className={`h-display text-up leading-none mb-1.5 ${flat ? 'text-[1.6rem] sm:text-3xl' : 'text-xl sm:text-2xl'}`}>
               <AnimatedCounter target={parseInt(study.rev)} prefix="+" suffix="%" />
             </div>
             <div className={`font-mono text-muted uppercase tracking-[0.14em] ${flat ? 'text-[10.5px] whitespace-nowrap' : 'text-[10px]'}`}>Revenue</div>

@@ -17,6 +17,7 @@ export default function HeroVCards() {
       img: '/work/wayora-home.webp',
       title: 'Wayora',
       url: 'https://www.wayoranatural.com',
+      stat: '+33% revenue',
       category: 'Food & Spices · Homepage',
     },
     {
@@ -24,6 +25,7 @@ export default function HeroVCards() {
       img: '/work/veeyuu-home.webp',
       title: 'Veeyuu',
       url: 'https://veeyuu.com',
+      stat: '+24% revenue',
       category: 'Women\'s Ethnic Wear · Homepage',
     },
     { 
@@ -47,7 +49,7 @@ export default function HeroVCards() {
       img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509490/shopify-app/photsWork/Velmukha.webp', 
       title: 'Velmukha', 
       url: 'https://www.velmukha.com/',
-      stat: '+50% Sales',
+      stat: '+34% Sales',
       category: 'Spiritual & Jewellery' 
     },
     {
@@ -55,7 +57,7 @@ export default function HeroVCards() {
       img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509485/shopify-app/photsWork/Drapes.webp', 
       title: 'Drapes Corner', 
       url: 'https://www.drapescorner.com',
-      stat: '+50% revenue',
+      stat: '+38% revenue',
       category: 'Home & Decor' 
     },
     { 
@@ -65,6 +67,13 @@ export default function HeroVCards() {
       url: 'https://www.judex.in',
       stat: '+43% revenue',
       category: 'Beauty & Fragrance' 
+    },
+    {
+      id: 7,
+      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509487/shopify-app/photsWork/Luxury.webp',
+      title: 'Always On You',
+      stat: '+22% revenue',
+      category: 'Shopify store · Homepage',
     },
   ];
 
@@ -123,7 +132,7 @@ export default function HeroVCards() {
                   <p className="font-display font-semibold text-[12px] leading-tight truncate">{card.title}</p>
                   <p className="font-mono text-[10px] tracking-[0.1em] uppercase text-muted mt-1 truncate">{card.category}</p>
                 </div>
-                {card.stat && <span className="shrink-0 bg-brand-soft text-brand-text font-mono text-[11px] font-medium px-2.5 py-1">{card.stat}</span>}
+                {card.stat && <span className="shrink-0 bg-up-soft text-up font-mono text-[11px] font-medium px-2.5 py-1">{card.stat}</span>}
               </div>
             </Card>
             )

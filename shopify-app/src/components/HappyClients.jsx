@@ -58,7 +58,7 @@ const HappyClients = () => {
   const tickerItems = [
     { name: "NUTRAPHYLL", stat: "+20% Revenue" },
     { name: "HOUSE OF NADA", stat: "+44% Revenue" },
-    { name: "DRAPES CORNER", stat: "+50% Revenue" },
+    { name: "DRAPES CORNER", stat: "+38% Revenue" },
     { name: "JUDEX", stat: "+43% Revenue" }
   ];
 
@@ -116,7 +116,7 @@ const HappyClients = () => {
               <div className="flex items-center gap-3 font-mono text-xs sm:text-sm font-medium tracking-[0.12em]">
                 <span className="text-ink uppercase">{item.name}</span>
                 <span className="text-white/70" aria-hidden="true">•</span>
-                <span className="text-white uppercase">{item.stat}</span>
+                <span className="bg-white text-[#15803D] px-2 py-0.5 uppercase">{item.stat}</span>
               </div>
               <span className="text-ink/25" aria-hidden="true">/</span>
             </div>

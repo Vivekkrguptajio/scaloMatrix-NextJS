@@ -84,7 +84,7 @@ const CroBrandExercise = () => {
 
             <div className="grid md:grid-cols-2 gap-5">
               {stores.map((s) => (
-                <div key={s.label} className={`p-6 sm:p-7 border ${s.after ? 'border-brand' : 'border-line'}`}>
+                <div key={s.label} className={`bg-paper p-6 sm:p-7 border ${s.after ? 'border-brand' : 'border-line'}`}>
                   <p className="font-mono text-[10.5px] tracking-[0.14em] uppercase text-muted mb-5">{s.label}</p>
                   <dl className="flex flex-col gap-3 pb-5 mb-5 border-b border-line text-[13px]">
                     {s.rows.map(([k, v]) => (
@@ -118,10 +118,12 @@ const CroBrandExercise = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               {leaks.map(({ Icon, title, body }) => (
                 <article key={title} className="bg-paper border border-line p-5 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-30px_rgba(20,18,16,0.4)]">
-                  <span className="w-9 h-9 bg-brand-soft text-brand flex items-center justify-center mb-4">
-                    <Icon className="w-4 h-4" aria-hidden="true" />
-                  </span>
-                  <h4 className="h-card text-[17px] mb-2">{title}</h4>
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="w-9 h-9 shrink-0 bg-brand-soft text-brand flex items-center justify-center">
+                      <Icon className="w-4 h-4" aria-hidden="true" />
+                    </span>
+                    <h4 className="h-card text-[17px]">{title}</h4>
+                  </div>
                   <p className="text-[13px] text-muted leading-relaxed">{body}</p>
                 </article>
               ))}
@@ -220,7 +222,7 @@ const CroBrandExercise = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {steps.map((st) => (
-              <article key={st.n} className="bg-cream border border-line p-6 sm:p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-30px_rgba(20,18,16,0.4)]">
+              <article key={st.n} className="bg-paper border border-line p-6 sm:p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-30px_rgba(20,18,16,0.4)]">
                 <div className="flex items-center justify-between mb-8">
                   <span className="h-display text-4xl text-brand leading-none">{st.n}</span>
                   <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-brand-text">{st.tag}</span>

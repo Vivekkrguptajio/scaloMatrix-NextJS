@@ -46,9 +46,9 @@ function RotatingText() {
 
 // Static data moved outside component to prevent re-creation on every render
 const stores = [
-  { src: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509485/shopify-app/photsWork/Drapes.webp', name: 'Drapes Corner', stat: '+50% revenue' },
+  { src: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509485/shopify-app/photsWork/Drapes.webp', name: 'Drapes Corner', stat: '+38% revenue' },
   { src: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509488/shopify-app/photsWork/Nada.webp', name: 'House of Nada', stat: '+44% revenue' },
-  { src: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509487/shopify-app/photsWork/Luxury.webp', name: 'Shopify store', stat: null },
+  { src: 'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509490/shopify-app/photsWork/Velmukha.webp', name: 'Velmukha', stat: '+34% Sales' },
 ]
 
 export default function Hero() {
@@ -110,7 +110,7 @@ export default function Hero() {
             <dl className="grid grid-cols-3 max-w-[540px] mx-auto lg:mx-0 border-t border-line pt-6 hero-animate-5">
               {heroData.stats.map((stat, i) => (
                 <div key={i} className={`flex flex-col gap-1 ${i > 0 ? 'pl-4 sm:pl-6 border-l border-line' : ''}`}>
-                  <dd className="h-display text-3xl sm:text-4xl text-ink order-1">
+                  <dd className={`h-display text-3xl sm:text-4xl order-1 ${stat.prefix === '+' && stat.suffix === '%' ? 'text-up' : 'text-ink'}`}>
                     {stat.prefix}<AnimatedCounter target={stat.value} />{stat.suffix}
                   </dd>
                   <dt className="font-mono text-[11px] sm:text-[12px] tracking-[0.1em] uppercase text-muted order-2 leading-snug">{stat.label}</dt>
@@ -154,7 +154,7 @@ export default function Hero() {
                     Shopify store
                   </div>
                   {position === 0 && stat && (
-                    <div className="absolute bottom-3 right-3 bg-brand-deep text-white font-mono text-[11px] font-medium px-3 py-1.5 shadow-lg">
+                    <div className="up-badge absolute bottom-3 right-3 font-mono text-[11px] font-medium px-3 py-1.5 shadow-lg">
                       {stat} ↑
                     </div>
                   )}
