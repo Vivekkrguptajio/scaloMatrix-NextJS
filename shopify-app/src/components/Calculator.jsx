@@ -17,6 +17,9 @@ const Calculator = () => {
     if (lakhs >= 100) {
       return `₹${(lakhs / 100).toFixed(1).replace('.0', '')}Cr`;
     }
+    if (lakhs < 1) {
+      return `₹${Math.round(lakhs * 100)}K`;
+    }
     return `₹${lakhs.toFixed(1).replace('.0', '')}L`;
   };
 
@@ -24,14 +27,20 @@ const Calculator = () => {
     if (lakhs >= 100) {
       return `+₹${(lakhs / 100).toFixed(1).replace('.0', '')}Cr`;
     }
+    if (lakhs < 1) {
+      return `+₹${Math.round(lakhs * 100)}K`;
+    }
     return `+₹${lakhs.toFixed(1).replace('.0', '')}L`;
   };
 
   const sliders = [
-    { label: 'Monthly ad spend', value: formatMoney(adSpend), min: 5, max: 200, step: 5, state: adSpend, set: setAdSpend, lo: '₹5L', hi: '₹2Cr' },
+    { label: 'Monthly ad spend', value: formatMoney(adSpend), min: 0.5, max: 200, step: 0.5, state: adSpend, set: setAdSpend, lo: '₹50K', hi: '₹2Cr' },
     { label: 'Sales per ₹1 of ads (ROAS)', value: `${roas}x`, min: 1, max: 20, step: 0.5, state: roas, set: setRoas, lo: '1x', hi: '20x' },
     { label: 'Extra sales', value: `+${lift}%`, min: 20, max: 45, step: 5, state: lift, set: setLift, lo: '+20%', hi: '+45%' },
   ];
+
+  const bump = (sl, dir) => sl.set(Math.min(sl.max, Math.max(sl.min, +(sl.state + dir * sl.step).toFixed(2))));
+  const todayPct = afterRevLakhs ? (beforeRevLakhs / afterRevLakhs) * 100 : 100;
 
   return (
     <section id="math" className="relative w-full py-16 md:py-24 font-sans bg-cream">
@@ -49,7 +58,75 @@ const Calculator = () => {
           </p>
         </div>
 
-        <div className="w-full bg-paper border border-line shadow-[0_30px_60px_-40px_rgba(20,18,16,0.35)] flex flex-col lg:flex-row overflow-hidden">
+        {/* ───────── Phone layout: live result on top, thumb-friendly controls below ───────── */}
+        <div className="sm:hidden flex flex-col gap-3">
+          {/* Live result (sticks under the navbar while you adjust the controls) */}
+          <div className="sticky top-[74px] z-10 bg-panel text-white p-4">
+            <div className="flex items-end justify-between gap-3">
+              <div>
+                <p className="font-mono text-[9.5px] tracking-[0.14em] text-white/55 uppercase mb-1">Extra sales / month</p>
+                <p className="h-display text-[34px] leading-none text-brand">{formatExtra(extraRevLakhs)}</p>
+              </div>
+              <div className="text-right">
+                <p className="font-mono text-[9.5px] tracking-[0.14em] text-white/55 uppercase mb-1">In 12 months</p>
+                <p className="h-display text-[20px] leading-none text-[#6EE7A8]">{formatMoney(yearlyNetGainLakhs)}</p>
+              </div>
+            </div>
+
+            {/* Today vs With us, drawn as two bars */}
+            <div className="mt-4 flex flex-col gap-2">
+              <div className="flex items-center gap-2">
+                <span className="w-[52px] shrink-0 font-mono text-[9px] tracking-[0.1em] text-white/55 uppercase">Today</span>
+                <div className="flex-1 h-2 bg-white/10"><div className="h-full bg-white/60 transition-all duration-300" style={{ width: `${todayPct}%` }} /></div>
+                <span className="w-[52px] shrink-0 text-right text-[12px] font-semibold">{formatMoney(beforeRevLakhs)}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-[52px] shrink-0 font-mono text-[9px] tracking-[0.1em] text-[#6EE7A8] uppercase">With us</span>
+                <div className="flex-1 h-2 bg-white/10"><div className="h-full bg-[#6EE7A8] transition-all duration-300" style={{ width: '100%' }} /></div>
+                <span className="w-[52px] shrink-0 text-right text-[12px] font-semibold text-[#6EE7A8]">{formatMoney(afterRevLakhs)}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Controls */}
+          <div className="bg-paper border border-line p-4 flex flex-col gap-5">
+            {sliders.map((sl) => (
+              <div key={sl.label}>
+                <div className="flex items-baseline justify-between mb-2">
+                  <label className="font-mono text-[10px] tracking-[0.12em] text-muted uppercase">{sl.label}</label>
+                  <span className={`h-display text-[18px] ${sl.label === 'Extra sales' ? 'text-up' : 'text-brand'}`}>{sl.value}</span>
+                </div>
+
+
+                <div className="flex items-center gap-2">
+                  <button type="button" aria-label={`Decrease ${sl.label}`} onClick={() => bump(sl, -1)} className="w-9 h-9 shrink-0 border border-ink flex items-center justify-center text-lg leading-none active:bg-brand active:text-white active:border-brand">−</button>
+                  <input
+                    type="range"
+                    min={sl.min} max={sl.max} step={sl.step}
+                    value={sl.state}
+                    onChange={(e) => sl.set(Number(e.target.value))}
+                    className="custom-slider flex-1"
+                    aria-label={sl.label}
+                  />
+                  <button type="button" aria-label={`Increase ${sl.label}`} onClick={() => bump(sl, 1)} className="w-9 h-9 shrink-0 border border-ink flex items-center justify-center text-lg leading-none active:bg-brand active:text-white active:border-brand">+</button>
+                </div>
+                <div className="flex justify-between mt-1.5 font-mono text-[9px] text-muted/70 px-[44px]">
+                  <span>{sl.lo}</span>
+                  <span>{sl.hi}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <a href="#contact" className="group/btn btn-slide btn-slide-white w-full flex items-center justify-center gap-2.5 font-semibold text-sm md:text-[12px] px-6 py-3.5 transition-all duration-300 bg-panel text-white border border-ink hover:text-[#141210]">
+            Book free audit
+            <svg className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+
+        <div className="hidden sm:flex w-full bg-paper border border-line shadow-[0_30px_60px_-40px_rgba(20,18,16,0.35)] flex-col lg:flex-row overflow-hidden">
 
           {/* Inputs */}
           <div className="w-full lg:w-[55%] p-6 md:p-10 flex flex-col justify-center gap-8">
@@ -102,12 +179,12 @@ const Calculator = () => {
               </div>
             </div>
 
-            <a href="#contact" className="btn-slide group bg-brand p-5 md:p-6 flex items-center justify-between gap-4">
-              <p className="text-sm md:text-[12px] text-white font-semibold leading-snug">
-                See what this could mean for your store. Book a free call.
-              </p>
-              <span className="text-white text-xl transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
-            </a>
+            <a href="#contact" className="group/btn btn-slide btn-slide-white w-full flex items-center justify-center gap-2.5 font-semibold text-sm md:text-[12px] px-6 py-3.5 transition-all duration-300 bg-panel text-white border border-ink hover:text-[#141210]">
+            Book free audit
+            <svg className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
           </div>
 
         </div>

@@ -11,6 +11,7 @@ import WhatsAppButton from '../components/WhatsAppButton'
 import SmoothScroll from '../components/SmoothScroll'
 import Faq from '../components/Faq'
 import Loader from '../components/Loader'
+import StickyAudit from '../components/StickyAudit'
 
 // Dynamic imports for below-the-fold components — reduces initial JS bundle by ~60-70%
 const Partners = dynamic(() => import('../components/Partners'))
@@ -32,6 +33,7 @@ function App() {
       <CustomCursor />
       <ScrollToTop />
       <WhatsAppButton />
+      <StickyAudit />
       <Navbar />
       
       <main className="page-frame main-curve relative z-20 bg-cream shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
