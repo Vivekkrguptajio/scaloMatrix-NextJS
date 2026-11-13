@@ -19,7 +19,7 @@ export default function Partners() {
   return (
     <section id="partners" className="relative bg-cream font-sans">
       {/* Orange tab pinned to the section's top-left corner (flush with the margin line) */}
-      <span className="absolute top-0 left-[var(--m)] bg-brand text-white font-mono text-[11px] font-medium tracking-[0.16em] uppercase px-4 py-2">
+      <span className="absolute top-0 left-[var(--m)] bg-brand text-white font-mono text-[10px] font-medium tracking-[0.16em] uppercase px-[0.9rem] py-[0.45rem]">
         Partners
       </span>
 

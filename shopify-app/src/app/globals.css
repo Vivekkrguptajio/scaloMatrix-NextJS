@@ -111,10 +111,10 @@ html.theme-switching *::after {
   top: 0;
   left: var(--m);
   margin: 0;
-  padding: 0.5rem 1rem;
+  padding: 0.45rem 0.9rem;
   background: var(--color-brand);
   color: #fff;
-  font-size: 0.69rem;
+  font-size: 0.62rem;
   line-height: 1.2;
   z-index: 2;
 }
@@ -304,6 +304,7 @@ html {
   -webkit-overflow-scrolling: touch;
 }
 @media (min-width: 1024px) { html { font-size: 13.5px; } }
+@media (max-width: 639px) { html { font-size: 13.05px; } }  /* phones: 10% smaller than the 14.5px base */
 
 body {
   font-family: var(--font-sans);

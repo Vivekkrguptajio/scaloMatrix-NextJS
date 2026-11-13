@@ -66,8 +66,10 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="flex flex-col pt-[84px] md:pt-[11.5rem] pb-12 md:pb-20 bg-cream relative overflow-hidden"
+      className="flex flex-col pt-[124px] md:pt-[11.5rem] pb-12 md:pb-20 bg-cream relative overflow-hidden"
     >
+      {/* Phone: the badge becomes the section tab (like "Our work"), sitting right under the navbar */}
+      <span className="eyebrow sm:hidden !top-[78px]">Shopify Partner</span>
 
       <div className="container-x relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-10 xl:gap-16">
@@ -75,9 +77,9 @@ export default function Hero() {
           {/* LEFT — message */}
           <div className="order-2 lg:order-1 flex-1 w-full lg:max-w-[60%] text-center lg:text-left">
 
-            <div className="flex items-center justify-center lg:justify-start gap-2.5 mb-3 sm:mb-6 hero-animate-1">
-              <span className="inline-flex items-center gap-2 bg-paper border border-line text-ink text-[12px] font-semibold tracking-[0.12em] uppercase px-3.5 py-2 font-mono">
-                <FaShopify className="w-4 h-4 text-shopify" />
+            <div className="flex items-center justify-center lg:justify-start gap-2.5 mb-3 sm:mb-6 max-sm:hidden hero-animate-1">
+              <span className="inline-flex items-center gap-2 bg-paper border border-line text-ink text-[12px] font-semibold tracking-[0.12em] uppercase px-3.5 py-2 font-mono max-sm:bg-brand max-sm:text-white max-sm:border-brand max-sm:text-[10.5px] max-sm:px-4 max-sm:py-2 max-sm:tracking-[0.14em]">
+                <FaShopify className="w-4 h-4 text-shopify max-sm:text-white max-sm:w-3.5 max-sm:h-3.5" />
                 {heroData.badge}
               </span>
               <span className="hidden sm:inline-flex items-center gap-2 bg-brand-soft text-brand-text text-[12px] font-semibold tracking-[0.12em] uppercase px-3.5 py-2 font-mono">
@@ -92,24 +94,24 @@ export default function Hero() {
               {heroData.headlineSuffix}
             </h1>
 
-            <p className="lead !text-[15.5px] max-w-[540px] mx-auto lg:mx-0 mb-5 sm:mb-9 hero-animate-3">
+            <p className="lead !text-[11px] sm:!text-[15.5px] !leading-[1.55] max-w-[540px] mx-auto lg:mx-0 px-5 sm:px-0 mb-5 sm:mb-9 hero-animate-3">
               {before}<strong className="font-semibold text-ink">{heroData.descriptionHighlight}</strong>{after}
             </p>
 
-            <div className="flex flex-row items-stretch sm:items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-3 sm:mb-12 w-[80%] mx-auto sm:w-auto sm:mx-0 hero-animate-4">
-              <a href="#contact" className="btn-primary group flex-1 sm:flex-none !text-[10px] sm:!text-[14px] !py-[0.68rem] sm:!py-[0.85rem] !px-1.5 sm:!px-[1.6rem] whitespace-nowrap">
+            <div className="flex flex-row items-stretch sm:items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-3 sm:mb-12 w-[88%] mx-auto sm:w-auto sm:mx-0 hero-animate-4">
+              <a href="#contact" className="btn-primary group flex-1 sm:flex-none !text-[11px] sm:!text-[14px] !py-[0.75rem] sm:!py-[0.85rem] !px-1.5 sm:!px-[1.6rem] whitespace-nowrap">
                 Get your Shopify store
                 <svg className="hidden sm:block w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </a>
-              <a href="#work" className="btn-ghost flex-1 sm:flex-none !text-[10px] sm:!text-[14px] !py-[0.68rem] sm:!py-[0.85rem] !px-1.5 sm:!px-[1.6rem] whitespace-nowrap">See our work</a>
+              <a href="#work" className="btn-ghost flex-1 sm:flex-none !text-[11px] sm:!text-[14px] !py-[0.75rem] sm:!py-[0.85rem] !px-1.5 sm:!px-[1.6rem] whitespace-nowrap">See our work</a>
             </div>
 
             {/* Stats */}
             <dl className="grid grid-cols-3 max-w-[540px] mx-auto lg:mx-0 border-t border-line pt-2.5 sm:pt-6 hero-animate-5">
               {heroData.stats.map((stat, i) => (
-                <div key={i} className={`flex flex-col gap-0.5 sm:gap-1 ${i > 0 ? 'pl-2.5 sm:pl-6 border-l border-line' : ''}`}>
+                <div key={i} className={`flex flex-col gap-0.5 sm:gap-1 ${i > 0 ? 'pl-2.5 sm:pl-6 sm:border-l border-line' : ''}`}>
                   <dd className={`h-display text-[19px] sm:text-4xl order-1 ${stat.prefix === '+' && stat.suffix === '%' ? 'text-up' : 'text-ink'}`}>
                     {stat.prefix}<AnimatedCounter target={stat.value} />{stat.suffix}
                   </dd>
@@ -120,7 +122,7 @@ export default function Hero() {
           </div>
 
           {/* RIGHT — store previews (coverflow) */}
-          <div className="order-1 lg:order-2 flex-1 w-full lg:max-w-[40%] relative lg:right-[30px] flex items-center justify-center hero-cards-animate overflow-visible p-2 min-h-[262px] sm:min-h-[345px] lg:min-h-[395px]">
+          <div className="order-1 lg:order-2 flex-1 w-full lg:max-w-[40%] relative lg:right-[30px] flex items-center justify-center hero-cards-animate overflow-visible p-2 min-h-[296px] sm:min-h-[381px] lg:min-h-[431px]">
             {stores.map(({ src, name, stat }, idx) => {
               const position = (idx - activeIndex + 3) % 3;
               const slots = [
@@ -153,11 +155,10 @@ export default function Hero() {
                     <FaShopify className="w-3 h-3" />
                     Shopify store
                   </div>
-                  {position === 0 && stat && (
-                    <div className="up-badge absolute bottom-3 right-3 font-mono text-[11px] font-medium px-3 py-1.5 shadow-lg">
-                      {stat} ↑
-                    </div>
-                  )}
+                  <div className="flex items-center justify-between gap-2 px-3 py-2.5 border-t border-line bg-paper">
+                    <span className="font-display font-semibold text-[11px] sm:text-[12px] leading-tight text-ink truncate">{name}</span>
+                    {stat && <span className="shrink-0 bg-up-soft text-up font-mono text-[9px] sm:text-[10.5px] font-medium px-1.5 sm:px-2 py-0.5 whitespace-nowrap">{stat.replace(' revenue', '')} ↑</span>}
+                  </div>
                 </div>
               );
             })}
