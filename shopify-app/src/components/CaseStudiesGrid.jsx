@@ -131,7 +131,7 @@ const CaseStudiesGrid = () => {
     },
     {
       id: 'wayora',
-      mockup: <DesktopMobileMockup src="/work/wayora-desktop.webp" mobileSrc="/work/wayora-mobile.webp" alt="Wayora" />,
+      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/v1794639404/shopify-app/work/wayora-desktop.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/v1794639405/shopify-app/work/wayora-mobile.webp" alt="Wayora" />,
       badge: <span className="font-display font-extrabold text-lg md:text-xl tracking-tight text-[#141210] whitespace-nowrap">WAYORA</span>,
       aov: '+23%',
       rev: '+33%',
@@ -163,7 +163,7 @@ const CaseStudiesGrid = () => {
     },
     {
       id: 'veeyuu',
-      mockup: <DesktopMobileMockup src="/work/veeyuu-desktop.webp" mobileSrc="/work/veeyuu-mobile.webp" alt="Veeyuu" />,
+      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/v1794639407/shopify-app/work/veeyuu-desktop.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/v1794639408/shopify-app/work/veeyuu-mobile.webp" alt="Veeyuu" />,
       badge: <span className="font-display font-extrabold text-lg md:text-xl tracking-tight text-[#141210]">VEEYUU</span>,
       aov: '+21%',
       rev: '+24%',

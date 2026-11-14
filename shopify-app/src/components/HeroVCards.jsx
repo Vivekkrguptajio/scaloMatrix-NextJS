@@ -39,7 +39,7 @@ export default function HeroVCards() {
     },
     {
       id: 'wayora-home',
-      img: '/work/wayora-home.webp',
+      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/v1794639403/shopify-app/work/wayora-home.webp',
       title: 'Wayora',
       url: 'https://www.wayoranatural.com',
       stat: '+33% revenue',
@@ -63,7 +63,7 @@ export default function HeroVCards() {
     },
     {
       id: 'veeyuu-home',
-      img: '/work/veeyuu-home.webp',
+      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/v1794639406/shopify-app/work/veeyuu-home.webp',
       title: 'Veeyuu',
       url: 'https://veeyuu.com',
       stat: '+24% revenue',

@@ -73,7 +73,7 @@ export default function Hero() {
         {/* Phone only: the Shopify Partners logo, centred at the very top of the hero */}
         <div className="sm:hidden flex justify-center pt-3 pb-4 hero-animate-1">
           <div className="partner-logo relative w-[147px] h-[28px] overflow-hidden">
-            <Image src="/iconshopify.png" alt="Shopify Partners" fill sizes="147px" className="object-cover" priority />
+            <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/v1794639408/shopify-app/work/shopify-partners.png" alt="Shopify Partners" fill sizes="147px" className="object-cover" priority />
           </div>
         </div>
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-10 xl:gap-16">
@@ -83,7 +83,7 @@ export default function Hero() {
 
             <div className="hidden sm:flex items-center justify-center lg:justify-start gap-2.5 mb-6 hero-animate-1">
               <div className="partner-logo relative w-[147px] h-[28px] overflow-hidden" title={heroData.badge}>
-                <Image src="/iconshopify.png" alt="Shopify Partners" fill sizes="147px" className="object-cover" />
+                <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/v1794639408/shopify-app/work/shopify-partners.png" alt="Shopify Partners" fill sizes="147px" className="object-cover" />
               </div>
               <span className="hidden sm:inline-flex items-center gap-2 bg-brand-soft text-brand-text text-[12px] font-semibold tracking-[0.12em] uppercase px-3.5 py-2 font-mono">
                 <span className="w-1.5 h-1.5 bg-brand animate-pulse" />

@@ -5,7 +5,7 @@
 // object-top, so only their top 1.5x-width slice is kept. Everything else
 // (logos, laptop/phone mockups) is just resized, never cropped.
 export default function cloudinaryLoader({ src, width, quality }) {
-  // local files (public/work/...): nothing to resize, but passing the width keeps next/image happy
+  // local files (anything under public/): nothing to resize, but passing the width keeps next/image happy
   if (!src.includes('res.cloudinary.com') || !src.includes('/upload/')) return src.startsWith('/') ? `${src}?w=${width}` : src;
   const q = quality ? Math.min(quality, 60) : 60;
   const resize = src.includes('/photsWork/')
