@@ -53,6 +53,15 @@ export default function Contact({ reveal = false }) {
           {/* Divider */}
           <div className="w-full h-px bg-white/20 mb-8 md:mb-10"></div>
 
+          {/* Explore: standalone pages (also helps search engines find them) */}
+          <nav aria-label="Explore" className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-white/70 text-xs md:text-sm mb-8">
+            <Link href="/work" className="hover:text-brand transition-colors">Work</Link>
+            <Link href="/pricing" className="hover:text-brand transition-colors">Pricing</Link>
+            <Link href="/services/shopify-store-redesign" className="hover:text-brand transition-colors">Shopify Store Redesign</Link>
+            <Link href="/services/shopify-store-creation" className="hover:text-brand transition-colors">Shopify Store Creation</Link>
+            <Link href="/answers" className="hover:text-brand transition-colors">100 Shopify Answers</Link>
+          </nav>
+
         {/* Bottom Row */}
         <div className="w-full flex flex-col lg:flex-row justify-between items-center gap-8 lg:gap-0 text-sm font-medium">
           

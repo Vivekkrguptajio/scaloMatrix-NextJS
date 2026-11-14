@@ -78,6 +78,18 @@ export default async function AnswerDetailPage({ params }) {
                   <p className="text-[17px] md:text-[19px] leading-[1.6] text-ink">{item.a}</p>
                 </div>
 
+                {/* In detail (for the questions that have a longer write-up) */}
+                {item.more && (
+                  <div className="mt-10 max-w-[820px] flex flex-col gap-7">
+                    {item.more.map((m) => (
+                      <section key={m.h}>
+                        <h2 className="h-display !font-medium text-[22px] md:text-[26px] !leading-[1.25] !tracking-[-0.02em] mb-2">{m.h}</h2>
+                        <p className="faq-answer text-[16px] md:text-[17px] leading-[1.7]">{m.p}</p>
+                      </section>
+                    ))}
+                  </div>
+                )}
+
                 {/* CTA */}
                 <div className="mt-10 border border-line bg-paper p-6 md:p-7 max-w-[820px]">
                   <p className="text-[16px] md:text-[17px] leading-[1.6] text-ink">

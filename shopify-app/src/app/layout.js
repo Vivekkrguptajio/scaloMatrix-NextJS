@@ -2,7 +2,7 @@ import "./globals.css";
 import JsonLd from "../components/JsonLd";
 import { SITE_URL } from "../utils/site";
 
-const TITLE = "Shopify Development Company in India | Shopify Store Design & CRO | scaloMATRIX";
+const TITLE = "Shopify Development Company in India | scaloMATRIX";
 const DESCRIPTION =
   "Shopify development company in India. We design and build custom Shopify stores, Shopify redesigns and landing pages for D2C brands, built to turn more visitors into buyers. Get a free Shopify store audit.";
 

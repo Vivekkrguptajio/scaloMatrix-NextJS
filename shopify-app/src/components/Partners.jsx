@@ -20,7 +20,7 @@ function PartnerCell({ p, card = false }) {
   return (
     <li className={`partner-cell flex flex-col items-center justify-center text-center ${card ? 'shrink-0 w-[168px] gap-4 px-3 py-7 border border-line' : 'gap-5 px-2 py-[34px]'}`}>
       <span className="flex items-center justify-center gap-2 h-[36px]">
-        <Image src={p.logo} alt={p.showName ? '' : `${p.name} logo`} unoptimized className={`${p.className} object-contain`} />
+        <Image src={p.logo} alt={`${p.name} logo, ${p.role.toLowerCase()} partner`} unoptimized className={`${p.className} object-contain`} />
         {p.showName && <span className="font-display font-bold text-[21px] leading-none tracking-tight text-[#141210]">{p.name}</span>}
       </span>
       <span className="font-mono text-[10.5px] tracking-[0.12em] uppercase whitespace-nowrap text-[#6B655C]">{p.role}</span>

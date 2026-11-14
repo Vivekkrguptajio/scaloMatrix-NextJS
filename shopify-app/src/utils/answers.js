@@ -1,5 +1,6 @@
 import { faqs } from '../data/faq';
 import { topicsData } from '../data/answers';
+import { more } from '../data/answersMore';
 
 // URL slug for a question: "Do you guarantee 20% more sales?" -> "do-you-guarantee-20-more-sales"
 export const slugify = (q) =>
@@ -13,7 +14,7 @@ export const topics = topicsData.map((t) => {
     id: t.id,
     title: t.title,
     blurb: t.blurb,
-    items: raw.map(([q, a]) => ({ q, a, slug: slugify(q), topicId: t.id, topicTitle: t.title })),
+    items: raw.map(([q, a]) => ({ q, a, more: more[q] || null, slug: slugify(q), topicId: t.id, topicTitle: t.title })),
   };
 });
 

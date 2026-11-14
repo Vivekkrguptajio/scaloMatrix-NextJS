@@ -92,7 +92,7 @@ export default function Hero() {
             </div>
 
             <h1 className="h-display !font-semibold !leading-[1.28] md:!leading-[65px] text-[clamp(1.7rem,3.2vw,45px)] lg:whitespace-nowrap mb-3 sm:mb-6 hero-animate-2">
-              We build <RotatingText />
+              We build <RotatingText />{' '}
               <span className="block" />
               {heroData.headlineSuffix}
             </h1>

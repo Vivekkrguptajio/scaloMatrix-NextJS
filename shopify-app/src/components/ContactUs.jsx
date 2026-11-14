@@ -114,6 +114,20 @@ export default function ContactUs() {
                 </div>
               </div>
 
+              {/* Contact Item: physical address */}
+              <div className="flex items-center gap-4 group">
+                <div className="w-12 h-12 bg-paper border border-line flex items-center justify-center text-ink group-hover:bg-[#FD5800] group-hover:text-white transition-colors duration-300">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-mono text-[11px] text-muted uppercase tracking-[0.14em] mb-1">Visit Us</p>
+                  <address className="not-italic text-lg font-semibold text-ink">Patel Nagar, Delhi - 110008</address>
+                </div>
+              </div>
+
               {/* Contact Item */}
               <div className="flex items-center gap-4 group">
                 <div className="w-12 h-12 bg-paper border border-line flex items-center justify-center text-ink group-hover:bg-[#25D366] group-hover:border-[#25D366] group-hover:text-white transition-colors duration-300">

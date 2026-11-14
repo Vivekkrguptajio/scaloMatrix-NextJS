@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { AnimatedCounter } from './Hero'
 import AutoMarquee from './AutoMarquee'
 
+const LOGO_NAMES = ['Judex', 'House of Nada', 'Nutraphyll', 'Drapes Corner'];
 const LOGOS = [
   'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png',
   'https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509471/shopify-app/logo/Nada.png',
@@ -94,7 +95,7 @@ export default function HeroVCards() {
             <div className="flex -space-x-3 max-sm:-space-x-2">
               {LOGOS.map((src, i) => (
                 <div key={i} className="relative w-10 h-10 max-sm:w-7 max-sm:h-7 border-2 border-paper bg-white overflow-hidden">
-                  <Image src={src} alt="" fill className="object-cover" sizes="40px" />
+                  <Image src={src} alt={`${LOGO_NAMES[i]} logo, Shopify client`} fill className="object-cover" sizes="40px" />
                 </div>
               ))}
             </div>
