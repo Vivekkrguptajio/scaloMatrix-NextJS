@@ -68,6 +68,11 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    other: {
+      "facebook-domain-verification": ["5gbwuuz13w7ko052s19rfrzpqwvzqf"],
+    },
+  },
   formatDetection: { telephone: false },
 };
 
@@ -85,6 +90,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en-IN" suppressHydrationWarning>
       <head>
+        <meta name="facebook-domain-verification" content="5gbwuuz13w7ko052s19rfrzpqwvzqf" />
         <script dangerouslySetInnerHTML={{ __html: "var d=false;try{d=localStorage.getItem('theme-v3')==='dark'}catch(e){}if(d)document.documentElement.setAttribute('data-theme','dark')" }} />
         {/* Preconnect: fonts + image CDN (faster first paint / LCP) */}
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
