@@ -8,6 +8,17 @@ export const metadata = {
   title: { absolute: 'Shopify Store Pricing in India | scaloMATRIX' },
   description: 'Transparent Shopify pricing in India. Website Redesign from ₹44,999, Website Creation from ₹64,999, a Custom Build quoted per project, and a free Shopify store audit. Compare every plan and what is included.',
   alternates: { canonical: '/pricing' },
+  openGraph: {
+    title: 'Shopify Store Pricing in India | scaloMATRIX',
+    description: 'Transparent Shopify pricing in India. Redesign from ₹44,999, Creation from ₹64,999, Custom Build and free store audit.',
+    url: '/pricing',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Shopify Store Pricing in India | scaloMATRIX',
+    description: 'Transparent Shopify pricing in India. Redesign from ₹44,999, Creation from ₹64,999, Custom Build and free store audit.',
+  },
 };
 
 const PRICING_FAQ_QUESTIONS = ['How much does it cost?', 'What is the free audit?', 'Do you guarantee 20% more sales?', 'What is your refund policy?', 'Who owns the design and code after the project?'];

@@ -8,7 +8,7 @@ const HappyClients = () => {
     {
       logo: (
         <div className="relative h-9 w-24">
-          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png" alt="Nutraphyll" fill className="object-contain" sizes="96px" />
+          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png" alt="Nutraphyll - Shopify store client of Scalomatrix" fill className="object-contain" sizes="96px" />
         </div>
       ),
       text: "One of the pages we made with the scaloMATRIX team resulted in a 44% increase in conversion rate.",
@@ -20,7 +20,7 @@ const HappyClients = () => {
     {
       logo: (
         <div className="relative h-9 w-24">
-          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png" alt="Judex" fill className="object-contain" sizes="96px" />
+          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png" alt="Judex Fragrance - Shopify store client of Scalomatrix" fill className="object-contain" sizes="96px" />
         </div>
       ),
       text: "The strategic approach they brought to the project resulted in a revenue jump of 35%.",
@@ -32,7 +32,7 @@ const HappyClients = () => {
     {
       logo: (
         <div className="relative h-9 w-24">
-          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509471/shopify-app/logo/Nada.png" alt="Nada" fill className="object-contain" sizes="96px" />
+          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509471/shopify-app/logo/Nada.png" alt="House of Nada - Shopify store client of Scalomatrix" fill className="object-contain" sizes="96px" />
         </div>
       ),
       text: "The improved user experience has led to higher engagement and a more satisfied customer base.",
@@ -44,7 +44,7 @@ const HappyClients = () => {
     {
       logo: (
         <div className="relative h-9 w-24">
-          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png" alt="Drapes" fill className="object-contain" sizes="96px" />
+          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png" alt="Drapes Corner - Shopify store client of Scalomatrix" fill className="object-contain" sizes="96px" />
         </div>
       ),
       text: "The changes they made to our landing pages have led to an immediate spike in our daily orders.",

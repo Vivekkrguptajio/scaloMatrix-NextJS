@@ -91,7 +91,10 @@ export default function Hero() {
               </span>
             </div>
 
-            <h1 className="h-display !font-semibold !leading-[1.28] md:!leading-[65px] text-[clamp(1.7rem,3.2vw,45px)] lg:whitespace-nowrap mb-3 sm:mb-6 hero-animate-2">
+            <h1
+              aria-label="We build Shopify Stores, Custom Themes and Landing Pages that turn visitors into buyers."
+              className="h-display !font-semibold !leading-[1.28] md:!leading-[65px] text-[clamp(1.7rem,3.2vw,45px)] lg:whitespace-nowrap mb-3 sm:mb-6 hero-animate-2"
+            >
               We build <RotatingText />{' '}
               <span className="block" />
               {heroData.headlineSuffix}

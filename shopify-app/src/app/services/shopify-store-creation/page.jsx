@@ -5,6 +5,17 @@ export const metadata = {
   title: { absolute: 'Shopify Store Development & Creation India | scaloMATRIX' },
   description: 'Shopify store development and creation in India. We design, build and launch a brand-new Shopify store ready to take orders, from ₹64,999, including pages, product setup, payments and shipping. Start with a free audit.',
   alternates: { canonical: '/services/shopify-store-creation' },
+  openGraph: {
+    title: 'Shopify Store Development & Creation India | scaloMATRIX',
+    description: 'We design, build and launch a brand-new Shopify store ready to take orders, from ₹64,999. Start with a free audit.',
+    url: '/services/shopify-store-creation',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Shopify Store Development & Creation India | scaloMATRIX',
+    description: 'We design, build and launch a brand-new Shopify store ready to take orders, from ₹64,999. Start with a free audit.',
+  },
 };
 
 const faqs = [
@@ -47,7 +58,7 @@ export default function Page() {
         { href: '/services/shopify-store-redesign', label: 'Shopify store redesign' },
         { href: '/work', label: 'Shopify case studies' },
         { href: '/pricing', label: 'Pricing' },
-        { href: '/answers', label: '100 Shopify answers' },
+        { href: '/answers', label: 'Shopify Q&A answers' },
       ]}
     />
   );

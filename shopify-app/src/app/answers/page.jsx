@@ -2,18 +2,45 @@ import Link from 'next/link';
 import Navbar from '../../components/Navbar';
 import Contact from '../../components/Contact';
 import { topics } from '../../utils/answers';
+import { SITE_URL } from '../../utils/site';
 
 export const metadata = {
-  title: '100 Shopify Questions Answered: Development, Design, SEO, CRO & Payments in India',
-  description: '100 straight answers about Shopify for Indian D2C brands: Shopify development, store design, themes, speed, SEO, conversion rate optimisation, COD and payments, migration and growth.',
+  title: 'Shopify Questions Answered: Development, Design, SEO, CRO, Payments & Apps in India',
+  description: 'Straight answers about Shopify for Indian D2C brands: store creation, themes, speed, SEO, CRO, COD, payments, GST, apps, and migration. Browse questions.',
   alternates: { canonical: '/answers' },
 };
 
 export default function AnswerPage() {
   const total = topics.reduce((n, t) => n + t.items.length, 0);
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        '@id': `${SITE_URL}/answers#webpage`,
+        url: `${SITE_URL}/answers`,
+        name: `${total} Shopify Questions Answered`,
+        description:
+          'Straight answers on Shopify development, store design, speed, SEO, conversion, COD and payments in India, migration and growth.',
+        isPartOf: { '@id': `${SITE_URL}/#website` },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Answers', item: `${SITE_URL}/answers` },
+        ],
+      },
+    ],
+  };
+
   return (
     <div className="relative min-h-screen bg-[#0a0a0a] text-ink font-sans overflow-x-clip">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+      />
       {/* Same navbar as the home page */}
       <Navbar />
 

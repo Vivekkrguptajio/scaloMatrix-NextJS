@@ -8,6 +8,17 @@ export const metadata = {
   title: { absolute: 'Shopify Store Case Studies & Portfolio | scaloMATRIX' },
   description: 'See Shopify stores we built and redesigned for D2C brands in India: Velmukha, Nutraphyll, House of Nada, Wayora, Judex Fragrance, Drapes Corner, Veeyuu and Always On You, with the revenue and order-value results.',
   alternates: { canonical: '/work' },
+  openGraph: {
+    title: 'Shopify Store Case Studies & Portfolio | scaloMATRIX',
+    description: 'See Shopify stores we built and redesigned for D2C brands in India with revenue and order-value results.',
+    url: '/work',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Shopify Store Case Studies & Portfolio | scaloMATRIX',
+    description: 'See Shopify stores we built and redesigned for D2C brands in India with revenue and order-value results.',
+  },
 };
 
 export default function WorkPage() {
@@ -54,7 +65,7 @@ export default function WorkPage() {
         {clients.map((c) => (
           <article key={c.name} className="bg-paper border border-ink flex flex-col">
             <div className="relative w-full h-[230px] sm:h-[250px] bg-[#ebebeb] border-b border-ink overflow-hidden">
-              <Image src={c.img} alt={`${c.name} Shopify store homepage`} fill className="object-cover object-top" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+              <Image src={c.img} alt={`${c.name} - Shopify store design & development case study`} fill className="object-cover object-top" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
             </div>
             <div className="p-5 flex flex-col gap-4 flex-1">
               <div>

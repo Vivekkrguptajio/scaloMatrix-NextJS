@@ -5,6 +5,17 @@ export const metadata = {
   title: { absolute: 'Shopify Store Redesign in India | scaloMATRIX' },
   description: 'Shopify store redesign in India for D2C brands that get visitors but lose sales. A conversion-focused redesign of your homepage, landing pages and product pages, from ₹44,999. Start with a free store audit.',
   alternates: { canonical: '/services/shopify-store-redesign' },
+  openGraph: {
+    title: 'Shopify Store Redesign in India | scaloMATRIX',
+    description: 'Shopify store redesign in India for D2C brands that get visitors but lose sales. A conversion-focused redesign from ₹44,999.',
+    url: '/services/shopify-store-redesign',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Shopify Store Redesign in India | scaloMATRIX',
+    description: 'Shopify store redesign in India for D2C brands that get visitors but lose sales. A conversion-focused redesign from ₹44,999.',
+  },
 };
 
 const faqs = [
@@ -47,7 +58,7 @@ export default function Page() {
         { href: '/services/shopify-store-creation', label: 'Shopify store creation' },
         { href: '/work', label: 'Shopify case studies' },
         { href: '/pricing', label: 'Pricing' },
-        { href: '/answers', label: '100 Shopify answers' },
+        { href: '/answers', label: 'Shopify Q&A answers' },
       ]}
     />
   );

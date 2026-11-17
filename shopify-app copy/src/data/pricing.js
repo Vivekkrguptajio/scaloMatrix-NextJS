@@ -1,0 +1,85 @@
+// The four plans, shared by the standalone /pricing and /services pages.
+// Prices are the ones already published on the home page.
+export const plans = [
+  {
+    id: 'audit',
+    title: 'Website Audit',
+    price: 'Free',
+    desc: 'A free 30-minute live review of your store. We show you exactly what is costing you sales.',
+    includes: [
+      'Live review of your store',
+      'Insights from heatmaps and analytics',
+      'Quick wins, in order of priority',
+      'Quick look at your competitors',
+      'No upsell pitch, honest feedback only',
+      'A report you keep',
+    ],
+    cta: 'Book free audit',
+  },
+  {
+    id: 'redesign',
+    title: 'Website Redesign',
+    price: '₹44,999',
+    from: true,
+    options: ['Same theme', 'Premium theme'],
+    desc: 'Your store gets visitors but loses sales. We redesign it to turn more of them into buyers.',
+    includes: [
+      'Full review of your current store',
+      'Redesigned homepage and landing pages',
+      'Product pages built to raise order value',
+      'Improved navigation and user flow',
+      'Pages ready for A/B testing',
+      'Post-launch performance tracking',
+    ],
+    badge: 'Popular',
+    cta: 'Redesign my store',
+    href: '/services/shopify-store-redesign',
+  },
+  {
+    id: 'creation',
+    title: 'Website Creation',
+    price: '₹64,999',
+    from: true,
+    options: ['Basic design', 'Premium design'],
+    desc: 'A brand-new Shopify store, designed, developed and shipped ready to take orders.',
+    includes: [
+      'Complete store setup from zero',
+      'Homepage + 5 essential pages',
+      'Product page design and upload',
+      'Payment gateway and shipping setup',
+      'Mobile-responsive across all devices',
+      'Basic SEO and speed optimisation',
+    ],
+    cta: 'Start my store',
+    href: '/services/shopify-store-creation',
+  },
+  {
+    id: 'custom',
+    title: 'Custom Build',
+    price: 'Custom',
+    desc: 'Ground-up Shopify store: custom-coded theme, unique design, built to scale from day one.',
+    includes: [
+      'Fully custom Shopify theme from scratch',
+      'Bespoke UI/UX tailored to your brand',
+      'Third-party app and API integrations',
+      'Custom checkout and cart experience',
+      'Speed-optimised build',
+      'Dedicated project manager throughout',
+    ],
+    badge: 'Enterprise',
+    cta: 'Get a quote',
+  },
+];
+
+// Rows for the comparison table: [feature, audit, redesign, creation, custom]
+export const comparison = [
+  ['Store review and quick wins', true, true, false, false],
+  ['New homepage and landing pages', false, true, true, true],
+  ['Product pages built to raise order value', false, true, true, true],
+  ['Payment gateway and shipping setup', false, false, true, true],
+  ['Mobile-responsive on all devices', false, true, true, true],
+  ['Pages ready for A/B testing', false, true, false, true],
+  ['Post-launch performance tracking', false, true, false, true],
+  ['Custom theme coded from scratch', false, false, false, true],
+  ['App and API integrations', false, false, false, true],
+];

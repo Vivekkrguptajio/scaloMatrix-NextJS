@@ -97,7 +97,7 @@ const CaseStudiesGrid = () => {
       id: 'velmukha',
       mockup: (
         <div className="relative w-full h-full overflow-hidden bg-paper border-t border-l border-r border-gray-200">
-          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509490/shopify-app/photsWork/Velmukha.webp" alt="Velmukha" fill className="object-cover object-top" sizes="(max-width: 768px) 80vw, 440px" />
+          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509490/shopify-app/photsWork/Velmukha.webp" alt="Velmukha - Custom Shopify store creation by Scalomatrix" fill className="object-cover object-top" sizes="(max-width: 768px) 80vw, 440px" />
         </div>
       ),
       badge: <span className="font-display font-extrabold text-lg md:text-xl tracking-tight text-[#141210] whitespace-nowrap">VELMUKHA</span>,
@@ -107,10 +107,10 @@ const CaseStudiesGrid = () => {
     },
     {
       id: 'nutraphyll',
-      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509467/shopify-app/lap_view/Nutraphyll.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509483/shopify-app/phoneView/Nutraphyll_phone_view.webp" alt="Nutraphyll" />,
+      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509467/shopify-app/lap_view/Nutraphyll.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509483/shopify-app/phoneView/Nutraphyll_phone_view.webp" alt="Nutraphyll - Shopify store redesign & CRO by Scalomatrix" />,
       badge: (
         <div className="relative h-7 md:h-9 w-24">
-          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png" alt="Nutraphyll" fill className="object-contain object-left" sizes="96px" />
+          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509472/shopify-app/logo/Nutraphyll.png" alt="Nutraphyll - D2C Shopify client" fill className="object-contain object-left" sizes="96px" />
         </div>
       ),
       aov: '+22%',
@@ -119,10 +119,10 @@ const CaseStudiesGrid = () => {
     },
     {
       id: 'houseofnada',
-      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509466/shopify-app/lap_view/Nada.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509482/shopify-app/phoneView/Nada%20_phone_view.webp" alt="House of Nada" />,
+      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509466/shopify-app/lap_view/Nada.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509482/shopify-app/phoneView/Nada%20_phone_view.webp" alt="House of Nada - Shopify theme development by Scalomatrix" />,
       badge: (
         <div className="relative h-7 md:h-9 w-24">
-          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509471/shopify-app/logo/Nada.png" alt="House of Nada" fill className="object-contain object-left" sizes="96px" />
+          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509471/shopify-app/logo/Nada.png" alt="House of Nada - Fashion Shopify client" fill className="object-contain object-left" sizes="96px" />
         </div>
       ),
       aov: '+27%',
@@ -131,7 +131,7 @@ const CaseStudiesGrid = () => {
     },
     {
       id: 'wayora',
-      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/v1794639404/shopify-app/work/wayora-desktop.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/v1794639405/shopify-app/work/wayora-mobile.webp" alt="Wayora" />,
+      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/v1794639404/shopify-app/work/wayora-desktop.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/v1794639405/shopify-app/work/wayora-mobile.webp" alt="Wayora Natural - Shopify ecommerce development by Scalomatrix" />,
       badge: <span className="font-display font-extrabold text-lg md:text-xl tracking-tight text-[#141210] whitespace-nowrap">WAYORA</span>,
       aov: '+23%',
       rev: '+33%',
@@ -139,10 +139,10 @@ const CaseStudiesGrid = () => {
     },
     {
       id: 'judex',
-      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509464/shopify-app/lap_view/Judex.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509480/shopify-app/phoneView/judex_phone_view.webp" alt="Judex" />,
+      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509464/shopify-app/lap_view/Judex.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509480/shopify-app/phoneView/judex_phone_view.webp" alt="Judex Fragrance - Shopify redesign by Scalomatrix" />,
       badge: (
         <div className="relative h-7 md:h-9 w-24">
-          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png" alt="Judex" fill className="object-contain object-left" sizes="96px" />
+          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509470/shopify-app/logo/Judex.png" alt="Judex Fragrance - Shopify client" fill className="object-contain object-left" sizes="96px" />
         </div>
       ),
       aov: '+21%',
@@ -151,10 +151,10 @@ const CaseStudiesGrid = () => {
     },
     {
       id: 'drapescorner',
-      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509463/shopify-app/lap_view/Drapes.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509479/shopify-app/phoneView/Drapes_phone_view.webp" alt="Drapes Corner" />,
+      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509463/shopify-app/lap_view/Drapes.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509479/shopify-app/phoneView/Drapes_phone_view.webp" alt="Drapes Corner - Shopify store design by Scalomatrix" />,
       badge: (
         <div className="relative h-7 md:h-9 w-24">
-          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png" alt="Drapes Corner" fill className="object-contain object-left" sizes="96px" />
+          <Image src="https://res.cloudinary.com/dqtzchlqj/image/upload/q_auto,f_auto/v1787509469/shopify-app/logo/drapes.png" alt="Drapes Corner - Home Decor Shopify client" fill className="object-contain object-left" sizes="96px" />
         </div>
       ),
       aov: '+24%',
@@ -163,7 +163,7 @@ const CaseStudiesGrid = () => {
     },
     {
       id: 'veeyuu',
-      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/v1794639407/shopify-app/work/veeyuu-desktop.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/v1794639408/shopify-app/work/veeyuu-mobile.webp" alt="Veeyuu" />,
+      mockup: <DesktopMobileMockup src="https://res.cloudinary.com/dqtzchlqj/image/upload/v1794639407/shopify-app/work/veeyuu-desktop.webp" mobileSrc="https://res.cloudinary.com/dqtzchlqj/image/upload/v1794639408/shopify-app/work/veeyuu-mobile.webp" alt="Veeyuu - Shopify women ethnic wear store by Scalomatrix" />,
       badge: <span className="font-display font-extrabold text-lg md:text-xl tracking-tight text-[#141210]">VEEYUU</span>,
       aov: '+21%',
       rev: '+24%',

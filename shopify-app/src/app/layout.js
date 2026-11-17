@@ -4,7 +4,7 @@ import { SITE_URL } from "../utils/site";
 
 const TITLE = "Shopify Development Company in India | scaloMATRIX";
 const DESCRIPTION =
-  "Shopify development company in India. We design and build custom Shopify stores, Shopify redesigns and landing pages for D2C brands, built to turn more visitors into buyers. Get a free Shopify store audit.";
+  "Shopify development company in India. We design & build custom Shopify stores, CRO redesigns and high-converting landing pages for D2C brands. Get a free store audit.";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -12,27 +12,27 @@ export const metadata = {
   description: DESCRIPTION,
   applicationName: "Scalomatrix",
   keywords: [
-    "Shopify",
-    "Shopify development company",
-    "Shopify development India",
+    "Shopify development company in India",
     "Shopify developer India",
-    "Shopify expert India",
     "Shopify agency India",
-    "Shopify partner agency",
-    "Shopify store design",
-    "Shopify store development",
-    "Shopify website development",
-    "Shopify redesign",
-    "Shopify agency for D2C brands",
-    "Shopify landing page design",
-    "custom Shopify theme development",
+    "Shopify expert India",
+    "custom Shopify store development",
+    "Shopify store redesign India",
+    "Shopify theme development",
     "Shopify conversion rate optimization",
-    "hire Shopify developer",
-    "Shopify audit",
+    "Shopify D2C ecommerce agency",
+    "Shopify landing page design",
+    "hire dedicated Shopify developer",
+    "Shopify speed optimization",
+    "Shopify Plus agency India",
+    "Shopify store audit",
+    "Scalomatrix",
   ],
-  authors: [{ name: "Scalomatrix" }],
+  authors: [{ name: "Scalomatrix", url: SITE_URL }],
   creator: "Scalomatrix",
   publisher: "Scalomatrix",
+  category: "ecommerce",
+  classification: "Shopify Development & CRO Agency",
   alternates: { canonical: "/" },
   openGraph: {
     title: TITLE,
@@ -41,11 +41,21 @@ export const metadata = {
     siteName: "Scalomatrix",
     locale: "en_IN",
     type: "website",
+    images: [
+      {
+        url: `${SITE_URL}/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: "Scalomatrix - Shopify Development Company in India",
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
+    images: [`${SITE_URL}/opengraph-image`],
   },
   robots: {
     index: true,
