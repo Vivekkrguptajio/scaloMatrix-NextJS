@@ -1,41 +1,36 @@
-// FAQ copy — shared by the on-page accordion and the FAQPage structured data.
-// Plain strings only (no JSX) so it can be used from server and client code.
-// Every answer restates something already published elsewhere on the site.
+// FAQ copy — shared by the on-page accordion and schema.org FAQPage structured data.
+// Strictly adheres to truth rules: no "free forever", clear small print disclosure.
 export const faqs = [
   {
-    q: 'What do you build?',
-    a: 'Custom Shopify stores, redesigns and landing pages for D2C brands. You can pick a Custom Build, Website Creation, Website Redesign, or start with a free Website Audit.',
+    q: 'Is there a monthly retainer or agency fee?',
+    a: 'No monthly retainer and no marketing agency fee. You pay a small one-time setup fee to build and launch your store. After that, we earn only when you get orders (a small fee or percentage of net sales). Note: Ad budget and Shopify plan are paid directly by you to Meta and Shopify.',
   },
   {
-    q: 'How much does it cost?',
-    a: 'Website Creation starts at ₹64,999 and Website Redesign starts at ₹44,999. The Website Audit is free. A Custom Build is quoted per project because the scope is different every time.',
+    q: 'Who owns the website, ad account, and customer data?',
+    a: '100% you. Your Shopify store, custom domain, Meta ad account, and customer database belong to you from day one. If you ever choose to manage things yourself or move elsewhere, you keep all assets and data without restriction.',
   },
   {
-    q: 'What is the free audit?',
-    a: 'A 30-minute live review of your store. We show you what is costing you sales and give you a list of quick wins in order of priority. There is no sales pitch, just honest feedback, and you keep the report.',
+    q: 'Do I need GST to start?',
+    a: 'Yes, an active GST is required in India for integrating online payment gateways (like Razorpay/Cashfree) and automated inter-state courier shipping. If you have applied or need help with GST documentation, our team will guide you on our call.',
   },
   {
-    q: 'Do you guarantee 20% more sales?',
-    a: 'No. Nobody can honestly guarantee sales. We design every page to beat your current one and we set a 20% lift as our target, but results depend on your traffic, product, pricing and market. If a page falls short, we go through the data with you and agree the next improvements in writing. See section 12 of our Terms & Conditions.',
+    q: 'Do I need an established brand name or studio product photos?',
+    a: 'No. If you already have quality products, clear phone photos or basic catalog images against clean backgrounds are enough to start. We enhance your imagery, and if you do not have a brand name yet, we assist you in choosing one.',
   },
   {
-    q: 'Who do you work best with?',
-    a: 'Brands with a product that genuinely works and at least ₹2L a month in ad spend, because we need traffic to test. We are not the right fit if you want pages delivered rather than sales growth.',
+    q: 'How fast can we go live?',
+    a: 'Typically within [X] days [VERIFY] once your product details, catalog photos, and business documents are ready. We handle the complete setup: theme build, payment gateway, courier integrations, and initial Meta ad campaigns.',
   },
   {
-    q: 'Can you redesign my existing store?',
-    a: 'Yes. Website Redesign starts with a full review of your current store, then a redesigned homepage and landing pages, better product pages and an improved shopping flow, all ready for A/B testing.',
+    q: 'How much should I spend on Meta ads?',
+    a: 'We recommend starting with a modest testing budget (e.g. ₹500 to ₹1,000/day) to validate winning products and creative angles before scaling up. You pay your ad spend directly to Meta with complete visibility.',
   },
   {
-    q: 'Who owns the design and code after the project?',
-    a: 'Everything we create stays ours until full payment is received. After complete payment, ownership of the deliverables transfers to you, as set out in your project agreement.',
+    q: 'What if I want to leave or manage it myself later?',
+    a: 'You can leave at any time with complete freedom. We do not lock you into long contracts. Because all store accounts, ad accounts, and customer lists are registered in your name, you keep everything.',
   },
   {
-    q: 'What is your refund policy?',
-    a: 'Payments are non-refundable once a project has started and payment is received, unless stated otherwise in writing in your project agreement. The full wording is in our Terms & Conditions and Legal & Policies.',
-  },
-  {
-    q: 'How quickly will you reply?',
-    a: 'Within 24 hours. If your store looks like a fit, we start with a free review and there is no pitch on the first call.',
+    q: 'How is scaloMATRIX different from a typical marketing agency?',
+    a: 'Traditional agencies charge ₹50,000–₹1,00,000+ upfront every month whether you make sales or not, and often hold your assets hostage. We charge one small setup fee to launch, handle end-to-end execution (store + ads + courier + RTO reduction), and our ongoing earnings are tied directly to your sales.',
   },
 ];

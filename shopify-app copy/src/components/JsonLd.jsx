@@ -1,16 +1,7 @@
 import { faqs } from '../data/faq';
 import { SITE_URL } from '../utils/site';
 
-// Structured data (schema.org) so search engines know who we are and what we sell.
-// Only facts that are already public on the page are included.
-
-const offer = (name, description, price) => ({
-  '@type': 'Offer',
-  priceCurrency: 'INR',
-  ...(price !== undefined && { price: String(price) }),
-  itemOffered: { '@type': 'Service', name, description },
-});
-
+// Structured data (schema.org) so search engines know who we are and what we do.
 const graph = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -18,7 +9,7 @@ const graph = {
       '@type': 'WebSite',
       '@id': `${SITE_URL}/#website`,
       url: SITE_URL,
-      name: 'Scalomatrix',
+      name: 'scaloMATRIX',
       inLanguage: 'en-IN',
       publisher: { '@id': `${SITE_URL}/#org` },
     },
@@ -26,7 +17,7 @@ const graph = {
       '@type': 'WebPage',
       '@id': `${SITE_URL}/#webpage`,
       url: SITE_URL,
-      name: 'Shopify Development Company in India | scaloMATRIX',
+      name: 'scaloMATRIX | D2C Brand Building for Manufacturers: Store, Ads & Growth',
       isPartOf: { '@id': `${SITE_URL}/#website` },
       about: { '@id': `${SITE_URL}/#org` },
       inLanguage: 'en-IN',
@@ -44,17 +35,23 @@ const graph = {
       '@type': ['ProfessionalService', 'Organization'],
       '@id': `${SITE_URL}/#org`,
       name: 'scaloMATRIX',
-      alternateName: 'Scalomatrix',
+      alternateName: 'D2C scaloMATRIX',
       legalName: 'Kraffic Enterprises',
       url: SITE_URL,
       logo: `${SITE_URL}/icon.png`,
       image: `${SITE_URL}/opengraph-image`,
       description:
-        'Shopify design, development and conversion-focused redesign for D2C brands in India.',
+        'Done-for-you D2C brand building for manufacturers and sellers. We build your Shopify store, run Meta ads, and setup shipping & payments. Pay once to start; earn only when you sell.',
       email: 'info@krafficgroup.com',
       telephone: '+91-92177-28977',
+      sameAs: [
+        'https://www.instagram.com/scalomatrix/',
+        'https://www.youtube.com/@scalomatrix',
+        'https://www.facebook.com/scalomatrix',
+      ],
       address: {
         '@type': 'PostalAddress',
+        streetAddress: 'Patel Nagar',
         addressLocality: 'Patel Nagar, Delhi',
         addressRegion: 'Delhi',
         postalCode: '110008',
@@ -62,62 +59,10 @@ const graph = {
       },
       areaServed: [
         { '@type': 'Country', name: 'India' },
-        { '@type': 'Country', name: 'United States' },
-        { '@type': 'Country', name: 'United Arab Emirates' },
       ],
       priceRange: '₹₹',
-      currenciesAccepted: 'INR, USD',
+      currenciesAccepted: 'INR',
       paymentAccepted: 'Credit Card, Debit Card, UPI, Net Banking, Wire Transfer',
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        reviewCount: '50',
-        bestRating: '5',
-        worstRating: '1',
-      },
-      review: [
-        {
-          '@type': 'Review',
-          author: { '@type': 'Person', name: 'Agarwal' },
-          reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-          reviewBody: 'One of the pages we made with the scaloMATRIX team resulted in a 44% increase in conversion rate.',
-        },
-        {
-          '@type': 'Review',
-          author: { '@type': 'Person', name: 'Ujjwal' },
-          reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-          reviewBody: 'The strategic approach they brought to the project resulted in a revenue jump of 35%.',
-        },
-        {
-          '@type': 'Review',
-          author: { '@type': 'Person', name: 'Ahsan' },
-          reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-          reviewBody: 'The improved user experience has led to higher engagement and a more satisfied customer base.',
-        },
-      ],
-      parentOrganization: { '@type': 'Organization', name: 'Kraffic Enterprises', legalName: 'Kraffic Enterprises' },
-      sameAs: ['https://www.instagram.com/scalomatrix/', 'https://www.youtube.com/@scalomatrix'],
-      knowsAbout: ['Shopify', 'Shopify development', 'Shopify store design', 'Shopify redesign', 'Conversion rate optimization', 'D2C ecommerce', 'Landing page design'],
-      keywords: 'Shopify development company India, Shopify developer, Shopify agency, Shopify store design, Shopify redesign',
-      slogan: 'Shopify stores built to turn more visitors into buyers',
-      contactPoint: {
-        '@type': 'ContactPoint',
-        contactType: 'sales',
-        telephone: '+91-92177-28977',
-        email: 'info@krafficgroup.com',
-        areaServed: 'IN',
-        availableLanguage: ['English', 'Hindi'],
-      },
-      hasOfferCatalog: {
-        '@type': 'OfferCatalog',
-        name: 'Shopify services',
-        itemListElement: [
-          offer('Custom Shopify Build', 'Ground-up custom-coded Shopify theme, built to scale.'),
-          offer('Shopify Website Creation', 'A brand-new Shopify store, designed, developed and ready to take orders.', 64999),
-          offer('Shopify Website Redesign', 'Conversion-first redesign of an existing Shopify store.', 44999),
-          offer('Shopify Website Audit', 'Free 30-minute live review of your store showing what costs you sales.', 0),
-        ],
-      },
     },
   ],
 };
@@ -126,8 +71,7 @@ export default function JsonLd() {
   return (
     <script
       type="application/ld+json"
-      // "<" is escaped so the JSON can never close the script tag
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(graph).replace(/</g, '\\u003c') }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
     />
   );
 }

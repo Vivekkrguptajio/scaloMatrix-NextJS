@@ -2,7 +2,7 @@
 import { FaWhatsapp } from 'react-icons/fa';
 
 const NUMBER = '919217728977';
-const MESSAGE = 'Hi scaloMATRIX, I would like a free audit of my Shopify store.';
+const MESSAGE = "Hi scaloMATRIX, I want to build my own D2C brand. Let's connect.";
 
 export const whatsappUrl = `https://wa.me/${NUMBER}?text=${encodeURIComponent(MESSAGE)}`;
 
