@@ -165,7 +165,7 @@ export default function Navbar() {
     <header 
       ref={navRef}
       style={{ left: 'var(--m)', right: 'var(--m)' }}
-      className={`fixed top-0 z-20 h-[64px] border-b transition-colors duration-500 ${
+      className={`fixed top-0 z-50 h-[64px] border-b transition-colors duration-500 ${
         isDark 
           ? 'bg-[#141210]/95 border-white/10 text-white backdrop-blur-md' 
           : 'bg-[#FAF8F5]/95 border-line text-ink backdrop-blur-md'
@@ -267,7 +267,7 @@ export default function Navbar() {
 
     {/* Mobile menu sheet */}
     <div
-      className={`lg:hidden fixed inset-0 z-40 bg-paper transition-opacity duration-300 ${
+      className={`lg:hidden fixed inset-0 z-70 bg-paper transition-opacity duration-300 ${
         mobileMenu ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
       }`}
       aria-hidden={!mobileMenu}

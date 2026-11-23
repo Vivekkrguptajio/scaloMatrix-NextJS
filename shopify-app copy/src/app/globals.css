@@ -279,7 +279,7 @@ input[type="range"].custom-slider-sm { min-height: 24px !important; padding: 6px
   margin-bottom: -100vh;
   margin-bottom: -100dvh;
   pointer-events: none;
-  z-index: 30;
+  z-index: 60;
   background-repeat: no-repeat, no-repeat, repeat-y, repeat-y, no-repeat, no-repeat;
   background-image:
     linear-gradient(var(--vband), var(--vband)),                       /* left vertical line  */
