@@ -164,15 +164,15 @@ export default function Navbar() {
     <>
     <header 
       ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-50 flex justify-center w-full px-4 sm:px-6 md:px-8 pt-4 transition-transform duration-300 ${hidden ? '-translate-y-full' : 'translate-y-0'}`}
+      className={`fixed top-0 left-0 right-0 z-50 w-full h-[64px] border-b transition-colors duration-500 ${
+        isDark 
+          ? 'bg-[#141210]/95 border-white/10 text-white backdrop-blur-md' 
+          : 'bg-[#FAF8F5]/95 border-line text-ink backdrop-blur-md'
+      }`}
     >
       <nav 
         aria-label="Main"
-        className={`w-full max-w-7xl h-[64px] border px-4 sm:px-6 flex items-center justify-between transition-colors duration-500 ${
-          isDark 
-            ? 'bg-[#141210]/90 border-white/10 text-white backdrop-blur-md' 
-            : 'bg-[#FAF8F5]/90 border-[#E7E0D4] text-[#141210] backdrop-blur-md'
-        }`}
+        className="w-full h-full container-x flex items-center justify-between"
       >
         <div className="flex items-center justify-between w-full">
           
