@@ -164,7 +164,8 @@ export default function Navbar() {
     <>
     <header 
       ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-50 w-full h-[64px] border-b transition-colors duration-500 ${
+      style={{ left: 'var(--m)', right: 'var(--m)' }}
+      className={`fixed top-0 z-20 h-[64px] border-b transition-colors duration-500 ${
         isDark 
           ? 'bg-[#141210]/95 border-white/10 text-white backdrop-blur-md' 
           : 'bg-[#FAF8F5]/95 border-line text-ink backdrop-blur-md'
@@ -172,7 +173,7 @@ export default function Navbar() {
     >
       <nav 
         aria-label="Main"
-        className="w-full h-full container-x flex items-center justify-between"
+        className="w-full h-full px-3 sm:px-6 flex items-center justify-between"
       >
         <div className="flex items-center justify-between w-full">
           
