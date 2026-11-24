@@ -125,19 +125,19 @@ export default function HeroLeadForm() {
   return (
     <div
       id="lead-form"
-      className="w-full max-w-lg bg-paper border border-line p-6 sm:p-8 shadow-[0_12px_40px_rgba(0,0,0,0.08)] relative"
+      className="w-full max-w-lg bg-paper border border-[#FD5800]/40 p-6 sm:p-7 shadow-[0_12px_40px_rgba(253,88,0,0.06)] relative"
     >
       {/* Header Badge */}
-      <div className="flex items-center justify-between pb-4 mb-5 border-b border-line">
+      <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-line">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-brand animate-pulse" />
-          <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-text">
-            {status === 'success' ? 'Request Confirmed' : `Quick Consultation · Step ${step} of 2`}
+          <span className="w-2 h-2 rounded-full bg-brand animate-pulse shrink-0" />
+          <span className="font-display text-[14.5px] sm:text-[15.5px] font-semibold text-ink">
+            {status === 'success' ? 'Request Confirmed' : 'Get a free 30-minute brand call'}
           </span>
         </div>
         {status !== 'success' && (
-          <span className="text-[12px] font-mono text-muted">
-            {step === 1 ? '50% complete' : '100% complete'}
+          <span className="text-[11px] font-mono text-muted bg-cream px-2 py-0.5 border border-line shrink-0">
+            Step {step} of 2
           </span>
         )}
       </div>
@@ -216,27 +216,27 @@ export default function HeroLeadForm() {
               </div>
 
               <div>
-                <label className="block text-[13px] font-medium text-ink mb-2">
+                <label className="block text-[13px] font-medium text-ink mb-1.5">
                   What best describes your business? <span className="text-brand">*</span>
                 </label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {BUSINESS_TYPES.map((type) => {
-                    const isSelected = formData.businessType === type;
-                    return (
-                      <button
-                        type="button"
-                        key={type}
-                        onClick={() => handleSelect('businessType', type)}
-                        className={`text-left px-3 py-2.5 text-[12.5px] border transition-all ${
-                          isSelected
-                            ? 'bg-brand text-white border-brand font-semibold'
-                            : 'bg-cream text-ink border-line hover:border-brand/40'
-                        }`}
-                      >
+                <div className="relative">
+                  <select
+                    name="businessType"
+                    value={formData.businessType}
+                    onChange={handleChange}
+                    className="w-full bg-cream border border-line px-4 py-3 text-[14px] text-ink focus:outline-none focus:border-brand transition-colors appearance-none cursor-pointer pr-10"
+                  >
+                    {BUSINESS_TYPES.map((type) => (
+                      <option key={type} value={type}>
                         {type}
-                      </button>
-                    );
-                  })}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-muted">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
                 </div>
               </div>
 

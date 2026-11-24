@@ -1,6 +1,5 @@
 "use client";
 
-import Image from 'next/image';
 import { FaCheckCircle } from 'react-icons/fa';
 import HeroLeadForm from './HeroLeadForm';
 import { heroData } from '../data/content';
@@ -9,35 +8,22 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="flex flex-col pt-[80px] md:pt-[7.5rem] pb-12 md:pb-16 bg-cream relative overflow-hidden"
+      className="flex flex-col pt-[96px] md:pt-[10.5rem] lg:pt-[11rem] pb-14 md:pb-20 bg-cream relative overflow-hidden"
     >
       {/* Background radial accent */}
       <div className="absolute top-0 right-0 w-[550px] h-[550px] bg-[radial-gradient(circle,rgba(253,88,0,0.08)_0%,transparent_70%)] pointer-events-none -translate-y-1/4 translate-x-1/4" />
       <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-[radial-gradient(circle,rgba(253,88,0,0.05)_0%,transparent_70%)] pointer-events-none translate-y-1/4 -translate-x-1/4" />
 
       <div className="container-x relative z-10">
-        <div className="max-w-[1240px] mx-auto flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8 lg:gap-8 xl:gap-10">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10 lg:gap-12 xl:gap-16">
           
           {/* LEFT — Brand Positioning & Value Props */}
-          <div className="flex-1 w-full lg:max-w-[620px] text-left">
-            {/* Badges */}
-            <div className="flex flex-wrap items-center gap-2.5 mb-5 hero-animate-1">
-              <div
-                className="partner-logo relative w-[147px] h-[28px] overflow-hidden"
-                title={heroData.badge}
-              >
-                <Image
-                  src="https://res.cloudinary.com/dqtzchlqj/image/upload/v1794639408/shopify-app/work/shopify-partners.png"
-                  alt="Shopify Partners"
-                  fill
-                  sizes="147px"
-                  className="object-cover"
-                  priority
-                />
-              </div>
-              <span className="inline-flex items-center gap-2 bg-brand-soft text-brand-text text-[11px] font-semibold tracking-[0.12em] uppercase px-3 py-1.5 font-mono">
-                <span className="w-1.5 h-1.5 bg-brand animate-pulse" />
-                {heroData.badge2}
+          <div className="flex-1 w-full lg:max-w-[560px] xl:max-w-[600px] text-left">
+            {/* Eyebrow Badge */}
+            <div className="flex items-center gap-2 mb-6 hero-animate-1">
+              <span className="inline-flex items-center gap-2 bg-brand-soft text-brand-text text-[11.5px] sm:text-[12px] font-semibold tracking-[0.08em] uppercase px-3.5 py-1.5 font-mono border border-brand/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse" />
+                Full-stack D2C partner for Indian sellers
               </span>
             </div>
 
@@ -68,7 +54,7 @@ export default function Hero() {
               {heroData.description}
             </p>
 
-            {/* 3 Core Bullets */}
+            {/* Core Bullets */}
             <div className="flex flex-col gap-3.5 mb-6 hero-animate-4">
               {heroData.bullets.map((bullet, idx) => (
                 <div key={idx} className="flex items-center gap-3">
@@ -88,23 +74,25 @@ export default function Hero() {
               {heroData.smallPrint}
             </div>
 
-            {/* Highlighted stats */}
-            <div className="grid grid-cols-3 gap-4 pt-6 mt-6 border-t border-line max-w-[520px]">
-              {heroData.stats.map((st, i) => (
-                <div key={i}>
-                  <p className="font-display text-[22px] sm:text-[28px] font-semibold text-brand leading-none mb-1">
-                    {st.prefix}{st.value}{st.suffix}
-                  </p>
-                  <p className="text-[11px] sm:text-[12px] font-mono uppercase text-muted tracking-wide">
-                    {st.label}
-                  </p>
-                </div>
-              ))}
+            {/* Two Action Buttons in place of stats */}
+            <div className="flex flex-wrap items-center gap-4 pt-7 mt-7 border-t border-line">
+              <a
+                href="#lead-form"
+                className="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[14.5px] font-semibold text-white bg-brand hover:brightness-105 transition-all shadow-[0_4px_14px_rgba(253,88,0,0.25)]"
+              >
+                <span>Get a free call back</span>
+              </a>
+              <a
+                href="#what-we-do"
+                className="btn-ghost inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[14.5px] font-semibold text-ink border border-ink/30 hover:border-ink hover:bg-ink/5 transition-all"
+              >
+                <span>See how it works</span>
+              </a>
             </div>
           </div>
 
           {/* RIGHT — The 2-Step Lead Generation Form */}
-          <div className="w-full lg:w-auto lg:max-w-[480px] xl:max-w-[500px] flex-shrink-0 flex justify-center lg:justify-start">
+          <div className="w-full lg:w-auto lg:max-w-[460px] xl:max-w-[480px] flex-shrink-0 flex justify-center lg:justify-end">
             <HeroLeadForm />
           </div>
 
