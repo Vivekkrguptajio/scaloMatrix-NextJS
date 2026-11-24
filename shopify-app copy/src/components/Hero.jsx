@@ -9,19 +9,19 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="flex flex-col pt-[84px] md:pt-[10.5rem] pb-12 md:pb-20 bg-cream relative overflow-hidden"
+      className="flex flex-col pt-[80px] md:pt-[7.5rem] pb-12 md:pb-16 bg-cream relative overflow-hidden"
     >
       {/* Background radial accent */}
       <div className="absolute top-0 right-0 w-[550px] h-[550px] bg-[radial-gradient(circle,rgba(253,88,0,0.08)_0%,transparent_70%)] pointer-events-none -translate-y-1/4 translate-x-1/4" />
       <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-[radial-gradient(circle,rgba(253,88,0,0.05)_0%,transparent_70%)] pointer-events-none translate-y-1/4 -translate-x-1/4" />
 
       <div className="container-x relative z-10">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 lg:gap-10 xl:gap-16">
+        <div className="max-w-[1240px] mx-auto flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8 lg:gap-8 xl:gap-10">
           
           {/* LEFT — Brand Positioning & Value Props */}
-          <div className="flex-1 w-full lg:max-w-[55%] text-left">
+          <div className="flex-1 w-full lg:max-w-[620px] text-left">
             {/* Badges */}
-            <div className="flex flex-wrap items-center gap-2.5 mb-6 hero-animate-1">
+            <div className="flex flex-wrap items-center gap-2.5 mb-5 hero-animate-1">
               <div
                 className="partner-logo relative w-[147px] h-[28px] overflow-hidden"
                 title={heroData.badge}
@@ -64,12 +64,12 @@ export default function Hero() {
             </h1>
 
             {/* Subtitle */}
-            <p className="lead text-[16px] sm:text-[18px] text-muted max-w-xl mb-7 hero-animate-3">
+            <p className="lead text-[16px] sm:text-[18px] text-muted max-w-[580px] mb-6 hero-animate-3">
               {heroData.description}
             </p>
 
             {/* 3 Core Bullets */}
-            <div className="flex flex-col gap-3.5 mb-8 hero-animate-4">
+            <div className="flex flex-col gap-3.5 mb-6 hero-animate-4">
               {heroData.bullets.map((bullet, idx) => (
                 <div key={idx} className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full bg-brand-soft text-brand flex items-center justify-center shrink-0">
@@ -83,13 +83,13 @@ export default function Hero() {
             </div>
 
             {/* Mandatory Small Print Disclosure */}
-            <div className="p-3.5 bg-paper border border-line max-w-xl text-[12px] text-muted/90 leading-relaxed hero-animate-5">
+            <div className="p-3.5 bg-paper border border-line max-w-[580px] text-[12px] text-muted/90 leading-relaxed hero-animate-5">
               <span className="font-semibold text-ink">Strict Transparency:</span>{' '}
               {heroData.smallPrint}
             </div>
 
             {/* Highlighted stats */}
-            <div className="grid grid-cols-3 gap-4 pt-8 mt-8 border-t border-line max-w-lg">
+            <div className="grid grid-cols-3 gap-4 pt-6 mt-6 border-t border-line max-w-[520px]">
               {heroData.stats.map((st, i) => (
                 <div key={i}>
                   <p className="font-display text-[22px] sm:text-[28px] font-semibold text-brand leading-none mb-1">
@@ -104,7 +104,7 @@ export default function Hero() {
           </div>
 
           {/* RIGHT — The 2-Step Lead Generation Form */}
-          <div className="w-full lg:max-w-[45%] flex justify-center lg:justify-end">
+          <div className="w-full lg:w-auto lg:max-w-[480px] xl:max-w-[500px] flex-shrink-0 flex justify-center lg:justify-start">
             <HeroLeadForm />
           </div>
 
