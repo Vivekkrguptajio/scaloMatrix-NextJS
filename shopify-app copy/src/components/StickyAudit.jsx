@@ -32,7 +32,7 @@ export default function StickyAudit() {
       onClick={(e) => { e.preventDefault(); scrollToId('lead-form'); }}
       aria-hidden={!show}
       tabIndex={show ? 0 : -1}
-      className={`sm:hidden btn-slide group fixed bottom-4 left-1/2 z-[90] -translate-x-1/2 flex items-center gap-1.5 h-[34px] px-4 bg-brand text-white border border-brand hover:border-ink text-[12px] font-semibold whitespace-nowrap shadow-lg transition-[opacity,transform] duration-300 ${
+      className={`sm:hidden btn-slide group fixed bottom-4 left-1/2 z-[90] -translate-x-1/2 flex items-center gap-1.5 h-[34px] px-4 bg-brand text-white border border-brand hover:border-ink text-[12px] font-semibold whitespace-nowrap shadow-lg transition-[opacity,transform] duration-300 rounded-[10px] ${
         show ? 'opacity-100' : 'opacity-0 pointer-events-none translate-y-3'
       }`}
     >

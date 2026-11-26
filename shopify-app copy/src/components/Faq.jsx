@@ -1,27 +1,43 @@
+"use client";
+
+import { useState } from 'react';
 import { faqs } from '../data/faq';
+import FaqAskBox from './FaqAskBox';
 
 // Native <details> accordion: works without JavaScript, is keyboard/screen-reader
 // friendly, and every answer is in the server-rendered HTML for search engines.
+// Only the first few questions show at first so the landing page stays short;
+// the rest stay in the HTML (hidden) so search engines still read them.
+const VISIBLE_AT_FIRST = 6;
+
 export default function Faq() {
+  const [showAll, setShowAll] = useState(false);
+  const hiddenCount = faqs.length - VISIBLE_AT_FIRST;
+
   return (
-    <section id="faq" className="relative w-full py-16 md:py-24 bg-cream font-sans border-b border-line">
+    <section id="faq" aria-labelledby="faq-title" className="relative w-full py-16 md:py-24 bg-paper font-sans border-b border-line">
       <div className="container-x">
-        {/* Centred heading */}
-        <div className="text-center max-w-xl mx-auto mb-10 md:mb-14">
-          <span className="eyebrow mb-4">Got Questions?</span>
-          <h2 className="h-display h-section">
-            Common questions, <span className="accent">answered.</span>
+        {/* Header (same pattern as OurModel / FirstNinetyDays) */}
+        <div className="mx-auto mb-8 max-w-2xl text-center sm:mb-10">
+          <p className="mb-2 font-mono text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-ink">
+            FAQs
+          </p>
+          <h2 id="faq-title" className="h-display !font-semibold text-[clamp(24px,2.4vw,36px)] leading-[1.08] tracking-tight text-ink">
+            Common questions, <span className="text-brand">answered.</span>
           </h2>
-          <p className="lead mt-3">
+          <p className="mt-3 text-[15px] sm:text-[17px] text-muted">
             Honest answers about our setup fees, ad budgets, and how we work together.
           </p>
         </div>
 
-        <div className="max-w-[760px] mx-auto">
+        <div className="mx-auto max-w-[860px]">
           {/* Main accordion list */}
           <div className="border-t border-line">
             {faqs.map((item, idx) => (
-              <details key={idx} className="group border-b border-line">
+              <details
+                key={idx}
+                className={`group border-b border-line ${!showAll && idx >= VISIBLE_AT_FIRST ? 'hidden' : ''}`}
+              >
                 <summary className="flex items-center justify-between gap-6 py-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
                   <h3 className="text-[16px] md:text-[17.5px] leading-[24px] md:leading-[26px] font-medium text-ink group-hover:text-brand transition-colors">
                     {item.q}
@@ -40,14 +56,21 @@ export default function Faq() {
             ))}
           </div>
 
-          <div className="mt-10 p-5 bg-paper border border-line flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-[13.5px] text-muted text-center sm:text-left">
-              Have a specific question about your product category?
-            </p>
-            <a href="#lead-form" className="btn-primary py-2.5 px-5 text-[13px] font-semibold whitespace-nowrap">
-              Ask on a Call
-            </a>
-          </div>
+          {hiddenCount > 0 && (
+            <div className="mt-6 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setShowAll((v) => !v)}
+                aria-expanded={showAll}
+                className="btn-ghost inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-semibold"
+              >
+                {showAll ? 'Show fewer questions' : `Show all ${faqs.length} questions`}
+                <span aria-hidden="true" className={`transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`}>↓</span>
+              </button>
+            </div>
+          )}
+
+          <FaqAskBox />
         </div>
       </div>
     </section>

@@ -57,7 +57,7 @@ export default function ComparisonTable() {
       feature: "Contract Freedom & Exit Terms",
       agency: "3 to 6-month lock-in contracts",
       marketplace: "Can suspend your account anytime",
-      scaloMatrix: "Leave anytime with everything intact",
+      scaloMatrix: "3-month minimum to grow, then stop anytime. Everything stays yours",
       highlight: true,
     },
   ];
@@ -77,7 +77,7 @@ export default function ComparisonTable() {
         </div>
 
         {/* Responsive Table */}
-        <div className="w-full overflow-x-auto border border-line bg-paper shadow-sm">
+        <div className="w-full overflow-x-auto border border-line bg-paper shadow-sm rounded-[10px]">
           <table className="w-full text-left border-collapse min-w-[650px]">
             <thead>
               <tr className="border-b border-line bg-cream">

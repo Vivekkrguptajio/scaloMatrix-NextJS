@@ -3,70 +3,72 @@ import LegalLayout from '../../components/LegalLayout';
 
 export const metadata = {
   title: 'Refund & Cancellation Policy',
-  description: 'When fees are and are not refundable at scaloMATRIX (Kraffic Enterprises): advances, stage payments, retainers, cancellations and chargebacks.',
+  description: 'What you can get back, and when, from the fees you pay scaloMATRIX (Kraffic Enterprises): setup fee, commission, third-party costs and cancelling.',
   alternates: { canonical: '/refund-policy' },
 };
 
+const EMAIL = <a href="mailto:info@krafficgroup.com">info@krafficgroup.com</a>;
+
+const tableCls = 'w-full text-left text-[14px] border border-line [&_th]:bg-paper [&_th]:font-semibold [&_th]:text-ink [&_th]:p-3 [&_td]:p-3 [&_td]:align-top [&_th]:border [&_th]:border-line [&_td]:border [&_td]:border-line';
+
+const setupRows = [
+  ['Before work starts (we have not begun building your store)', 'Full refund of the setup fee if you ask within 7 days of paying'],
+  ['After work has started', 'No refund, because the design and build work has already been done'],
+  ['If we cannot deliver the services in your Plan because of a reason on our side', 'A refund of the part of the setup fee for work we did not deliver'],
+];
+
 const sections = [
   {
-    title: 'Advance payments',
-    body: (
-      <p>An advance reserves our team&apos;s time and covers discovery, planning and setup. It is non-refundable once the project has been kicked off, which happens when we start any work or share any plan, wireframe, audit or design.</p>
-    ),
-  },
-  {
-    title: 'Stage payments',
-    body: (
-      <p>Each stage payment is non-refundable once the work for that stage has been delivered or shared for review (for example, a staging or preview link).</p>
-    ),
-  },
-  {
-    title: 'Monthly retainers',
-    body: (
-      <p>Retainers are billed in advance. The fee for a month is non-refundable once work for that month has started. To cancel, give 30 days&apos; written notice; the notice-period fee is payable.</p>
-    ),
-  },
-  {
-    title: 'Results and outcomes',
-    body: (
-      <p>We do not refund fees on the basis of sales, revenue, traffic, conversion rate, ad performance, rankings or any other outcome. These depend on factors outside our control, as explained in section 12 of our <Link href="/terms">Terms</Link>.</p>
-    ),
-  },
-  {
-    title: 'Change of mind and pauses',
-    body: (
-      <p>Fees are not refunded if you change your mind, change direction, pause the project, stop responding, or remove our access after work has begun. Paid amounts can be carried forward to a restart within 60 days, at our discretion.</p>
-    ),
-  },
-  {
-    title: 'Third-party costs',
-    body: (
-      <p>Shopify plans, themes, apps, domains, fonts, ad spend and marketplace fees are paid to those providers and follow their own refund rules. We cannot refund them.</p>
-    ),
-  },
-  {
-    title: 'When we do refund',
+    title: 'Setup fee',
     body: (
       <>
-        <ul>
-          <li>If we cancel a project before starting a paid stage, we refund the unused amount for that stage.</li>
-          <li>If you pay twice by mistake or are overcharged, we refund the extra amount.</li>
-        </ul>
-        <p>Approved refunds are made to the original payment method within 15 working days. GST is adjusted through a credit note as the law requires.</p>
+        <div className="overflow-x-auto mb-4">
+          <table className={tableCls}>
+            <thead>
+              <tr><th>When</th><th>What you get back</th></tr>
+            </thead>
+            <tbody>
+              {setupRows.map(([when, back]) => (
+                <tr key={when}><td>{when}</td><td>{back}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>Work starts when we begin building your store, after you have paid and given us the details we asked for. We will tell you in writing the day it starts.</p>
       </>
     ),
   },
   {
-    title: 'Chargebacks',
+    title: 'Commission',
     body: (
-      <p>Please contact us before raising a payment dispute with your bank. A chargeback for services already rendered is a breach of our Terms, and we will contest it with our records.</p>
+      <p>We charge commission only on orders you receive. No commission is charged on cancelled or returned orders. If an order we have already billed is later cancelled or returned, we credit that commission on your next invoice.</p>
+    ),
+  },
+  {
+    title: 'Ad budget, Shopify plan and other third-party costs',
+    body: (
+      <p>Your ad budget is paid directly to Meta, and your Shopify plan directly to Shopify. We never hold this money, so we cannot refund it. Refunds for these and other third-party costs (couriers, payment gateways, domains, paid apps) follow the rules of those providers.</p>
+    ),
+  },
+  {
+    title: 'Cancelling the service',
+    body: (
+      <p>You can cancel after the minimum period in your Plan (3 months) by giving 30 days&apos; written notice, as set out in our <Link href="/terms">Terms and Conditions</Link>. Cancelling does not bring back a setup fee for work already started. Commission stays payable on orders received before the end date.</p>
+    ),
+  },
+  {
+    title: 'Duplicate or wrong payments',
+    body: <p>If you are charged twice or pay the wrong amount, we refund the extra amount in full.</p>,
+  },
+  {
+    title: 'How to ask for a refund',
+    body: (
+      <p>Email {EMAIL} with your name, phone number, the Plan you signed and your payment reference. We reply within 3 working days. Approved refunds are sent to the original payment method within 7–10 working days; your bank or payment provider may take a few more days. Where we have issued a GST invoice, we issue a credit note as the GST law requires.</p>
     ),
   },
   {
     title: 'Contact',
-    body: (
-      <p>For any billing or refund question, write to <a href="mailto:info@krafficgroup.com">info@krafficgroup.com</a> with your invoice number. We reply within 2 working days.</p>
-    ),
+    body: <p>Kraffic Enterprises, Patel Nagar, New Delhi 110008, India. Email: {EMAIL}</p>,
   },
 ];
 
@@ -75,8 +77,8 @@ export default function RefundPolicyPage() {
     <LegalLayout
       title="Refund & Cancellation Policy"
       current="/refund-policy"
-      updated="24 October 2026"
-      intro="All payments to scaloMATRIX, a brand of Kraffic Enterprises (GSTIN 20GHGPD8892E1ZC), are for time reserved and work performed. Once work on a stage or month has begun, that payment is non-refundable. This policy forms part of our Terms & Conditions."
+      updated="26 November 2026"
+      intro="This policy explains what you can get back, and when, from the fees you pay Kraffic Enterprises (scaloMATRIX). It covers only what you pay us. Returns and refunds to the customers of your own store are handled by you, as the store owner, unless your Plan says otherwise."
       sections={sections}
     />
   );

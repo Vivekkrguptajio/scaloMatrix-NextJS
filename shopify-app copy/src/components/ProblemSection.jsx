@@ -51,10 +51,10 @@ export default function ProblemSection() {
             return (
               <div
                 key={idx}
-                className="bg-paper border border-line p-6 sm:p-8 flex flex-col justify-between hover:border-brand/40 transition-colors"
+                className="bg-paper border border-line p-6 sm:p-8 flex flex-col justify-between hover:border-brand/40 transition-colors rounded-[10px]"
               >
                 <div>
-                  <div className="w-12 h-12 bg-brand-soft text-brand flex items-center justify-center mb-6">
+                  <div className="w-12 h-12 bg-brand-soft text-brand flex items-center justify-center mb-6 rounded-[10px]">
                     <Icon className="w-6 h-6 text-brand" />
                   </div>
                   <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-text mb-2 block">
@@ -80,7 +80,7 @@ export default function ProblemSection() {
         </div>
 
         {/* Transition statement */}
-        <div className="mt-12 p-6 sm:p-8 bg-panel text-white flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-12 p-6 sm:p-8 bg-panel text-white flex flex-col md:flex-row items-center justify-between gap-6 rounded-[10px]">
           <div>
             <h4 className="text-[18px] sm:text-[21px] font-semibold mb-1 text-white">
               There is a better way: Your Own Brand.
@@ -91,7 +91,7 @@ export default function ProblemSection() {
           </div>
           <a
             href="#lead-form"
-            className="btn-primary whitespace-nowrap text-[13.5px] py-3 px-6"
+            className="btn-primary whitespace-nowrap text-[13.5px] py-3 px-6 rounded-[10px]"
           >
             See If You Qualify
           </a>

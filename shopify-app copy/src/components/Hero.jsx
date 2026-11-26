@@ -8,20 +8,20 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="flex flex-col pt-[96px] md:pt-[10.5rem] lg:pt-[11rem] pb-14 md:pb-20 bg-cream relative overflow-hidden"
+      className="flex flex-col pt-[80px] md:pt-[9.5rem] lg:pt-[10rem] pb-14 md:pb-20 bg-cream relative overflow-hidden"
     >
       {/* Background radial accent */}
       <div className="absolute top-0 right-0 w-[550px] h-[550px] bg-[radial-gradient(circle,rgba(253,88,0,0.08)_0%,transparent_70%)] pointer-events-none -translate-y-1/4 translate-x-1/4" />
       <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-[radial-gradient(circle,rgba(253,88,0,0.05)_0%,transparent_70%)] pointer-events-none translate-y-1/4 -translate-x-1/4" />
 
       <div className="container-x relative z-10">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10 lg:gap-12 xl:gap-16">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-start gap-8 lg:gap-10 xl:gap-10">
           
           {/* LEFT — Brand Positioning & Value Props */}
-          <div className="flex-1 w-full lg:max-w-[560px] xl:max-w-[600px] text-left">
+          <div className="flex-1 w-full lg:max-w-[490px] xl:max-w-[530px] text-left">
             {/* Eyebrow Badge */}
             <div className="flex items-center gap-2 mb-6 hero-animate-1">
-              <span className="inline-flex items-center gap-2 bg-brand-soft text-brand-text text-[11.5px] sm:text-[12px] font-semibold tracking-[0.08em] uppercase px-3.5 py-1.5 font-mono border border-brand/20">
+              <span className="inline-flex items-center gap-2 bg-brand-soft text-brand-text text-[11.5px] sm:text-[12px] font-semibold tracking-[0.08em] uppercase px-3.5 py-1.5 font-mono border border-brand/20 rounded-[10px]">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse" />
                 Full-stack D2C partner for Indian sellers
               </span>
@@ -69,22 +69,22 @@ export default function Hero() {
             </div>
 
             {/* Mandatory Small Print Disclosure */}
-            <div className="p-3.5 bg-paper border border-line max-w-[580px] text-[12px] text-muted/90 leading-relaxed hero-animate-5">
+            <div className="p-3 bg-paper border border-line rounded-[10px] max-w-[580px] text-[13px] text-muted/90 leading-relaxed hero-animate-5">
               <span className="font-semibold text-ink">Strict Transparency:</span>{' '}
               {heroData.smallPrint}
             </div>
 
             {/* Two Action Buttons in place of stats */}
-            <div className="flex flex-wrap items-center gap-4 pt-7 mt-7 border-t border-line">
+            <div className="flex flex-wrap items-center gap-4 pt-7 mt-7">
               <a
                 href="#lead-form"
-                className="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[14.5px] font-semibold text-white bg-brand hover:brightness-105 transition-all shadow-[0_4px_14px_rgba(253,88,0,0.25)]"
+                className="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[14.5px] font-semibold text-white bg-brand rounded-[10px] hover:brightness-105 transition-all shadow-[0_4px_14px_rgba(253,88,0,0.25)]"
               >
                 <span>Get a free call back</span>
               </a>
               <a
-                href="#what-we-do"
-                className="btn-ghost inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[14.5px] font-semibold text-ink border border-ink/30 hover:border-ink hover:bg-ink/5 transition-all"
+                href="#first-90-days"
+                className="btn-ghost inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[14.5px] font-semibold text-ink border border-ink/30 rounded-[10px] hover:border-ink hover:bg-ink/5 transition-all"
               >
                 <span>See how it works</span>
               </a>
@@ -92,7 +92,7 @@ export default function Hero() {
           </div>
 
           {/* RIGHT — The 2-Step Lead Generation Form */}
-          <div className="w-full lg:w-auto lg:max-w-[460px] xl:max-w-[480px] flex-shrink-0 flex justify-center lg:justify-end">
+          <div className="w-full lg:w-[min(480px,42vw)] lg:max-w-[480px] lg:ml-auto flex-shrink-0 flex justify-center lg:justify-end">
             <HeroLeadForm />
           </div>
 

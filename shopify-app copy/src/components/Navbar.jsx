@@ -1,6 +1,5 @@
 "use client";
-import { useState, useCallback, useEffect, useRef } from 'react'
-import { flushSync } from 'react-dom'
+import { useState, useCallback, useEffect, useRef, useSyncExternalStore } from 'react'
 import { scrollToId } from '../utils/smoothScroll'
 
 // On other pages the section isn't there: go to the home page section instead
@@ -10,23 +9,30 @@ const goTo = (id) => {
 }
 import { motion, useMotionValue } from 'framer-motion'
 
+const subscribeToTheme = (onChange) => {
+  const observer = new MutationObserver(onChange)
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+  return () => observer.disconnect()
+}
+
+const getThemeSnapshot = () => document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+const getServerThemeSnapshot = () => 'light'
+
 export default function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false)
   const [isDark, setIsDark] = useState(false)
   const navRef = useRef(null)
   const [hidden, setHidden] = useState(false)
   const [activeLink, setActiveLink] = useState(null)
-  const [theme, setTheme] = useState('light')
-
-  useEffect(() => {
-    setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light')
-  }, [])
+  const theme = useSyncExternalStore(subscribeToTheme, getThemeSnapshot, getServerThemeSnapshot)
+  // Keep the nav readable in dark theme and also when it overlays the dark footer
+  // while the rest of the site is in light theme.
+  const darkNav = theme === 'dark' || isDark
 
   const toggleTheme = (e) => {
     const next = theme === 'dark' ? 'light' : 'dark'
     const root = document.documentElement
     const apply = () => {
-      flushSync(() => setTheme(next))
       if (next === 'dark') root.setAttribute('data-theme', 'dark')
       else root.removeAttribute('data-theme')
       try { localStorage.setItem('theme-v3', next) } catch (err) {}
@@ -61,7 +67,7 @@ export default function Navbar() {
     <button
       onClick={toggleTheme}
       aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-      className={`w-[40px] h-[40px] shrink-0 border flex items-center justify-center transition-colors hover:border-[#FD5800] hover:text-[#FD5800] ${isDark ? 'border-white/20 text-white' : 'border-line text-ink'}`}
+      className={`w-[40px] h-[40px] shrink-0 border rounded-[10px] flex items-center justify-center transition-colors hover:border-[#FD5800] hover:text-[#FD5800] ${darkNav ? 'border-white/20 text-white' : 'border-line text-ink'}`}
     >
       {theme === 'dark' ? (
         <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" /></svg>
@@ -73,16 +79,26 @@ export default function Navbar() {
   const logoX = useMotionValue(0)
   const logoY = useMotionValue(0)
 
+  // Menu = the sections a visitor actually looks for, in page order. Each maps to one section id.
   const navLinks = [
-    { name: 'How it works', href: '#how-it-works' },
+    { name: 'Pricing', href: '#pricing' },
+    { name: "What's included", href: '#whats-included-tabs' },
     { name: 'Results', href: '#results' },
+    { name: 'How it works', href: '#first-90-days' },
     { name: 'FAQ', href: '#faq' },
   ]
 
   useEffect(() => {
+    // Which menu item lights up while that part of the page is on screen.
+    // Pricing covers the pricing cards through "Our model".
     const map = [
-      ['how-it-works', 'How it works'],
+      ['pricing', 'Pricing'],
+      ['brand-launch-bill', 'Pricing'],
+      ['launch-risk', 'Pricing'],
+      ['our-model', 'Pricing'],
+      ['whats-included-tabs', "What's included"],
       ['results', 'Results'],
+      ['first-90-days', 'How it works'],
       ['faq', 'FAQ'],
     ]
     let ticking = false
@@ -166,14 +182,14 @@ export default function Navbar() {
       ref={navRef}
       style={{ left: 'var(--m)', right: 'var(--m)' }}
       className={`fixed top-0 z-50 h-[64px] border-b transition-colors duration-500 ${
-        isDark 
+        darkNav
           ? 'bg-[#141210]/95 border-white/10 text-white backdrop-blur-md' 
-          : 'bg-[#FAF8F5]/95 border-line text-ink backdrop-blur-md'
+          : 'bg-paper/95 border-line text-ink backdrop-blur-md'
       }`}
     >
       <nav 
         aria-label="Main"
-        className="w-full h-full px-3 sm:px-6 flex items-center justify-between"
+        className="w-full h-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 flex items-center justify-between"
       >
         <div className="flex items-center justify-between w-full">
           
@@ -192,10 +208,7 @@ export default function Navbar() {
         >
           <span className="font-display font-black text-[22px] tracking-[-0.03em] uppercase transition-colors">
             <span className="text-[#FD5800]">scalo</span>
-            <span className={isDark ? 'text-white' : 'text-ink'}>MATRIX</span>
-          </span>
-          <span className="hidden sm:inline-block ml-2 text-[10px] font-mono tracking-wider px-1.5 py-0.5 bg-brand-soft text-brand-text font-bold">
-            D2C
+            <span className={darkNav ? 'text-white' : 'text-ink'}>MATRIX</span>
           </span>
         </motion.a>
 
@@ -212,8 +225,8 @@ export default function Navbar() {
                   goTo(link.href.substring(1))
                 }}
                 className={`relative px-4 py-2 text-[13.5px] font-medium tracking-[-0.01em] transition-colors ${
-                  isDark ? 'hover:text-white' : 'hover:text-ink'
-                } ${isActive ? 'text-[#FD5800]' : isDark ? 'text-white/70' : 'text-muted'}`}
+                  darkNav ? 'hover:text-white' : 'hover:text-ink'
+                } ${isActive ? 'text-[#FD5800]' : darkNav ? 'text-white/70' : 'text-muted'}`}
               >
                 {link.name}
                 {isActive && (
@@ -238,7 +251,7 @@ export default function Navbar() {
               e.preventDefault()
               goTo('lead-form')
             }}
-            className="btn-slide group flex items-center gap-2 text-[13.5px] font-semibold px-5 h-[40px] text-white bg-brand border border-brand hover:border-ink"
+            className="btn-slide group flex items-center gap-2 text-[13.5px] font-semibold px-5 h-[40px] text-white bg-brand border border-brand hover:border-ink rounded-[10px]"
           >
             <span>Get a call back</span>
             <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">

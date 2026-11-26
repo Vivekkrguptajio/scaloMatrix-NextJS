@@ -44,8 +44,8 @@ export default function WhatWeDo() {
     {
       icon: FaChartLine,
       number: "06",
-      title: "Weekly P&L Reports & Founder Review",
-      desc: "Clear weekly reports on blended ROAS, customer acquisition cost (CAC), and inventory velocity with dedicated founder-led Hindi/English support.",
+      title: "Weekly P&L Reports & Growth Expert",
+      desc: "Clear weekly reports on blended ROAS, customer acquisition cost (CAC), and inventory velocity with a dedicated growth expert, in Hindi or English.",
     },
   ];
 
@@ -70,11 +70,11 @@ export default function WhatWeDo() {
             return (
               <div
                 key={idx}
-                className="bg-cream border border-line p-6 sm:p-7 flex flex-col justify-between hover:border-brand/40 transition-colors"
+                className="bg-cream border border-line p-6 sm:p-7 flex flex-col justify-between hover:border-brand/40 transition-colors rounded-[10px]"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 bg-paper border border-line text-brand flex items-center justify-center">
+                    <div className="w-12 h-12 bg-paper border border-line text-brand flex items-center justify-center rounded-[10px]">
                       <Icon className="w-5 h-5 text-brand" />
                     </div>
                     <span className="font-mono text-[14px] font-bold text-muted/60">

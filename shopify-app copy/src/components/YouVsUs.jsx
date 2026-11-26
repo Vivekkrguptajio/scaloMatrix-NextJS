@@ -17,7 +17,7 @@ export default function YouVsUs() {
     "Integrate payment gateways (UPI, Cards, NetBanking, COD)",
     "Integrate courier partners with automated WhatsApp OTP address verification",
     "Setup automated WhatsApp notifications (cart recovery, tracking, reviews)",
-    "Weekly P&L reviews, ROAS monitoring, and founder-led strategy calls",
+    "Weekly P&L reviews and calls with your growth expert",
   ];
 
   return (
@@ -37,10 +37,10 @@ export default function YouVsUs() {
         {/* 2 Side-by-Side Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* YOU */}
-          <div className="bg-paper border border-line p-6 sm:p-8 flex flex-col justify-between">
+          <div className="bg-paper border border-line p-6 sm:p-8 flex flex-col justify-between rounded-[10px]">
             <div>
               <div className="flex items-center gap-3 pb-5 mb-6 border-b border-line">
-                <div className="w-10 h-10 bg-cream text-ink border border-line flex items-center justify-center">
+                <div className="w-10 h-10 bg-cream text-ink border border-line flex items-center justify-center rounded-[10px]">
                   <FaUserTie className="w-5 h-5 text-muted" />
                 </div>
                 <div>
@@ -75,10 +75,10 @@ export default function YouVsUs() {
           </div>
 
           {/* US */}
-          <div className="bg-panel text-white p-6 sm:p-8 flex flex-col justify-between relative shadow-xl">
+          <div className="bg-panel text-white p-6 sm:p-8 flex flex-col justify-between relative shadow-xl rounded-[10px]">
             <div>
               <div className="flex items-center gap-3 pb-5 mb-6 border-b border-white/10">
-                <div className="w-10 h-10 bg-brand text-white flex items-center justify-center">
+                <div className="w-10 h-10 bg-brand text-white flex items-center justify-center rounded-[10px]">
                   <FaRocket className="w-5 h-5" />
                 </div>
                 <div>

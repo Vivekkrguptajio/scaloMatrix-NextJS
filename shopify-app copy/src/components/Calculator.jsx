@@ -72,7 +72,7 @@ const Calculator = () => {
         {/* ───────── Phone layout: live result on top, controls below ───────── */}
         <div className="sm:hidden flex flex-col gap-3">
           {/* Live result */}
-          <div className="bg-panel text-white p-4 border border-line">
+          <div className="bg-panel text-white p-4 border border-line rounded-[10px]">
             <div className="flex items-end justify-between gap-3">
               <div>
                 <p className="font-mono text-[9px] tracking-[0.12em] text-brand-soft uppercase mb-0.5">
@@ -98,9 +98,9 @@ const Calculator = () => {
                 <span className="w-[60px] shrink-0 font-mono text-[8px] tracking-[0.08em] text-white/80 uppercase">
                   You Keep
                 </span>
-                <div className="flex-1 h-2 bg-black/40">
+                <div className="flex-1 h-2 bg-black/40 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-brand transition-all duration-300"
+                    className="h-full bg-brand transition-all duration-300 rounded-full"
                     style={{ width: `${retainedPct}%` }}
                   />
                 </div>
@@ -112,7 +112,7 @@ const Calculator = () => {
           </div>
 
           {/* Controls */}
-          <div className="bg-paper border border-line p-4 flex flex-col gap-4">
+          <div className="bg-paper border border-line p-4 flex flex-col gap-4 rounded-[10px]">
             {sliders.map((sl) => (
               <div key={sl.label}>
                 <div className="flex items-baseline justify-between mb-1.5">
@@ -127,7 +127,7 @@ const Calculator = () => {
                   <button
                     type="button"
                     onClick={() => bump(sl, -1)}
-                    className="w-8 h-8 border border-line bg-cream text-ink text-base font-bold flex items-center justify-center shrink-0 active:bg-brand active:text-white"
+                    className="w-8 h-8 border border-line bg-cream text-ink text-base font-bold flex items-center justify-center shrink-0 rounded-[10px] active:bg-brand active:text-white"
                   >
                     −
                   </button>
@@ -143,7 +143,7 @@ const Calculator = () => {
                   <button
                     type="button"
                     onClick={() => bump(sl, 1)}
-                    className="w-8 h-8 border border-line bg-cream text-ink text-base font-bold flex items-center justify-center shrink-0 active:bg-brand active:text-white"
+                    className="w-8 h-8 border border-line bg-cream text-ink text-base font-bold flex items-center justify-center shrink-0 rounded-[10px] active:bg-brand active:text-white"
                   >
                     +
                   </button>
@@ -156,7 +156,7 @@ const Calculator = () => {
         {/* ───────── Desktop layout: 2-column card ───────── */}
         <div className="hidden sm:grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Sliders (Left 7 cols) */}
-          <div className="lg:col-span-7 bg-paper border border-line p-8 flex flex-col justify-between">
+          <div className="lg:col-span-7 bg-paper border border-line p-8 flex flex-col justify-between rounded-[10px]">
             <div>
               <p className="font-mono text-[11px] tracking-[0.12em] text-brand uppercase font-semibold mb-6">
                 Adjust Your Business Numbers
@@ -178,7 +178,7 @@ const Calculator = () => {
                       <button
                         type="button"
                         onClick={() => bump(sl, -1)}
-                        className="w-9 h-9 border border-line bg-cream text-ink font-bold hover:bg-brand hover:text-white transition-colors flex items-center justify-center"
+                        className="w-9 h-9 border border-line bg-cream text-ink font-bold hover:bg-brand hover:text-white transition-colors flex items-center justify-center rounded-[10px]"
                       >
                         −
                       </button>
@@ -194,7 +194,7 @@ const Calculator = () => {
                       <button
                         type="button"
                         onClick={() => bump(sl, 1)}
-                        className="w-9 h-9 border border-line bg-cream text-ink font-bold hover:bg-brand hover:text-white transition-colors flex items-center justify-center"
+                        className="w-9 h-9 border border-line bg-cream text-ink font-bold hover:bg-brand hover:text-white transition-colors flex items-center justify-center rounded-[10px]"
                       >
                         +
                       </button>
@@ -217,7 +217,7 @@ const Calculator = () => {
           </div>
 
           {/* Results Card (Right 5 cols) */}
-          <div className="lg:col-span-5 bg-panel text-white border border-line p-8 flex flex-col justify-between shadow-lg">
+          <div className="lg:col-span-5 bg-panel text-white border border-line p-8 flex flex-col justify-between shadow-lg rounded-[10px]">
             <div>
               <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-brand-soft block mb-2">
                 What Marketplaces Take From You
@@ -263,7 +263,7 @@ const Calculator = () => {
             <div className="pt-6 mt-8 border-t border-white/15">
               <a
                 href="#lead-form"
-                className="btn-primary w-full py-3.5 text-center text-[14px] font-semibold block"
+                className="btn-primary w-full py-3.5 text-center text-[14px] font-semibold block rounded-[10px]"
               >
                 Stop Leaking Commissions →
               </a>

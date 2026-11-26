@@ -5,6 +5,9 @@ import Link from 'next/link';
 import { FaWhatsapp, FaInstagram, FaYoutube } from 'react-icons/fa';
 import { whatsappUrl } from './WhatsAppButton';
 
+// Footer banner linking to shopify.scalomatrix.com. Set to true to show it again.
+const SHOW_SHOPIFY_DEV_BANNER = false;
+
 export default function Contact({ reveal = false }) {
   const footerRef = useRef(null);
   const [footerHeight, setFooterHeight] = useState(0);
@@ -52,20 +55,22 @@ export default function Contact({ reveal = false }) {
           </p>
         </motion.div>
 
-        {/* Dedicated Shopify Development link banner */}
-        <div className="w-full mb-8 py-3.5 px-4 bg-white/5 border border-white/10 text-center">
-          <p className="text-xs sm:text-sm text-white/80">
-            Looking for custom Shopify store coding or theme redesign?{' '}
-            <a
-              href="https://shopify.scalomatrix.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#FD5800] font-semibold underline hover:text-white transition-colors ml-1"
-            >
-              Custom Shopify development → shopify.scalomatrix.com
-            </a>
-          </p>
-        </div>
+        {/* Dedicated Shopify Development link banner (hidden: set SHOW_SHOPIFY_DEV_BANNER to true to show) */}
+        {SHOW_SHOPIFY_DEV_BANNER && (
+          <div className="w-full mb-8 py-3.5 px-4 bg-white/5 border border-white/10 text-center rounded-[10px]">
+            <p className="text-xs sm:text-sm text-white/80">
+              Looking for custom Shopify store coding or theme redesign?{' '}
+              <a
+                href="https://shopify.scalomatrix.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#FD5800] font-semibold underline hover:text-white transition-colors ml-1"
+              >
+                Custom Shopify development → shopify.scalomatrix.com
+              </a>
+            </p>
+          </div>
+        )}
 
         {/* Bottom Section Wrapper */}
         <div className="w-full mt-auto">
@@ -114,12 +119,12 @@ export default function Contact({ reveal = false }) {
                 Refund &amp; Cancellation
               </Link>
               <span className="text-white/30">•</span>
-              <Link href="/privacy" className="hover:text-brand transition-colors">
+              <Link href="/privacy-policy" className="hover:text-brand transition-colors">
                 Privacy Policy
               </Link>
               <span className="text-white/30">•</span>
-              <Link href="/legal" className="hover:text-brand transition-colors">
-                Legal &amp; Policies
+              <Link href="/disclaimer" className="hover:text-brand transition-colors">
+                Disclaimer
               </Link>
             </div>
           </div>
@@ -127,7 +132,7 @@ export default function Contact({ reveal = false }) {
           {/* Business & Operator attribution */}
           <div className="w-full pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/60 text-center sm:text-left">
             <p>
-              Operated by <strong className="text-white/90">Kraffic Enterprises</strong> · Patel Nagar, Delhi 110008 ·{' '}
+              <strong className="text-white/90">Kraffic Enterprises</strong> · Patel Nagar, New Delhi 110008 ·{' '}
               <a href="mailto:info@krafficgroup.com" className="hover:text-white transition-colors">
                 info@krafficgroup.com
               </a>{' '}
@@ -136,7 +141,7 @@ export default function Contact({ reveal = false }) {
                 +91 92177 28977
               </a>
             </p>
-            <p>© {new Date().getFullYear()} scaloMATRIX. Proudly created in India.</p>
+            <p>© {new Date().getFullYear()} scaloMATRIX, a brand of Kraffic Enterprises.</p>
           </div>
         </div>
       </div>

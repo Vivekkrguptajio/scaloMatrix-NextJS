@@ -12,26 +12,28 @@ const BUSINESS_TYPES = [
   'Other',
 ];
 
-const GST_OPTIONS = ['Yes', 'No', 'Applied'];
+const GST_OPTIONS = ['Yes', 'No', 'Already applied'];
 
 const REVENUE_BANDS = [
-  '< ₹1L / month',
-  '₹1L – ₹5L / month',
-  '₹5L – ₹10L / month',
-  '₹10L+ / month',
+  '< ₹1 lakh',
+  '₹1-5 lakhs',
+  '₹5-10 lakh',
+  '₹10 lakh+',
 ];
 
-export default function HeroLeadForm() {
+// `id` and `source` let the same form be used twice on the page (hero + bottom) without clashing ids,
+// and the email says which one the lead came from.
+export default function HeroLeadForm({ id = 'lead-form', source = 'Hero 2-Step Lead Form' }) {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     businessType: 'Manufacturer',
     gstStatus: 'Yes',
-    monthlyRevenue: '₹1L – ₹5L / month',
+    monthlyRevenue: '₹1-5 lakhs',
     productCategory: '',
     city: '',
-    consent: true,
+    consent: false,
   });
 
   const [status, setStatus] = useState('idle'); // 'idle' | 'loading' | 'success' | 'error'
@@ -56,7 +58,11 @@ export default function HeroLeadForm() {
     }
     const cleanPhone = formData.phone.replace(/\D/g, '');
     if (cleanPhone.length < 10) {
-      setErrorMessage('Please enter a valid 10-digit WhatsApp/mobile number.');
+      setErrorMessage('Please enter a valid 10-digit mobile number.');
+      return false;
+    }
+    if (!formData.consent) {
+      setErrorMessage('Please agree to the Terms & Conditions and Privacy Policy.');
       return false;
     }
     setErrorMessage('');
@@ -72,10 +78,6 @@ export default function HeroLeadForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.consent) {
-      setErrorMessage('Please accept the Terms & Conditions and Privacy Policy.');
-      return;
-    }
 
     setStatus('loading');
     setErrorMessage('');
@@ -86,7 +88,7 @@ export default function HeroLeadForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
-          source: 'Hero 2-Step Lead Form',
+          source,
         }),
       });
 
@@ -124,21 +126,25 @@ export default function HeroLeadForm() {
 
   return (
     <div
-      id="lead-form"
-      className="w-full max-w-lg bg-paper border border-[#FD5800]/40 p-6 sm:p-7 shadow-[0_12px_40px_rgba(253,88,0,0.06)] relative"
+      id={id}
+      className="w-full max-w-[480px] min-h-[600px] lg:h-[600px] bg-paper border border-ink px-6 pt-3 pb-3 sm:px-8 sm:pt-4 sm:pb-4 rounded-[24px] shadow-none relative flex flex-col"
     >
-      {/* Header Badge */}
-      <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-line">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-brand animate-pulse shrink-0" />
-          <span className="font-display text-[14.5px] sm:text-[15.5px] font-semibold text-ink">
-            {status === 'success' ? 'Request Confirmed' : 'Get a free 30-minute brand call'}
-          </span>
+      {/* Top Accent Bar & Step Counter */}
+      <div className="mb-3">
+        <div className="flex gap-3 mb-3" aria-label={`Step ${step} of 2`}>
+          <span className={`h-2 flex-1 rounded-full ${step >= 1 ? 'bg-brand' : 'bg-line'}`} />
+          <span className={`h-2 flex-1 rounded-full ${step >= 2 ? 'bg-brand' : 'bg-line'}`} />
         </div>
-        {status !== 'success' && (
-          <span className="text-[11px] font-mono text-muted bg-cream px-2 py-0.5 border border-line shrink-0">
-            Step {step} of 2
-          </span>
+        <div className="text-[15px] text-muted mb-2 font-medium">
+          {step === 1 ? 'Step 1 of 2 · Your details' : 'Step 2 of 2 · Business details'}
+        </div>
+        <h2 className="text-[20px] sm:text-[21px] font-bold text-ink leading-tight tracking-tight">
+          {step === 1 ? 'Book a free 30-min brand call' : 'Almost there! Tell us about your brand'}
+        </h2>
+        {step !== 1 && (
+          <p className="text-[14px] text-muted mt-1">
+            Helps our growth team prepare before your call
+          </p>
         )}
       </div>
 
@@ -151,14 +157,14 @@ export default function HeroLeadForm() {
             Thank you, {formData.name.split(' ')[0]}!
           </h3>
           <p className="text-[14px] text-muted leading-relaxed mb-6 max-w-sm">
-            We have received your details. Our founder or senior growth specialist will call you within 24 hours to review your brand launch plan.
+            We have received your details. Our growth expert will call you within 24 hours to review your brand launch plan.
           </p>
 
           <a
             href={whatsappDeepLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full inline-flex items-center justify-center gap-2.5 py-4 px-6 bg-[#25D366] text-white font-semibold text-[15px] shadow-[0_8px_20px_rgba(37,211,102,0.3)] hover:brightness-105 transition-all"
+            className="w-full inline-flex items-center justify-center gap-2.5 py-4 px-6 bg-[#25D366] text-white font-semibold text-[15px] rounded-[10px] shadow-[0_8px_20px_rgba(37,211,102,0.3)] hover:brightness-105 transition-all"
           >
             <FaWhatsapp className="w-5 h-5" />
             <span>Chat on WhatsApp now</span>
@@ -169,82 +175,79 @@ export default function HeroLeadForm() {
           </p>
         </div>
       ) : (
-        <form onSubmit={step === 1 ? handleNext : handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={step === 1 ? handleNext : handleSubmit} className="flex flex-1 flex-col gap-3 pb-1">
           {errorMessage && (
-            <div className="p-3 bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-[13px] leading-snug">
+            <div className="p-3 bg-red-500/10 border border-red-500/30 text-red-600 text-[13px] rounded-[10px] leading-snug">
               {errorMessage}
             </div>
           )}
 
           {step === 1 ? (
             <>
-              {/* Step 1 Fields */}
+              {/* Field 1: Your name */}
               <div>
-                <label className="block text-[13px] font-medium text-ink mb-1.5">
-                  Your Full Name <span className="text-brand">*</span>
+                <label className="block text-[14px] font-medium text-ink mb-1">
+                  Your name <span className="text-brand">*</span>
                 </label>
                 <input
                   type="text"
                   name="name"
                   required
-                  placeholder="e.g. Rajesh Sharma"
+                  placeholder="Enter your full name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-cream border border-line px-4 py-3 text-[14px] text-ink placeholder:text-muted/60 focus:outline-none focus:border-brand transition-colors"
+                  className="w-full bg-cream border border-line rounded-[12px] px-4 py-[10px] text-[15px] text-ink placeholder:text-muted focus:outline-none focus:border-brand transition-colors"
                 />
               </div>
 
+              {/* Field 2: Phone number */}
               <div>
-                <label className="block text-[13px] font-medium text-ink mb-1.5">
-                  WhatsApp Phone Number <span className="text-brand">*</span>
+                <label className="block text-[14px] font-medium text-ink mb-1">
+                  Phone number <span className="text-brand">*</span>
                 </label>
-                <div className="flex">
-                  <span className="inline-flex items-center px-3.5 bg-line/40 border border-r-0 border-line text-[13px] font-mono text-muted">
+                <div className="flex gap-2.5">
+                  <div className="w-[72px] shrink-0 flex items-center justify-center bg-cream border border-line rounded-[12px] text-[15px] font-semibold text-ink select-none">
                     +91
-                  </span>
+                  </div>
                   <input
                     type="tel"
                     name="phone"
                     required
                     maxLength={10}
-                    placeholder="98765 43210"
+                    placeholder="10-digit mobile number"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full bg-cream border border-line px-4 py-3 text-[14px] text-ink placeholder:text-muted/60 focus:outline-none focus:border-brand transition-colors"
+                    className="flex-1 bg-cream border border-line rounded-[12px] px-4 py-[10px] text-[15px] text-ink placeholder:text-muted focus:outline-none focus:border-brand transition-colors"
                   />
                 </div>
               </div>
 
+              {/* Business type */}
               <div>
-                <label className="block text-[13px] font-medium text-ink mb-1.5">
-                  What best describes your business? <span className="text-brand">*</span>
+                <label className="block text-[14px] font-medium text-ink mb-1">
+                  What best describes you? <span className="text-brand">*</span>
                 </label>
                 <div className="relative">
                   <select
                     name="businessType"
                     value={formData.businessType}
                     onChange={handleChange}
-                    className="w-full bg-cream border border-line px-4 py-3 text-[14px] text-ink focus:outline-none focus:border-brand transition-colors appearance-none cursor-pointer pr-10"
+                    className="w-full appearance-none bg-cream border border-line rounded-[12px] px-4 py-[10px] pr-10 text-[15px] text-ink focus:outline-none focus:border-brand"
                   >
-                    {BUSINESS_TYPES.map((type) => (
-                      <option key={type} value={type}>
-                        {type}
-                      </option>
-                    ))}
+                    {BUSINESS_TYPES.map((type) => <option key={type} value={type}>{type}</option>)}
                   </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-muted">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </div>
+                  <svg className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path d="m5 7.5 5 5 5-5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </div>
               </div>
 
+              {/* Field 3: Do you have an active GST? */}
               <div>
-                <label className="block text-[13px] font-medium text-ink mb-2">
+                <label className="block text-[14px] font-medium text-ink mb-1.5">
                   Do you have an active GST? <span className="text-brand">*</span>
                 </label>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="flex flex-wrap gap-3">
                   {GST_OPTIONS.map((opt) => {
                     const isSelected = formData.gstStatus === opt;
                     return (
@@ -252,10 +255,10 @@ export default function HeroLeadForm() {
                         type="button"
                         key={opt}
                         onClick={() => handleSelect('gstStatus', opt)}
-                        className={`py-2 text-[12.5px] font-mono uppercase tracking-wider text-center border transition-all ${
+                        className={`py-2 px-5 text-[14px] text-center rounded-full border transition-all ${
                           isSelected
-                            ? 'bg-brand text-white border-brand font-semibold'
-                            : 'bg-cream text-ink border-line hover:border-brand/40'
+                            ? 'bg-ink text-paper border-ink font-semibold'
+                            : 'bg-paper text-ink border-line hover:border-ink'
                         }`}
                       >
                         {opt}
@@ -263,27 +266,14 @@ export default function HeroLeadForm() {
                     );
                   })}
                 </div>
-                <p className="text-[11px] text-muted mt-1.5">
-                  Required for courier logistics &amp; Indian payment gateway settlements.
-                </p>
               </div>
 
-              <button
-                type="submit"
-                className="btn-primary w-full py-3.5 mt-2 flex items-center justify-center gap-2 text-[14.5px] font-semibold"
-              >
-                <span>Continue to Step 2</span>
-                <FaArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </>
-          ) : (
-            <>
-              {/* Step 2 Fields */}
+              {/* Field 4: What's your current monthly business revenue? */}
               <div>
-                <label className="block text-[13px] font-medium text-ink mb-2">
-                  Current Monthly Revenue / Sales <span className="text-brand">*</span>
+                <label className="block text-[13px] font-medium text-ink mb-1">
+                  What&apos;s your current monthly business revenue? <span className="text-brand">*</span>
                 </label>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {REVENUE_BANDS.map((band) => {
                     const isSelected = formData.monthlyRevenue === band;
                     return (
@@ -291,10 +281,10 @@ export default function HeroLeadForm() {
                         type="button"
                         key={band}
                         onClick={() => handleSelect('monthlyRevenue', band)}
-                        className={`py-2 px-2 text-[12px] text-center border transition-all ${
+                        className={`py-1.5 px-1 text-[13px] text-center rounded-[10px] border transition-all ${
                           isSelected
-                            ? 'bg-brand text-white border-brand font-semibold'
-                            : 'bg-cream text-ink border-line hover:border-brand/40'
+                            ? 'bg-brand text-white border-brand font-semibold shadow-[0_2px_8px_rgba(253,88,0,0.25)]'
+                            : 'bg-cream text-ink border-line hover:border-brand/40 hover:bg-paper'
                         }`}
                       >
                         {band}
@@ -304,6 +294,53 @@ export default function HeroLeadForm() {
                 </div>
               </div>
 
+              {/* Field 5: Consent Checkbox */}
+              <div className="flex items-start gap-2.5">
+                <input
+                  type="checkbox"
+                  id={`${id}-consent`}
+                  name="consent"
+                  checked={formData.consent}
+                  onChange={handleChange}
+                  className="mt-1 w-4 h-4 accent-[#FD5800] rounded cursor-pointer shrink-0"
+                />
+                <label htmlFor={`${id}-consent`} className="text-[12px] text-muted leading-tight cursor-pointer">
+                  I agree to the{' '}
+                  <Link href="/terms" target="_blank" className="underline hover:text-brand">
+                    Terms &amp; Conditions
+                  </Link>{' '}
+                  and{' '}
+                  <Link href="/privacy-policy" target="_blank" className="underline hover:text-brand">
+                    Privacy Policy
+                  </Link>
+                  , and I&apos;m happy to be contacted by scaloMATRIX by phone, WhatsApp, SMS or email about my enquiry.
+                </label>
+              </div>
+
+              {/* Submit / Continue Button */}
+              <button
+                type="submit"
+                className="w-full py-3.5 flex items-center justify-center gap-2 text-[15px] font-semibold text-[#141210] bg-brand rounded-full hover:brightness-105 transition-all"
+              >
+                <span>Continue</span>
+                <FaArrowRight className="w-3.5 h-3.5" />
+              </button>
+
+              {/* Footer Trust Guarantees */}
+              <div className="mt-auto flex flex-wrap items-center justify-center gap-2 text-[13px] text-muted font-medium">
+                <span className="inline-flex items-center gap-1.5">
+                  <FaCheckCircle className="w-3.5 h-3.5 text-[#10B981]" />
+                  <span>Small one-time setup</span>
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <FaCheckCircle className="w-3.5 h-3.5 text-[#10B981]" />
+                  <span>₹0 marketing fee</span>
+                </span>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* Step 2 Fields */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-[13px] font-medium text-ink mb-1.5">
@@ -315,7 +352,7 @@ export default function HeroLeadForm() {
                     placeholder="e.g. Apparel, Home Decor"
                     value={formData.productCategory}
                     onChange={handleChange}
-                    className="w-full bg-cream border border-line px-4 py-2.5 text-[13.5px] text-ink placeholder:text-muted/60 focus:outline-none focus:border-brand transition-colors"
+                    className="w-full bg-cream border border-line rounded-[10px] px-4 py-2.5 text-[13.5px] text-ink placeholder:text-muted/70 focus:outline-none focus:border-brand focus:bg-paper transition-colors"
                   />
                 </div>
                 <div>
@@ -328,39 +365,16 @@ export default function HeroLeadForm() {
                     placeholder="e.g. Surat, Delhi, Jaipur"
                     value={formData.city}
                     onChange={handleChange}
-                    className="w-full bg-cream border border-line px-4 py-2.5 text-[13.5px] text-ink placeholder:text-muted/60 focus:outline-none focus:border-brand transition-colors"
+                    className="w-full bg-cream border border-line rounded-[10px] px-4 py-2.5 text-[13.5px] text-ink placeholder:text-muted/70 focus:outline-none focus:border-brand focus:bg-paper transition-colors"
                   />
                 </div>
-              </div>
-
-              {/* Consent Checkbox */}
-              <div className="flex items-start gap-2.5 pt-1">
-                <input
-                  type="checkbox"
-                  id="consent"
-                  name="consent"
-                  checked={formData.consent}
-                  onChange={handleChange}
-                  className="mt-1 w-4 h-4 accent-[#FD5800] rounded cursor-pointer"
-                />
-                <label htmlFor="consent" className="text-[11.5px] text-muted leading-tight cursor-pointer">
-                  I agree to be contacted via WhatsApp/Phone and agree to the{' '}
-                  <Link href="/terms" target="_blank" className="underline hover:text-brand">
-                    Terms
-                  </Link>{' '}
-                  &amp;{' '}
-                  <Link href="/privacy" target="_blank" className="underline hover:text-brand">
-                    Privacy Policy
-                  </Link>
-                  .
-                </label>
               </div>
 
               <div className="flex items-center gap-3 mt-2">
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="px-4 py-3.5 border border-line bg-cream text-ink text-[13px] font-medium hover:bg-paper transition-colors flex items-center justify-center gap-1.5"
+                  className="px-4 py-3.5 border border-line bg-cream rounded-[10px] text-ink text-[13px] font-medium hover:bg-paper transition-colors flex items-center justify-center gap-1.5"
                 >
                   <FaArrowLeft className="w-3 h-3" />
                   <span>Back</span>
@@ -368,7 +382,7 @@ export default function HeroLeadForm() {
                 <button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="btn-primary flex-1 py-3.5 flex items-center justify-center gap-2 text-[14px] font-semibold disabled:opacity-50"
+                  className="btn-primary flex-1 py-3.5 flex items-center justify-center gap-2 text-[14px] font-semibold text-white bg-brand rounded-[10px] disabled:opacity-50"
                 >
                   {status === 'loading' ? (
                     <span>Submitting...</span>
@@ -380,15 +394,15 @@ export default function HeroLeadForm() {
                   )}
                 </button>
               </div>
+
+              {/* Strict small print disclosure */}
+              <div className="pt-2 text-center">
+                <p className="text-[10.5px] text-muted/80 leading-normal">
+                  🔒 No spam. We earn only when you sell. Meta ad budget &amp; Shopify plan are paid directly by you to Meta &amp; Shopify.
+                </p>
+              </div>
             </>
           )}
-
-          {/* Strict small print disclosure */}
-          <div className="pt-2 text-center">
-            <p className="text-[10.5px] text-muted/80 leading-normal">
-              🔒 No spam. We earn only when you sell. Meta ad budget &amp; Shopify plan are paid directly by you to Meta &amp; Shopify.
-            </p>
-          </div>
         </form>
       )}
     </div>

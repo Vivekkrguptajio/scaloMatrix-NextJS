@@ -1,5 +1,6 @@
 import "./globals.css";
 import JsonLd from "../components/JsonLd";
+import CookieConsent from "../components/CookieConsent";
 import { SITE_URL } from "../utils/site";
 
 const TITLE = "scaloMATRIX | D2C Brand Building for Manufacturers: Store, Ads & Growth";
@@ -97,35 +98,12 @@ export default function RootLayout({ children }) {
         {/* General Sans (Fontshare) — the one font used across the whole site */}
         <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" />
 
-        {/* Optional Analytics Scripts (Meta Pixel, GA4, Clarity) */}
-        {pixelId && (
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '${pixelId}');fbq('track', 'PageView');`,
-            }}
-          />
-        )}
-        {gaId && (
-          <>
-            <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${gaId}');`,
-              }}
-            />
-          </>
-        )}
-        {clarityId && (
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "${clarityId}");`,
-            }}
-          />
-        )}
+        {/* Meta Pixel, GA4 and Clarity load only after cookie consent: see CookieConsent */}
       </head>
-      <body className="min-h-full">
+      <body className="min-h-full" suppressHydrationWarning>
         <JsonLd />
         {children}
+        <CookieConsent pixelId={pixelId} gaId={gaId} clarityId={clarityId} />
       </body>
     </html>
   );

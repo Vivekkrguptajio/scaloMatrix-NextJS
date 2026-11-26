@@ -1,116 +1,102 @@
 "use client";
 
-import { FaIndustry, FaBoxes, FaStore, FaMobileAlt, FaArrowRight } from 'react-icons/fa';
+import { FaIndustry, FaShoppingCart, FaStore, FaSyncAlt, FaCheckCircle } from 'react-icons/fa';
+
+const segments = [
+  {
+    icon: FaIndustry,
+    title: 'Manufacturers',
+    subtitle: 'Factories, makers, private-label suppliers',
+    challenge: 'You make great products, but others sell them under their name and keep the margin.',
+    helps: ['Your own brand, live in 15 days', 'No ₹1 lakh agency bill to start'],
+  },
+  {
+    icon: FaShoppingCart,
+    title: 'Marketplace sellers',
+    subtitle: 'Amazon, Flipkart, Meesho',
+    challenge: 'High commissions, price wars and no access to your own customers.',
+    helps: ['Your own store and customer list', 'Keep selling on marketplaces too'],
+  },
+  {
+    icon: FaStore,
+    title: 'Offline shops and wholesalers',
+    subtitle: 'Shops, traders, distributors, Instagram sellers',
+    challenge: 'Strong local business or DM orders, but no proper online store.',
+    helps: ['Website, payments and shipping, done for you', 'Manage orders from your phone'],
+  },
+  {
+    icon: FaSyncAlt,
+    title: 'Tried an agency before',
+    subtitle: 'Burned by retainers and fees',
+    challenge: 'Paid monthly retainers and marketing fees, saw little return.',
+    helps: ['₹0 retainer, ₹0 marketing fee', 'We earn only when your orders come'],
+  },
+];
 
 export default function IsThisForYou() {
-  const segments = [
-    {
-      icon: FaIndustry,
-      title: "Manufacturers & Factory Owners",
-      badge: "Primary Focus",
-      pain: "You manufacture high-quality goods at unbeatable costs, but middlemen, distributors, and marketplaces squeeze your margins down to single digits.",
-      solution:
-        "Launch your own direct brand. You supply the product from your factory; we design the Shopify store, run the Meta ads, and setup courier dispatch. You earn direct consumer margins.",
-    },
-    {
-      icon: FaBoxes,
-      title: "Amazon / Flipkart / Meesho Sellers",
-      badge: "Marketplace Sellers",
-      pain: "Trapped in brutal price matching, listing hijackers, fake returns (RTO), and 25%–35% platform fees that wipe out profitability.",
-      solution:
-        "Build a brand you own 100%. You own the customer phone numbers, get repeat orders, and never fear sudden account suspensions.",
-    },
-    {
-      icon: FaStore,
-      title: "Offline Shops & Wholesalers",
-      badge: "Retailers & Traders",
-      pain: "Local bazaar footfall is stagnant. You have real inventory and deep product expertise, but e-commerce tech and digital ads feel complex and risky.",
-      solution:
-        "Turn your existing inventory into a pan-India brand with automated courier pickups from your shop and instant UPI/bank settlements.",
-    },
-    {
-      icon: FaMobileAlt,
-      title: "Instagram & WhatsApp Sellers",
-      badge: "Social Commerce",
-      pain: "Wasting hours answering 'Price please?' in DMs, verifying manual UPI payment screenshots, and unable to scale past 10–20 orders a day.",
-      solution:
-        "A 1-click checkout Shopify store that handles payments, order confirmations, and dispatch notifications automatically so you can scale to hundreds of daily orders.",
-    },
-  ];
-
   return (
     <section id="is-this-for-you" className="relative w-full py-16 md:py-24 bg-cream font-sans border-b border-line">
       <div className="container-x">
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 md:mb-16">
-          <div className="max-w-xl">
-            <span className="eyebrow mb-4">Audience Match</span>
-            <h2 className="h-display h-section">
-              Is D2C scaloMATRIX <span className="accent">for you?</span>
-            </h2>
-          </div>
-          <p className="lead max-w-md">
-            We partner with businesses who have great physical products and want their own profitable e-commerce channel without paying agency retainers.
+        <div className="mb-8 sm:mb-10">
+          <p className="mb-2 font-mono text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-ink">
+            Is this for you?
+          </p>
+          <h2 className="h-display !font-semibold text-[clamp(24px,2.4vw,36px)] leading-[1.08] tracking-tight text-ink">
+            Is scaloMATRIX <span className="text-brand">right for you?</span>
+          </h2>
+          <p className="mt-3 text-[15px] sm:text-[17px] text-muted">
+            If you&apos;re one of these sellers, the answer is a definite yes.
           </p>
         </div>
 
-        {/* 4 Segment Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-          {segments.map((seg, idx) => {
+        {/* 4 cards in one row on desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+          {segments.map((seg) => {
             const Icon = seg.icon;
             return (
               <div
-                key={idx}
-                className="bg-paper border border-line p-6 sm:p-8 flex flex-col justify-between hover:border-brand/40 transition-colors"
+                key={seg.title}
+                className="flex flex-col rounded-[14px] border border-line bg-paper p-5 sm:p-6 transition-colors duration-300 hover:border-ink"
               >
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 bg-brand-soft text-brand flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-brand" />
-                    </div>
-                    <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1 bg-cream border border-line text-brand-text">
-                      {seg.badge}
-                    </span>
-                  </div>
-
-                  <h3 className="h-display text-[21px] sm:text-[23px] font-semibold text-ink mb-4">
-                    {seg.title}
-                  </h3>
-
-                  {/* Pain */}
-                  <div className="mb-4 pb-4 border-b border-line/60">
-                    <p className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-red-500 font-semibold mb-1">
-                      The Pain
-                    </p>
-                    <p className="text-[13.5px] text-muted leading-relaxed">
-                      {seg.pain}
-                    </p>
-                  </div>
-
-                  {/* Solution */}
-                  <div>
-                    <p className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-brand font-semibold mb-1">
-                      The scaloMATRIX Solution
-                    </p>
-                    <p className="text-[14px] text-ink font-medium leading-relaxed">
-                      {seg.solution}
-                    </p>
-                  </div>
+                <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-[10px] bg-brand-soft">
+                  <Icon className="h-5 w-5 text-brand" />
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-line/60">
-                  <a
-                    href="#lead-form"
-                    className="inline-flex items-center gap-2 text-[13px] font-semibold text-brand hover:text-brand-deep transition-colors"
-                  >
-                    <span>Request call back for this plan</span>
-                    <FaArrowRight className="w-3 h-3" />
-                  </a>
+                <h3 className="text-[17px] sm:text-[18px] font-bold leading-snug text-ink">{seg.title}</h3>
+                <p className="mt-1 text-[13px] sm:text-[14px] leading-snug text-muted">{seg.subtitle}</p>
+
+                <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.12em] text-muted">Your challenge</p>
+                <p className="mt-1.5 text-[14px] leading-relaxed text-ink">{seg.challenge}</p>
+
+                {/* Pushes the "helps" block to the bottom so all 4 cards line up */}
+                <div className="mt-auto pt-5">
+                  <div className="border-t border-line pt-5">
+                    <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink">
+                      <FaCheckCircle className="h-4 w-4 text-brand" />
+                      How scaloMATRIX helps
+                    </p>
+                    <ul className="mt-3 space-y-2.5">
+                      {seg.helps.map((h) => (
+                        <li key={h} className="flex items-start gap-2.5 text-[14px] leading-snug text-ink">
+                          <span className="mt-[1px] text-brand font-bold">✓</span>
+                          <span>{h}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             );
           })}
         </div>
+
+        <a
+          href="#lead-form"
+          className="btn-primary mt-8 md:mt-10 inline-flex shrink-0 items-center justify-center gap-2 rounded-full px-5 py-3 text-[13px] font-semibold text-white"
+        >
+          Book my free call <span aria-hidden="true">→</span>
+        </a>
       </div>
     </section>
   );

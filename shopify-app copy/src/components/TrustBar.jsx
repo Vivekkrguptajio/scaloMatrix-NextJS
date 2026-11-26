@@ -1,47 +1,22 @@
 "use client";
 
 import Image from 'next/image';
+import shopify from '../assets/parters/shopify.svg';
+import meta from '../assets/parters/meta.svg';
+import shiprocket from '../assets/parters/shiprocket-icon.svg';
 
 export default function TrustBar() {
   const partners = [
-    {
-      name: 'Shopify Partner',
-      badge: 'Official Ecosystem',
-      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/v1794639408/shopify-app/work/shopify-partners.png',
-      width: 140,
-      height: 28,
-    },
-    {
-      name: 'Meta Ads Ecosystem',
-      badge: 'Instagram & Facebook [VERIFY]',
-      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/v1787509492/shopify-app/assets/meta.svg',
-      width: 90,
-      height: 24,
-      isSvg: true,
-    },
-    {
-      name: 'Shiprocket Logistics',
-      badge: 'PAN-India Courier [VERIFY]',
-      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/v1787509493/shopify-app/assets/shiprocket.svg',
-      width: 110,
-      height: 24,
-      isSvg: true,
-    },
-    {
-      name: 'Verified Gateways',
-      badge: 'UPI & Instant Settlements [VERIFY]',
-      img: 'https://res.cloudinary.com/dqtzchlqj/image/upload/v1787509491/shopify-app/assets/gokwik.svg',
-      width: 95,
-      height: 24,
-      isSvg: true,
-    },
+    { name: 'Shopify Partners', badge: 'Official Ecosystem', img: shopify },
+    { name: 'Meta', badge: 'Instagram & Facebook', img: meta },
+    { name: 'Shiprocket', badge: 'PAN-India Courier', img: shiprocket },
   ];
 
   return (
-    <section className="w-full py-8 border-y border-line bg-paper">
+    <section className="w-full border-b border-line bg-paper py-8 md:py-10">
       <div className="container-x">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="text-center md:text-left">
+        <div className="flex flex-col items-center justify-between gap-6 lg:flex-row">
+          <div className="text-center lg:w-[38%] lg:text-left">
             <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-text mb-1">
               Verified Infrastructure
             </p>
@@ -50,21 +25,21 @@ export default function TrustBar() {
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center md:justify-end gap-6 sm:gap-10">
-            {partners.map((p, idx) => (
-              <div key={idx} className="flex flex-col items-center sm:items-start gap-1">
-                <div className="h-7 flex items-center grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
+          <div className="grid w-full grid-cols-3 items-start gap-x-3 sm:gap-x-6 lg:w-[58%] lg:gap-x-4">
+            {partners.map((partner) => (
+              <div key={partner.name} className="flex min-w-0 flex-col items-center gap-1.5 text-center">
+                <div className="flex h-10 w-full items-center justify-center">
                   <Image
-                    src={p.img}
-                    alt={p.name}
-                    width={p.width}
-                    height={p.height}
-                    className="object-contain max-h-7"
+                    src={partner.img}
+                    alt=""
+                    aria-hidden="true"
+                    width={36}
+                    height={36}
+                    className="h-9 w-9 object-contain"
                   />
                 </div>
-                <span className="text-[10px] font-mono text-muted/80">
-                  {p.badge}
-                </span>
+                <span className="min-h-[17px] text-[11px] font-semibold leading-tight text-ink sm:text-[12px]">{partner.name}</span>
+                <span className="text-[9px] font-mono leading-tight text-muted/80 sm:text-[10px]">{partner.badge}</span>
               </div>
             ))}
           </div>

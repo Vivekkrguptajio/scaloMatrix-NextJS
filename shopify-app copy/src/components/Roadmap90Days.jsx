@@ -6,7 +6,7 @@ export default function Roadmap90Days() {
   const steps = [
     {
       stage: "Stage 1",
-      timeline: "Weeks 1–2 [VERIFY]",
+      timeline: "Weeks 1–2",
       title: "Store Build & Technical Launch",
       weDo: [
         "Build custom high-converting Shopify store",
@@ -59,7 +59,7 @@ export default function Roadmap90Days() {
         "Scale Meta ad spend strategically while safeguarding ROAS",
         "Launch retargeting, lookalike audiences, and bundle offers",
         "Analyze repeat customer purchase cycles and increase average order value",
-        "Weekly strategic P&L review directly with founders",
+        "Weekly P&L review with your growth expert",
       ],
       youDo: [
         "Plan bulk production/raw material purchasing for higher volumes",
@@ -87,14 +87,14 @@ export default function Roadmap90Days() {
           {steps.map((st, idx) => (
             <div
               key={idx}
-              className="bg-cream border border-line p-6 flex flex-col justify-between hover:border-brand/40 transition-colors"
+              className="bg-cream border border-line p-6 flex flex-col justify-between hover:border-brand/40 transition-colors rounded-[10px]"
             >
               <div>
                 <div className="flex items-center justify-between pb-3 mb-4 border-b border-line">
                   <span className="font-mono text-[11px] font-bold text-brand uppercase tracking-wider">
                     {st.stage}
                   </span>
-                  <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-muted bg-paper px-2 py-0.5 border border-line">
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-muted bg-paper px-2 py-0.5 border border-line rounded-[6px]">
                     <FaCalendarAlt className="w-2.5 h-2.5 text-brand" />
                     {st.timeline}
                   </span>

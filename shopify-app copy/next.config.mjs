@@ -18,6 +18,9 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // Legal pages renamed on 26 Nov 2026
+      { source: '/privacy', destination: '/privacy-policy', permanent: true },
+      { source: '/legal', destination: '/disclaimer', permanent: true },
       // 301-redirect old custom Shopify pages to shopify.scalomatrix.com
       {
         source: '/services/shopify-store-creation',

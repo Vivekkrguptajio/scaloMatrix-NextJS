@@ -21,7 +21,7 @@ export default function HowYouPay() {
     },
     {
       title: "We Earn Only When You Sell",
-      desc: "Our ongoing earnings come from a small fee per order or a minor percentage of net delivered sales. When your brand succeeds, we succeed.",
+      desc: "Our ongoing earnings come from a small fee on every order you receive. When your brand succeeds, we succeed.",
       badge: "100% Skin in the Game",
     },
   ];
@@ -45,10 +45,10 @@ export default function HowYouPay() {
           {points.map((pt, idx) => (
             <div
               key={idx}
-              className="bg-cream border border-line p-6 flex flex-col justify-between hover:border-brand/50 transition-colors"
+              className="bg-cream border border-line p-6 flex flex-col justify-between hover:border-brand/50 transition-colors rounded-[10px]"
             >
               <div>
-                <span className="inline-block px-2.5 py-1 bg-paper border border-line text-[11px] font-mono text-brand font-semibold mb-4">
+                <span className="inline-block px-2.5 py-1 bg-paper border border-line text-[11px] font-mono text-brand font-semibold mb-4 rounded-[6px]">
                   {pt.badge}
                 </span>
                 <h3 className="h-display text-[18px] sm:text-[19px] font-semibold text-ink mb-3 leading-snug">
@@ -68,7 +68,7 @@ export default function HowYouPay() {
         </div>
 
         {/* Callout Box with Small Print Disclosure & CTA */}
-        <div className="p-8 bg-cream border border-line flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div className="p-8 bg-cream border border-line flex flex-col lg:flex-row items-center justify-between gap-8 rounded-[10px]">
           <div className="max-w-xl">
             <h4 className="text-[18px] sm:text-[20px] font-semibold text-ink mb-2 flex items-center gap-2">
               <FaLock className="w-4 h-4 text-brand" />
@@ -82,7 +82,7 @@ export default function HowYouPay() {
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto shrink-0">
             <a
               href="#lead-form"
-              className="btn-primary py-4 px-8 text-[14.5px] font-semibold text-center w-full sm:w-auto"
+              className="btn-primary py-4 px-8 text-[14.5px] font-semibold text-center w-full sm:w-auto rounded-[10px]"
             >
               Get Your Exact Price on a Call
             </a>
