@@ -18,7 +18,7 @@ export default function ThePromise() {
           </h2>
 
           <p className="text-white text-sm md:text-base max-w-xl leading-relaxed mb-10">
-            Every page we build is designed to beat your current one, and we set a 20% lift as the target. If it falls short we don&apos;t disappear: we go through the data with you and agree the next round of improvements in writing. Results depend on your product, traffic and market, so they can&apos;t be guaranteed (see our <a href="/terms#s12" className="underline underline-offset-2">Terms</a>).
+            Every page we build is designed to beat your current one, and we set a 20% lift as the target. If it falls short we don&apos;t disappear: we go through the data with you and agree the next round of improvements in writing. Results depend on your product, traffic and market, so they can&apos;t be guaranteed (see our <a href="/terms#s7" className="underline underline-offset-2">Terms</a>).
           </p>
 
           <a

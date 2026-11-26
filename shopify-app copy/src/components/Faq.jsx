@@ -1,71 +1,76 @@
-import Link from 'next/link';
+"use client";
+
+import { useState } from 'react';
 import { faqs } from '../data/faq';
+import FaqAskBox from './FaqAskBox';
 
 // Native <details> accordion: works without JavaScript, is keyboard/screen-reader
 // friendly, and every answer is in the server-rendered HTML for search engines.
-// First five questions form the main list (+); the rest sit under "Common questions" (→).
-const MAIN = 5;
+// Only the first few questions show at first so the landing page stays short;
+// the rest stay in the HTML (hidden) so search engines still read them.
+const VISIBLE_AT_FIRST = 6;
 
 export default function Faq() {
-  const main = faqs.slice(0, MAIN);
-  const common = faqs.slice(MAIN);
+  const [showAll, setShowAll] = useState(false);
+  const hiddenCount = faqs.length - VISIBLE_AT_FIRST;
 
   return (
-    <section id="faq" className="relative w-full py-16 md:py-24 bg-cream font-sans">
-      {/* Tab pinned to the section's corner */}
-      <span className="eyebrow">FAQ</span>
-
+    <section id="faq" aria-labelledby="faq-title" className="relative w-full py-16 md:py-24 bg-paper font-sans border-b border-line">
       <div className="container-x">
-        {/* Centred heading */}
-        <div className="text-center mb-10 md:mb-14">
-          <h2 className="h-display h-section">
-            Questions, <span className="accent">answered.</span>
+        {/* Header (same pattern as OurModel / FirstNinetyDays) */}
+        <div className="mx-auto mb-8 max-w-2xl text-center sm:mb-10">
+          <p className="mb-2 font-mono text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.18em] text-ink">
+            FAQs
+          </p>
+          <h2 id="faq-title" className="h-display !font-semibold text-[clamp(24px,2.4vw,36px)] leading-[1.08] tracking-tight text-ink">
+            Common questions, <span className="text-brand">answered.</span>
           </h2>
+          <p className="mt-3 text-[15px] sm:text-[17px] text-muted">
+            Honest answers about our setup fees, ad budgets, and how we work together.
+          </p>
         </div>
 
-        <div className="max-w-[680px] mx-auto">
-          {/* Main list: hairlines between rows, a plain + on the right */}
+        <div className="mx-auto max-w-[860px]">
+          {/* Main accordion list */}
           <div className="border-t border-line">
-            {main.map((item) => (
-              <details key={item.q} className="group border-b border-line">
-                <summary className="flex items-center justify-between gap-6 py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-                  <h3 className="text-[16px] md:text-[17px] leading-[24px] md:leading-[26px] font-medium text-ink">{item.q}</h3>
-                  <span aria-hidden="true" className="shrink-0 text-lg leading-none text-brand transition-transform duration-300 group-open:rotate-45">+</span>
+            {faqs.map((item, idx) => (
+              <details
+                key={idx}
+                className={`group border-b border-line ${!showAll && idx >= VISIBLE_AT_FIRST ? 'hidden' : ''}`}
+              >
+                <summary className="flex items-center justify-between gap-6 py-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                  <h3 className="text-[16px] md:text-[17.5px] leading-[24px] md:leading-[26px] font-medium text-ink group-hover:text-brand transition-colors">
+                    {item.q}
+                  </h3>
+                  <span
+                    aria-hidden="true"
+                    className="shrink-0 text-xl leading-none text-brand transition-transform duration-300 group-open:rotate-45"
+                  >
+                    +
+                  </span>
                 </summary>
-                <p className="faq-answer pb-6 pr-8 text-[13.5px] md:text-[14.5px] leading-[1.7] font-normal">{item.a}</p>
+                <div className="faq-answer pb-6 pr-8 text-[14px] md:text-[15px] leading-[1.7] text-muted font-normal">
+                  {item.a}
+                </div>
               </details>
             ))}
           </div>
 
-          {/* Common questions: smaller rows with an arrow */}
-          {common.length > 0 && (
-            <div className="mt-12">
-              <p className="font-mono text-[10.5px] tracking-[0.14em] uppercase text-brand-text mb-3">Common questions</p>
-              <div className="border-t border-line">
-                {common.map((item) => (
-                  <details key={item.q} className="group border-b border-line">
-                    <summary className="flex items-center justify-between gap-6 py-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-                      <h3 className="text-[16px] md:text-[17px] leading-[24px] md:leading-[26px] font-medium text-ink">{item.q}</h3>
-                      <span aria-hidden="true" className="shrink-0 text-lg leading-none text-brand transition-transform duration-300 group-open:rotate-90">→</span>
-                    </summary>
-                    <p className="faq-answer pb-6 pr-8 text-[13.5px] md:text-[14.5px] leading-[1.7] font-normal">{item.a}</p>
-                  </details>
-                ))}
-              </div>
+          {hiddenCount > 0 && (
+            <div className="mt-6 flex justify-center">
+              <button
+                type="button"
+                onClick={() => setShowAll((v) => !v)}
+                aria-expanded={showAll}
+                className="btn-ghost inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-semibold"
+              >
+                {showAll ? 'Show fewer questions' : `Show all ${faqs.length} questions`}
+                <span aria-hidden="true" className={`transition-transform duration-300 ${showAll ? 'rotate-180' : ''}`}>↓</span>
+              </button>
             </div>
           )}
 
-          <Link href="/answers" className="btn-ghost mt-5 !text-[12px] !py-2 !px-3 !border-ink">
-            All 100 answers <span aria-hidden="true">→</span>
-          </Link>
-
-          <p className="lead mt-10">
-            Still unsure? Send us a message above or email{' '}
-            <a href="mailto:info@krafficgroup.com" className="text-ink font-semibold hover:text-brand">
-              info@krafficgroup.com
-            </a>
-            .
-          </p>
+          <FaqAskBox />
         </div>
       </div>
     </section>

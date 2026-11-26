@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   compress: true,
-  // Dev only: let phones / other devices on your Wi-Fi open the dev server by its network IP
-  // (otherwise Next.js 16 blocks the dev assets & hot-reload from that origin and the page breaks).
   allowedDevOrigins: ['192.168.*.*', '10.*.*.*', '172.16.*.*'],
   images: {
     loader: 'custom',
@@ -20,8 +18,50 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      { source: '/answer', destination: '/answers', permanent: true },
-      { source: '/answer/:slug', destination: '/answers/:slug', permanent: true },
+      // Legal pages renamed on 26 Nov 2026
+      { source: '/privacy', destination: '/privacy-policy', permanent: true },
+      { source: '/legal', destination: '/disclaimer', permanent: true },
+      // 301-redirect old custom Shopify pages to shopify.scalomatrix.com
+      {
+        source: '/services/shopify-store-creation',
+        destination: 'https://shopify.scalomatrix.com/services/shopify-store-creation',
+        permanent: true,
+      },
+      {
+        source: '/services/shopify-store-redesign',
+        destination: 'https://shopify.scalomatrix.com/services/shopify-store-redesign',
+        permanent: true,
+      },
+      {
+        source: '/pricing',
+        destination: 'https://shopify.scalomatrix.com/pricing',
+        permanent: true,
+      },
+      {
+        source: '/work',
+        destination: 'https://shopify.scalomatrix.com/work',
+        permanent: true,
+      },
+      {
+        source: '/answers',
+        destination: 'https://shopify.scalomatrix.com/answers',
+        permanent: true,
+      },
+      {
+        source: '/answers/:slug',
+        destination: 'https://shopify.scalomatrix.com/answers/:slug',
+        permanent: true,
+      },
+      {
+        source: '/answer',
+        destination: 'https://shopify.scalomatrix.com/answers',
+        permanent: true,
+      },
+      {
+        source: '/answer/:slug',
+        destination: 'https://shopify.scalomatrix.com/answers/:slug',
+        permanent: true,
+      },
     ];
   },
   async headers() {

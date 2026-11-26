@@ -80,7 +80,19 @@ html.theme-switching *::after {
   letter-spacing: -0.035em;   /* -2.31px at 66px */
   line-height: 1.045;         /* 69px at 66px */
 }
-.h-section { font-size: clamp(30px, 3.8vw, 48px); }
+.h-section { font-size: clamp(24px, 2.4vw, 36px); }
+/* Keep page and section headings identical to the pricing heading, outside the hero. */
+.page-frame :is(h1, h2).h-display:not(#hero *) {
+  font-family: var(--font-display) !important;
+  font-weight: 500 !important;
+}
+@media (min-width: 640px) {
+  .page-frame :is(h1, h2).h-display:not(#hero *) {
+    font-size: clamp(24px, 2.4vw, 36px) !important;
+    line-height: 1.045 !important;
+    letter-spacing: -0.035em !important;
+  }
+}
 .h-card { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; }
 .accent {
   color: var(--color-brand);
@@ -141,19 +153,22 @@ html.theme-switching *::after {
 .btn-primary:hover { border-color: #141210; }
 
 /* ═══════ PAGE GUTTERS ═══════
-   One horizontal rhythm for the whole page: content always runs from 24px inside the
-   left margin line to 24px inside the right one, on every device (no max-width cap),
+   One horizontal rhythm for the whole page: content always runs from inside the
+   left margin line to inside the right one, on every device (no max-width cap),
    so the inner margin looks identical everywhere. Navbar, cards, text, marquees and
    footer all use it, so left and right edges line up. */
 .container-x {
-  /* content starts a fixed gap (24px) after the margin's vertical line */
+  /* content starts a fixed gap after the margin's vertical line */
   --gutter: calc(var(--m) + var(--gap));
-  --gap: 24px;
+  --gap: 32px;
   width: 100%;
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
-@media (max-width: 639px) { .container-x { --gap: 10px; } }
+@media (min-width: 768px) { .container-x { --gap: 48px; } }
+@media (min-width: 1024px) { .container-x { --gap: 56px; } }
+@media (min-width: 1280px) { .container-x { --gap: 64px; } }
+@media (max-width: 639px) { .container-x { --gap: 12px; } }
 
 /* ═══════ RULED SIDE MARGINS ═══════
    Each side: a plain outer margin (--m), a 1px beige vertical line at its inner edge,
@@ -279,7 +294,7 @@ input[type="range"].custom-slider-sm { min-height: 24px !important; padding: 6px
   margin-bottom: -100vh;
   margin-bottom: -100dvh;
   pointer-events: none;
-  z-index: 30;
+  z-index: 60;
   background-repeat: no-repeat, no-repeat, repeat-y, repeat-y, no-repeat, no-repeat;
   background-image:
     linear-gradient(var(--vband), var(--vband)),                       /* left vertical line  */
@@ -305,11 +320,57 @@ input[type="range"].custom-slider-sm { min-height: 24px !important; padding: 6px
 }
 
 /* ═══════ GLOBAL STYLES ═══════ */
-/* Custom cursor only on non-touch desktop devices — applied via JS class on html */
-@media (hover: hover) and (pointer: fine) {
-  html.custom-cursor-active, html.custom-cursor-active * {
-    cursor: none !important;
-  }
+/* Default native OS cursor everywhere */
+
+/* ═══════ 10PX BORDER RADIUS AT EVERY RECTANGLE CORNER ═══════ */
+button,
+input:not([type='checkbox']):not([type='radio']),
+textarea,
+select,
+.btn-primary,
+.btn-ghost,
+.btn-slide,
+[role='button'] {
+  border-radius: 10px !important;
+}
+
+/* All rectangular cards, panels, containers, figures and boxes */
+.bg-paper.border,
+.bg-panel,
+.bg-cream.border,
+#lead-form,
+figure.bg-paper,
+figure,
+.partner-cell,
+.partner-logo,
+.shadow-sm.border,
+.shadow-md.border,
+.shadow-lg.border,
+details.group,
+.case-shot {
+  border-radius: 10px !important;
+}
+
+/* Badges, tags, eyebrows, chips */
+.eyebrow,
+span.font-mono.border,
+div.font-mono.border {
+  border-radius: 10px !important;
+}
+
+/* Fixed size icon/stat boxes that are square/rectangular */
+.w-12.h-12:not(.rounded-full),
+.w-10.h-10:not(.rounded-full),
+.w-8.h-8:not(.rounded-full),
+.w-9.h-9:not(.rounded-full),
+.w-14.h-14:not(.rounded-full),
+.w-16.h-16:not(.rounded-full) {
+  border-radius: 10px !important;
+}
+
+/* Page frame eyebrow tabs at the top of sections */
+.page-frame .eyebrow {
+  border-radius: 0 0 10px 10px !important;
 }
 
 /* Lenis (inertial scroll) needs native smooth-scrolling off so the two don't fight */

@@ -5,12 +5,12 @@ import Contact from './Contact';
 const docs = [
   { href: '/terms', label: 'Terms & Conditions' },
   { href: '/refund-policy', label: 'Refund & Cancellation' },
-  { href: '/privacy', label: 'Privacy Policy' },
-  { href: '/legal', label: 'Legal & Policies' },
+  { href: '/privacy-policy', label: 'Privacy Policy' },
+  { href: '/disclaimer', label: 'Disclaimer' },
 ];
 
 // Shared shell for the policy pages: same navbar, ruled side margins, corner tab and
-// footer as the landing page, so Terms / Refund / Privacy / Legal all match the site theme.
+// footer as the landing page, so Terms / Refund / Privacy / Disclaimer all match the site theme.
 export default function LegalLayout({ title, intro, current, sections, updated = 'October 2026' }) {
   return (
     <div className="relative min-h-screen bg-[#0a0a0a] text-ink font-sans overflow-x-clip">
