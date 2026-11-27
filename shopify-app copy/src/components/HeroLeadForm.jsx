@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
+import { track } from '../utils/track';
 import { FaWhatsapp, FaCheckCircle, FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 
 const BUSINESS_TYPES = [
@@ -28,9 +29,9 @@ export default function HeroLeadForm({ id = 'lead-form', source = 'Hero 2-Step L
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    businessType: 'Manufacturer',
-    gstStatus: 'Yes',
-    monthlyRevenue: '₹1-5 lakhs',
+    businessType: '',
+    gstStatus: '',
+    monthlyRevenue: '',
     productCategory: '',
     city: '',
     consent: false,
@@ -38,6 +39,8 @@ export default function HeroLeadForm({ id = 'lead-form', source = 'Hero 2-Step L
 
   const [status, setStatus] = useState('idle'); // 'idle' | 'loading' | 'success' | 'error'
   const [errorMessage, setErrorMessage] = useState('');
+  const leadFired = useRef(false); // fire the Lead event once per visit, even if they go Back and Continue again
+  const [whatsappSent, setWhatsappSent] = useState(false); // true only if the server really sent the confirmation
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -61,6 +64,14 @@ export default function HeroLeadForm({ id = 'lead-form', source = 'Hero 2-Step L
       setErrorMessage('Please enter a valid 10-digit mobile number.');
       return false;
     }
+    if (!formData.businessType) {
+      setErrorMessage('Please select what best describes you.');
+      return false;
+    }
+    if (!formData.gstStatus) {
+      setErrorMessage('Please tell us if you have an active GST.');
+      return false;
+    }
     if (!formData.consent) {
       setErrorMessage('Please agree to the Terms & Conditions and Privacy Policy.');
       return false;
@@ -72,12 +83,27 @@ export default function HeroLeadForm({ id = 'lead-form', source = 'Hero 2-Step L
   const handleNext = (e) => {
     e.preventDefault();
     if (validateStep1()) {
+      // Name + phone are in: that is the lead. Counted here so drop-offs on step 2 still show up.
+      if (!leadFired.current) {
+        leadFired.current = true;
+        track('generate_lead', {
+          event_category: 'form',
+          event_label: formData.businessType,
+          form_source: source,
+          meta: { event: 'Lead', data: { content_name: 'D2C Brand Consultation', content_category: formData.businessType, currency: 'INR' } },
+        });
+      }
       setStep(2);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!formData.monthlyRevenue) {
+      setErrorMessage('Please select your current monthly business revenue.');
+      return;
+    }
 
     setStatus('loading');
     setErrorMessage('');
@@ -96,22 +122,17 @@ export default function HeroLeadForm({ id = 'lead-form', source = 'Hero 2-Step L
         throw new Error('Failed to submit. Please try again or chat via WhatsApp.');
       }
 
-      // Safe trigger of client analytics events
-      if (typeof window !== 'undefined') {
-        if (typeof window.fbq === 'function') {
-          window.fbq('track', 'Lead', {
-            content_name: 'D2C Brand Consultation',
-            currency: 'INR',
-          });
-        }
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', 'generate_lead', {
-            event_category: 'form',
-            event_label: formData.businessType,
-          });
-        }
-      }
+      // Step 2 done. This is not a second Lead (that fired on step 1), so ad reports don't double count.
+      track('lead_form_complete', {
+        event_category: 'form',
+        event_label: formData.businessType,
+        form_source: source,
+        meta: { event: 'LeadFormComplete', custom: true, data: { revenue: formData.monthlyRevenue, gst: formData.gstStatus } },
+      });
 
+      let result = null;
+      try { result = await response.json(); } catch { /* success page works without it */ }
+      setWhatsappSent(Boolean(result?.whatsappSent));
       setStatus('success');
     } catch (err) {
       console.error('Lead form submission error:', err);
@@ -121,27 +142,34 @@ export default function HeroLeadForm({ id = 'lead-form', source = 'Hero 2-Step L
   };
 
   const whatsappDeepLink = `https://wa.me/919217728977?text=${encodeURIComponent(
-    `Hi scaloMATRIX, I just requested a call back for my brand. Name: ${formData.name || 'Owner'}, Business: ${formData.businessType}. Let's discuss!`
+    `Hi scaloMATRIX, I just booked a free call for my brand. Name: ${formData.name || 'Owner'}, Business: ${formData.businessType}. Let's discuss!`
   )}`;
 
   return (
     <div
       id={id}
-      className="w-full max-w-[480px] min-h-[600px] lg:h-[600px] bg-paper border border-ink px-6 pt-3 pb-3 sm:px-8 sm:pt-4 sm:pb-4 rounded-[24px] shadow-none relative flex flex-col"
+      className="w-full max-w-[480px] bg-paper border border-ink px-6 pt-3 pb-3 sm:px-8 sm:pt-4 sm:pb-4 rounded-[24px] shadow-none relative flex flex-col"
     >
       {/* Top Accent Bar & Step Counter */}
       <div className="mb-3">
-        <div className="flex gap-3 mb-3" aria-label={`Step ${step} of 2`}>
+        <div className="flex gap-3 mb-3" aria-label={status === 'success' ? 'Completed' : `Step ${step} of 2`}>
           <span className={`h-2 flex-1 rounded-full ${step >= 1 ? 'bg-brand' : 'bg-line'}`} />
           <span className={`h-2 flex-1 rounded-full ${step >= 2 ? 'bg-brand' : 'bg-line'}`} />
         </div>
+        {status !== 'success' && (
+          <>
         <div className="text-[15px] text-muted mb-2 font-medium">
           {step === 1 ? 'Step 1 of 2 · Your details' : 'Step 2 of 2 · Business details'}
         </div>
         <h2 className="text-[20px] sm:text-[21px] font-bold text-ink leading-tight tracking-tight">
           {step === 1 ? 'Book a free 30-min brand call' : 'Almost there! Tell us about your brand'}
         </h2>
-        {step !== 1 && (
+          </>
+        )}
+        {status === 'success' && (
+          <div className="text-[15px] text-brand-text mb-1 font-semibold">Request received</div>
+        )}
+        {status !== 'success' && step !== 1 && (
           <p className="text-[14px] text-muted mt-1">
             Helps our growth team prepare before your call
           </p>
@@ -157,11 +185,17 @@ export default function HeroLeadForm({ id = 'lead-form', source = 'Hero 2-Step L
             Thank you, {formData.name.split(' ')[0]}!
           </h3>
           <p className="text-[14px] text-muted leading-relaxed mb-6 max-w-sm">
-            We have received your details. Our growth expert will call you within 24 hours to review your brand launch plan.
+            We have received your details. Our growth expert will call you within 1 hour during working hours to review your brand launch plan.{whatsappSent && ' We have also sent a confirmation to your WhatsApp.'}
           </p>
+
+          <ol className="mb-6 w-full max-w-sm space-y-2 text-left text-[13.5px] text-ink">
+            <li className="flex gap-2.5"><span className="mt-[1px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-soft text-[11px] font-bold text-brand">1</span>We review your brand and launch plan with you.</li>
+            <li className="flex gap-2.5"><span className="mt-[1px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-soft text-[11px] font-bold text-brand">2</span>It is a free call, with no pitch on call one.</li>
+          </ol>
 
           <a
             href={whatsappDeepLink}
+            data-track-location="thank-you"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full inline-flex items-center justify-center gap-2.5 py-4 px-6 bg-[#25D366] text-white font-semibold text-[15px] rounded-[10px] shadow-[0_8px_20px_rgba(37,211,102,0.3)] hover:brightness-105 transition-all"
@@ -232,8 +266,9 @@ export default function HeroLeadForm({ id = 'lead-form', source = 'Hero 2-Step L
                     name="businessType"
                     value={formData.businessType}
                     onChange={handleChange}
-                    className="w-full appearance-none bg-cream border border-line rounded-[12px] px-4 py-[10px] pr-10 text-[15px] text-ink focus:outline-none focus:border-brand"
+                    className={`w-full appearance-none bg-cream border border-line rounded-[12px] px-4 py-[10px] pr-10 text-[15px] focus:outline-none focus:border-brand ${formData.businessType ? 'text-ink' : 'text-muted'}`}
                   >
+                    <option value="" disabled>Select</option>
                     {BUSINESS_TYPES.map((type) => <option key={type} value={type}>{type}</option>)}
                   </select>
                   <svg className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink" viewBox="0 0 20 20" fill="none" aria-hidden="true">
@@ -262,32 +297,6 @@ export default function HeroLeadForm({ id = 'lead-form', source = 'Hero 2-Step L
                         }`}
                       >
                         {opt}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Field 4: What's your current monthly business revenue? */}
-              <div>
-                <label className="block text-[13px] font-medium text-ink mb-1">
-                  What&apos;s your current monthly business revenue? <span className="text-brand">*</span>
-                </label>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                  {REVENUE_BANDS.map((band) => {
-                    const isSelected = formData.monthlyRevenue === band;
-                    return (
-                      <button
-                        type="button"
-                        key={band}
-                        onClick={() => handleSelect('monthlyRevenue', band)}
-                        className={`py-1.5 px-1 text-[13px] text-center rounded-[10px] border transition-all ${
-                          isSelected
-                            ? 'bg-brand text-white border-brand font-semibold shadow-[0_2px_8px_rgba(253,88,0,0.25)]'
-                            : 'bg-cream text-ink border-line hover:border-brand/40 hover:bg-paper'
-                        }`}
-                      >
-                        {band}
                       </button>
                     );
                   })}
@@ -327,7 +336,7 @@ export default function HeroLeadForm({ id = 'lead-form', source = 'Hero 2-Step L
               </button>
 
               {/* Footer Trust Guarantees */}
-              <div className="mt-auto flex flex-wrap items-center justify-center gap-2 text-[13px] text-muted font-medium">
+              <div className="mt-1 flex flex-wrap items-center justify-center gap-2 text-[13px] text-muted font-medium">
                 <span className="inline-flex items-center gap-1.5">
                   <FaCheckCircle className="w-3.5 h-3.5 text-[#10B981]" />
                   <span>Small one-time setup</span>
@@ -340,6 +349,32 @@ export default function HeroLeadForm({ id = 'lead-form', source = 'Hero 2-Step L
             </>
           ) : (
             <>
+              {/* Monthly business revenue (step 2 keeps step 1 short) */}
+              <div>
+                <label className="block text-[13px] font-medium text-ink mb-1">
+                  What&apos;s your current monthly business revenue? <span className="text-brand">*</span>
+                </label>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  {REVENUE_BANDS.map((band) => {
+                    const isSelected = formData.monthlyRevenue === band;
+                    return (
+                      <button
+                        type="button"
+                        key={band}
+                        onClick={() => handleSelect('monthlyRevenue', band)}
+                        className={`py-1.5 px-1 text-[13px] text-center rounded-[10px] border transition-all ${
+                          isSelected
+                            ? 'bg-brand text-white border-brand font-semibold shadow-[0_2px_8px_rgba(253,88,0,0.25)]'
+                            : 'bg-cream text-ink border-line hover:border-brand/40 hover:bg-paper'
+                        }`}
+                      >
+                        {band}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
               {/* Step 2 Fields */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
@@ -388,7 +423,7 @@ export default function HeroLeadForm({ id = 'lead-form', source = 'Hero 2-Step L
                     <span>Submitting...</span>
                   ) : (
                     <>
-                      <span>Get a Call Back</span>
+                      <span>Book my free call</span>
                       <FaArrowRight className="w-3.5 h-3.5" />
                     </>
                   )}

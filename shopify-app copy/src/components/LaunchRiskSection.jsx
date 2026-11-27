@@ -24,27 +24,27 @@ export default function LaunchRiskSection() {
           <span className="text-brand">They fail because the money runs out first.</span>
         </h2>
 
-        <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3 lg:gap-5">
+        <ul className="mt-5 grid grid-cols-3 gap-2 sm:gap-3 lg:gap-5">
           {risks.map(({ icon: Icon, title }) => (
             <li
               key={title}
-              className="flex items-center gap-3 rounded-[14px] border border-line bg-paper px-4 py-3 transition-colors duration-300 hover:border-ink"
+              className="flex flex-col items-start gap-2 rounded-[12px] border border-line bg-paper p-2.5 sm:flex-row sm:items-center sm:gap-3 sm:rounded-[14px] sm:px-4 sm:py-3 transition-colors duration-300 hover:border-ink"
             >
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-brand-soft">
+              <span className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-[10px] bg-brand-soft">
                 <Icon className="h-4 w-4 text-brand" aria-hidden="true" />
               </span>
-              <span className="text-[14px] sm:text-[15px] font-semibold leading-snug text-ink">{title}</span>
+              <span className="text-[12.5px] sm:text-[15px] font-semibold leading-tight sm:leading-snug text-ink">{title}</span>
             </li>
           ))}
         </ul>
 
-        <div className="mt-3 flex flex-col items-start gap-4 rounded-[14px] bg-panel px-5 py-4 text-white sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:mt-4">
-          <p className="text-[15px] font-medium leading-snug sm:text-[17px]">
+        <div className="mt-3 flex flex-row items-center justify-between gap-3 rounded-[12px] bg-panel px-3.5 py-3 text-white sm:gap-4 sm:rounded-[14px] sm:px-6 sm:py-4 lg:mt-4">
+          <p className="text-[12.5px] font-medium leading-snug sm:text-[17px]">
             We built scaloMATRIX to <span className="text-brand">take that risk off your shoulders.</span>
           </p>
           <a
             href="#our-model"
-            className="btn-primary inline-flex shrink-0 items-center justify-center gap-2 rounded-full px-5 py-3 text-[13px] font-semibold text-white"
+            className="btn-primary inline-flex shrink-0 items-center justify-center gap-1.5 rounded-full px-3.5 py-2 text-[12px] font-semibold text-white sm:gap-2 sm:px-5 sm:py-3 sm:text-[13px]"
           >
             See how it works <span aria-hidden="true">→</span>
           </a>

@@ -20,7 +20,7 @@ export default function LegalLayout({ title, intro, current, sections, updated =
         <section className="relative">
           <span className="eyebrow">Policies</span>
 
-          <div className="container-x pt-14 md:pt-20 pb-16 md:pb-24 grid lg:grid-cols-[240px_1fr] gap-10 lg:gap-16">
+          <div className="container-x pt-8 md:pt-20 pb-16 md:pb-24 grid lg:grid-cols-[240px_1fr] gap-10 lg:gap-16">
             {/* Side nav */}
             <aside className="lg:sticky lg:top-24 h-fit">
               <p className="font-mono text-[10.5px] tracking-[0.14em] uppercase text-muted mb-4">Documents</p>
@@ -65,7 +65,7 @@ export default function LegalLayout({ title, intro, current, sections, updated =
               <div className="mt-10 border border-ink p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                   <p className="h-display !font-medium text-[22px] mb-1">Questions about this page?</p>
-                  <p className="text-[15px] text-muted">We reply within 24 hours.</p>
+                  <p className="text-[15px] text-muted">We reply within 1 hour during working hours.</p>
                 </div>
                 <div className="flex flex-col gap-1 text-[15px] font-medium">
                   <a href="mailto:info@krafficgroup.com" className="hover:text-brand">info@krafficgroup.com</a>

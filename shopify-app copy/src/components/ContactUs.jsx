@@ -33,7 +33,7 @@ export default function ContactUs() {
               Let&apos;s build your <span className="text-brand">own brand.</span>
             </h2>
             <p className="mt-3 mb-8 max-w-md text-[15px] sm:text-[17px] text-muted">
-              Tell us about your product or factory. We reply within 24 hours to schedule a 1-on-1 call with a growth expert.
+              Tell us about your product or factory. We call you within 1 hour during working hours to schedule a 1-on-1 call with a growth expert.
             </p>
 
             <div className="flex flex-col gap-5">

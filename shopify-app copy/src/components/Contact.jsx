@@ -110,19 +110,19 @@ export default function Contact({ reveal = false }) {
             </div>
 
             {/* Legal Navigation Links */}
-            <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-white/80 text-xs md:text-sm">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-2.5 text-center sm:flex sm:flex-wrap sm:justify-center sm:gap-x-5 sm:gap-y-2 text-white/80 text-xs md:text-sm">
               <Link href="/terms" className="hover:text-brand transition-colors">
                 Terms &amp; Conditions
               </Link>
-              <span className="text-white/30">•</span>
+              <span className="hidden sm:inline text-white/30">•</span>
               <Link href="/refund-policy" className="hover:text-brand transition-colors">
                 Refund &amp; Cancellation
               </Link>
-              <span className="text-white/30">•</span>
+              <span className="hidden sm:inline text-white/30">•</span>
               <Link href="/privacy-policy" className="hover:text-brand transition-colors">
                 Privacy Policy
               </Link>
-              <span className="text-white/30">•</span>
+              <span className="hidden sm:inline text-white/30">•</span>
               <Link href="/disclaimer" className="hover:text-brand transition-colors">
                 Disclaimer
               </Link>

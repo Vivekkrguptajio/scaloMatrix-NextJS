@@ -8,6 +8,45 @@ const resend = apiKey ? new Resend(apiKey) : null;
 const esc = (v = '') =>
   String(v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
+// Automatic WhatsApp confirmation through the WhatsApp Business Cloud API.
+// Needs WHATSAPP_TOKEN, WHATSAPP_PHONE_NUMBER_ID and WHATSAPP_TEMPLATE_NAME (an approved template whose
+// body has one variable, the visitor's first name). Optional: WHATSAPP_TEMPLATE_LANG (default "en").
+// Returns true only when WhatsApp accepted the message; it never blocks the lead itself.
+async function sendWhatsAppConfirmation({ name, phone }) {
+  const token = process.env.WHATSAPP_TOKEN;
+  const phoneId = process.env.WHATSAPP_PHONE_NUMBER_ID;
+  const template = process.env.WHATSAPP_TEMPLATE_NAME;
+  const digits = String(phone || '').replace(/\D/g, '');
+  if (!token || !phoneId || !template || digits.length < 10) return false;
+
+  try {
+    const res = await fetch(`https://graph.facebook.com/v21.0/${phoneId}/messages`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        messaging_product: 'whatsapp',
+        to: `91${digits.slice(-10)}`,
+        type: 'template',
+        template: {
+          name: template,
+          language: { code: process.env.WHATSAPP_TEMPLATE_LANG || 'en' },
+          components: [
+            { type: 'body', parameters: [{ type: 'text', text: String(name).trim().split(/\s+/)[0].slice(0, 30) }] },
+          ],
+        },
+      }),
+    });
+    if (!res.ok) {
+      console.error('[WHATSAPP NOT SENT]', res.status, (await res.text()).slice(0, 300));
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('[WHATSAPP NOT SENT]', err);
+    return false;
+  }
+}
+
 export async function POST(request) {
   try {
     const data = await request.json();
@@ -33,6 +72,9 @@ export async function POST(request) {
 
     console.log('[LEAD RECEIVED]:', JSON.stringify(data, null, 2));
 
+    // Confirm on WhatsApp straight away (not for FAQ questions, which have no phone)
+    const whatsappPromise = isFaqQuestion ? Promise.resolve(false) : sendWhatsAppConfirmation({ name, phone });
+
     // No email service configured: never pretend the lead was delivered on the live site.
     // (Locally we still return success so the form can be tested; the lead is in the log above.)
     if (!resend) {
@@ -40,7 +82,7 @@ export async function POST(request) {
       if (process.env.NODE_ENV === 'production') {
         return NextResponse.json({ success: false, error: 'Email service not configured.' }, { status: 500 });
       }
-      return NextResponse.json({ success: true, emailSent: false, message: 'Lead logged (email not configured locally).' });
+      return NextResponse.json({ success: true, emailSent: false, whatsappSent: await whatsappPromise, message: 'Lead logged (email not configured locally).' });
     }
 
     {
@@ -80,6 +122,7 @@ export async function POST(request) {
 
     return NextResponse.json({
       success: true,
+      whatsappSent: await whatsappPromise,
       message: 'Lead received successfully.',
       timestamp: new Date().toISOString(),
     });

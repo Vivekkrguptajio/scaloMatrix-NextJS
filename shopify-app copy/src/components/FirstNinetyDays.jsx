@@ -34,7 +34,7 @@ export default function FirstNinetyDays() {
     <section
       id="first-90-days"
       aria-labelledby="first-90-days-title"
-      className="relative w-full border-b border-line bg-paper py-16 md:py-24"
+      className="relative w-full border-b border-line bg-paper py-12 md:py-24"
     >
       <div className="container-x">
         {/* Header (same pattern as OurModel / WhatsIncluded) */}
@@ -69,12 +69,22 @@ export default function FirstNinetyDays() {
         </div>
 
         {/* Phase cards */}
-        <ol className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+        {/* Phones: vertical timeline (line + a dot per phase). Tablet and up: card grid. */}
+        <ol className="relative flex flex-col gap-4 pl-7 sm:grid sm:grid-cols-2 sm:gap-3.5 sm:pl-0 lg:grid-cols-4 lg:gap-5">
+          <span
+            aria-hidden="true"
+            className="absolute bottom-6 left-[7px] top-6 w-[2px] bg-gradient-to-b from-brand via-brand/50 to-line sm:hidden"
+          />
           {phases.map((p, i) => (
             <li
               key={p.title}
-              className="flex flex-col rounded-[14px] border border-line bg-paper p-5 sm:p-6 transition-colors duration-300 hover:border-ink"
+              className="relative flex flex-col rounded-[14px] border border-line bg-paper p-4 sm:p-6 transition-colors duration-300 hover:border-ink"
             >
+              {/* Timeline dot (phones only) */}
+              <span
+                aria-hidden="true"
+                className={`absolute -left-7 top-[18px] h-4 w-4 rounded-full border-[3px] border-brand sm:hidden ${i === 0 ? 'bg-brand' : 'bg-paper'}`}
+              />
               {/* Phase label shown inside the card on phones/tablets (timeline is desktop only) */}
               <span className="mb-3 inline-flex w-fit items-center gap-2 rounded-full bg-brand-soft px-3 py-1 font-mono text-[10.5px] font-semibold uppercase tracking-[0.14em] text-brand lg:hidden">
                 <span className="text-ink/60">0{i + 1}</span> {p.when}

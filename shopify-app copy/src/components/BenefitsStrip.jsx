@@ -12,19 +12,19 @@ export default function BenefitsStrip() {
         <h2 className="h-display text-[clamp(24px,2.4vw,36px)] mb-6 sm:mb-8 text-ink lg:whitespace-nowrap">
           Simple pricing. We earn only when you sell.
         </h2>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-4 lg:gap-4">
           {highlights.map((item) => (
             <div
               key={item.value + item.detail}
-              className="group flex flex-col items-start rounded-[12px] border border-[#FF5D00] bg-cream p-4 sm:p-5 text-ink transition-colors duration-300 hover:bg-[#FF5D00] hover:text-white"
+              className="group flex flex-col items-start rounded-[12px] border border-[#FF5D00] bg-cream p-3.5 sm:p-5 text-ink transition-colors duration-300 hover:bg-[#FF5D00] hover:text-white"
             >
-              <span className="font-display text-[24px] sm:text-[26px] font-medium leading-tight tracking-tight">
+              <span className="font-display text-[20px] sm:text-[26px] font-medium leading-tight tracking-tight">
                 {item.value}
               </span>
-              <span className="mt-2 text-[14px] sm:text-[15px] leading-snug font-semibold">
+              <span className="mt-1.5 sm:mt-2 text-[13px] sm:text-[15px] leading-snug font-semibold">
                 {item.label}
               </span>
-              <span className="mt-1 text-[12px] sm:text-[13px] leading-snug text-muted transition-colors duration-300 group-hover:text-white/85">
+              <span className="mt-1 text-[11.5px] sm:text-[13px] leading-snug text-muted transition-colors duration-300 group-hover:text-white/85">
                 {item.detail}
               </span>
             </div>

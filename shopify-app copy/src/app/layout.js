@@ -1,6 +1,7 @@
 import "./globals.css";
 import JsonLd from "../components/JsonLd";
 import CookieConsent from "../components/CookieConsent";
+import ClickTracking from "../components/ClickTracking";
 import { SITE_URL } from "../utils/site";
 
 const TITLE = "scaloMATRIX | D2C Brand Building for Manufacturers: Store, Ads & Growth";
@@ -104,6 +105,7 @@ export default function RootLayout({ children }) {
         <JsonLd />
         {children}
         <CookieConsent pixelId={pixelId} gaId={gaId} clarityId={clarityId} />
+        <ClickTracking />
       </body>
     </html>
   );

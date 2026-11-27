@@ -80,7 +80,7 @@ export default function Hero() {
                 href="#lead-form"
                 className="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[14.5px] font-semibold text-white bg-brand rounded-[10px] hover:brightness-105 transition-all shadow-[0_4px_14px_rgba(253,88,0,0.25)]"
               >
-                <span>Get a free call back</span>
+                <span>Book my free call</span>
               </a>
               <a
                 href="#first-90-days"

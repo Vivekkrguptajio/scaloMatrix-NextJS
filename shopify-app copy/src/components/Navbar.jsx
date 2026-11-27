@@ -181,7 +181,7 @@ export default function Navbar() {
     <header 
       ref={navRef}
       style={{ left: 'var(--m)', right: 'var(--m)' }}
-      className={`fixed top-0 z-50 h-[64px] border-b transition-colors duration-500 ${
+      className={`fixed top-0 ${mobileMenu ? 'z-[115]' : 'z-50'} h-[64px] border-b transition-colors duration-500 ${
         darkNav
           ? 'bg-[#141210]/95 border-white/10 text-white backdrop-blur-md' 
           : 'bg-paper/95 border-line text-ink backdrop-blur-md'
@@ -253,7 +253,7 @@ export default function Navbar() {
             }}
             className="btn-slide group flex items-center gap-2 text-[13.5px] font-semibold px-5 h-[40px] text-white bg-brand border border-brand hover:border-ink rounded-[10px]"
           >
-            <span>Get a call back</span>
+            <span>Book my free call</span>
             <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
@@ -280,7 +280,7 @@ export default function Navbar() {
 
     {/* Mobile menu sheet */}
     <div
-      className={`lg:hidden fixed inset-0 z-70 bg-paper transition-opacity duration-300 ${
+      className={`lg:hidden fixed inset-0 z-[110] bg-paper transition-opacity duration-300 ${
         mobileMenu ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
       }`}
       aria-hidden={!mobileMenu}
@@ -333,7 +333,7 @@ export default function Navbar() {
             }}
             className="btn-primary w-full !py-4 !text-base"
           >
-            Get a call back
+            Book my free call
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>

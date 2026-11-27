@@ -1,8 +1,12 @@
 "use client";
 import { useEffect, useState } from 'react';
+import { FaPhoneAlt, FaWhatsapp } from 'react-icons/fa';
 import { scrollToId } from '../utils/smoothScroll';
+import { whatsappUrl } from './WhatsAppButton';
 
-// Mobile sticky "Get a call back" pill pinned to the bottom of the screen.
+const PHONE = '919217728977';
+
+// Mobile sticky bar pinned to the bottom of the screen: Book my free call, Call and WhatsApp.
 // Appears once you scroll past the hero and tucks away while the contact form/footer is visible.
 export default function StickyAudit() {
   const [show, setShow] = useState(false);
@@ -27,19 +31,44 @@ export default function StickyAudit() {
   }, []);
 
   return (
-    <a
-      href="#lead-form"
-      onClick={(e) => { e.preventDefault(); scrollToId('lead-form'); }}
+    <div
+      role="region"
+      aria-label="Quick contact"
       aria-hidden={!show}
-      tabIndex={show ? 0 : -1}
-      className={`sm:hidden btn-slide group fixed bottom-4 left-1/2 z-[90] -translate-x-1/2 flex items-center gap-1.5 h-[34px] px-4 bg-brand text-white border border-brand hover:border-ink text-[12px] font-semibold whitespace-nowrap shadow-lg transition-[opacity,transform] duration-300 rounded-[10px] ${
-        show ? 'opacity-100' : 'opacity-0 pointer-events-none translate-y-3'
+      className={`sm:hidden fixed inset-x-0 bottom-0 z-[90] border-t border-ink/15 bg-paper/95 px-3 pt-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))] shadow-[0_-8px_24px_rgba(20,18,16,0.10)] backdrop-blur-md transition-[opacity,transform] duration-300 ${
+        show ? 'opacity-100' : 'pointer-events-none translate-y-full opacity-0'
       }`}
     >
-      <span>Get a call back</span>
-      <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-      </svg>
-    </a>
+      <div className="mx-auto flex max-w-[480px] items-center gap-2">
+        <a
+          href="#lead-form"
+          onClick={(e) => { e.preventDefault(); scrollToId('lead-form'); }}
+          tabIndex={show ? 0 : -1}
+          className="btn-primary inline-flex h-11 flex-1 items-center justify-center gap-1.5 rounded-[10px] px-3 text-[13.5px] font-semibold text-white"
+        >
+          Book my free call
+        </a>
+        <a
+          href={`tel:+${PHONE}`}
+          data-track-location="mobile-bar"
+          tabIndex={show ? 0 : -1}
+          aria-label="Call us"
+          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[10px] border border-ink bg-paper text-ink transition-colors hover:bg-cream"
+        >
+          <FaPhoneAlt className="h-4 w-4" />
+        </a>
+        <a
+          href={whatsappUrl}
+          data-track-location="mobile-bar"
+          target="_blank"
+          rel="noopener noreferrer"
+          tabIndex={show ? 0 : -1}
+          aria-label="Chat with us on WhatsApp"
+          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[10px] bg-[#25D366] text-white transition-[filter] hover:brightness-105"
+        >
+          <FaWhatsapp className="h-5 w-5" />
+        </a>
+      </div>
+    </div>
   );
 }

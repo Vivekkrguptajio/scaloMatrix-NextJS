@@ -380,7 +380,7 @@ function StoreShowcase() {
       </div>
 
       {/* Store list (styled like the feature boxes on the other tabs) */}
-      <div className="grid w-full grid-cols-3 gap-1.5 sm:w-[118px] sm:shrink-0 sm:grid-cols-1" role="group" aria-label="Stores we built">
+      <div className="grid w-full grid-cols-2 gap-1.5 min-[420px]:grid-cols-3 sm:w-[118px] sm:shrink-0 sm:grid-cols-1" role="group" aria-label="Stores we built">
         {SHOWCASE.map((c, idx) => (
           <button
             key={c.name}
@@ -418,7 +418,7 @@ function DashboardShowcase() {
           <span className="h-2 w-2 rounded-full bg-line" />
           <span className="h-2 w-2 rounded-full bg-line" />
           <span className="h-2 w-2 rounded-full bg-line" />
-          <span className="ml-2 truncate rounded-full bg-cream px-2.5 py-0.5 text-[10.5px] text-muted">Real client dashboard · names hidden</span>
+          <span className="ml-2 truncate rounded-full bg-cream px-2.5 py-0.5 text-[10.5px] text-muted"><span className="hidden sm:inline">Real client dashboard · </span>Names hidden</span>
           <a href={d.img} target="_blank" rel="noopener noreferrer" className="ml-auto shrink-0 text-[10.5px] font-semibold text-ink underline underline-offset-2 hover:text-brand">
             Zoom ↗
           </a>
@@ -535,7 +535,7 @@ export default function WhatsIncludedTabs() {
               href="#lead-form"
               className="btn-primary mt-7 inline-flex shrink-0 items-center justify-center gap-2 rounded-full px-5 py-3 text-[13px] font-semibold text-white"
             >
-              Ask about this on your free call <span aria-hidden="true">→</span>
+              Book my free call <span aria-hidden="true">→</span>
             </a>
           </div>
 

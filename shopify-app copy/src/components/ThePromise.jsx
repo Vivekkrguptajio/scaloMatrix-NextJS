@@ -30,7 +30,7 @@ export default function ThePromise() {
           </a>
 
           <p className="font-mono text-white/90 text-[10px] md:text-[11px] mt-8 tracking-[0.14em] uppercase">
-            Reply within 24 hours · free review if it&apos;s a fit · no pitch on call one
+            Call within 1 hour (working hours) · free review if it&apos;s a fit · no pitch on call one
           </p>
         </div>
       </div>
