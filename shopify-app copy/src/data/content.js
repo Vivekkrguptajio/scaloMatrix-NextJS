@@ -8,7 +8,7 @@ export const heroData = {
   description:
     "Agencies charge ₹50,000–₹1 lakh+ before you sell anything. We don't. We build your Shopify store, run your Meta ads, and handle shipping & payments. One small setup fee to start — after that, we earn only when you sell.",
   bullets: [
-    "₹ 0 Marketing fee",
+    "₹0 marketing fee, ₹0 monthly retainer",
     "Pay only when you receive order otherwise don't",
     "100% Yours: website, customers, data",
     "Go live within 15 days",

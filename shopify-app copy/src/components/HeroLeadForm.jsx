@@ -343,7 +343,7 @@ export default function HeroLeadForm({ id = 'lead-form', source = 'Hero 2-Step L
                 </span>
                 <span className="inline-flex items-center gap-1.5">
                   <FaCheckCircle className="w-3.5 h-3.5 text-[#10B981]" />
-                  <span>₹0 marketing fee</span>
+                  <span>₹0 marketing fee, ₹0 retainer</span>
                 </span>
               </div>
             </>

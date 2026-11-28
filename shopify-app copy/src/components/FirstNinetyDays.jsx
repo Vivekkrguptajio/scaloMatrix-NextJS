@@ -18,7 +18,7 @@ const phases = [
   {
     when: 'Weeks 9–12',
     title: 'Make it profitable',
-    weDo: ['Get more orders to reach buyers', 'Cut returns', 'Review margins with you'],
+    weDo: ['Raise order value with bundles and offers', 'Cut returns and fake COD orders', 'Review your profit with you every week'],
     youDo: 'A short weekly call with your expert.',
   },
   {

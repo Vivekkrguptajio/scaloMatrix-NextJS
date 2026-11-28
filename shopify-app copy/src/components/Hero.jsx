@@ -18,17 +18,17 @@ export default function Hero() {
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-start gap-8 lg:gap-10 xl:gap-10">
           
           {/* LEFT — Brand Positioning & Value Props */}
-          <div className="flex-1 w-full lg:max-w-[490px] xl:max-w-[530px] text-left">
+          <div className="flex-1 w-full lg:max-w-[490px] xl:max-w-[530px] text-center lg:text-left">
             {/* Eyebrow Badge */}
-            <div className="flex items-center gap-2 mb-6 hero-animate-1">
-              <span className="inline-flex items-center gap-2 bg-brand-soft text-brand-text text-[11.5px] sm:text-[12px] font-semibold tracking-[0.08em] uppercase px-3.5 py-1.5 font-mono border border-brand/20 rounded-[10px]">
+            <div className="flex items-center justify-center lg:justify-start gap-2 mb-5 sm:mb-6 hero-animate-1">
+              <span className="inline-flex items-center gap-2 bg-brand-soft text-brand-text text-[9.5px] sm:text-[12px] font-semibold tracking-[0.06em] sm:tracking-[0.08em] uppercase px-2.5 py-1 sm:px-3.5 sm:py-1.5 font-mono border border-brand/20 rounded-[10px]">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse" />
                 Full-stack D2C partner for Indian sellers
               </span>
             </div>
 
             {/* Main H1 */}
-            <h1 className="h-display !font-semibold !leading-[1.18] text-[clamp(2.1rem,4.2vw,50px)] mb-5 hero-animate-2">
+            <h1 className="h-display !font-semibold !leading-[1.18] text-[clamp(2.1rem,4.2vw,50px)] max-sm:!text-[32px] mb-5 hero-animate-2">
               {heroData.headlineMain}{' '}
               <span className="accent relative inline-block">
                 {heroData.headlineHighlight}
@@ -50,12 +50,12 @@ export default function Hero() {
             </h1>
 
             {/* Subtitle */}
-            <p className="lead text-[16px] sm:text-[18px] text-muted max-w-[580px] mb-6 hero-animate-3">
+            <p className="lead max-sm:!text-[14px] text-[16px] sm:text-[18px] text-muted max-w-[580px] mx-auto lg:mx-0 mb-6 hero-animate-3">
               {heroData.description}
             </p>
 
             {/* Core Bullets */}
-            <div className="flex flex-col gap-3.5 mb-6 hero-animate-4">
+            <div className="flex flex-col gap-3.5 mb-6 mx-auto w-fit max-w-full text-left lg:mx-0 lg:w-auto hero-animate-4">
               {heroData.bullets.map((bullet, idx) => (
                 <div key={idx} className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full bg-brand-soft text-brand flex items-center justify-center shrink-0">
@@ -68,14 +68,8 @@ export default function Hero() {
               ))}
             </div>
 
-            {/* Mandatory Small Print Disclosure */}
-            <div className="p-3 bg-paper border border-line rounded-[10px] max-w-[580px] text-[13px] text-muted/90 leading-relaxed hero-animate-5">
-              <span className="font-semibold text-ink">Strict Transparency:</span>{' '}
-              {heroData.smallPrint}
-            </div>
-
             {/* Two Action Buttons in place of stats */}
-            <div className="flex flex-wrap items-center gap-4 pt-7 mt-7">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-1">
               <a
                 href="#lead-form"
                 className="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[14.5px] font-semibold text-white bg-brand rounded-[10px] hover:brightness-105 transition-all shadow-[0_4px_14px_rgba(253,88,0,0.25)]"
@@ -89,6 +83,7 @@ export default function Hero() {
                 <span>See how it works</span>
               </a>
             </div>
+            <p className="mt-2.5 text-[11px] leading-none text-muted">We call you within 1 hour during working hours</p>
           </div>
 
           {/* RIGHT — The 2-Step Lead Generation Form */}
